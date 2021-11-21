@@ -137,23 +137,23 @@
    <relationship id="REL38" populated="true" UUID="55bacb94-3563-40b8-b7f1-d0e7913890b4" deferrability="7" deleteRule="3" fk-table-ref="TAB28" fkCardinality="7" identifying="false" name="utente_postSalvati_fk" physicalName="utente_postSalvati_fk" pk-table-ref="TAB1" pkCardinality="7" updateRule="3" >
     <column-mapping id="CMP39" populated="true" UUID="21659d21-c0d7-4619-a9f4-497866adfb47" fk-column-ref="COL29" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
-   <relationship id="REL40" populated="true" UUID="d7faa487-2ad9-4657-ba75-96b5c24ed34a" deferrability="7" deleteRule="3" fk-table-ref="TAB28" fkCardinality="7" identifying="false" name="post_postSalvati_fk" physicalName="post_postSalvati_fk" pk-table-ref="TAB11" pkCardinality="3" updateRule="3" >
-    <column-mapping id="CMP41" populated="true" UUID="b9c94f10-e29f-4773-b260-7ca7df3968eb" fk-column-ref="COL30" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL12" />
+   <relationship id="REL40" populated="true" UUID="d7faa487-2ad9-4657-ba75-96b5c24ed34a" deferrability="7" deleteRule="3" fk-table-ref="TAB28" fkCardinality="7" identifying="false" name="post_postSalvati_fk" physicalName="post_postSalvati_fk" pk-table-ref="TAB11" pkCardinality="7" updateRule="3" >
+    <column-mapping id="CMP41" populated="true" UUID="7ef87316-44a1-43c6-a19f-335b72f9ccdc" fk-column-ref="COL30" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL12" />
    </relationship>
   </relationships>
  </target-database>
  <ddl-generator type="ca.sqlpower.architect.ddl.GenericDDLGenerator" allow-connection="true"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="1.9999999999999996" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+ <play-pen zoom="1.6817928305074286" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB1" x="90" y="76" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB11" x="386" y="70" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB21" x="93" y="286" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB28" x="360" y="254" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-link relationship-ref="REL34" pkConnection="0.453781512605042" fkConnection="0.5126050420168067" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
-  <table-link relationship-ref="REL36" pkConnection="0.5146198830409356" fkConnection="0.4853801169590643" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
-  <table-link relationship-ref="REL38" pkConnection="0.8991596638655462" fkConnection="0.0" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="129"/>
-  <table-link relationship-ref="REL40" pkConnection="0.43434343434343436" fkConnection="0.5359116022099447" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-pane table-ref="TAB11" x="387" y="77" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB21" x="90" y="286" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB28" x="357" y="286" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-link relationship-ref="REL34" pkConnection="0.3779527559055118" fkConnection="0.3779527559055118" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL36" pkConnection="0.49732620320855614" fkConnection="0.4853801169590643" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
+  <table-link relationship-ref="REL38" pkConnection="0.8110236220472441" fkConnection="0.030303030303030304" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="129"/>
+  <table-link relationship-ref="REL40" pkConnection="0.49074074074074076" fkConnection="0.6818181818181818" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
  </play-pen>
  <critic-manager>
   <critic-grouping platformType="Generic" enabled="true">
