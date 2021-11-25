@@ -2,7 +2,8 @@
 L'arte che prende forma
 
 
+
+- Aceveda Kron Kendrix
 - Dituri Arianna
 - De Marco Alessandro
-- Aceveda Kendrix Kron
 - Singh Manbir
