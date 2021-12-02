@@ -1,7 +1,6 @@
 package artform;
 
 public class Utente {
-<<<<<<< HEAD
 	
 	//private static int nextUtente = 1;
 	private final int ID;
@@ -9,16 +8,6 @@ public class Utente {
 	
 	public Utente(int ID, String nome, String cognome, String username, String numeroTelefono, String password) {
 		this.ID = ID;
-=======
-
-	private static int nextUtente = 1;
-	private final int ID;
-	private String nome, cognome, username, email, numeroTelefono, password;
-	
-
-	public Utente(String nome, String cognome, String username, String numeroTelefono, String password) {
-		ID = nextUtente;
->>>>>>> c2d97f7595ba8fd5b1be7ecb06469ff2c2ebd173
 		this.nome = nome;
 		this.cognome = cognome;
 		this.username = username;
@@ -26,11 +15,11 @@ public class Utente {
 		this.password = password;
 		//nextUtente++;
 	}
-
+/*
 	public static int getNextUtente() {
 		return nextUtente;
 	}
-
+*/
 	public String getNome() {
 		return nome;
 	}
