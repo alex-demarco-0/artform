@@ -9,5 +9,7 @@ public class Utente {
 	public Utente(String n, String c, String u) {
 		
 	}
-	
+	public String toString(){
+		return "Ciao " + nome + " " + cognome + " detto anche " + username;
+	}
 }
