@@ -38,8 +38,12 @@ CREATE TABLE IF NOT EXISTS `post` (
   `like` int NOT NULL DEFAULT '0',
   `tipologia` varchar(50) NOT NULL,
   `utenteID` int NOT NULL,
+  `dataPubblicazione` timestamp NOT NULL,
+  `topic` varchar(50) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `FK_post_utente` (`utenteID`),
+  KEY `FK_post_topic` (`topic`),
+  CONSTRAINT `FK_post_topic` FOREIGN KEY (`topic`) REFERENCES `topic` (`nome`),
   CONSTRAINT `FK_post_utente` FOREIGN KEY (`utenteID`) REFERENCES `utente` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -53,6 +57,14 @@ CREATE TABLE IF NOT EXISTS `postSalvati` (
   KEY `FK_postSalvati_post` (`postID`),
   CONSTRAINT `FK_postSalvati_post` FOREIGN KEY (`postID`) REFERENCES `post` (`ID`),
   CONSTRAINT `FK_postSalvati_utente` FOREIGN KEY (`utenteID`) REFERENCES `utente` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- L’esportazione dei dati non era selezionata.
+
+-- Dump della struttura di tabella ArtForm.topic
+CREATE TABLE IF NOT EXISTS `topic` (
+  `nome` varchar(30) NOT NULL,
+  PRIMARY KEY (`nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- L’esportazione dei dati non era selezionata.
