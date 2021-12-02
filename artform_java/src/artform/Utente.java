@@ -21,13 +21,6 @@ public class Utente {
 		return nextUtente;
 	}
 
-}
-
-
-	public static void setNextUtente(int nextUtente) {
-		Utente.nextUtente = nextUtente;
-	}
-
 	public String getNome() {
 		return nome;
 	}
