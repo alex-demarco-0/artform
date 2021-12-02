@@ -20,6 +20,10 @@ public class Utente {
 		return nextUtente;
 	}
 */
+
+/*
+	funizonamento dei rami
+*/
 	public String getNome() {
 		return nome;
 	}
