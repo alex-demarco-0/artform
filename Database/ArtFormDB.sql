@@ -28,7 +28,9 @@ CREATE TABLE IF NOT EXISTS `badge` (
   CONSTRAINT `FK__utente` FOREIGN KEY (`utenteID`) REFERENCES `utente` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- L’esportazione dei dati non era selezionata.
+-- Dump dei dati della tabella ArtForm.badge: ~0 rows (circa)
+/*!40000 ALTER TABLE `badge` DISABLE KEYS */;
+/*!40000 ALTER TABLE `badge` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.post
 CREATE TABLE IF NOT EXISTS `post` (
@@ -47,7 +49,9 @@ CREATE TABLE IF NOT EXISTS `post` (
   CONSTRAINT `FK_post_utente` FOREIGN KEY (`utenteID`) REFERENCES `utente` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- L’esportazione dei dati non era selezionata.
+-- Dump dei dati della tabella ArtForm.post: ~0 rows (circa)
+/*!40000 ALTER TABLE `post` DISABLE KEYS */;
+/*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.postSalvati
 CREATE TABLE IF NOT EXISTS `postSalvati` (
@@ -59,7 +63,9 @@ CREATE TABLE IF NOT EXISTS `postSalvati` (
   CONSTRAINT `FK_postSalvati_utente` FOREIGN KEY (`utenteID`) REFERENCES `utente` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- L’esportazione dei dati non era selezionata.
+-- Dump dei dati della tabella ArtForm.postSalvati: ~0 rows (circa)
+/*!40000 ALTER TABLE `postSalvati` DISABLE KEYS */;
+/*!40000 ALTER TABLE `postSalvati` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.topic
 CREATE TABLE IF NOT EXISTS `topic` (
@@ -67,7 +73,27 @@ CREATE TABLE IF NOT EXISTS `topic` (
   PRIMARY KEY (`nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- L’esportazione dei dati non era selezionata.
+-- Dump dei dati della tabella ArtForm.topic: ~0 rows (circa)
+/*!40000 ALTER TABLE `topic` DISABLE KEYS */;
+INSERT INTO `topic` (`nome`) VALUES
+	('3D'),
+	('Animali'),
+	('Animazione'),
+	('Arte Digitale'),
+	('Astratto'),
+	('Fantasy'),
+	('Fotografia'),
+	('Fotomontaggio'),
+	('Fumetti'),
+	('Horror'),
+	('Pixel Art'),
+	('Sci-Fi'),
+	('Speedpaint'),
+	('Tradizionale'),
+	('Tutorial'),
+	('Videogiochi'),
+	('Wallpaper');
+/*!40000 ALTER TABLE `topic` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.utente
 CREATE TABLE IF NOT EXISTS `utente` (
@@ -81,7 +107,9 @@ CREATE TABLE IF NOT EXISTS `utente` (
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- L’esportazione dei dati non era selezionata.
+-- Dump dei dati della tabella ArtForm.utente: ~0 rows (circa)
+/*!40000 ALTER TABLE `utente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
