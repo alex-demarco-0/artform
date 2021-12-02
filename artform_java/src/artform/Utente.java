@@ -15,5 +15,7 @@ public class Utente {
 		this.password = password;
 		nextUtente++;
 	}
-	
+	public String toString(){
+		return "Ciao " + nome + " " + cognome + " detto anche " + username;
+	}
 }
