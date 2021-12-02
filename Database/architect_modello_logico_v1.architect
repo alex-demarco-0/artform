@@ -166,7 +166,7 @@
     <column-mapping id="CMP46" populated="true" UUID="28250540-60d2-4d1f-b81c-41e0afa14755" fk-column-ref="COL12" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
    <relationship id="REL47" populated="true" UUID="ea2b6c17-40aa-4588-bc23-93a7c349e7a6" deferrability="7" deleteRule="3" fk-table-ref="TAB33" fkCardinality="7" identifying="false" name="utente_commissione_fk" physicalName="utente_commissione_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP48" populated="true" UUID="4a2101f0-fae2-458a-b97a-8572e66e8843" fk-column-ref="COL35" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
+    <column-mapping id="CMP48" populated="true" UUID="ed4ea1fb-386d-4c54-88c1-c89e67c17f94" fk-column-ref="COL35" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
    <relationship id="REL49" populated="true" UUID="cc7d0adb-aa50-4cad-90f9-e1916db0d19e" deferrability="7" deleteRule="3" fk-table-ref="TAB11" fkCardinality="7" identifying="false" name="topic_post_fk" physicalName="topic_post_fk" pk-table-ref="TAB29" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP50" populated="true" UUID="e15c1ba1-c391-4c67-b199-fab4836e7a7e" fk-column-ref="COL15" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL30" />
@@ -181,7 +181,7 @@
   <table-pane table-ref="TAB11" x="388" y="76" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB22" x="90" y="286" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB29" x="646" y="148" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB33" x="328" y="284" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB33" x="354" y="290" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-link relationship-ref="REL41" pkConnection="0.3779527559055118" fkConnection="0.3779527559055118" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
   <table-link relationship-ref="REL43" pkConnection="0.49732620320855614" fkConnection="0.4853801169590643" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
   <table-link relationship-ref="REL45" pkConnection="0.8031496062992126" fkConnection="0.8085106382978723" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
