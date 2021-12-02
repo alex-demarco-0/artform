@@ -6,8 +6,14 @@ public class Utente {
 	private final int ID;
 	private String nome, cognome, username, email, numeroTelefono, password;
 	
-	public Utente(String n, String c, String u) {
-		
+	public Utente(String nome, String cognome, String username, String numeroTelefono, String password) {
+		ID = nextUtente;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.username = username;
+		this.numeroTelefono = numeroTelefono;
+		this.password = password;
+		nextUtente++;
 	}
 	
 }
