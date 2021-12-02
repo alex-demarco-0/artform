@@ -14,6 +14,7 @@ public class Utente {
 	private static int nextUtente = 1;
 	private final int ID;
 	private String nome, cognome, username, email, numeroTelefono, password;
+	
 
 	public Utente(String nome, String cognome, String username, String numeroTelefono, String password) {
 		ID = nextUtente;
@@ -28,10 +29,6 @@ public class Utente {
 
 	public static int getNextUtente() {
 		return nextUtente;
-	}
-
-	public static void setNextUtente(int nextUtente) {
-		Utente.nextUtente = nextUtente;
 	}
 
 	public String getNome() {
