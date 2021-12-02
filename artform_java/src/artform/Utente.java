@@ -6,11 +6,12 @@ public class Utente {
 	private final int ID;
 	private String nome, cognome, username, email, numeroTelefono, password;
 	
-	public Utente(int ID, String nome, String cognome, String username, String numeroTelefono, String password) {
+	public Utente(int ID, String nome, String cognome, String username, String email, String numeroTelefono, String password) {
 		this.ID = ID;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.username = username;
+		this.email = email;
 		this.numeroTelefono = numeroTelefono;
 		this.password = password;
 		//nextUtente++;
