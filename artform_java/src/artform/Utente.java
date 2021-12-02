@@ -5,11 +5,7 @@ public class Utente {
 	private static int nextUtente = 1;
 	private final int ID;
 	private String nome, cognome, username, email, numeroTelefono, password;
-<<<<<<< HEAD
 	
-	public Utente(String n, String c, String u) {
-		
-=======
 
 	public Utente(String nome, String cognome, String username, String numeroTelefono, String password) {
 		ID = nextUtente;
@@ -18,16 +14,15 @@ public class Utente {
 		this.username = username;
 		this.numeroTelefono = numeroTelefono;
 		this.password = password;
-		nextUtente++;
->>>>>>> c2d97f7595ba8fd5b1be7ecb06469ff2c2ebd173
+		//nextUtente++;
 	}
 
 	public static int getNextUtente() {
 		return nextUtente;
 	}
-<<<<<<< HEAD
+
 }
-=======
+
 
 	public static void setNextUtente(int nextUtente) {
 		Utente.nextUtente = nextUtente;
@@ -92,4 +87,3 @@ public class Utente {
 	}
 
 }
->>>>>>> c2d97f7595ba8fd5b1be7ecb06469ff2c2ebd173
