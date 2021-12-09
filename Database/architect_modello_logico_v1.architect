@@ -129,7 +129,7 @@
   <table id="TAB33" populated="true" UUID="5f564d10-d287-41a1-abd4-9a4791b5d1de" name="commissione" objectType="TABLE" physicalName="commissione" >
    <remarks></remarks>
    <folder id="FOLTAB331" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL34" populated="true" UUID="603b6abf-f524-4cf8-9a85-fb674ba4c9f2" autoIncrement="true" autoIncrementSequenceName="commissione_commissioneID_seq" defaultValue="" name="commissioneID" nullable="0" physicalName="commissioneID" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL34" populated="true" UUID="603b6abf-f524-4cf8-9a85-fb674ba4c9f2" autoIncrement="true" autoIncrementSequenceName="commissione_commissioneID_seq" defaultValue="" name="ID" nullable="0" physicalName="ID" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL35" populated="true" UUID="bf2645a3-1f9e-45dd-bcc4-10809a6c4153" autoIncrement="false" autoIncrementSequenceName="commissione_utenteID_seq" defaultValue="" name="utenteID" nullable="0" physicalName="utenteID" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -151,7 +151,7 @@
     </folder>
     <folder id="FOLTAB334" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX39" populated="true" UUID="53f87c33-444e-44ea-bba2-847a74a0f6e7" clustered="false" name="commissione_pk" physicalName="commissione_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC40" populated="true" UUID="f6e82482-8c36-4602-9eee-d28ad652febc" ascendingOrDescending="UNSPECIFIED" column-ref="COL34" name="commissioneID" physicalName="commissioneID" />
+     <index-column id="IDC40" populated="true" UUID="f6e82482-8c36-4602-9eee-d28ad652febc" ascendingOrDescending="UNSPECIFIED" column-ref="COL34" name="ID" physicalName="ID" />
     </index>
    </folder>
   </table>
@@ -161,7 +161,7 @@
     <column id="COL42" populated="true" UUID="ad3b26ae-5a3c-48db-9289-262021965b10" autoIncrement="false" autoIncrementSequenceName="notifica_data_seq" defaultValue="" name="data" nullable="0" physicalName="data" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
      <remarks></remarks>
     </column>
-    <column id="COL43" populated="true" UUID="0d2a48d9-0a9b-448a-929f-342cee44a8af" autoIncrement="false" autoIncrementSequenceName="notifica_categoria_seq" defaultValue="" name="categoria" nullable="0" physicalName="categoria" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL43" populated="true" UUID="0d2a48d9-0a9b-448a-929f-342cee44a8af" autoIncrement="false" autoIncrementSequenceName="notifica_categoria_seq" defaultValue="" name="categoria" nullable="0" physicalName="categoria" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-6" userDefinedTypeUUID="608a1d2c-c960-44ac-b1f3-503aba0a5b7b" >
      <remarks></remarks>
     </column>
     <column id="COL44" populated="true" UUID="210ca903-106c-42b3-a5bb-5907d65f1fd9" autoIncrement="false" autoIncrementSequenceName="notifica_contenuto_seq" defaultValue="" name="descrizione" nullable="0" physicalName="descrizione" precision="150" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
