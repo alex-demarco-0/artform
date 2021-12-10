@@ -20,7 +20,34 @@ public class Notifica {
 		this.data = new Date();
 		this.categoria = categoria;
 		// if()  generazione descrizione in base alla categoria
+		if (categoria == 1) {
+			this.descrizione = "<utenteID_getUsername()> ha pubblicato un nuovo contenuto.";
+		}
 		// if()  aggiunta collegamento in base a categoria ecc.
+	}
+	
+	public Date getData() {
+		return data;
+	}
+	
+	public int getCategoria() {
+		return categoria;
+	}
+	
+	public String getDescrizione() {
+		return descrizione;
+	}
+	
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
+	
+	public URL getCollegamento() {
+		return collegamento;
+	}
+	
+	public void setCollegamento(URL collegamento) {
+		this.collegamento = collegamento;
 	}
 
 }

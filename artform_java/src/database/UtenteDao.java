@@ -10,24 +10,6 @@ import java.util.ArrayList;
 import artform.Utente;
 
 public class UtenteDao extends Dao {
-
-	public static ResultSet utenteQuery(Connection con, String query) {
-		Statement cmd;
-		try {
-			cmd = con.createStatement();
-			if (query.charAt(0) == 's' || query.charAt(0) == 'S') {
-				ResultSet res = cmd.executeQuery(query);
-				return res;
-			}
-			else {
-				cmd.executeUpdate(query);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 	
 	public static ArrayList<Utente> allUtenti(Connection con) {
 		ArrayList<Utente> lista = new ArrayList<>();
