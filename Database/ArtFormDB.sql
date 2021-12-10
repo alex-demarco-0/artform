@@ -26,10 +26,13 @@ CREATE TABLE IF NOT EXISTS `badge` (
   PRIMARY KEY (`ID`),
   KEY `FK__utente` (`utenteID`),
   CONSTRAINT `FK__utente` FOREIGN KEY (`utenteID`) REFERENCES `utente` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dump dei dati della tabella ArtForm.badge: ~0 rows (circa)
 /*!40000 ALTER TABLE `badge` DISABLE KEYS */;
+INSERT INTO `badge` (`ID`, `contenuto`, `utenteID`, `punteggio`) VALUES
+	(1, 'Primo contenuto pubblicato', 1, 0),
+	(2, 'Veterano', 2, 1000);
 /*!40000 ALTER TABLE `badge` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.commissione
@@ -46,6 +49,8 @@ CREATE TABLE IF NOT EXISTS `commissione` (
 
 -- Dump dei dati della tabella ArtForm.commissione: ~0 rows (circa)
 /*!40000 ALTER TABLE `commissione` DISABLE KEYS */;
+INSERT INTO `commissione` (`ID`, `titolo`, `prezzo`, `data`, `utenteID`) VALUES
+	(45, 'richiesta disegno velociraptor 3D', 17, '2021-12-10 17:23:06', 1);
 /*!40000 ALTER TABLE `commissione` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.notifica
@@ -62,6 +67,8 @@ CREATE TABLE IF NOT EXISTS `notifica` (
 
 -- Dump dei dati della tabella ArtForm.notifica: ~0 rows (circa)
 /*!40000 ALTER TABLE `notifica` DISABLE KEYS */;
+INSERT INTO `notifica` (`data`, `categoria`, `descrizione`, `collegamento`, `utenteID`) VALUES
+	('2021-12-10 13:23:18', 4, 'Hai ottenuto 210 punti!', NULL, 1);
 /*!40000 ALTER TABLE `notifica` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.post
@@ -79,10 +86,12 @@ CREATE TABLE IF NOT EXISTS `post` (
   KEY `FK_post_topic` (`topic`),
   CONSTRAINT `FK_post_topic` FOREIGN KEY (`topic`) REFERENCES `topic` (`nome`),
   CONSTRAINT `FK_post_utente` FOREIGN KEY (`utenteID`) REFERENCES `utente` (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dump dei dati della tabella ArtForm.post: ~0 rows (circa)
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
+INSERT INTO `post` (`ID`, `titolo`, `tags`, `like`, `tipologia`, `utenteID`, `dataPubblicazione`, `topic`) VALUES
+	(1, 'Velociraptor', '#dinosaur #animals #cute #3d', 0, 'true', 1, '2021-12-09 17:25:11', '3D');
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.postSalvati
@@ -97,6 +106,8 @@ CREATE TABLE IF NOT EXISTS `postSalvati` (
 
 -- Dump dei dati della tabella ArtForm.postSalvati: ~0 rows (circa)
 /*!40000 ALTER TABLE `postSalvati` DISABLE KEYS */;
+INSERT INTO `postSalvati` (`utenteID`, `postID`) VALUES
+	(2, 1);
 /*!40000 ALTER TABLE `postSalvati` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.topic
