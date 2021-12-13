@@ -20,7 +20,7 @@ public class UtenteDao extends Dao {
 			ResultSet res = cmd.executeQuery(query);
 			while (res.next()) {
 				Utente u = new Utente(res.getInt("ID"), res.getString("nome"), res.getString("cognome"), res.getString("username"),
-							res.getString("email"), res.getString("numeroTelefono"), res.getString("password"));
+							res.getString("email"), res.getString("numeroTelefono"), res.getString("password"), res.getInt("punteggio"));
 				lista.add(u);
 			}
 			res.close(); // chiudere le risorse DB e' obbligatorio

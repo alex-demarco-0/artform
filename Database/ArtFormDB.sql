@@ -24,11 +24,10 @@ CREATE TABLE IF NOT EXISTS `badge` (
   `utenteID` int NOT NULL DEFAULT '0',
   `punteggio` int NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `FK__utente` (`utenteID`),
-  CONSTRAINT `FK__utente` FOREIGN KEY (`utenteID`) REFERENCES `utente` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT
+  KEY `FK__utente` (`utenteID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.badge: ~0 rows (circa)
+-- Dump dei dati della tabella ArtForm.badge: ~2 rows (circa)
 /*!40000 ALTER TABLE `badge` DISABLE KEYS */;
 INSERT INTO `badge` (`ID`, `contenuto`, `utenteID`, `punteggio`) VALUES
 	(1, 'Primo contenuto pubblicato', 1, 0),
@@ -41,16 +40,20 @@ CREATE TABLE IF NOT EXISTS `commissione` (
   `titolo` varchar(100) NOT NULL,
   `prezzo` double NOT NULL DEFAULT '0',
   `data` timestamp NOT NULL,
-  `utenteID` int NOT NULL,
+  `artistaID` int NOT NULL,
+  `clienteID` int NOT NULL,
+  `indirizzoConto` varchar(50) NOT NULL DEFAULT '',
   PRIMARY KEY (`ID`),
-  KEY `FK_commissione_utente` (`utenteID`),
-  CONSTRAINT `FK_commissione_utente` FOREIGN KEY (`utenteID`) REFERENCES `utente` (`ID`)
+  KEY `FK_commissione_utente` (`artistaID`) USING BTREE,
+  KEY `FK_commissione_utente_2` (`clienteID`),
+  CONSTRAINT `FK_commissione_utente` FOREIGN KEY (`artistaID`) REFERENCES `utente` (`ID`),
+  CONSTRAINT `FK_commissione_utente_2` FOREIGN KEY (`clienteID`) REFERENCES `utente` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dump dei dati della tabella ArtForm.commissione: ~0 rows (circa)
 /*!40000 ALTER TABLE `commissione` DISABLE KEYS */;
-INSERT INTO `commissione` (`ID`, `titolo`, `prezzo`, `data`, `utenteID`) VALUES
-	(45, 'richiesta disegno velociraptor 3D', 17, '2021-12-10 17:23:06', 1);
+INSERT INTO `commissione` (`ID`, `titolo`, `prezzo`, `data`, `artistaID`, `clienteID`, `indirizzoConto`) VALUES
+	(11, 'richiesta disegno velociraptor 3D', 17, '2021-12-13 15:32:51', 1, 2, 'IT67X');
 /*!40000 ALTER TABLE `commissione` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.notifica
@@ -147,14 +150,15 @@ CREATE TABLE IF NOT EXISTS `utente` (
   `email` varchar(50) NOT NULL,
   `numeroTelefono` varchar(10) DEFAULT NULL,
   `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs NOT NULL,
+  `punteggio` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dump dei dati della tabella ArtForm.utente: ~2 rows (circa)
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` (`ID`, `nome`, `cognome`, `username`, `email`, `numeroTelefono`, `password`) VALUES
-	(1, 'Manbir', 'Aceveda', 'arianna', 'ift@', '338', 'password'),
-	(2, 'Alessandro', 'Dituri', 'dv8d', '@#', NULL, 'pass');
+INSERT INTO `utente` (`ID`, `nome`, `cognome`, `username`, `email`, `numeroTelefono`, `password`, `punteggio`) VALUES
+	(1, 'Manbir', 'Aceveda', 'arianna', 'ift@', '338', 'password', 0),
+	(2, 'Alessandro', 'Dituri', 'dv8d', '@#', NULL, 'pass', 0);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
