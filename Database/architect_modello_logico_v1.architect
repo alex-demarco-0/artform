@@ -229,7 +229,7 @@
   <table-pane table-ref="TAB44" x="333" y="36" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-link relationship-ref="REL52" pkConnection="0.3700787401574803" fkConnection="0.3333333333333333" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
   <table-link relationship-ref="REL54" pkConnection="1.0" fkConnection="0.0" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="18"/>
-  <table-link relationship-ref="REL56" pkConnection="0.7637795275590551" fkConnection="0.6879432624113475" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
+  <table-link relationship-ref="REL56" pkConnection="0.7637795275590551" fkConnection="0.7021276595744681" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>
   <table-link relationship-ref="REL64" pkConnection="0.4976303317535545" fkConnection="0.49333333333333335" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
   <table-link relationship-ref="REL58" pkConnection="0.44623655913978494" fkConnection="0.5" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="132"/>
   <table-link relationship-ref="REL60" pkConnection="0.47619047619047616" fkConnection="0.5029239766081871" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="72"/>
