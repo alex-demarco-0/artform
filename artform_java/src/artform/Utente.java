@@ -5,14 +5,18 @@ public class Utente {
 	//private static int nextUtente = 1;
 	private final int ID;
 	private String nome, cognome, username, email, numeroTelefono, password;
-	
-	public Utente(int ID, String nome, String cognome, String username, String numeroTelefono, String password) {
+	private int punteggio;
+
+	// public Utente(int ID, String nome, String cognome, String username, String numeroTelefono, String password) {
+
+	public Utente(int ID, String nome, String cognome, String username, String email, String numeroTelefono, String password, int punteggio) {
 		this.ID = ID;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.username = username;
 		this.numeroTelefono = numeroTelefono;
 		this.password = password;
+		this.punteggio = punteggio;
 		//nextUtente++;
 	}
 /*
@@ -70,6 +74,18 @@ public class Utente {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public int getPunteggio() {
+		return punteggio;
+	}
+	
+	public void setPunteggio(int punteggio) {
+		this.punteggio = punteggio;
+	}
+	
+	public void incrementaPunteggio(int punteggio) {
+		this.punteggio += punteggio;
 	}
 
 	public int getID() {
