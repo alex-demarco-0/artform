@@ -18,4 +18,5 @@ public class RegisterActivity extends AppCompatActivity {
         Intent reg = new Intent(this, MainActivity.class);
         startActivity(reg);
     }
+    // ahhhhhhh
 }
