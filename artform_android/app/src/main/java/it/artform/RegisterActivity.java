@@ -19,4 +19,5 @@ public class RegisterActivity extends AppCompatActivity {
         startActivity(reg);
     }
     // ahhhhhhh
+    // fifo lifo
 }
