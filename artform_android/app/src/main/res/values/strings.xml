@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ArtForm</string>
+    <string name="login_button">Login</string>
+    <string name="register_button">Register</string>
 </resources>
