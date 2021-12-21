@@ -1,87 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".RegisterActivity">
+    android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress2"
+        android:id="@+id/nomeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nome" />
+
+    <EditText
+        android:id="@+id/cognomeEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nomeEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Cognome" />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cognomeEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:text="Email"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="235dp" />
+        android:text="Email" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/usernameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text="Password"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="447dp" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="506dp"
-        tools:text="Conferma Password" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Username"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="306dp" />
+        android:text="Username" />
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/telefonoEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/usernameEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="phone"
-        android:text="Numero di Telefono"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="379dp" />
+        android:text="Telefono (facoltativo)" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/passwordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/telefonoEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Nome"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="113dp" />
+        android:inputType="textPassword"
+        android:text="Password" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/password2EditTextText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/passwordEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Cognome"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="175dp" />
+        android:inputType="textPassword"
+        android:text="Conferma password" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/registratiButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrati"
-        tools:layout_editor_absoluteX="145dp"
-        tools:layout_editor_absoluteY="569dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="92dp"
+        android:text="Registrati" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
