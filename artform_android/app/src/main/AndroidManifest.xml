@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ArtForm" >
+        
         <activity
             android:name=".RegisterActivity"
             android:exported="true" >
@@ -18,27 +19,35 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />
+
         <activity
             android:name=".UserProfileActivity"
             android:exported="false" />
+
         <activity
             android:name=".NotificationActivity"
             android:exported="false" />
+
         <activity
             android:name=".CommissionActivity"
             android:exported="false" />
+
         <activity
             android:name=".ContentPubActivity"
             android:exported="false" />
+
         <activity
             android:name=".SearchActivity"
             android:exported="false" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" >
@@ -46,3 +55,9 @@
     </application>
 
 </manifest>
+    <!--
+     <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
