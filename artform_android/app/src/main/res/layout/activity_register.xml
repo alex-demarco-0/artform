@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="phone"
-        android:text="Numero di Telefono"
+        android:text="Telefono (facoltativo)"
         tools:layout_editor_absoluteX="101dp"
         tools:layout_editor_absoluteY="379dp" />
 
