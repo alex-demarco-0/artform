@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ContentPubActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_add"
+        tools:layout_editor_absoluteX="177dp"
+        tools:layout_editor_absoluteY="630dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
