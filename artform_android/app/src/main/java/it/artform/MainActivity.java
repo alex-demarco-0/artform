@@ -14,8 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         bottomNavigation;
-        bottomNavigation.selectedItemId = R.id.page_2
+        
     }
 
     public void pubblica(View view) {
