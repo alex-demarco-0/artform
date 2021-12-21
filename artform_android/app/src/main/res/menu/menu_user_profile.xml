@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/SETTINGS" android:title="Profile settings"/>
+    <item android:id="@+id/SAVED" android:title="Post salvati"/>
+    <item android:id="@+id/SECURITY" android:title="Sicurezza"/>
+    <item android:id="@+id/LOGOUT" android:title="Logout"/>
+</menu>
