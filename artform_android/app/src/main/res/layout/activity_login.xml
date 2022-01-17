@@ -14,6 +14,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="122dp"
+        android:layout_marginEnd="-2dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -22,19 +25,49 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/logoImageView"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="117dp"
-        android:layout_marginTop="87dp"
-        android:text="Username" />
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="105dp"
+        android:text="@string/username" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameTextView"
-        android:layout_marginTop="-234dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/logoImageView"
+        android:layout_alignBottom="@+id/logoImageView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="137dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginBottom="-182dp"
         android:ems="10"
         android:inputType="text"
+        android:minHeight="48dp"
         android:text="Name" />
+
+    <TextView
+        android:id="@+id/passwordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logoImageView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="244dp"
+        android:text="@string/password" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/logoImageView"
+        android:layout_alignBottom="@+id/logoImageView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="273dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginBottom="-318dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:text="" />
 
 </RelativeLayout>
 
