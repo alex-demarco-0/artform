@@ -23,8 +23,10 @@
         android:layout_centerHorizontal="true"
 
         android:ems="10"
-        android:hint="Nome"
-        android:inputType="textPersonName" />
+
+        android:inputType="textPersonName"
+        android:hint="@string/nome" />
+
 
     <EditText
         android:id="@+id/cognomeEditText"
@@ -34,8 +36,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Cognome"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:hint="@string/cognome" />
 
     <EditText
         android:id="@+id/emailEditText"
@@ -46,7 +48,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:hint="Email" />
+        android:hint="@string/e_mail" />
 
     <EditText
         android:id="@+id/usernameEditText"
@@ -57,7 +59,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Username" />
+        android:hint="@string/username" />
 
     <EditText
         android:id="@+id/telefonoEditText"
@@ -68,7 +70,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="phone"
-        android:hint="Telefono (facoltativo)" />
+        android:hint="@string/telefono" />
 
     <EditText
         android:id="@+id/passwordEditText"
@@ -79,7 +81,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Password" />
+        android:hint="@string/password" />
 
     <EditText
         android:id="@+id/password2EditText"
@@ -90,7 +92,7 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:hint="Ripeti password" />
+        android:hint="@string/password" />
 
     <Button
         android:id="@+id/registratiButton"
@@ -99,8 +101,7 @@
         android:layout_alignParentBottom="false"
         android:layout_below="@+id/password2EditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:text="Registrati" />
+        android:layout_marginBottom="92dp"
+        android:text="@string/registrati" />
 
 </RelativeLayout>
