@@ -38,8 +38,8 @@ public class RegisterActivity extends AppCompatActivity {
                 il toast deve descrivere ciò che manca
                 */
 
+                //passaggio parametri alla MainActivity (una volta che i campi sono OK)
                 Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
-                //passaggio parametri alla MainActivity
                 registraIntent.putExtra("nome", nomeEditText.getText());
                 registraIntent.putExtra("cognome", cognomeEditText.getText());
                 registraIntent.putExtra("email", emailEditText.getText());
