@@ -28,16 +28,18 @@ public class UserProfileActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
-        int itemId=item.getItemId();
-        switch(itemId){
+        int itemId = item.getItemId();
+        /*
+        switch (itemId) {
             case R.id.SETTINGS:
-                Intent profileSettings=new Intent(this, profileSettings.class);
-                startActivity(profileSettings);
+                //Intent profileSettings=new Intent(this, profileSettings.class);
+                //startActivity(profileSettings);
                 break;
             case R.id.SAVED:
-                Intent savedPost=new Intent(this, savedPost.class);
-                startActivity(savedPost);
+                //Intent savedPost=new Intent(this, savedPost.class);
+                //startActivity(savedPost);
                 break;
-        }
+        }*/
+        return false;
     }
 }
