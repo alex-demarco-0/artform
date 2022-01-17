@@ -7,8 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
+
+    EditText nomeEditText = null;
+    EditText cognomeEditText = null;
+    EditText emailEditText = null;
+    EditText usernameEditText = null;
+    EditText telefonoEditText = null;
+    EditText passwordEditText = null;
+    EditText password2EditText = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,27 +25,35 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         //istanziamento campi EditText
-        EditText nomeEditText = findViewById(R.id.nomeEditText);
-        EditText cognomeEditText = findViewById(R.id.cognomeEditText);
-        EditText emailEditText = findViewById(R.id.emailEditText);
-        EditText usernameEditText = findViewById(R.id.usernameEditText);
-        EditText telefonoEditText = findViewById(R.id.telefonoEditText);
-        EditText passwordEditText = findViewById(R.id.passwordEditText);
-        EditText password2EditText = findViewById(R.id.password2EditText);
+        nomeEditText = findViewById(R.id.nomeEditText);
+        cognomeEditText = findViewById(R.id.cognomeEditText);
+        emailEditText = findViewById(R.id.emailEditText);
+        usernameEditText = findViewById(R.id.usernameEditText);
+        telefonoEditText = findViewById(R.id.telefonoEditText);
+        passwordEditText = findViewById(R.id.passwordEditText);
+        password2EditText = findViewById(R.id.password2EditText);
         Button registratiButton = findViewById(R.id.registratiButton);
+        //manca il pulsante 'reset'
 
         registratiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*controllo campi + toast
+                /*controllo campi + toast (magari assegnato ad un metodo al di fuori di onCreate)
                 nome richiesto
                 cognome richiesto
                 email richiesto con @ e .com / .it
                 username richiesto
+                telefono se presente deve essere valido (solo cifre numeriche)
                 password richiesto
                 password2 deve corrispondere a password
                 il toast deve descrivere ciò che manca
                 */
+
+                String campoMancante = controllaCampi();
+                if(!campoMancante.equals("")) {
+                    Toast.makeText(RegisterActivity.this, "Inserisci" + campoMancante, Toast.LENGTH_LONG).show();
+                    return;
+                }
 
                 //passaggio parametri alla MainActivity (una volta che i campi sono OK)
                 Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
@@ -50,6 +67,24 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(registraIntent);
             }
         });
+    }
+
+    public String controllaCampi() {
+        if(nomeEditText.getText().equals(""))
+            return "nome";
+        if(cognomeEditText.getText().equals(""))
+            return "cognome";
+        if(emailEditText.getText().equals(""))
+            return "email";
+        if(usernameEditText.getText().equals(""))
+            return "username";
+        if(telefonoEditText.getText().equals(""))
+            return "telefono corretto";
+        if(passwordEditText.getText().equals(""))
+            return "password";
+        if(password2EditText.getText().equals(""))
+            return "ripeti password";
+        return "";
     }
 
 }
