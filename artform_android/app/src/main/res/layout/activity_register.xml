@@ -5,16 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/nomeEditText"
+    <TextView
+        android:id="@+id/creaTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="40dp"
+        android:text="Crea un account" />
+
+    <EditText
+        android:id="@+id/nomeEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/creaTextView"
+        android:layout_centerHorizontal="true"
+
         android:ems="10"
+
         android:inputType="textPersonName"
         android:hint="@string/nome" />
+
 
     <EditText
         android:id="@+id/cognomeEditText"
@@ -72,7 +84,7 @@
         android:hint="@string/password" />
 
     <EditText
-        android:id="@+id/password2EditTextText"
+        android:id="@+id/password2EditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordEditText"
@@ -86,7 +98,8 @@
         android:id="@+id/registratiButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentBottom="false"
+        android:layout_below="@+id/password2EditText"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="92dp"
         android:text="@string/registrati" />
