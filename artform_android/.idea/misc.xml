@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/ARTFORM2/artform/artform_android/app/src/main/res/layout/activity_login.xml" value="0.24175824175824176" />
+        <entry key="..\:/ARTFORM2/artform/artform_android/app/src/main/res/layout/activity_register.xml" value="0.10891089108910891" />
+        <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_login.xml" value="0.1793478260869565" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_register.xml" value="0.1793478260869565" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_user_profile.xml" value="0.1793478260869565" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/menu/menu_user_profile.xml" value="0.25416666666666665" />

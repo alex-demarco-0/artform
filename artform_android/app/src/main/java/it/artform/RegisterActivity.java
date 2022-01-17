@@ -22,17 +22,32 @@ public class RegisterActivity extends AppCompatActivity {
         EditText usernameEditText = findViewById(R.id.usernameEditText);
         EditText telefonoEditText = findViewById(R.id.telefonoEditText);
         EditText passwordEditText = findViewById(R.id.passwordEditText);
-
+        EditText password2EditText = findViewById(R.id.password2EditText);
         Button registratiButton = findViewById(R.id.registratiButton);
 
         registratiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //controllo campi + toast
+                /*controllo campi + toast
+                nome richiesto
+                cognome richiesto
+                email richiesto con @ e .com / .it
+                username richiesto
+                password richiesto
+                password2 deve corrispondere a password
+                il toast deve descrivere ciò che manca
+                */
 
-                Intent registra = new Intent(RegisterActivity.this, MainActivity.class);
-                //passaggio parametri alla MainActivity
-                startActivity(registra);
+                //passaggio parametri alla MainActivity (una volta che i campi sono OK)
+                Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                registraIntent.putExtra("nome", nomeEditText.getText());
+                registraIntent.putExtra("cognome", cognomeEditText.getText());
+                registraIntent.putExtra("email", emailEditText.getText());
+                registraIntent.putExtra("username", usernameEditText.getText());
+                if(!telefonoEditText.getText().equals(""))
+                    registraIntent.putExtra("telefono", telefonoEditText.getText());
+                registraIntent.putExtra("password", passwordEditText.getText());
+                startActivity(registraIntent);
             }
         });
     }
