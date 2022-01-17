@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">ArtForm</string>
+
+    
+    <!-- aiuto -->
+
     <string name="login_button">Login</string>
     <string name="register_button">Register</string>
+    <string name="home">Register</string>
+    <string name="cerca">Register</string>
+    <string name="pubblica">Register</string>
+    <string name="notifiche">Register</string>
+    <string name="profilo">Register</string>
 </resources>

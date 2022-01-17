@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/homepage" android:title="HOME" />
+    <item android:id="@+id/search" android:title="SEARCH" />
+    <item android:id="@+id/publish" android:title="PUB" />
+    <item android:id="@+id/notification" android:title="NOTIFY" />
+    <item android:id="@+id/settings" android:title="SETTINGS" />
+    <item
+        android:id="@+id/HOME"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/SEARCH"
+        android:enabled="true"
+        android:icon="@android:drawable/ic_favorite"
+        android:title="@string/cerca"/>
+    <item
+        android:id="@+id/PUBLISH"
+        android:enabled="true"
+        android:icon="@drawable/ic_music"
+        android:title="@string/pubblica"/>
+    <item
+        android:id="@+id/NOTIFICATIONS"
+        android:enabled="true"
+        android:icon="@drawable/ic_places"
+        android:title="@string/notifiche"/>
+    <item
+        android:id="@+id/PROFILE"
+        android:enabled="true"
+        android:icon="@drawable/ic_news"
+        android:title="@string/profilo"/>
+</menu>
