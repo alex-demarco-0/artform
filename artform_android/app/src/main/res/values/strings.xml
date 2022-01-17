@@ -11,4 +11,6 @@
     <string name="pubblica">Register</string>
     <string name="notifiche">Register</string>
     <string name="profilo">Register</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
 </resources>
