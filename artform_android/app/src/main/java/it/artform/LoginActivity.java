@@ -61,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.loginButton);
 
         // controllo password
-
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (loginUsername.getText().toString().equals("admin") && loginPassword.getText().toString().equals("admin")){
@@ -71,11 +71,13 @@ public class LoginActivity extends AppCompatActivity {
                     checkPass--;
                     if (checkPass == 0){
                         Toast.makeText(LoginActivity.this, "HAI SBAGLIATO PASS TROPPE VOLTE", Toast.LENGTH_LONG).show();
-                        loginButtonAccedi.setEnabled(false);
+                        loginButton.setEnabled(false);
                     }
                 }
             }
         });
+
+
 
         // campo per andare all'Activity Register
         TextView goToRegister = findViewById(R.id.goToRegister);
@@ -87,11 +89,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         // campo per password dimenicata
+
         TextView forgotPassword = findViewById(R.id.forgotPassword);
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(LoginActivity.this, "ACTIVITY PASSWORD DIMENTICATA...", Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "ACTIVITY PASSWORD ...", Toast.LENGTH_LONG).show();
             }
         });
 
