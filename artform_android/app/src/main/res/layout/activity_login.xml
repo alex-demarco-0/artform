@@ -55,7 +55,7 @@
         android:text="@string/password" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/loginPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logoImageView"
@@ -68,6 +68,10 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:text="" />
-
+<Button
+    android:id="@+id/loginButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Login" />
 </RelativeLayout>
 
