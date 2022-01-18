@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         });
-
+        // controllo password
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
