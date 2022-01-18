@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
@@ -18,13 +19,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
         //istanziamento campi edit e button
-        EditText loginUsername = findViewById(R.id.loginUsername);
-
         Button loginButtonAccedi = findViewById(R.id.loginButtonAccedi);
         Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
-
-        EditText loginPassword = findViewById(R.id.loginPassword);
-        Button loginButton = findViewById(R.id.loginButton);
 
         loginButtonAccedi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +43,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
         });
+
+        // manbi
+        EditText loginUsername = findViewById(R.id.loginUsername);
+        EditText loginPassword = findViewById(R.id.loginPassword);
+        Button loginButton = findViewById(R.id.loginButton);
         // controllo password
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +65,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // campo per andare all'Activity Register
+        TextView goToRegister = findViewById(R.id.goToRegister);
+        goToRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent openRegisterActivity= new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(openRegisterActivity);
+            }
+        });
+
+        // Button per  cancellare i campi
         Button clearButton = findViewById(R.id.clearButton);
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override

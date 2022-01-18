@@ -7,13 +7,13 @@
         <entry key="..\:/ARTFORM2/artform/artform_android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3609375" />
         <entry key="..\:/ARTFORM2/artform/artform_android/app/src/main/res/layout/activity_login.xml" value="0.24175824175824176" />
         <entry key="..\:/ARTFORM2/artform/artform_android/app/src/main/res/layout/activity_register.xml" value="0.10891089108910891" />
+        <entry key="..\:/ARTFORM2/artform/artform_android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.17552083333333332" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_login.xml" value="0.1793478260869565" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_register.xml" value="0.1793478260869565" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_user_profile.xml" value="0.1793478260869565" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/menu/menu_user_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/ArtForm/artform_android/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
         <entry key="..\:/ArtForm/artform_android/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/artform/artform_android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.28958333333333336" />
         <entry key="..\:/artform/artform_android/app/src/main/res/layout/activity_commission.xml" value="0.14270833333333333" />
         <entry key="..\:/artform/artform_android/app/src/main/res/layout/activity_content_publication.xml" value="0.2595108695652174" />
         <entry key="..\:/artform/artform_android/app/src/main/res/layout/activity_login.xml" value="0.26403985507246375" />
@@ -26,7 +26,6 @@
         <entry key="..\:/artform/artform_android/app/src/main/res/menu-v21/bottom_navigation_menu.xml" value="0.2734375" />
         <entry key="..\:/artform/artform_android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.2734375" />
         <entry key="..\:/artform/artform_android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.28958333333333336" />
-        <entry key="..\:/artform/artform_android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.28958333333333336" />
       </map>
     </option>
   </component>
