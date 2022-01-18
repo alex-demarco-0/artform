@@ -18,6 +18,7 @@
     <string name="profilo">Register</string>
 
     <!-- campi RegisterActivity -->
+    <string name="create_account">Crea un account</string>
     <string name="nome">Nome</string>
     <string name="cognome">Cognome</string>
     <string name="e_mail">E-mail</string>

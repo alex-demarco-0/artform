@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="30dp"
-        android:text="Crea un account" />
+        android:text="@string/create_account" />
 
     <EditText
         android:id="@+id/nomeEditText"
@@ -113,6 +113,6 @@
         android:layout_marginTop="12dp"
         android:layout_marginBottom="92dp"
         android:layout_toEndOf="@+id/registratiButton"
-        android:text="Cancella" />
+        android:text="@string/clear" />
 
 </RelativeLayout>
