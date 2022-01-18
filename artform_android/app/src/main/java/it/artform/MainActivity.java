@@ -16,6 +16,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+/*
         ListView datiRegistrazioneListView = findViewById(R.id.datiRegistrazioneListView);
 
         Bundle datiRegistrazione = getIntent().getExtras();
@@ -33,5 +35,8 @@ public class MainActivity extends Activity {
     public void pubblica(View view) {
         Intent pub = new Intent(this, ContentPubActivity.class);
         startActivity(pub);
+    }
+    */
+
     }
 }
