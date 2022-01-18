@@ -27,6 +27,16 @@
         android:background="@color/fluo"
          /> <!--app:menu="@menu/bottom_navigation_menu"-->
 
+    <TextView
+        android:id="@+id/listaTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/datiRegistrazioneListView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="29dp"
+        android:layout_marginBottom="8dp"
+        android:text="Test dati registrazione:" />
+
     <ListView
         android:id="@+id/datiRegistrazioneListView"
         android:layout_width="300dp"
