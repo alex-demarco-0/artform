@@ -1,7 +1,6 @@
 package it.artform;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +11,7 @@ import android.widget.Toast;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends Activity {
 
     EditText nomeEditText = null;
     EditText cognomeEditText = null;
@@ -34,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.usernameEditText);
         Bundle bundle = getIntent().getExtras();
         if(bundle != null)
-            usernameEditText.setText(bundle.getString("websiteParam"));
+            usernameEditText.setText(bundle.getString("username"));
         telefonoEditText = findViewById(R.id.telefonoEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         password2EditText = findViewById(R.id.password2EditText);
