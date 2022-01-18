@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Toast di prova
                 Toast.makeText(LoginActivity.this, "Hai premuto REGISTRATI", Toast.LENGTH_LONG).show();
-                //Vai alla RegisterActivity
+                //Vai alla RegisterActivity passando come parametri username e password (se inseriti)
                 Intent openRegisterActivity= new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(openRegisterActivity);
             }
@@ -84,8 +84,6 @@ public class LoginActivity extends AppCompatActivity {
                 loginPassword.getText().clear();
             }
         });
-
-
 
     }
 }

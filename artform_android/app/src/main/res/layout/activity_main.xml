@@ -25,7 +25,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="70dp"
         android:background="@color/fluo"
-        app:menu="@menu/bottom_navigation_menu" />
+         /> <!--app:menu="@menu/bottom_navigation_menu"-->
 
     <ListView
         android:id="@+id/datiRegistrazioneListView"
