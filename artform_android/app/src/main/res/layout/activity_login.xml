@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity" >
+    tools:context=".LoginActivity">
     <!-- LOGO-->
     <ImageView
         android:id="@+id/logoImageView"
@@ -40,9 +40,9 @@
         android:layout_marginEnd="102dp"
         android:layout_marginBottom="-182dp"
         android:ems="10"
+        android:hint="Name"
         android:inputType="text"
-        android:minHeight="48dp"
-        android:hint="Name" />
+        android:minHeight="48dp" />
 
     <TextView
         android:id="@+id/passwordTextView"
@@ -68,10 +68,18 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:text="" />
-<Button
-    android:id="@+id/loginButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Login" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login" />
+
+    <Button
+        android:id="@+id/clearButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:text="Clear" />
 </RelativeLayout>
 
