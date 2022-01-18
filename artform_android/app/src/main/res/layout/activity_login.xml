@@ -76,7 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="79dp"
+        android:layout_marginStart="60dp"
         android:layout_marginEnd="227dp"
         android:layout_marginBottom="85dp"
         android:text="Accedi" />
@@ -87,7 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="72dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="85dp"
         android:text="Registrati" />
 
@@ -95,13 +95,11 @@
         android:id="@+id/clearButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="660dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="23dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="19dp"
         android:text="@string/clear" />
 
 </RelativeLayout>
