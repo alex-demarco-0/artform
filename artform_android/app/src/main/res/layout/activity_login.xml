@@ -15,7 +15,11 @@
         android:id="@+id/logoImageView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        tools:src="@mipmap/ic_launcher_foreground" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="591dp"
+        android:src="@mipmap/ic_launcher_foreground" />
 
     <EditText
         android:id="@+id/loginUsername"
