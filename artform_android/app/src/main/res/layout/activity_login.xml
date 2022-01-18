@@ -35,7 +35,6 @@
         android:inputType="text"
         android:minHeight="48dp" />
 
-
     <EditText
         android:id="@+id/loginPassword"
         android:layout_width="wrap_content"
@@ -65,7 +64,6 @@
         android:layout_marginBottom="111dp"
         android:text="@string/login_button" />
 
-
     <Button
         android:id="@+id/goToRegister"
         android:layout_width="wrap_content"
@@ -94,5 +92,6 @@
         android:clickable="true"
         android:focusable="true"
         android:text="@string/password_dimenticata" />
+
 </RelativeLayout>
 
