@@ -1,15 +1,15 @@
 package it.artform;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class UserProfileActivity extends AppCompatActivity {
+public class UserProfileActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

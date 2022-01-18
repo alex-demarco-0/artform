@@ -1,10 +1,9 @@
 package it.artform;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.os.Bundle;
 
-public class ForgotActivity extends AppCompatActivity {
+public class ForgotActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
