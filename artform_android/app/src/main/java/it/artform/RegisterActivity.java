@@ -117,4 +117,5 @@ public class RegisterActivity extends Activity {
             return "Le password non corrispondono";
         return "";
     }
+
 }

@@ -51,9 +51,11 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View view) {
                 if (loginUsername.getText().toString().equals("admin") && loginPassword.getText().toString().equals("admin")){
-                    Toast.makeText(LoginActivity.this, "Login effetutato", Toast.LENGTH_LONG).show();
-                    Intent openRegisterActivity= new Intent(LoginActivity.this,MainActivity.class);
-                    startActivity(openRegisterActivity);
+                    Toast.makeText(LoginActivity.this, "Login effetuato", Toast.LENGTH_LONG).show();
+                    Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                    mainIntent.putExtra("username", "username: " + loginUsername.getText());
+                    mainIntent.putExtra("password", "password: " + loginPassword.getText());
+                    startActivity(mainIntent);
                 } else {
                     Toast.makeText(LoginActivity.this, "Credenziali errate", Toast.LENGTH_LONG).show();
                     checkPass--;
@@ -89,4 +91,5 @@ public class LoginActivity extends Activity {
             }
         });
     }
+
 }
