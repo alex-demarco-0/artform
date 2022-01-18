@@ -18,9 +18,7 @@
     <string name="e_mail">E-mail</string>
     <string name="cognome">Cognome</string>
     <string name="nome">Nome</string>
-    <string name="username">Username</string>
     <string name="telefono">Telefono (facoltativo)</string>
-    <string name="password">Password</string>
     <string name="registrati">Registrati</string>
 
 </resources>
