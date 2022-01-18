@@ -62,19 +62,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-
         // campo per andare all'Activity Register
         TextView goToRegister = findViewById(R.id.goToRegister);
         goToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent openRegisterActivity= new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(openRegisterActivity);
+                Intent openRegisterActivityIntent= new Intent(LoginActivity.this, RegisterActivity.class);
+                String un = loginUsername.getText().toString(); //passaggio parametro username nella RegisterActivity se l'utente lo ha inserito
+                if(!un.equals(""))
+                    openRegisterActivityIntent.putExtra("username", un);
+                startActivity(openRegisterActivityIntent);
             }
         });
-        // campo per password dimenicata
 
+        // campo per password dimenicata
         TextView forgotPassword = findViewById(R.id.forgotPassword);
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
