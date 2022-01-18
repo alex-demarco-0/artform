@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
             datiRegistrazioneListView.setAdapter(aa);
         }
 
-
+        settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
