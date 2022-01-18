@@ -53,29 +53,32 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="94dp"
-        android:layout_marginTop="97dp"
-        android:layout_marginEnd="229dp"
-        android:layout_marginBottom="95dp"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="572dp"
+        android:layout_marginEnd="230dp"
+        android:layout_marginBottom="111dp"
         android:text="@string/login_button" />
+
 
     <Button
         android:id="@+id/goToRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="218dp"
-        android:layout_marginEnd="105dp"
-        android:layout_marginBottom="94dp"
+        android:layout_marginStart="213dp"
+        android:layout_marginTop="567dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="109dp"
         android:text="@string/register_button" />
-
 
     <TextView
         android:id="@+id/forgotPassword"

@@ -80,6 +80,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(LoginActivity.this, "ACTIVITY PASSWORD ...", Toast.LENGTH_LONG).show();
+                Intent openRegisterActivity= new Intent(LoginActivity.this,ForgotActivity.class);
+                startActivity(openRegisterActivity);
             }
         });
     }
