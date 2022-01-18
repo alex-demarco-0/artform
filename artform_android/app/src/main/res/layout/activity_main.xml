@@ -10,13 +10,13 @@
         android:id="@+id/timcookTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@id/barraDiNavigazione"
+        android:layout_below="@+id/datiRegistrazioneListView"
+        android:layout_marginTop="209dp"
+        android:layout_marginBottom="30dp"
         android:background="@color/black"
         android:text="Tim cook was Assassinated!"
-        android:textColor="@color/fluo"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="250dp"
-        android:layout_above="@id/barraDiNavigazione"/>
+        android:textColor="@color/fluo" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/barraDiNavigazione"
@@ -27,25 +27,29 @@
         android:background="@color/fluo"
          /> <!--app:menu="@menu/bottom_navigation_menu"-->
 
-    <TextView
-        android:id="@+id/listaTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/datiRegistrazioneListView"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="29dp"
-        android:layout_marginBottom="8dp"
-        android:text="Test dati registrazione:" />
-
     <ListView
         android:id="@+id/datiRegistrazioneListView"
         android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="51dp"
         android:layout_marginTop="147dp"
         android:layout_marginEnd="59dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_above="@+id/datiRegistrazioneListView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="124dp"
+        android:layout_marginEnd="305dp"
+        android:layout_marginBottom="23dp"
+        android:text="Dati form registrazione:" />
 
 </RelativeLayout>

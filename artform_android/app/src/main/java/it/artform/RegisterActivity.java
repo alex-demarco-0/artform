@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class RegisterActivity extends AppCompatActivity {
 
     EditText nomeEditText = null;
@@ -41,9 +44,9 @@ public class RegisterActivity extends AppCompatActivity {
                 /*controllo campi + toast (assegnato al metodo controllaCampi() al di fuori di onCreate())
                 nome richiesto
                 cognome richiesto
-                email richiesto con @ e .com / .it
+                email richiesto e nel formato corretto
                 username richiesto
-                telefono se presente deve essere valido (solo cifre numeriche)
+                telefono se presente deve contenere solo cifre numeriche
                 password richiesto
                 password2 deve corrispondere a password
                 il toast deve descrivere ciò che manca
@@ -55,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
-                //passaggio parametri alla MainActivity (solo una volta superato il controllo dei campi)
+                //passaggio parametri alla MainActivity (una volta superato il controllo dei campi)
                 Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
                 registraIntent.putExtra("nome", "nome: " + nomeEditText.getText());
                 registraIntent.putExtra("cognome", "cognome: " + cognomeEditText.getText());
@@ -88,7 +91,10 @@ public class RegisterActivity extends AppCompatActivity {
         if(cognomeEditText.getText().toString().equals(""))
             return "Inserisci cognome";
         String email = emailEditText.getText().toString();
-        if(email.equals("") || !email.contains("@") || !email.contains(".com") || !email.contains(".it")) //meglio con regular expression ^(.+)@(.+)$
+        String regex = "^(.+)@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        if(email.equals("") || !matcher.matches()) //con regular expression
             return "Inserisci email valida";
         if(usernameEditText.getText().toString().equals(""))
             return "Inserisci username";
