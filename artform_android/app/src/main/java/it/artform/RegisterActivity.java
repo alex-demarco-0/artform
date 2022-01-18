@@ -33,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordEditText);
         password2EditText = findViewById(R.id.password2EditText);
         Button registratiButton = findViewById(R.id.registratiButton);
-        //manca il pulsante 'reset'
+        Button cancellaButton = findViewById(R.id.cancellaButton);
 
         registratiButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,10 +61,23 @@ public class RegisterActivity extends AppCompatActivity {
                 registraIntent.putExtra("cognome", "cognome: " + cognomeEditText.getText());
                 registraIntent.putExtra("email", "email: " + emailEditText.getText());
                 registraIntent.putExtra("username", "username: " + usernameEditText.getText());
-                if(!telefonoEditText.getText().equals(""))
+                if(!telefonoEditText.getText().toString().equals(""))
                     registraIntent.putExtra("telefono", "telefono: "+ telefonoEditText.getText());
                 registraIntent.putExtra("password", "password: " + passwordEditText.getText());
                 startActivity(registraIntent);
+            }
+        });
+
+        cancellaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nomeEditText.getText().clear();
+                cognomeEditText.getText().clear();
+                emailEditText.getText().clear();
+                usernameEditText.getText().clear();
+                telefonoEditText.getText().clear();
+                passwordEditText.getText().clear();
+                password2EditText.getText().clear();
             }
         });
     }
