@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
+
     <!-- LOGO-->
     <ImageView
         android:id="@+id/logoImageView"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -17,17 +18,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="122dp"
         android:layout_marginEnd="-2dp"
-        tools:srcCompat="@mipmap/ic_launcher_foreground" />
-
-    <TextView
-        android:id="@+id/usernameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logoImageView"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="102dp"
-        android:layout_marginTop="105dp"
-        android:text="@string/username" />
+        tools:src="@mipmap/ic_launcher_foreground" />
 
     <EditText
         android:id="@+id/loginUsername"
@@ -44,15 +35,6 @@
         android:inputType="text"
         android:minHeight="48dp" />
 
-    <TextView
-        android:id="@+id/passwordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logoImageView"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="103dp"
-        android:layout_marginTop="244dp"
-        android:text="@string/password" />
 
     <EditText
         android:id="@+id/loginPassword"
@@ -69,25 +51,45 @@
         android:minHeight="48dp"
         android:hint="@string/password" />
 
-    <TextView
-        android:id="@+id/goToRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:layout_marginLeft="200dp"
-        android:text="@string/register_button" />
-
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="229dp"
+        android:layout_marginBottom="95dp"
         android:text="@string/login_button" />
 
     <Button
-        android:id="@+id/clearButton"
+        android:id="@+id/goToRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:text="@string/clear" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="218dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="94dp"
+        android:text="@string/register_button" />
+
+
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="188dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="129dp"
+        android:layout_marginBottom="71dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/password_dimenticata" />
 </RelativeLayout>
 

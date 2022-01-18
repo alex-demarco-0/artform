@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
+/*
         //istanziamento campi edit e button
         Button loginButtonAccedi = findViewById(R.id.loginButtonAccedi);
         Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
@@ -43,8 +43,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
         });
-
+*/
         // manbi
+
+
         EditText loginUsername = findViewById(R.id.loginUsername);
         EditText loginPassword = findViewById(R.id.loginPassword);
         Button loginButton = findViewById(R.id.loginButton);
@@ -74,16 +76,16 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(openRegisterActivity);
             }
         });
-
-        // Button per  cancellare i campi
-        Button clearButton = findViewById(R.id.clearButton);
-        clearButton.setOnClickListener(new View.OnClickListener() {
+        // campo per password dimenicata
+        TextView forgotPassword = findViewById(R.id.forgotPassword);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginUsername.getText().clear();
-                loginPassword.getText().clear();
+                Toast.makeText(LoginActivity.this, "ACTIVITY PASSWORD DIMENTICATA...", Toast.LENGTH_LONG).show();
             }
         });
+
+
 
     }
 }
