@@ -5,12 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends Activity {
-
+    Button settingsButton = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,15 @@ public class MainActivity extends Activity {
             ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listaDatiRegistrazione);
             datiRegistrazioneListView.setAdapter(aa);
         }
+
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent openSettingsActivity= new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(openSettingsActivity);
+            }
+        });
     }
 
     public void pubblica(View view) {

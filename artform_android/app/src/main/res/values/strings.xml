@@ -27,5 +27,7 @@
     <string name="password">Password</string>
     <string name="password2">Ripeti password</string>
     <string name="registrati">Registrati</string>
+    <!-- SettingsActivity-->
+    <string name="impostazioni">Impostazioni</string>
 
 </resources>
