@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
@@ -16,21 +17,33 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
+/*
         //istanziamento campi edit e button
+
         EditText loginUsername = findViewById(R.id.loginUsername);
         EditText loginPassword = findViewById(R.id.loginPassword);
 
         Button loginButtonAccedi = findViewById(R.id.loginButtonAccedi);
         Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
 
+        Button loginButtonAccedi = findViewById(R.id.loginButtonAccedi);
+        Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
+
+        loginButtonAccedi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Vai alla home page
+                //Toast di prova
+                Toast.makeText(LoginActivity.this, "Hai premuto ACCEDI", Toast.LENGTH_LONG).show();
+            }
+        });
 
         loginButtonRegistrati.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Toast di prova
                 Toast.makeText(LoginActivity.this, "Hai premuto REGISTRATI", Toast.LENGTH_LONG).show();
-                //Vai alla RegisterActivity
+                //Vai alla RegisterActivity passando come parametri username e password (se inseriti)
                 Intent openRegisterActivity= new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(openRegisterActivity);
             }
@@ -39,6 +52,13 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         loginButtonAccedi.setOnClickListener(new View.OnClickListener() {
+*/
+        // manbi
+
+
+        EditText loginUsername = findViewById(R.id.loginUsername);
+        EditText loginPassword = findViewById(R.id.loginPassword);
+        Button loginButton = findViewById(R.id.loginButton);
 
         // controllo password
 
@@ -57,12 +77,21 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        Button clearButton = findViewById(R.id.clearButton);
-        clearButton.setOnClickListener(new View.OnClickListener() {
+        // campo per andare all'Activity Register
+        TextView goToRegister = findViewById(R.id.goToRegister);
+        goToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginUsername.getText().clear();
-                loginPassword.getText().clear();
+                Intent openRegisterActivity= new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(openRegisterActivity);
+            }
+        });
+        // campo per password dimenicata
+        TextView forgotPassword = findViewById(R.id.forgotPassword);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(LoginActivity.this, "ACTIVITY PASSWORD DIMENTICATA...", Toast.LENGTH_LONG).show();
             }
         });
 

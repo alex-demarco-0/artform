@@ -6,13 +6,13 @@
 
     <string name="login_button">Login</string>
     <string name="register_button">Register</string>
-    <!--
+
     <string name="home">HOME</string>
     <string name="cerca">SEARCH</string>
     <string name="pubblica">Register</string>
     <string name="notifiche">Register</string>
     <string name="profilo">Register</string>
--->
+
     <string name="e_mail">E-mail</string>
     <string name="cognome">Cognome</string>
     <string name="nome">Nome</string>
@@ -22,5 +22,6 @@
 
     <string name="clear">Clear</string>
     <string name="username">Username</string>
+    <string name="password_dimenticata">Password Dimenticata</string>
 
 </resources>

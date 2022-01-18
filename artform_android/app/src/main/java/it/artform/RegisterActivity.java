@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
         registratiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*controllo campi + toast (magari assegnato ad un metodo al di fuori di onCreate)
+                /*controllo campi + toast (assegnato al metodo controllaCampi() al di fuori di onCreate())
                 nome richiesto
                 cognome richiesto
                 email richiesto con @ e .com / .it
@@ -51,39 +51,49 @@ public class RegisterActivity extends AppCompatActivity {
 
                 String campoMancante = controllaCampi();
                 if(!campoMancante.equals("")) {
-                    Toast.makeText(RegisterActivity.this, "Inserisci" + campoMancante, Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this, campoMancante, Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                //passaggio parametri alla MainActivity (una volta che i campi sono OK)
+                //passaggio parametri alla MainActivity (solo una volta superato il controllo dei campi)
                 Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
-                registraIntent.putExtra("nome", nomeEditText.getText());
-                registraIntent.putExtra("cognome", cognomeEditText.getText());
-                registraIntent.putExtra("email", emailEditText.getText());
-                registraIntent.putExtra("username", usernameEditText.getText());
+                registraIntent.putExtra("nome", "nome: " + nomeEditText.getText());
+                registraIntent.putExtra("cognome", "cognome: " + cognomeEditText.getText());
+                registraIntent.putExtra("email", "email: " + emailEditText.getText());
+                registraIntent.putExtra("username", "username: " + usernameEditText.getText());
                 if(!telefonoEditText.getText().equals(""))
-                    registraIntent.putExtra("telefono", telefonoEditText.getText());
-                registraIntent.putExtra("password", passwordEditText.getText());
+                    registraIntent.putExtra("telefono", "telefono: "+ telefonoEditText.getText());
+                registraIntent.putExtra("password", "password: " + passwordEditText.getText());
                 startActivity(registraIntent);
             }
         });
     }
 
     public String controllaCampi() {
-        if(nomeEditText.getText().equals(""))
-            return "nome";
-        if(cognomeEditText.getText().equals(""))
-            return "cognome";
-        if(emailEditText.getText().equals(""))
-            return "email";
-        if(usernameEditText.getText().equals(""))
-            return "username";
-        if(telefonoEditText.getText().equals(""))
-            return "telefono corretto";
-        if(passwordEditText.getText().equals(""))
-            return "password";
-        if(password2EditText.getText().equals(""))
-            return "ripeti password";
+        if(nomeEditText.getText().toString().equals(""))
+            return "Inserisci nome";
+        if(cognomeEditText.getText().toString().equals(""))
+            return "Inserisci cognome";
+        String email = emailEditText.getText().toString();
+        if(email.equals("") || !email.contains("@") || !email.contains(".com") || !email.contains(".it")) //meglio con regular expression ^(.+)@(.+)$
+            return "Inserisci email valida";
+        if(usernameEditText.getText().toString().equals(""))
+            return "Inserisci username";
+        String tel = telefonoEditText.getText().toString();
+        if(!tel.equals(""))
+            try {
+                Double.parseDouble(tel);
+            } catch(NumberFormatException e) {
+                return "Inserisci un telefono corretto";
+            }
+        String pw = passwordEditText.getText().toString();
+        if(pw.equals(""))
+            return "Inserisci password";
+        String pw2 = password2EditText.getText().toString();
+        if(pw2.equals(""))
+            return "Ripeti password";
+        if(!pw.equals(pw2))
+            return "Le password non corrispondono";
         return "";
     }
 
