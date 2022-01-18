@@ -6,4 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".UserProfileActivity">
 
+    <ImageView
+        android:id="@+id/userProfileImageView"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="130dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="476dp"
+        android:src="" />
+
+    <TextView
+        android:id="@+id/usernameUserProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="171dp"
+        android:layout_marginBottom="433dp"
+        android:text="Username" />
+
+    <TextView
+        android:id="@+id/tagsUserProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="193dp"
+        android:layout_marginBottom="407dp"
+        android:text="Tags" />
+
+
 </RelativeLayout>
