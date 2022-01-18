@@ -55,7 +55,7 @@
         android:text="@string/password" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/loginPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/logoImageView"
@@ -70,7 +70,7 @@
         android:text="" />
 
     <Button
-        android:id="@+id/buttonAccedi"
+        android:id="@+id/loginButtonAccedi"
         android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -80,7 +80,7 @@
         android:text="Accedi" />
 
     <Button
-        android:id="@+id/buttonRegistrati"
+        android:id="@+id/loginButtonRegistrati"
         android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
