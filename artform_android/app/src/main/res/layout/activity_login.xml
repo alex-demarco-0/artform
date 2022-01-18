@@ -67,11 +67,28 @@
         android:ems="10"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:hint="Password"
         android:text="" />
-<Button
-    android:id="@+id/loginButton"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Login" />
+
+    <Button
+        android:id="@+id/loginButtonAccedi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="227dp"
+        android:layout_marginBottom="85dp"
+        android:text="Accedi" />
+
+    <Button
+        android:id="@+id/loginButtonRegistrati"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="89dp"
+        android:layout_marginBottom="85dp"
+        android:text="Registrati" />
+
 </RelativeLayout>
 

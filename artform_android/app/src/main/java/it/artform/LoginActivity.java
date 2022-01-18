@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
         Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
 
         EditText loginPassword = findViewById(R.id.loginPassword);
-        Button loginButton = findViewById(R.id.loginButton);
+        Button loginButton = findViewById(R.id.loginButtonAccedi);
 
         loginButtonAccedi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
 
         });
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        loginButtonAccedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (loginUsername.getText().toString().equals("admin") && loginPassword.getText().toString().equals("admin")){
