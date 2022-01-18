@@ -5,6 +5,7 @@
     <item android:id="@+id/publish" android:title="PUB" />
     <item android:id="@+id/notification" android:title="NOTIFY" />
     <item android:id="@+id/settings" android:title="SETTINGS" />
+
     <item
         android:id="@+id/HOME"
         android:enabled="true"
@@ -26,4 +27,5 @@
         android:id="@+id/PROFILE"
         android:enabled="true"
         android:title="@string/profilo"/>
+
 </menu>

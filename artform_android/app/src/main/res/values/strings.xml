@@ -1,13 +1,14 @@
 <resources>
     <string name="app_name">ArtForm</string>
 
-    
+
     <!-- aiuto -->
 
     <!-- LoginActivity -->
     <string name="login_button">Login</string>
     <string name="register_button">Register</string>
     <string name="clear">Cancella</string>
+    <string name="password_dimenticata">Password Dimenticata</string>
 
     <!-- barra di navigazione MainActivity -->
     <string name="home">HOME</string>

@@ -17,8 +17,15 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
+/*
         //istanziamento campi edit e button
+
+        EditText loginUsername = findViewById(R.id.loginUsername);
+        EditText loginPassword = findViewById(R.id.loginPassword);
+
+        Button loginButtonAccedi = findViewById(R.id.loginButtonAccedi);
+        Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
+
         Button loginButtonAccedi = findViewById(R.id.loginButtonAccedi);
         Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
 
@@ -44,12 +51,17 @@ public class LoginActivity extends AppCompatActivity {
 
         });
 
+        loginButtonAccedi.setOnClickListener(new View.OnClickListener() {
+*/
         // manbi
+
+
         EditText loginUsername = findViewById(R.id.loginUsername);
         EditText loginPassword = findViewById(R.id.loginPassword);
         Button loginButton = findViewById(R.id.loginButton);
+
         // controllo password
-        loginButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 if (loginUsername.getText().toString().equals("admin") && loginPassword.getText().toString().equals("admin")){
@@ -59,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                     checkPass--;
                     if (checkPass == 0){
                         Toast.makeText(LoginActivity.this, "HAI SBAGLIATO PASS TROPPE VOLTE", Toast.LENGTH_LONG).show();
-                        loginButton.setEnabled(false);
+                        loginButtonAccedi.setEnabled(false);
                     }
                 }
             }
@@ -74,16 +86,16 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(openRegisterActivity);
             }
         });
-
-        // Button per  cancellare i campi
-        Button clearButton = findViewById(R.id.clearButton);
-        clearButton.setOnClickListener(new View.OnClickListener() {
+        // campo per password dimenicata
+        TextView forgotPassword = findViewById(R.id.forgotPassword);
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginUsername.getText().clear();
-                loginPassword.getText().clear();
+                Toast.makeText(LoginActivity.this, "ACTIVITY PASSWORD DIMENTICATA...", Toast.LENGTH_LONG).show();
             }
         });
+
+
 
     }
 }
