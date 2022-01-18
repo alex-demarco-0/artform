@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.usernameEditText);
         Bundle bundle = getIntent().getExtras();
         if(bundle != null)
-            usernameEditText.setText(bundle.getString("websiteParam"));
+            usernameEditText.setText(bundle.getString("username"));
         telefonoEditText = findViewById(R.id.telefonoEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         password2EditText = findViewById(R.id.password2EditText);

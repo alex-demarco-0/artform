@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // campo per andare all'Activity Register
-        TextView goToRegister = findViewById(R.id.goToRegister);
+        Button goToRegister = findViewById(R.id.goToRegister);
         goToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
