@@ -19,11 +19,12 @@ public class LoginActivity extends AppCompatActivity {
 
         //istanziamento campi edit e button
         EditText loginUsername = findViewById(R.id.loginUsername);
+
         Button loginButtonAccedi = findViewById(R.id.loginButtonAccedi);
         Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
+
         EditText loginPassword = findViewById(R.id.loginPassword);
-
-
+        Button loginButton = findViewById(R.id.loginButton);
 
         loginButtonAccedi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,9 +48,18 @@ public class LoginActivity extends AppCompatActivity {
 
         });
 
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (loginUsername.getText().toString().equals("admin") && loginPassword.getText().toString().equals("admin")){
+                    Toast.makeText(LoginActivity.this, "Login effetutato", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Credenziali errate", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
 
 
     }
 }
-

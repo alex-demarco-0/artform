@@ -104,4 +104,5 @@
         android:layout_marginBottom="92dp"
         android:text="@string/registrati" />
 
+
 </RelativeLayout>
