@@ -6,7 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
+    android:paddingTop="16dp"
     android:paddingRight="16dp"
+    android:paddingBottom="16dp" android:orientation="vertical"
+
     tools:context=".LoginActivity">
 
     <!-- LOGO-->
@@ -14,58 +17,35 @@
         android:id="@+id/logoImageView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="122dp"
-        android:layout_marginEnd="-2dp"
         tools:src="@mipmap/ic_launcher_foreground" />
+
 
     <EditText
         android:id="@+id/loginUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_below="@+id/logoImageView"
-        android:layout_alignBottom="@+id/logoImageView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="137dp"
-        android:layout_marginEnd="102dp"
-        android:layout_marginBottom="-182dp"
-        android:ems="10"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="514dp"
         android:hint="@string/username"
-        android:inputType="text"
-        android:minHeight="48dp" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/loginPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logoImageView"
-        android:layout_alignBottom="@+id/logoImageView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="273dp"
-        android:layout_marginEnd="102dp"
-        android:layout_marginBottom="-318dp"
-        android:ems="10"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="450dp"
         android:hint="@string/password"
-        android:inputType="textPassword"
-        android:minHeight="48dp" />
-
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="570dp"
-        android:layout_marginEnd="231dp"
-        android:layout_marginBottom="113dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="380dp"
         android:text="@string/login_button" />
 
     <Button
@@ -74,21 +54,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="107dp"
-        android:layout_marginBottom="110dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="380dp"
         android:text="@string/register_button" />
 
     <TextView
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="129dp"
-        android:layout_marginBottom="71dp"
+        android:layout_marginBottom="350dp"
         android:clickable="true"
         android:focusable="true"
         android:text="@string/password_dimenticata" />
