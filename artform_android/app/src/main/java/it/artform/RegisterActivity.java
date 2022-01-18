@@ -32,6 +32,9 @@ public class RegisterActivity extends AppCompatActivity {
         cognomeEditText = findViewById(R.id.cognomeEditText);
         emailEditText = findViewById(R.id.emailEditText);
         usernameEditText = findViewById(R.id.usernameEditText);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null)
+            usernameEditText.setText(bundle.getString("websiteParam"));
         telefonoEditText = findViewById(R.id.telefonoEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         password2EditText = findViewById(R.id.password2EditText);
@@ -115,5 +118,4 @@ public class RegisterActivity extends AppCompatActivity {
             return "Le password non corrispondono";
         return "";
     }
-
 }
