@@ -63,7 +63,7 @@
         android:text="Accedi" />
 
     <Button
-        android:id="@+id/loginButtonRegistrati"
+        android:id="@+id/goToRegister"
         android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
