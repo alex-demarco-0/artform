@@ -21,5 +21,6 @@
     <string name="password">password</string>
 
     <string name="clear">Clear</string>
+    <string name="username">Username</string>
 
 </resources>

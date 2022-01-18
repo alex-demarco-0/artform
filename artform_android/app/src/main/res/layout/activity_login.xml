@@ -40,7 +40,7 @@
         android:layout_marginEnd="102dp"
         android:layout_marginBottom="-182dp"
         android:ems="10"
-        android:hint="Name"
+        android:hint="@string/username"
         android:inputType="text"
         android:minHeight="48dp" />
 
@@ -67,7 +67,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:text="" />
+        android:text="@string/password" />
 
     <Button
         android:id="@+id/loginButton"
