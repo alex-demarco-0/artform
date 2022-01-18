@@ -52,8 +52,8 @@ public class LoginActivity extends Activity {
             public void onClick(View view) {
                 if (loginUsername.getText().toString().equals("admin") && loginPassword.getText().toString().equals("admin")){
                     Toast.makeText(LoginActivity.this, "Login effetutato", Toast.LENGTH_LONG).show();
-                    Intent openRegisterActivity= new Intent(LoginActivity.this,MainActivity.class);
-                    startActivity(openRegisterActivity);
+                    Intent openMainActivity= new Intent(LoginActivity.this,MainActivity.class);
+                    startActivity(openMainActivity);
                 } else {
                     Toast.makeText(LoginActivity.this, "Credenziali errate", Toast.LENGTH_LONG).show();
                     checkPass--;
