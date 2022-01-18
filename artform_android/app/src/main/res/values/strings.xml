@@ -13,9 +13,9 @@
     <!-- barra di navigazione MainActivity -->
     <string name="home">HOME</string>
     <string name="cerca">SEARCH</string>
-    <string name="pubblica">Register</string>
-    <string name="notifiche">Register</string>
-    <string name="profilo">Register</string>
+    <string name="pubblica">PUB</string>
+    <string name="notifiche">NOTIFY</string>
+    <string name="profilo">PROFILE</string>
 
     <!-- campi RegisterActivity -->
     <string name="create_account">Crea un account</string>
