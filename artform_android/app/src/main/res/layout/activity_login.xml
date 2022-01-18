@@ -49,34 +49,16 @@
         android:ems="10"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        android:hint="Password"
-        android:text="" 
+        android:text=""
         android:hint="@string/password" />
 
-
     <Button
-        android:id="@+id/loginButtonAccedi"
+        android:id="@+id/loginButton"
         android:layout_width="121dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="60dp"
-        android:layout_marginEnd="227dp"
-        android:layout_marginBottom="85dp"
-        android:text="Accedi" />
-
-    <Button
-        android:id="@+id/loginButtonRegistrati"
-        android:layout_width="121dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="85dp"
-        android:text="Registrati"
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="94dp"
         android:layout_marginTop="97dp"
         android:layout_marginEnd="229dp"
@@ -90,17 +72,11 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="100dp"
-        android:layout_marginEnd="164dp"
-        android:layout_marginBottom="19dp"
-        android:text="@string/clear" 
         android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="218dp"
         android:layout_marginEnd="105dp"
         android:layout_marginBottom="94dp"
         android:text="@string/register_button" />
-
 
     <TextView
         android:id="@+id/forgotPassword"

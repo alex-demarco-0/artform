@@ -17,18 +17,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-/*
         //istanziamento campi edit e button
-
         EditText loginUsername = findViewById(R.id.loginUsername);
         EditText loginPassword = findViewById(R.id.loginPassword);
-
-        Button loginButtonAccedi = findViewById(R.id.loginButtonAccedi);
-        Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
-
-        Button loginButtonAccedi = findViewById(R.id.loginButtonAccedi);
-        Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
-
+        //Button loginButtonAccedi = findViewById(R.id.loginButtonAccedi);
+        //Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
+/*
         loginButtonAccedi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,21 +41,12 @@ public class LoginActivity extends AppCompatActivity {
                 Intent openRegisterActivity= new Intent(LoginActivity.this,RegisterActivity.class);
                 startActivity(openRegisterActivity);
             }
-
-
         });
-
-        loginButtonAccedi.setOnClickListener(new View.OnClickListener() {
 */
         // manbi
-
-
-        EditText loginUsername = findViewById(R.id.loginUsername);
-        EditText loginPassword = findViewById(R.id.loginPassword);
         Button loginButton = findViewById(R.id.loginButton);
-
         // controllo password
-
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (loginUsername.getText().toString().equals("admin") && loginPassword.getText().toString().equals("admin")){
@@ -71,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                     checkPass--;
                     if (checkPass == 0){
                         Toast.makeText(LoginActivity.this, "HAI SBAGLIATO PASS TROPPE VOLTE", Toast.LENGTH_LONG).show();
-                        loginButtonAccedi.setEnabled(false);
+                        loginButton.setEnabled(false);
                     }
                 }
             }
@@ -94,8 +79,5 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "ACTIVITY PASSWORD DIMENTICATA...", Toast.LENGTH_LONG).show();
             }
         });
-
-
-
     }
 }
