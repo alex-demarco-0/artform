@@ -80,5 +80,15 @@
         android:layout_marginBottom="5dp"
         android:text="Memorizza credenziali" />
 
+    <TextView
+        android:id="@+id/TESTprefs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="502dp"
+        android:text="usr     pwd" />
+
 </RelativeLayout>
 

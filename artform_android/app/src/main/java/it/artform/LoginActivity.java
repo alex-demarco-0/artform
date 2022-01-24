@@ -17,6 +17,8 @@ public class LoginActivity extends Activity {
     private final static String MY_PREFERENCES = "MyPref";
     private final static String LOGIN_USER_KEY = "username";
     private final static String LOGIN_PWD_KEY = "password";
+    private String username = "";
+    private String password = "";
     private int checkPass = 5; // counter credenziali errate
 
     @Override
@@ -26,8 +28,12 @@ public class LoginActivity extends Activity {
 
         // lettura credenziali da SharedPreferences
         SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
-        String username = prefs.getString(LOGIN_USER_KEY, "NO_USER");
-        String password = prefs.getString(LOGIN_PWD_KEY, "NO_PWD");
+        username = prefs.getString(LOGIN_USER_KEY, "NO_USER");
+        password = prefs.getString(LOGIN_PWD_KEY, "NO_PWD");
+
+        TextView TESTprefs = findViewById(R.id.TESTprefs);                    // TEST
+        TESTprefs.setText(username + ", " + password);
+
         // se presenti effettua l'accesso passando direttamente all'activity successiva
         if(!username.equals("NO_USER") && !password.equals("NO_PWD")) {
             Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
@@ -48,20 +54,22 @@ public class LoginActivity extends Activity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                username = loginUsername.getText().toString();
+                password = loginPassword.getText().toString();
                 // controllo password
-                if (loginUsername.getText().toString().equals("admin") && loginPassword.getText().toString().equals("admin")){
+                if (username.equals("admin") && password.equals("admin")) {
                     Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                    mainIntent.putExtra("username", "username: " + loginUsername.getText());
-                    mainIntent.putExtra("password", "password: " + loginPassword.getText());
+                    mainIntent.putExtra("username", "username: " + username);
+                    mainIntent.putExtra("password", "password: " + password);
                     // memorizzazione persistente delle credenziali (corrette) nel file SharedPreferences
                     if(saveLoginCheckBox.isChecked()) {
-                        SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
                         SharedPreferences.Editor editor = prefs.edit();
                         editor.putString(LOGIN_USER_KEY, username);
                         editor.putString(LOGIN_PWD_KEY, password);
                         editor.commit();
                     }
                     Toast.makeText(LoginActivity.this, "Login effetuato", Toast.LENGTH_LONG).show();
+                    checkPass = 5;
                     startActivity(mainIntent);
                 } else {
                     Toast.makeText(LoginActivity.this, "Credenziali errate", Toast.LENGTH_LONG).show();
@@ -74,7 +82,7 @@ public class LoginActivity extends Activity {
             }
         });
 
-        // campo per andare all'Activity Register
+        // campo per passare alla'RegisterActivity
         goToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
