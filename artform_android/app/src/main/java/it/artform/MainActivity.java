@@ -11,13 +11,16 @@ import android.widget.ListView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends Activity {
+
     Button settingsButton = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ListView datiRegistrazioneListView = findViewById(R.id.datiRegistrazioneListView);
+        settingsButton = findViewById(R.id.settingsButton);
 
         Bundle datiRegistrazione = getIntent().getExtras();
         if(datiRegistrazione != null) {
@@ -32,7 +35,6 @@ public class MainActivity extends Activity {
             datiRegistrazioneListView.setAdapter(aa);
         }
 
-        settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,10 +43,10 @@ public class MainActivity extends Activity {
             }
         });
     }
-
+/*
     public void pubblica(View view) {
         Intent pub = new Intent(this, ContentPubActivity.class);
         startActivity(pub);
     }
-
+*/
 }
