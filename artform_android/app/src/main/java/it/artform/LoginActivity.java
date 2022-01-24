@@ -12,6 +12,9 @@ import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
+    private  final  static  String  MY_PREFERENCES  =  "MyPref";
+    private  final  static  String  TEXT_USER_KEY  =  "username";
+    private  final  static  String  TEXT_PWD_KEY  =  "password";
     private int checkPass = 5;
 
     @Override
@@ -26,16 +29,20 @@ public class LoginActivity extends Activity {
         Button goToRegister = findViewById(R.id.goToRegister);
         CheckBox saveLoginCheckBox = findViewById(R.id.saveLoginCheckBox);
 
-        // manbi
-        // controllo password
+        // pulsante Login
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // controllo password
                 if (loginUsername.getText().toString().equals("admin") && loginPassword.getText().toString().equals("admin")){
-                    Toast.makeText(LoginActivity.this, "Login effetuato", Toast.LENGTH_LONG).show();
                     Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                     mainIntent.putExtra("username", "username: " + loginUsername.getText());
                     mainIntent.putExtra("password", "password: " + loginPassword.getText());
+                    // memorizzazione persistente delle credenziali (corrette) nel file SharedPreferences
+                    if(saveLoginCheckBox.isChecked()) {
+
+                    }
+                    Toast.makeText(LoginActivity.this, "Login effetuato", Toast.LENGTH_LONG).show();
                     startActivity(mainIntent);
                 } else {
                     Toast.makeText(LoginActivity.this, "Credenziali errate", Toast.LENGTH_LONG).show();
