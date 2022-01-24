@@ -9,26 +9,33 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher_round"
-        android:background="@color/azzuroLogo"/>
+        android:background="@color/azzuroLogo"
+        android:src="@mipmap/ic_launcher_round" />
 
+
+    <ListView
+        android:id="@+id/settingsListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="120sp"
+        android:gravity="bottom"
         android:orientation="vertical"
-        android:padding="27dp">
+        android:padding="25dp">
 
         <TextView
             android:id="@+id/logoutTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/logout"
             android:clickable="true"
             android:focusable="true"
-            android:textColor="@color/rosso"/>
+            android:gravity="center"
+            android:text="@string/logout"
+            android:textColor="@color/rosso" />
+
     </LinearLayout>
 
 
