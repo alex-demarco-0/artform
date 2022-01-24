@@ -1,7 +1,9 @@
 package it.artform;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,17 +14,30 @@ import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
-    private  final  static  String  MY_PREFERENCES  =  "MyPref";
-    private  final  static  String  TEXT_USER_KEY  =  "username";
-    private  final  static  String  TEXT_PWD_KEY  =  "password";
-    private int checkPass = 5;
+    private final static String MY_PREFERENCES = "MyPref";
+    private final static String LOGIN_USER_KEY = "username";
+    private final static String LOGIN_PWD_KEY = "password";
+    private int checkPass = 5; // counter credenziali errate
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //istanziamento campi edit e button
+        // lettura credenziali da SharedPreferences
+        SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
+        String username = prefs.getString(LOGIN_USER_KEY, "NO_USER");
+        String password = prefs.getString(LOGIN_PWD_KEY, "NO_PWD");
+        // se presenti effettua l'accesso passando direttamente all'activity successiva
+        if(!username.equals("NO_USER") && !password.equals("NO_PWD")) {
+            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+            mainIntent.putExtra("username", "username: " + username);
+            mainIntent.putExtra("password", "password: " + password);
+            Toast.makeText(LoginActivity.this, "Login effetuato", Toast.LENGTH_LONG).show();
+            startActivity(mainIntent);
+        }
+
+        // istanziamento campi edit e button
         EditText loginUsername = findViewById(R.id.loginUsername);
         EditText loginPassword = findViewById(R.id.loginPassword);
         Button loginButton = findViewById(R.id.loginButton);
@@ -40,7 +55,11 @@ public class LoginActivity extends Activity {
                     mainIntent.putExtra("password", "password: " + loginPassword.getText());
                     // memorizzazione persistente delle credenziali (corrette) nel file SharedPreferences
                     if(saveLoginCheckBox.isChecked()) {
-
+                        SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString(LOGIN_USER_KEY, username);
+                        editor.putString(LOGIN_PWD_KEY, password);
+                        editor.commit();
                     }
                     Toast.makeText(LoginActivity.this, "Login effetuato", Toast.LENGTH_LONG).show();
                     startActivity(mainIntent);
