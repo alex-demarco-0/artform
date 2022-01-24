@@ -8,8 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 public class MainActivity extends Activity {
 
     Button settingsButton = null;
@@ -22,6 +20,7 @@ public class MainActivity extends Activity {
         ListView datiRegistrazioneListView = findViewById(R.id.datiRegistrazioneListView);
         settingsButton = findViewById(R.id.settingsButton);
 
+        // TEST
         Bundle datiRegistrazione = getIntent().getExtras();
         if(datiRegistrazione != null) {
             String[] listaDatiRegistrazione = new String[datiRegistrazione.size()];
