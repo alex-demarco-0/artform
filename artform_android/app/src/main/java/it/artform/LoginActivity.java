@@ -41,6 +41,7 @@ public class LoginActivity extends Activity {
             mainIntent.putExtra("password", "password: " + password);
             Toast.makeText(LoginActivity.this, "Login effetuato", Toast.LENGTH_LONG).show();
             startActivity(mainIntent);
+            //finish();   commentato per facilitare i test
         }
 
         // istanziamento campi edit e button
@@ -49,6 +50,7 @@ public class LoginActivity extends Activity {
         Button loginButton = findViewById(R.id.loginButton);
         Button goToRegister = findViewById(R.id.goToRegister);
         CheckBox saveLoginCheckBox = findViewById(R.id.saveLoginCheckBox);
+        TextView forgotPassword = findViewById(R.id.forgotPassword);
 
         // pulsante Login
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +73,7 @@ public class LoginActivity extends Activity {
                     Toast.makeText(LoginActivity.this, "Login effetuato", Toast.LENGTH_LONG).show();
                     checkPass = 5;
                     startActivity(mainIntent);
+                    //finish();   commentato per facilitare i test
                 } else {
                     Toast.makeText(LoginActivity.this, "Credenziali errate", Toast.LENGTH_LONG).show();
                     checkPass--;
@@ -95,7 +98,6 @@ public class LoginActivity extends Activity {
         });
 
         // campo per password dimenicata
-        TextView forgotPassword = findViewById(R.id.forgotPassword);
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
