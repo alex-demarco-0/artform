@@ -29,5 +29,6 @@
     <string name="registrati">Registrati</string>
     <!-- SettingsActivity-->
     <string name="impostazioni">Impostazioni</string>
+    <string name="logout">logout</string>
 
 </resources>
