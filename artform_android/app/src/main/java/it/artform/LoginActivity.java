@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ public class LoginActivity extends Activity {
         EditText loginPassword = findViewById(R.id.loginPassword);
         Button loginButton = findViewById(R.id.loginButton);
         Button goToRegister = findViewById(R.id.goToRegister);
+        CheckBox saveLoginCheckBox = findViewById(R.id.saveLoginCheckBox);
 
         // manbi
         // controllo password
