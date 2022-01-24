@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
-    int checkPass = 5;
+    private int checkPass = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,31 +21,10 @@ public class LoginActivity extends Activity {
         //istanziamento campi edit e button
         EditText loginUsername = findViewById(R.id.loginUsername);
         EditText loginPassword = findViewById(R.id.loginPassword);
-        //Button loginButtonAccedi = findViewById(R.id.loginButtonAccedi);
-        //Button loginButtonRegistrati = findViewById(R.id.loginButtonRegistrati);
-/*
-        loginButtonAccedi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Vai alla home page
-                //Toast di prova
-                Toast.makeText(LoginActivity.this, "Hai premuto ACCEDI", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        loginButtonRegistrati.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Toast di prova
-                Toast.makeText(LoginActivity.this, "Hai premuto REGISTRATI", Toast.LENGTH_LONG).show();
-                //Vai alla RegisterActivity passando come parametri username e password (se inseriti)
-                Intent openRegisterActivity= new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(openRegisterActivity);
-            }
-        });
-*/
-        // manbi
         Button loginButton = findViewById(R.id.loginButton);
+        Button goToRegister = findViewById(R.id.goToRegister);
+
+        // manbi
         // controllo password
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +47,6 @@ public class LoginActivity extends Activity {
         });
 
         // campo per andare all'Activity Register
-        Button goToRegister = findViewById(R.id.goToRegister);
         goToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
