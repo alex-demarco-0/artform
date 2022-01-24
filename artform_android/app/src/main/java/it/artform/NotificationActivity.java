@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,12 +21,27 @@ import java.util.List;
 
 public class NotificationActivity extends Activity {
 
+    File notifFile = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-        ListView testCacheNotificheListView = findViewById(R.id.testCacheNotificheListView);
+        EditText saveNotifEditText = findViewById(R.id.saveNotifEditText);
+        Button saveNotifButton = findViewById(R.id.saveNotifButton);
+        ListView testCacheNotificheListView = findViewById(R.id.testCacheNotifListView);
+
+        saveNotifButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String notif = saveNotifEditText.getText().toString();
+                if(!notif.equals("")) {
+
+                    //saveFile(notifFile, notif);
+                }
+            }
+        });
 
         cacheNotifications();
     }

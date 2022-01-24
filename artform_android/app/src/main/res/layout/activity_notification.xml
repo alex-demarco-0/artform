@@ -7,10 +7,10 @@
 
     <!-- TEST -->
     <ListView
-        android:id="@+id/testCacheNotificheListView"
+        android:id="@+id/testCacheNotifListView"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:layout_below="@+id/editTextTextPersonName"
+        android:layout_below="@+id/saveNotifEditText"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
@@ -19,7 +19,7 @@
 
     <!-- TEST -->
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/saveNotifEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -27,18 +27,17 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:text="Name" />
 
     <!-- TEST -->
     <Button
-        android:id="@+id/button"
+        android:id="@+id/saveNotifButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginStart="35dp"
         android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/editTextTextPersonName"
+        android:layout_toEndOf="@+id/saveNotifEditText"
         android:text="Button" />
 
 </RelativeLayout>
