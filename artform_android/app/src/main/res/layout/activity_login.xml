@@ -80,6 +80,7 @@
         android:layout_marginBottom="5dp"
         android:text="Memorizza credenziali" />
 
+    <!-- TEST -->
     <TextView
         android:id="@+id/TESTprefs"
         android:layout_width="wrap_content"

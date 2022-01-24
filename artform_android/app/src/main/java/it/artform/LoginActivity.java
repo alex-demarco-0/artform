@@ -14,12 +14,12 @@ import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
-    private final static String MY_PREFERENCES = "MyPref";
+    private final static String SHARED_PREFERENCES = "SharedPrefs";
     private final static String LOGIN_USER_KEY = "username";
     private final static String LOGIN_PWD_KEY = "password";
     private String username = "";
     private String password = "";
-    private int checkPass = 5; // counter credenziali errate
+    private int checkPass = 5; // contatore credenziali errate
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         // lettura credenziali da SharedPreferences
-        SharedPreferences prefs = getSharedPreferences(MY_PREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
         username = prefs.getString(LOGIN_USER_KEY, "NO_USER");
         password = prefs.getString(LOGIN_PWD_KEY, "NO_PWD");
 
