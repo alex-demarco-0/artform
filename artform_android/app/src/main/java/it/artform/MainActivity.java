@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
 
         // custom ListView feed post
         ListView feedListView = findViewById(R.id.feedListView);
-        Post[] testPosts = new Post[7];
+        Post[] testPosts = new Post[20];
         for(int i=0; i<testPosts.length; i++)
             testPosts[i] = new Post(null, "User " + (i+1), "#Tags of post " + (i+1));
         PostArrayAdapter paa = new PostArrayAdapter(this, R.layout.row_main, testPosts);

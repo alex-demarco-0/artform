@@ -8,7 +8,7 @@
         android:id="@+id/postImageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@mipmap/ic_launcher_foreground" />
 
     <TextView
         android:id="@+id/userTextView"
@@ -17,8 +17,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:layout_below="@+id/postImageView"
-        android:text="<username>" />
+        android:layout_below="@+id/postImageView" />
 
     <TextView
         android:id="@+id/tagsTextView"
@@ -28,8 +27,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
-        android:layout_below="@+id/userTextView"
-        android:text="<#tags>" />
+        android:layout_below="@+id/userTextView" />
 
     <TextView
         android:id="@+id/likeTextView"
