@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import it.artform.post.Post;
+import it.artform.post.PostArrayAdapter;
+
 public class MainActivity extends Activity {
 
     Button settingsButton = null;
@@ -17,10 +20,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // TEST - dati registrazione
         ListView datiRegistrazioneListView = findViewById(R.id.datiRegistrazioneListView);
-        settingsButton = findViewById(R.id.settingsButton);
 
-        // TEST
         Bundle datiRegistrazione = getIntent().getExtras();
         if(datiRegistrazione != null) {
             String[] listaDatiRegistrazione = new String[datiRegistrazione.size()];
@@ -34,6 +36,8 @@ public class MainActivity extends Activity {
             datiRegistrazioneListView.setAdapter(aa);
         }
 
+        // TEST - pulsante settings
+        settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,6 +45,14 @@ public class MainActivity extends Activity {
                 startActivity(openSettingsActivity);
             }
         });
+
+        // custom ListView feed post
+        ListView feedListView = findViewById(R.id.feedListView);
+        Post[] testPosts = new Post[7];
+        for(int i=0; i<testPosts.length; i++)
+            testPosts[i] = new Post(null, "User " + (i+1), "#Tags of post " + (i+1));
+        PostArrayAdapter paa = new PostArrayAdapter(this, R.layout.row_main, testPosts);
+        feedListView.setAdapter(paa);
     }
 /*
     public void pubblica(View view) {
