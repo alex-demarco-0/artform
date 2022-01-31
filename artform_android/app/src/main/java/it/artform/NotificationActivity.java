@@ -35,10 +35,11 @@ public class NotificationActivity extends Activity {
         saveNotifButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String notif = saveNotifEditText.getText().toString();
-                if(!notif.equals("")) {
-
-                    //saveFile(notifFile, notif);
+                String notifW = saveNotifEditText.getText().toString();
+                if(!notifW.equals("")) {
+                    //ArrayList<String> notifR = loadFile(notifFile.toString());
+                    saveFile(notifFile.toString(), notifW);
+                    //update ListView
                 }
             }
         });
@@ -64,8 +65,9 @@ public class NotificationActivity extends Activity {
             canReadStoreExt = canWriteStoreExt = false;
         if(canReadStoreExt && canWriteStoreExt) {
             File dir = Environment.getExternalStorageDirectory();
+            Toast.makeText(NotificationActivity.this, dir.toString(), Toast.LENGTH_LONG).show();
             //localizzazione directory 'Download' tramite API I/O di Java
-            List<String> notifications = loadFile(dir.toString());
+            notifFile = dir;
         }
     }
 
