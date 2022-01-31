@@ -9,13 +9,11 @@
     <!-- TEST -->
     <ListView
         android:id="@+id/datiRegistrazioneListView"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="-1dp"
-        android:layout_marginEnd="1dp" />
+        android:layout_alignParentEnd="false" />
 
     <!-- TEST
     <TextView
@@ -34,21 +32,26 @@
     <Button
         android:id="@+id/settingsButton"
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="false"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="252dp"
-        android:layout_marginTop="606dp"
-        android:layout_marginBottom="77dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="7dp"
         android:text="impostazioni" />
-    <!--
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/barraDiNavigazione"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="70dp"
-            android:background="@color/fluo" />
-    -->
+
+    <ListView
+        android:id="@+id/feedListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+<!--
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/barraDiNavigazione"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="70dp"
+        android:background="@color/fluo" />
+-->
 </RelativeLayout>
