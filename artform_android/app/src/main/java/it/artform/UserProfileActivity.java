@@ -8,13 +8,45 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class UserProfileActivity extends Activity {
+    ImageView userProfilePic;
+    TextView usernameUserProfile;
+    TextView tagsUserProfile;
+    Button contactMe;
+    Button settings;
+    Button badge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
+        userProfilePic=findViewById(R.id.userProfileImageView);
+        usernameUserProfile=findViewById(R.id.usernameUserProfile);
+        tagsUserProfile=findViewById(R.id.tagsUserProfile);
+        contactMe=findViewById(R.id.contactmeButton);
+        settings=findViewById(R.id.settingsUserProfile);
+        badge=findViewById(R.id.badgeButtonUserProfile);
+
+        badge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+
+        //gestione evento settings button
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(UserProfileActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
