@@ -13,9 +13,9 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="130dp"
-        android:layout_marginEnd="137dp"
-        android:layout_marginBottom="476dp"
+        android:layout_marginTop="121dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginBottom="485dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
@@ -24,19 +24,49 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="171dp"
-        android:layout_marginBottom="433dp"
+        android:layout_marginEnd="173dp"
+        android:layout_marginBottom="432dp"
         android:text="Username" />
 
     <TextView
         android:id="@+id/tagsUserProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="193dp"
-        android:layout_marginBottom="407dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="179dp"
+        android:layout_marginBottom="398dp"
         android:text="Bio/Tags" />
+
+    <Button
+        android:id="@+id/contactmeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="321dp"
+        android:hint="Contact me" />
+
+    <Button
+        android:id="@+id/badgeButtonUserProfile"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="330dp"
+        android:layout_marginBottom="657dp"
+        android:hint="Badge" />
+
+    <Button
+        android:id="@+id/settingsUserProfile"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="658dp"
+        android:hint="Settings" />
 
 </RelativeLayout>
