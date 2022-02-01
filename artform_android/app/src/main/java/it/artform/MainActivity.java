@@ -8,8 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import it.artform.post.Post;
-import it.artform.post.PostArrayAdapter;
+import it.artform.pojos.Post;
+import it.artform.feed.PostArrayAdapter;
 
 public class MainActivity extends Activity {
 

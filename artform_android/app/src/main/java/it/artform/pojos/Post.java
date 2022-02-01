@@ -1,4 +1,4 @@
-package it.artform.post;
+package it.artform.pojos;
 
 public class Post {
     private String contentSrc;

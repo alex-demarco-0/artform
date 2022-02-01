@@ -1,4 +1,4 @@
-package it.artform.post;
+package it.artform.feed;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import it.artform.MainActivity;
 import it.artform.R;
+import it.artform.pojos.Post;
 
 public class PostArrayAdapter extends ArrayAdapter<Post> {
     private Context ctx = null;
@@ -53,7 +53,7 @@ public class PostArrayAdapter extends ArrayAdapter<Post> {
         vh.likeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ctx, "You liked the post from " + vh.userTextView.getText(), Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, "You liked the post from " + vh.userTextView.getText(), Toast.LENGTH_SHORT).show();
             }
         });
         return convertView;
