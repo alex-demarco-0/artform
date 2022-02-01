@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.Date;
+
 import it.artform.pojos.Post;
 import it.artform.feed.PostArrayAdapter;
 
@@ -46,13 +48,16 @@ public class MainActivity extends Activity {
             }
         });
 
-        // custom ListView feed post
+        // TEST - custom ListView feed post
+        //ArrayAdapter
         ListView feedListView = findViewById(R.id.feedListView);
         Post[] testPosts = new Post[20];
         for(int i=0; i<testPosts.length; i++)
-            testPosts[i] = new Post(null, "User " + (i+1), "#Tags of post " + (i+1));
+            testPosts[i] = new Post("@mipmap/ic_launcher_foreground", "User " + (i+1), "Title #" + (i+1), "Topic", "#Tags of post " + (i+1), new Date(), 0, true);
         PostArrayAdapter paa = new PostArrayAdapter(this, R.layout.row_main, testPosts);
         feedListView.setAdapter(paa);
+        //CursorAdapter
+
     }
 /*
     public void pubblica(View view) {
