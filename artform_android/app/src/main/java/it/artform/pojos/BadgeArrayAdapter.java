@@ -14,7 +14,7 @@ public class BadgeArrayAdapter extends ArrayAdapter<Badge> {
     int res=0;
     public ArrayAdapter<Badge> badges;
 
-    public BadgeArrayAdapter(@NonNull Context context, int resource, @NonNull List<Badge> objects) {
+    public BadgeArrayAdapter(@NonNull Context context, int resource, @NonNull Badge[] objects) {
         super(context, resource, objects);
         this.context=context;
         res=resource;
