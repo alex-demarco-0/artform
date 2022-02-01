@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserProfileActivity">
+    tools:context=".ExternalProfileActivity">
 
     <ImageView
-        android:id="@+id/userProfileImageView"
+        android:id="@+id/externalProfileImageView"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -19,7 +19,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/usernameUserProfile"
+        android:id="@+id/usernameExternalProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -29,7 +29,7 @@
         android:text="Username" />
 
     <TextView
-        android:id="@+id/tagsUserProfile"
+        android:id="@+id/tagsExternalProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -40,7 +40,7 @@
         android:text="Bio/Tags" />
 
     <Button
-        android:id="@+id/badgeButtonUserProfile"
+        android:id="@+id/badgeButtonExternalProfile"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentEnd="true"
@@ -50,13 +50,23 @@
         android:hint="Badge" />
 
     <Button
-        android:id="@+id/settingsUserProfile"
+        android:id="@+id/nofifyMeExternalProfile"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="26dp"
         android:layout_marginBottom="658dp"
-        android:hint="Settings" />
+        android:hint="Notifica" />
+
+    <Button
+        android:id="@+id/contactmeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="321dp"
+        android:hint="Contact me" />
 
 </RelativeLayout>

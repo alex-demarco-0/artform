@@ -17,9 +17,8 @@ public class UserProfileActivity extends Activity {
     ImageView userProfilePic;
     TextView usernameUserProfile;
     TextView tagsUserProfile;
-    Button contactMe;
     Button settings;
-    Button badge;
+    Button badgeUserProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,22 +28,13 @@ public class UserProfileActivity extends Activity {
         userProfilePic=findViewById(R.id.userProfileImageView);
         usernameUserProfile=findViewById(R.id.usernameUserProfile);
         tagsUserProfile=findViewById(R.id.tagsUserProfile);
-        contactMe=findViewById(R.id.contactmeButton);
         settings=findViewById(R.id.settingsUserProfile);
-        badge=findViewById(R.id.badgeButtonUserProfile);
+        badgeUserProfile=findViewById(R.id.badgeButtonUserProfile);
 
-        badge.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-
-        //gestione evento settings button
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(UserProfileActivity.this, SettingsActivity.class);
-                startActivity(intent);
             }
         });
     }
