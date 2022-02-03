@@ -29,11 +29,14 @@ public class PostCursorAdapter extends CursorAdapter {
     public void bindView(View view, Context context, Cursor cursor) {
         ImageView postImageView = (ImageView) view.findViewById(R.id.postImageView) ;
         TextView userTextView = (TextView) view.findViewById(R.id.userTextView);
+        TextView titleTextView = (TextView) view.findViewById(R.id.titleTextView);
         TextView tagsTextView = (TextView) view.findViewById(R.id.tagsTextView);
         TextView likeTextView = (TextView) view.findViewById(R.id.likeTextView);
         postImageView.setImageResource(R.mipmap.ic_launcher_foreground);
         int userCol = cursor.getColumnIndex(PostsDBAdapter.KEY_USER);
         userTextView.setText(cursor.getString(userCol));
+        int titleCol = cursor.getColumnIndex(PostsDBAdapter.KEY_TITLE);
+        titleTextView.setText(cursor.getString(titleCol));
         int tagsCol = cursor.getColumnIndex(PostsDBAdapter.KEY_TAGS);
         tagsTextView.setText(cursor.getString(tagsCol));
         likeTextView.setOnClickListener(new View.OnClickListener() {

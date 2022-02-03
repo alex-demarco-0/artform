@@ -22,6 +22,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             PostsDBAdapter.DATABASE_TABLE +
             " (_id integer PRIMARY KEY AUTOINCREMENT, " +
             PostsDBAdapter.KEY_USER + " varchar(50) NOT NULL, " +
+            PostsDBAdapter.KEY_TITLE + " varchar(50) NOT NULL, " +
             PostsDBAdapter.KEY_TOPIC + " varchar(50) NOT NULL, " +
             PostsDBAdapter.KEY_TAGS + " varchar(100) NOT NULL, " +
             PostsDBAdapter.KEY_PUBLICATION_DATE + " timestamp NOT NULL, " +

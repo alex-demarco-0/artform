@@ -55,13 +55,13 @@ public class MainActivity extends Activity {
         // TEST - custom ListView feed post
         //ArrayAdapter
         ListView feedListView = findViewById(R.id.feedListView);
-
+        /*
         Post[] testPosts = new Post[20];
         for(int i=0; i<testPosts.length; i++)
             testPosts[i] = new Post("@mipmap/ic_launcher_foreground", "User " + (i+1), "Title #" + (i+1), "Topic", "#Tags of post " + (i+1), new Date(), 0, true);
         PostArrayAdapter paa = new PostArrayAdapter(this, R.layout.row_main, testPosts);
         feedListView.setAdapter(paa);
-        /*
+        */
         //CursorAdapter
         pdba = new PostsDBAdapter(this);
         try {
@@ -74,13 +74,13 @@ public class MainActivity extends Activity {
         Cursor allPosts = pdba.fetchAllPosts();
         PostCursorAdapter pca = new PostCursorAdapter(this, allPosts, 1);
         feedListView.setAdapter(pca);
-        */
+
     }
-/*
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
         pdba.close();
     }
-*/
+
 }
