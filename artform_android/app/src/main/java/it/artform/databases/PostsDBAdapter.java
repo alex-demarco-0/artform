@@ -28,8 +28,11 @@ public class PostsDBAdapter {
     }
 
     public PostsDBAdapter open() throws SQLException {
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: open");
         dbHelper = new ArtformDBHelper(context);
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: helper created");
         database = dbHelper.getWritableDatabase();
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: got db rw");
         return this;
     }
 
@@ -39,11 +42,11 @@ public class PostsDBAdapter {
 
     private ContentValues createContentValues(String user, String title, String topic, String tags, Date publicationDate, int like, boolean type) {
         ContentValues values = new ContentValues();
-        values.put( KEY_USER, user);
-        values.put( KEY_TITLE, title);
+        values.put( KEY_USER, user );
+        values.put( KEY_TITLE, title );
         values.put( KEY_TOPIC, topic );
         values.put( KEY_TAGS, tags );
-        values.put( KEY_PUBLICATION_DATE, String.valueOf(publicationDate));
+        values.put( KEY_PUBLICATION_DATE, String.valueOf(publicationDate) );
         values.put( KEY_LIKE, user );
         values.put( KEY_TYPE, type );
         return values;
@@ -54,13 +57,13 @@ public class PostsDBAdapter {
         return database.insertOrThrow(DATABASE_TABLE, null, postValues);
     }
     /*
-        public boolean updatePost(long postID, String user, String title, String topic, String tags, Date publicationDate, int like, boolean type) {
-            ContentValues updateValues = createContentValues(user, title, topic, tags, publicationDate, like, type);
-            return database.update(DATABASE_TABLE, updateValues, KEY_POSTID + "=" + notificationID, null) > 0;
-        }
+    public boolean updatePost(long postID, String user, String title, String topic, String tags, Date publicationDate, int like, boolean type) {
+        ContentValues updateValues = createContentValues(user, title, topic, tags, publicationDate, like, type);
+        return database.update(DATABASE_TABLE, updateValues, KEY_POSTID + "=" + notificationID, null) > 0;
+    }
     */
     public boolean deletePost(long postID) {
-        return database.delete(DATABASE_TABLE, KEY_POSTID + "=" + postID, null) > 0;
+        return database.delete(DATABASE_TABLE, KEY_POSTID + " = " + postID, null) > 0;
     }
 
     public Cursor fetchAllPosts() {
@@ -71,5 +74,9 @@ public class PostsDBAdapter {
         Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_POSTID, KEY_USER, KEY_TITLE, KEY_TOPIC, KEY_TAGS, KEY_PUBLICATION_DATE, KEY_LIKE, KEY_TYPE },
                 KEY_USER + " = " + user, null, null, null, null, null);
         return mCursor;
+    }
+
+    public void giveLike(long postID, int value) {
+        database.rawQuery("UPDATE " + DATABASE_TABLE + " SET " + KEY_LIKE + " = '" + (value + 1) + "' WHERE " + KEY_POSTID + " = " + postID, null);
     }
 }

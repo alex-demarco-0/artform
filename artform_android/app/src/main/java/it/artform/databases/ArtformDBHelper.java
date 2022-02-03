@@ -26,8 +26,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             PostsDBAdapter.KEY_TAGS + " varchar(100) NOT NULL, " +
             PostsDBAdapter.KEY_PUBLICATION_DATE + " timestamp NOT NULL, " +
             PostsDBAdapter.KEY_LIKE + " integer NOT NULL DEFAULT '0', " +
-            PostsDBAdapter.KEY_TYPE + " boolean NOT NULL, " +
-            "); ";
+            PostsDBAdapter.KEY_TYPE + " boolean NOT NULL); ";
     private static final String CREATE_NOTIFICATIONS = "CREATE TABLE IF NOT EXISTS " +
             NotificationsDBAdapter.DATABASE_TABLE +
             " (_id integer PRIMARY KEY AUTOINCREMENT, " +
@@ -35,18 +34,22 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             NotificationsDBAdapter.KEY_CATEGORY + " tinyint NOT NULL, " +
             NotificationsDBAdapter.KEY_DESCRIPTION + " varchar(150) NOT NULL, " +
             NotificationsDBAdapter.KEY_LINK + " varchar(1500) DEFAULT NULL," +
-            NotificationsDBAdapter.KEY_USERID + " integer NOT NULL, " +
-            ");";
+            NotificationsDBAdapter.KEY_USERID + " integer NOT NULL);";
 
     private static final String DATABASE_CREATE = CREATE_USERS + CREATE_POSTS + CREATE_NOTIFICATIONS;
 
     public ArtformDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Helper: constructor");
     }
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-        database.execSQL(DATABASE_CREATE);
+        //database.execSQL(DATABASE_CREATE);
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Helper: onCreate");
+        database.execSQL(CREATE_USERS);
+        database.execSQL(CREATE_POSTS);
+        database.execSQL(CREATE_NOTIFICATIONS);
     }
 
     @Override

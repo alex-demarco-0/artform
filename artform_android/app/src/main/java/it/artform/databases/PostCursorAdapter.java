@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import it.artform.R;
 
@@ -35,5 +36,11 @@ public class PostCursorAdapter extends CursorAdapter {
         userTextView.setText(cursor.getString(userCol));
         int tagsCol = cursor.getColumnIndex(PostsDBAdapter.KEY_TAGS);
         tagsTextView.setText(cursor.getString(tagsCol));
+        likeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "You liked the post from " + cursor.getString(userCol), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
