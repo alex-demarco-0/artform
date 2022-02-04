@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
             throwables.printStackTrace();
         }
         for(int i=0; i<10; i++)
-            pdba.createPost("User " + (i+1), "Title #" + (i+1), "Topic", "#Tags of post " + (i+1), new Date(), 0, true);
+            pdba.createPost((i+1), "Title #" + (i+1), "Topic", "#Tags of post " + (i+1), new Date(), 0, true);
         Cursor allPosts = pdba.fetchAllPosts();
         PostCursorAdapter pca = new PostCursorAdapter(this, allPosts, 1);
         feedListView.setAdapter(pca);

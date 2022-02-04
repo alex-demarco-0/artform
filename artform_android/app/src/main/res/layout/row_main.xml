@@ -13,11 +13,11 @@
         android:id="@+id/userTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/postImageView"
         android:layout_alignParentStart="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:layout_below="@+id/postImageView"
-        android:text="usernameeeee"/>
+        android:text="User #" />
 
     <TextView
         android:id="@+id/titleTextView"
@@ -28,7 +28,7 @@
         android:layout_alignParentEnd="false"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:text="titleeeee" />
+        android:text="title" />
 
     <TextView
         android:id="@+id/tagsTextView"

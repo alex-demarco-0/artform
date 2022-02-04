@@ -34,7 +34,7 @@ public class PostCursorAdapter extends CursorAdapter {
         TextView likeTextView = (TextView) view.findViewById(R.id.likeTextView);
         postImageView.setImageResource(R.mipmap.ic_launcher_foreground);
         int userCol = cursor.getColumnIndex(PostDBAdapter.KEY_USER);
-        userTextView.setText(cursor.getString(userCol));
+        userTextView.append(cursor.getString(userCol));
         int titleCol = cursor.getColumnIndex(PostDBAdapter.KEY_TITLE);
         titleTextView.setText(cursor.getString(titleCol));
         int tagsCol = cursor.getColumnIndex(PostDBAdapter.KEY_TAGS);

@@ -12,7 +12,7 @@ public class UserDBAdapter {
     private SQLiteDatabase database;
     private ArtformDBHelper dbHelper;
 
-    protected static final String DATABASE_TABLE = "users";
+    protected static final String DATABASE_TABLE = "user";
     protected static final String KEY_USERID = "_id"; //PK autoincrement
     protected static final String KEY_NAME = "name";
     protected static final String KEY_SURNAME = "surname";
@@ -39,12 +39,12 @@ public class UserDBAdapter {
     private ContentValues createContentValues(String name, String surname, String username, String email, String phone, String password, int points) {
         ContentValues values = new ContentValues();
         values.put( KEY_NAME, name );
-        values.put( KEY_SURNAME, name );
-        values.put( KEY_USERNAME, name );
-        values.put( KEY_EMAIL, name );
-        values.put( KEY_PHONE, name );
-        values.put( KEY_PASSWORD, name );
-        values.put( KEY_POINTS, name );
+        values.put( KEY_SURNAME, surname );
+        values.put( KEY_USERNAME, username );
+        values.put( KEY_EMAIL, email );
+        values.put( KEY_PHONE, phone );
+        values.put( KEY_PASSWORD, password );
+        values.put( KEY_POINTS, points );
         return values;
     }
 
@@ -70,6 +70,10 @@ public class UserDBAdapter {
         Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_USERID, KEY_NAME, KEY_SURNAME, KEY_USERNAME, KEY_EMAIL, KEY_PHONE, KEY_PASSWORD, KEY_POINTS },
                 KEY_USERNAME + " like '%"+ filter + "%'", null, null, null, null, null);
         return mCursor;
+    }
+
+    public void givePoints(long userID, int current, int points) {
+        database.rawQuery("UPDATE " + DATABASE_TABLE + " SET " + KEY_POINTS + " = '" + (current + points) + "' WHERE " + KEY_USERID + " = " + userID, null);
     }
 
 }
