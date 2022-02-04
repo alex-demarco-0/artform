@@ -1,4 +1,12 @@
 package it.artform.database;
+/*
+ * 
+ * 
+ *   DEPRECATO
+ * 
+ * 
+ * 
+ */
 
 import java.sql.Connection;
 import java.sql.DriverManager;

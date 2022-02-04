@@ -1,4 +1,12 @@
 package it.artform.database;
+/*
+ * 
+ * 
+ *   DEPRECATO
+ * 
+ * 
+ * 
+ */
 
 import it.artform.pojos.*;
 
