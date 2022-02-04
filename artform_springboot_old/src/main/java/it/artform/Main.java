@@ -1,4 +1,4 @@
-package it.artform.pojos;
+package it.artform;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import it.artform.database.Dao;
 import it.artform.database.UtenteDao;
+import it.artform.pojos.Utente;
 
 public class Main {
 

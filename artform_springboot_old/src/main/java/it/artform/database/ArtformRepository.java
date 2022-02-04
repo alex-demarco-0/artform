@@ -18,6 +18,7 @@ public interface ArtformRepository {
 	int updatePost(Post p);
 	int deletePost();
 	//int saveUserPost(Utente u, Post p);
+	
 
 	Notifica findNotifica();
 	int saveNotifica(Notifica p);
