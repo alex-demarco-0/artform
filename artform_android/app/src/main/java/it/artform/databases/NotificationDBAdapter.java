@@ -5,11 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
 
-public class NotificationsDBAdapter {
+public class NotificationDBAdapter {
     private Context context;
     private SQLiteDatabase database;
     private ArtformDBHelper dbHelper;
@@ -22,11 +21,11 @@ public class NotificationsDBAdapter {
     protected static final String KEY_LINK = "link";
     protected static final String KEY_USERID = "userID";
 
-    public NotificationsDBAdapter(Context context) {
+    public NotificationDBAdapter(Context context) {
         this.context = context;
     }
 
-    public NotificationsDBAdapter open() throws SQLException {
+    public NotificationDBAdapter open() throws SQLException {
         dbHelper = new ArtformDBHelper(context);
         database = dbHelper.getWritableDatabase();
         return this;

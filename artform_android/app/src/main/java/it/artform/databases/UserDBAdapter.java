@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.SQLException;
 
-public class UsersDBAdapter {
+public class UserDBAdapter {
     private Context context;
     private SQLiteDatabase database;
     private ArtformDBHelper dbHelper;
@@ -22,11 +22,11 @@ public class UsersDBAdapter {
     protected static final String KEY_PASSWORD = "password";
     protected static final String KEY_POINTS = "points";
 
-    public UsersDBAdapter(Context context) {
+    public UserDBAdapter(Context context) {
         this.context = context;
     }
 
-    public UsersDBAdapter open() throws SQLException {
+    public UserDBAdapter open() throws SQLException {
         dbHelper = new ArtformDBHelper(context);
         database = dbHelper.getWritableDatabase();
         return this;

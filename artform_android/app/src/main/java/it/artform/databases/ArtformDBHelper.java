@@ -8,17 +8,17 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "artform.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String CREATE_USERS = "CREATE TABLE IF NOT EXISTS " +
-            UsersDBAdapter.DATABASE_TABLE +
+    private static final String CREATE_USER = "CREATE TABLE IF NOT EXISTS " +
+            UserDBAdapter.DATABASE_TABLE +
             " (_id integer PRIMARY KEY AUTOINCREMENT, " +
-            UsersDBAdapter.KEY_NAME + " varchar(50) NOT NULL, " +
-            UsersDBAdapter.KEY_SURNAME + " varchar(50) NOT NULL, " +
-            UsersDBAdapter.KEY_USERNAME + " varchar(50) NOT NULL, " +
-            UsersDBAdapter.KEY_EMAIL + " varchar(50) NOT NULL," +
-            UsersDBAdapter.KEY_PHONE + " varchar(10) DEFAULT NULL, " +
-            UsersDBAdapter.KEY_PASSWORD + " varchar(50) NOT NULL, " +
-            UsersDBAdapter.KEY_POINTS + " integer NOT NULL DEFAULT '0'); ";
-    private static final String CREATE_POSTS = "CREATE TABLE IF NOT EXISTS " +
+            UserDBAdapter.KEY_NAME + " varchar(50) NOT NULL, " +
+            UserDBAdapter.KEY_SURNAME + " varchar(50) NOT NULL, " +
+            UserDBAdapter.KEY_USERNAME + " varchar(50) NOT NULL, " +
+            UserDBAdapter.KEY_EMAIL + " varchar(50) NOT NULL," +
+            UserDBAdapter.KEY_PHONE + " varchar(10) DEFAULT NULL, " +
+            UserDBAdapter.KEY_PASSWORD + " varchar(50) NOT NULL, " +
+            UserDBAdapter.KEY_POINTS + " integer NOT NULL DEFAULT '0');";
+    private static final String CREATE_POST = "CREATE TABLE IF NOT EXISTS " +
             PostsDBAdapter.DATABASE_TABLE +
             " (_id integer PRIMARY KEY AUTOINCREMENT, " +
             PostsDBAdapter.KEY_USER + " varchar(50) NOT NULL, " +
@@ -27,37 +27,37 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             PostsDBAdapter.KEY_TAGS + " varchar(100) NOT NULL, " +
             PostsDBAdapter.KEY_PUBLICATION_DATE + " timestamp NOT NULL, " +
             PostsDBAdapter.KEY_LIKE + " integer NOT NULL DEFAULT '0', " +
-            PostsDBAdapter.KEY_TYPE + " boolean NOT NULL); ";
-    private static final String CREATE_NOTIFICATIONS = "CREATE TABLE IF NOT EXISTS " +
-            NotificationsDBAdapter.DATABASE_TABLE +
+            PostsDBAdapter.KEY_TYPE + " boolean NOT NULL);";
+    private static final String CREATE_NOTIFICATION = "CREATE TABLE IF NOT EXISTS " +
+            NotificationDBAdapter.DATABASE_TABLE +
             " (_id integer PRIMARY KEY AUTOINCREMENT, " +
-            NotificationsDBAdapter.KEY_DATE + " timestamp NOT NULL, " +
-            NotificationsDBAdapter.KEY_CATEGORY + " tinyint NOT NULL, " +
-            NotificationsDBAdapter.KEY_DESCRIPTION + " varchar(150) NOT NULL, " +
-            NotificationsDBAdapter.KEY_LINK + " varchar(1500) DEFAULT NULL," +
-            NotificationsDBAdapter.KEY_USERID + " integer NOT NULL);";
+            NotificationDBAdapter.KEY_DATE + " timestamp NOT NULL, " +
+            NotificationDBAdapter.KEY_CATEGORY + " tinyint NOT NULL, " +
+            NotificationDBAdapter.KEY_DESCRIPTION + " varchar(150) NOT NULL, " +
+            NotificationDBAdapter.KEY_LINK + " varchar(1500) DEFAULT NULL," +
+            NotificationDBAdapter.KEY_USERID + " integer NOT NULL);";
 
-    private static final String DATABASE_CREATE = CREATE_USERS + CREATE_POSTS + CREATE_NOTIFICATIONS;
+    //private static final String DATABASE_CREATE = CREATE_USER + CREATE_POST + CREATE_NOTIFICATION;
 
     public ArtformDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Helper: constructor");
+        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Helper: constructor");
     }
 
     @Override
     public void onCreate(SQLiteDatabase database) {
         //database.execSQL(DATABASE_CREATE);
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Helper: onCreate");
-        database.execSQL(CREATE_USERS);
-        database.execSQL(CREATE_POSTS);
-        database.execSQL(CREATE_NOTIFICATIONS);
+        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Helper: onCreate");
+        database.execSQL(CREATE_USER);
+        database.execSQL(CREATE_POST);
+        database.execSQL(CREATE_NOTIFICATION);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
-        database.execSQL("DROP TABLE IF EXISTS " + UsersDBAdapter.DATABASE_TABLE + ";");
+        database.execSQL("DROP TABLE IF EXISTS " + UserDBAdapter.DATABASE_TABLE + ";");
         database.execSQL("DROP TABLE IF EXISTS " + PostsDBAdapter.DATABASE_TABLE + ";");
-        database.execSQL("DROP TABLE IF EXISTS " + NotificationsDBAdapter.DATABASE_TABLE + ";");
+        database.execSQL("DROP TABLE IF EXISTS " + NotificationDBAdapter.DATABASE_TABLE + ";");
         onCreate(database);
     }
 }

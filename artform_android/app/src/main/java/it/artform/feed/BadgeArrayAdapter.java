@@ -1,13 +1,11 @@
-package it.artform.pojos;
+package it.artform.feed;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 
-import java.util.List;
-
-import it.artform.Badge;
+import it.artform.pojos.Badge;
 
 public class BadgeArrayAdapter extends ArrayAdapter<Badge> {
     Context context;

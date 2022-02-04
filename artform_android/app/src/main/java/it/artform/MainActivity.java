@@ -13,12 +13,12 @@ import java.sql.SQLException;
 import java.util.Date;
 
 import it.artform.databases.PostCursorAdapter;
-import it.artform.databases.PostsDBAdapter;
+import it.artform.databases.PostDBAdapter;
 import it.artform.pojos.Post;
 import it.artform.feed.PostArrayAdapter;
 
 public class MainActivity extends Activity {
-    PostsDBAdapter pdba = null;
+    PostDBAdapter pdba = null;
     Button settingsButton = null;
 
     @Override
@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        // TEST - custom ListView feed post
+        // TEST - custom ListView post feed
         //ArrayAdapter
         ListView feedListView = findViewById(R.id.feedListView);
         /*
@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
         feedListView.setAdapter(paa);
         */
         //CursorAdapter
-        pdba = new PostsDBAdapter(this);
+        pdba = new PostDBAdapter(this);
         try {
             pdba.open();
         } catch (SQLException throwables) {

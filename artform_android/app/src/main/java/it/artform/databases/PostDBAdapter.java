@@ -8,12 +8,12 @@ import android.database.sqlite.SQLiteDatabase;
 import java.sql.SQLException;
 import java.util.Date;
 
-public class PostsDBAdapter {
+public class PostDBAdapter {
     private Context context;
     private SQLiteDatabase database;
     private ArtformDBHelper dbHelper;
 
-    protected static final String DATABASE_TABLE = "posts";
+    protected static final String DATABASE_TABLE = "post";
     protected static final String KEY_POSTID = "_id"; //PK autoincrement
     protected static final String KEY_USER = "user";
     protected static final String KEY_TITLE = "title";
@@ -23,16 +23,16 @@ public class PostsDBAdapter {
     protected static final String KEY_LIKE = "like";
     protected static final String KEY_TYPE = "type";
 
-    public PostsDBAdapter(Context context) {
+    public PostDBAdapter(Context context) {
         this.context = context;
     }
 
-    public PostsDBAdapter open() throws SQLException {
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: open");
+    public PostDBAdapter open() throws SQLException {
+        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: open");
         dbHelper = new ArtformDBHelper(context);
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: helper created");
+        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: helper created");
         database = dbHelper.getWritableDatabase();
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: got db rw");
+        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: got db rw");
         return this;
     }
 

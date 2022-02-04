@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.pojos;
 
 public class Badge {
     public String nomeBadge;
