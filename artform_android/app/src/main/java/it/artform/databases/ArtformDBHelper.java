@@ -19,15 +19,15 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             UserDBAdapter.KEY_PASSWORD + " varchar(50) NOT NULL, " +
             UserDBAdapter.KEY_POINTS + " integer NOT NULL DEFAULT '0');";
     private static final String CREATE_POST = "CREATE TABLE IF NOT EXISTS " +
-            PostsDBAdapter.DATABASE_TABLE +
+            PostDBAdapter.DATABASE_TABLE +
             " (_id integer PRIMARY KEY AUTOINCREMENT, " +
-            PostsDBAdapter.KEY_USER + " varchar(50) NOT NULL, " +
-            PostsDBAdapter.KEY_TITLE + " varchar(50) NOT NULL, " +
-            PostsDBAdapter.KEY_TOPIC + " varchar(50) NOT NULL, " +
-            PostsDBAdapter.KEY_TAGS + " varchar(100) NOT NULL, " +
-            PostsDBAdapter.KEY_PUBLICATION_DATE + " timestamp NOT NULL, " +
-            PostsDBAdapter.KEY_LIKE + " integer NOT NULL DEFAULT '0', " +
-            PostsDBAdapter.KEY_TYPE + " boolean NOT NULL);";
+            PostDBAdapter.KEY_USER + " varchar(50) NOT NULL, " +
+            PostDBAdapter.KEY_TITLE + " varchar(50) NOT NULL, " +
+            PostDBAdapter.KEY_TOPIC + " varchar(50) NOT NULL, " +
+            PostDBAdapter.KEY_TAGS + " varchar(100) NOT NULL, " +
+            PostDBAdapter.KEY_PUBLICATION_DATE + " timestamp NOT NULL, " +
+            PostDBAdapter.KEY_LIKE + " integer NOT NULL DEFAULT '0', " +
+            PostDBAdapter.KEY_TYPE + " boolean NOT NULL);";
     private static final String CREATE_NOTIFICATION = "CREATE TABLE IF NOT EXISTS " +
             NotificationDBAdapter.DATABASE_TABLE +
             " (_id integer PRIMARY KEY AUTOINCREMENT, " +
@@ -56,7 +56,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
         database.execSQL("DROP TABLE IF EXISTS " + UserDBAdapter.DATABASE_TABLE + ";");
-        database.execSQL("DROP TABLE IF EXISTS " + PostsDBAdapter.DATABASE_TABLE + ";");
+        database.execSQL("DROP TABLE IF EXISTS " + PostDBAdapter.DATABASE_TABLE + ";");
         database.execSQL("DROP TABLE IF EXISTS " + NotificationDBAdapter.DATABASE_TABLE + ";");
         onCreate(database);
     }

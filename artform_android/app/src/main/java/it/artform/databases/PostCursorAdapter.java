@@ -33,11 +33,11 @@ public class PostCursorAdapter extends CursorAdapter {
         TextView tagsTextView = (TextView) view.findViewById(R.id.tagsTextView);
         TextView likeTextView = (TextView) view.findViewById(R.id.likeTextView);
         postImageView.setImageResource(R.mipmap.ic_launcher_foreground);
-        int userCol = cursor.getColumnIndex(PostsDBAdapter.KEY_USER);
+        int userCol = cursor.getColumnIndex(PostDBAdapter.KEY_USER);
         userTextView.setText(cursor.getString(userCol));
-        int titleCol = cursor.getColumnIndex(PostsDBAdapter.KEY_TITLE);
+        int titleCol = cursor.getColumnIndex(PostDBAdapter.KEY_TITLE);
         titleTextView.setText(cursor.getString(titleCol));
-        int tagsCol = cursor.getColumnIndex(PostsDBAdapter.KEY_TAGS);
+        int tagsCol = cursor.getColumnIndex(PostDBAdapter.KEY_TAGS);
         tagsTextView.setText(cursor.getString(tagsCol));
         likeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
