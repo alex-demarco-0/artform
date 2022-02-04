@@ -3,14 +3,14 @@ package it.artform.pojos;
 public class Utente {
 	
 	//private static int nextUtente = 1;
-	private final int ID;
+	private final int id;
 	private String nome, cognome, username, email, numeroTelefono, password;
 	private int punteggio;
 
 	// public Utente(int ID, String nome, String cognome, String username, String numeroTelefono, String password) {
 
-	public Utente(int ID, String nome, String cognome, String username, String email, String numeroTelefono, String password, int punteggio) {
-		this.ID = ID;
+	public Utente(int id, String nome, String cognome, String username, String email, String numeroTelefono, String password, int punteggio) {
+		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.username = username;
@@ -23,10 +23,6 @@ public class Utente {
 	public static int getNextUtente() {
 		return nextUtente;
 	}
-*/
-
-/*
-	funizonamento dei rami
 */
 	public String getNome() {
 		return nome;
@@ -89,12 +85,12 @@ public class Utente {
 	}
 
 	public int getID() {
-		return ID;
+		return id;
 	}
 
 	@Override
 	public String toString() {
-		return "Utente [ID=" + ID + ", nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", email="
+		return "Utente [ID=" + id + ", nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", email="
 				+ email + ", numeroTelefono=" + numeroTelefono + ", password=" + password + "]";
 	}
 

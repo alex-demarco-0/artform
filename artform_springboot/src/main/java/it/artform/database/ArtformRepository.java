@@ -10,27 +10,29 @@ import it.artform.pojos.Utente;
 
 public interface ArtformRepository {
 	
-	int saveUser(Utente u);
-	Utente findUser();
-	int updateUser();
-	int deleteUser();
+	Utente findUtenteById(long id);
+	Utente findUtenteByUsername(String username);
+	int saveUtente(Utente u);
+	int updateUtente(Utente u);
+	int deleteUtente(long id);
 	//int activateUserNotifications(Utente u1, Utente u2);
 	
-	int savePost(Post p);
 	Post findPost();
-	int updatePost();
+	int savePost(Post p);
+	int updatePost(Post p);
 	int deletePost();
 	//int saveUserPost(Utente u, Post p);
 	
-	int saveNotifica(Notifica p);
+
 	Notifica findNotifica();
+	int saveNotifica(Notifica p);
 	List<Notifica> findAllNotifiche();
 
-	int saveBadge(Badge b);
 	Badge findBadge();
+	int saveBadge(Badge b);
 	
-	int saveCommissione(Commissione c);
 	Commissione findCommissione();
+	int saveCommissione(Commissione c);
 	List<Commissione> findAllCommissioni(Utente u);
 	
 }

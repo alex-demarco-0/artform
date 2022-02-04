@@ -3,6 +3,7 @@ package it.artform.database;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -19,27 +20,30 @@ public class JdbcArtformRepository implements ArtformRepository {
 	JdbcTemplate jdbcTemplate;
 
 	@Override
-	public int saveUser(Utente u) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int saveUtente(Utente u) {
+		return jdbcTemplate.update("INSERT INTO utente (nome, cognome, username, email, numeroTelefono, password) VALUES (?, ?, ?, ?, ?, ?)",
+				new Object[] {u.getNome(), u.getCognome(), u.getUsername(), u.getEmail(), u.getNumeroTelefono(), u.getPassword()});
 	}
 
 	@Override
-	public Utente findUser() {
-		// TODO Auto-generated method stub
-		return null;
+	public Utente findUtenteById(long id) {
+		return jdbcTemplate.queryForObject("SELECT * from utente WHERE ID=?", BeanPropertyRowMapper.newInstance(Utente.class), id);
+	}
+	
+	@Override
+	public Utente findUtenteByUsername(String username) {
+		return jdbcTemplate.queryForObject("SELECT * from utente WHERE username=?", BeanPropertyRowMapper.newInstance(Utente.class), username);
 	}
 
 	@Override
-	public int updateUser() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int updateUtente(Utente u) {
+		return jdbcTemplate.update("UPDATE utente SET nome=?, cognome=?, username=?, email=?, numeroTelefono=?, password=?, punteggio=? WHERE ID=?",
+				new Object[] {u.getNome(), u.getCognome(), u.getUsername(), u.getEmail(), u.getNumeroTelefono(), u.getPassword(), u.getPunteggio(), u.getID()});
 	}
 
 	@Override
-	public int deleteUser() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteUtente(long id) {
+		return jdbcTemplate.update("DELETE FROM utente WHERE ID=?", id);
 	}
 
 	@Override
@@ -55,7 +59,7 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
-	public int updatePost() {
+	public int updatePost(Post p) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
