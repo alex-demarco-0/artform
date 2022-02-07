@@ -28,11 +28,8 @@ public class PostDBAdapter {
     }
 
     public PostDBAdapter open() throws SQLException {
-        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: open");
         dbHelper = new ArtformDBHelper(context);
-        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: helper created");
         database = dbHelper.getWritableDatabase();
-        //System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA Adapter: got db rw");
         return this;
     }
 
@@ -62,21 +59,21 @@ public class PostDBAdapter {
         return database.update(DATABASE_TABLE, updateValues, KEY_POSTID + "=" + notificationID, null) > 0;
     }
     */
-    public boolean deletePost(long postID) {
-        return database.delete(DATABASE_TABLE, KEY_POSTID + " = " + postID, null) > 0;
+    public boolean deletePost(long postId) {
+        return database.delete(DATABASE_TABLE, KEY_POSTID + " = " + postId, null) > 0;
     }
 
     public Cursor fetchAllPosts() {
         return database.query(DATABASE_TABLE, new String[] { KEY_POSTID, KEY_USER, KEY_TITLE, KEY_TOPIC, KEY_TAGS, KEY_PUBLICATION_DATE, KEY_LIKE, KEY_TYPE }, null, null, null, null, null);
     }
 
-    public Cursor fetchPostsByUser(String userId) {
+    public Cursor fetchUserPosts(long userId) {
         Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_POSTID, KEY_USER, KEY_TITLE, KEY_TOPIC, KEY_TAGS, KEY_PUBLICATION_DATE, KEY_LIKE, KEY_TYPE },
                 KEY_USER + " = " + userId, null, null, null, null, null);
         return mCursor;
     }
 
-    public void giveLike(long postID, int current) {
-        database.rawQuery("UPDATE " + DATABASE_TABLE + " SET " + KEY_LIKE + " = '" + (current + 1) + "' WHERE " + KEY_POSTID + " = " + postID, null);
+    public void giveLike(long postId, int current) {
+        database.rawQuery("UPDATE " + DATABASE_TABLE + " SET " + KEY_LIKE + " = '" + (current + 1) + "' WHERE " + KEY_POSTID + " = " + postId, null);
     }
 }

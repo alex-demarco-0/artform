@@ -59,13 +59,15 @@ public class NotificationDBAdapter {
         return database.delete(DATABASE_TABLE, KEY_USER + "=" + userId, null) > 0;
     }
 
-    public Cursor fetchAllNotifications() {
-        return database.query(DATABASE_TABLE, new String[] { KEY_NOTIFICATIONID, KEY_DATE, KEY_CATEGORY, KEY_DESCRIPTION, KEY_LINK, KEY_USER }, null, null, null, null, null);
+    public Cursor fetchUserNotifications(long userId) {
+        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_NOTIFICATIONID, KEY_DATE, KEY_CATEGORY, KEY_DESCRIPTION, KEY_LINK, KEY_USER },
+                KEY_USER + " = " + userId, null, null, null, null, null);
+        return mCursor;
     }
 
-    public Cursor fetchNotificationsByCategory(String category) {
+    public Cursor fetchNotificationsByCategoryFilter(long userId, String category) {
         Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_NOTIFICATIONID, KEY_DATE, KEY_CATEGORY, KEY_DESCRIPTION, KEY_LINK, KEY_USER },
-                KEY_CATEGORY + " = " + category, null, null, null, null, null);
+                KEY_USER + " = " + userId + " AND " + KEY_CATEGORY + " = " + category, null, null, null, null, null);
         return mCursor;
     }
 

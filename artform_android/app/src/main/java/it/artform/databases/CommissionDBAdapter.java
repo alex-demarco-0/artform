@@ -47,7 +47,7 @@ public class CommissionDBAdapter {
         return values;
     }
 
-    public long createCommission(String title, double price, Date date, int artistId, int customerId, String accountAddress) {
+    public long storeCommission(String title, double price, Date date, int artistId, int customerId, String accountAddress) {
         ContentValues commissionValues = createContentValues(title, price, date, artistId, customerId, accountAddress);
         return database.insertOrThrow(DATABASE_TABLE, null, commissionValues);
     }
