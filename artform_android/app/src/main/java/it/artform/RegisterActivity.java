@@ -14,6 +14,12 @@ import java.util.regex.Pattern;
 
 import it.artform.databases.UserDBAdapter;
 import it.artform.pojos.User;
+import it.artform.web.ArtformApiEndpointInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterActivity extends Activity {
     EditText nomeEditText = null;
@@ -63,18 +69,30 @@ public class RegisterActivity extends Activity {
                     return;
                 }
 
-                // TEST - passaggio parametri alla MainActivity (una volta superato il controllo dei campi)
-                Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
-                registraIntent.putExtra("nome", "nome: " + nomeEditText.getText());
-                registraIntent.putExtra("cognome", "cognome: " + cognomeEditText.getText());
-                registraIntent.putExtra("email", "email: " + emailEditText.getText());
-                registraIntent.putExtra("username", "username: " + usernameEditText.getText());
-                if(!telefonoEditText.getText().toString().equals(""))
-                    registraIntent.putExtra("telefono", "telefono: "+ telefonoEditText.getText());
-                registraIntent.putExtra("password", "password: " + passwordEditText.getText());
-                startActivity(registraIntent);
+                //post sul db server
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("http://10.0.2.2:8080/artform")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+                ArtformApiEndpointInterface apiService = retrofit.create(ArtformApiEndpointInterface.class);
+                Call<User> postUserCall = apiService.addUser(new User(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
+                        String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0));
+                postUserCall.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        int statusCode = response.code();
+                        if(statusCode == 200)
+                            Toast.makeText(RegisterActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show();
+                        //User newUser = response.body();
+                    }
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione", Toast.LENGTH_LONG).show();
+                    }
+                });
 
                 //creazione oggetto utente (attenzione a telefono nullo e punteggio)
+                //prendere da risposta server
                 /*User newUser = new User(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
                         String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);*/
                 //post sul db locale
@@ -87,8 +105,18 @@ public class RegisterActivity extends Activity {
                 udba.createUser(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
                         String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);
                 udba.close();
-                //post sul db server
 
+                // TEST - passaggio parametri alla MainActivity (una volta superato il controllo dei campi)
+                Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                registraIntent.putExtra("nome", "nome: " + nomeEditText.getText());
+                registraIntent.putExtra("cognome", "cognome: " + cognomeEditText.getText());
+                registraIntent.putExtra("email", "email: " + emailEditText.getText());
+                registraIntent.putExtra("username", "username: " + usernameEditText.getText());
+                if(!telefonoEditText.getText().toString().equals(""))
+                    registraIntent.putExtra("telefono", "telefono: "+ telefonoEditText.getText());
+                registraIntent.putExtra("password", "password: " + passwordEditText.getText());
+                startActivity(registraIntent);
+                // TEST
             }
         });
 
