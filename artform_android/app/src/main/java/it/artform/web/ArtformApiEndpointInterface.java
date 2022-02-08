@@ -12,16 +12,16 @@ import retrofit2.http.Path;
 public interface ArtformApiEndpointInterface {
     //current address: http://10.0.2.2:8080/artform
 
-    @GET("/utente/{username}")
+    @GET("/artform/utente/{username}")
     Call<User> getUserByUsername(@Path("username") String username);
 
-    @POST("/utente")
+    @POST("/artform/utente")
     Call<User> addUser(@Body User user);
 
-    @PUT("/utente/{username}")
+    @PUT("/artform/utente/{username}")
     Call<User> updateUser(@Path("username") String username, @Body User user);
 
-    @DELETE("/utente/{username}")
+    @DELETE("/artform/utente/{username}")
     String deleteUser(@Path("username") String username);
 
 }
