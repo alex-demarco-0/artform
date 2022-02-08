@@ -21,7 +21,7 @@ public class ArtformRESTController {
 	@Autowired
 	ArtformRepository artformRepository;
 	
-	// Utente by id
+	/*
 	@RequestMapping(value="/artform/utente/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Utente> getUtenteById(@PathVariable int id) {
 		Utente u = this.artformRepository.findUtenteById(id);
@@ -31,7 +31,7 @@ public class ArtformRESTController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}	
 	}
-	
+	*/
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.GET)
 	public ResponseEntity<Utente> getUtenteByUsername(@PathVariable String username) {
 		Utente u = this.artformRepository.findUtenteByUsername(username);
@@ -46,7 +46,7 @@ public class ArtformRESTController {
 			return new ResponseEntity<String>("OK", HttpStatus.CREATED);
 		return new ResponseEntity<String>("KO", HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
+	/*
 	@RequestMapping(value="/artform/utente/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Utente> updateUtente(@PathVariable int id, @RequestBody Utente modUtente) {
 		Utente u = this.artformRepository.findUtenteById(id);
@@ -71,7 +71,7 @@ public class ArtformRESTController {
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+	*/
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.PUT)
 	public ResponseEntity<Utente> updateUtente(@PathVariable String username, @RequestBody Utente modUtente) {
 		Utente u = this.artformRepository.findUtenteByUsername(username);
@@ -96,14 +96,14 @@ public class ArtformRESTController {
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+	/*
 	@RequestMapping(value="/artform/utente/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<String> deleteUtente(@PathVariable int id) {
 		if(this.artformRepository.deleteUtente(id) == 1)
 			return new ResponseEntity<String>("OK", HttpStatus.OK);
 		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
 	}
-	
+	*/
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.DELETE)
 	public ResponseEntity<String> deleteUtente(@PathVariable String username) {
 		if(this.artformRepository.deleteUtente(username) == 1)

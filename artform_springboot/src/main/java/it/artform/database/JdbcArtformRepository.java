@@ -36,12 +36,12 @@ public class JdbcArtformRepository implements ArtformRepository {
 		return jdbcTemplate.update("UPDATE utente SET nome=?, cognome=?, username=?, email=?, numeroTelefono=?, password=?, punteggio=? WHERE ID=?",
 				new Object[] {u.getNome(), u.getCognome(), u.getUsername(), u.getEmail(), u.getNumeroTelefono(), u.getPassword(), u.getPunteggio(), u.getID()});
 	}
-
+/*
 	@Override
 	public int deleteUtente(long id) {
 		return jdbcTemplate.update("DELETE FROM utente WHERE ID=?", id);
 	}
-	
+*/
 	@Override
 	public int deleteUtente(String username) {
 		return jdbcTemplate.update("DELETE FROM utente WHERE username=?", username);
