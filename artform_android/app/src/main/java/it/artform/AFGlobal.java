@@ -1,4 +1,4 @@
-package it.artform.web;
+package it.artform;
 
 import android.app.Application;
 
