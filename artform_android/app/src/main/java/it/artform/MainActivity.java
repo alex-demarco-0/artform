@@ -8,14 +8,21 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.sql.SQLException;
 import java.util.Date;
 
 import it.artform.databases.PostCursorAdapter;
 import it.artform.databases.PostDBAdapter;
+import it.artform.databases.UserDBAdapter;
 import it.artform.pojos.Post;
 import it.artform.feed.PostArrayAdapter;
+import it.artform.pojos.User;
+import it.artform.web.ArtformApiEndpointInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends Activity {
     PostDBAdapter pdba = null;
@@ -42,6 +49,28 @@ public class MainActivity extends Activity {
             datiRegistrazioneListView.setAdapter(aa);
         }
 
+        // TEST - pulsante home
+        Button homeButton = findViewById(R.id.homeButton);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AFGlobal app = (AFGlobal) getApplication();
+                ArtformApiEndpointInterface apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
+                Call<User> getUserCall = apiService.getUserByUsername("arianna");
+                getUserCall.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if(response.isSuccessful())
+                            Toast.makeText(MainActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Toast.makeText(MainActivity.this, "Si è verificato un problema durante la registrazione", Toast.LENGTH_LONG).show();
+                    }
+                });
+            }
+        });
+
         // TEST - pulsante settings
         settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +93,7 @@ public class MainActivity extends Activity {
         */
         //CursorAdapter
         // TEST
-
+/*
         pdba = new PostDBAdapter(this);
         try {
             pdba.open();
@@ -74,11 +103,11 @@ public class MainActivity extends Activity {
         /*
         for(int i=0; i<10; i++)
             pdba.createPost((i+1), "Title #" + (i+1), "Topic", "#Tags of post " + (i+1), new Date(), 0, true);
-        */
+
         Cursor allPosts = pdba.fetchAllPosts();
         PostCursorAdapter pca = new PostCursorAdapter(this, allPosts, 1);
         feedListView.setAdapter(pca);
-
+*/
     }
 
     @Override

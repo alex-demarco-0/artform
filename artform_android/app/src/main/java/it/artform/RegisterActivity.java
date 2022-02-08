@@ -78,30 +78,31 @@ public class RegisterActivity extends Activity {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         int statusCode = response.code();
-                        if(statusCode == 200)
+                        //if(statusCode == 200) {
+                        if(response.isSuccessful()) {
                             Toast.makeText(RegisterActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show();
-                        //User newUser = response.body();
+                            //User newUser = response.body();
+                            //creazione oggetto utente (attenzione a telefono nullo e punteggio)
+                            //prendere da risposta server
+                             /*User newUser = new User(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
+                                        String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);*/
+                            //post sul db locale
+                            UserDBAdapter udba = new UserDBAdapter(RegisterActivity.this);
+                            try {
+                                udba.open();
+                            } catch (SQLException throwables) {
+                                throwables.printStackTrace();
+                            }
+                            udba.createUser(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
+                                    String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);
+                            udba.close();
+                        }
                     }
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
                         Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione", Toast.LENGTH_LONG).show();
                     }
                 });
-
-                //creazione oggetto utente (attenzione a telefono nullo e punteggio)
-                //prendere da risposta server
-                /*User newUser = new User(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
-                        String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);*/
-                //post sul db locale
-                UserDBAdapter udba = new UserDBAdapter(RegisterActivity.this);
-                try {
-                    udba.open();
-                } catch (SQLException throwables) {
-                    throwables.printStackTrace();
-                }
-                udba.createUser(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
-                        String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);
-                udba.close();
 
                 // TEST - passaggio parametri alla MainActivity (una volta superato il controllo dei campi)
                 Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
