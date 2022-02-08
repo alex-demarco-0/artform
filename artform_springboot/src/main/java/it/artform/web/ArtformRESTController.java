@@ -36,7 +36,7 @@ public class ArtformRESTController {
 	}
 	
 	@RequestMapping(value="/artform/utente", method=RequestMethod.POST)
-	public ResponseEntity<String> addPlayer(@RequestBody Utente newUtente) {
+	public ResponseEntity<String> addUtente(@RequestBody Utente newUtente) {
 		if(this.artformRepository.saveUtente(newUtente) == 1)
 			return new ResponseEntity<String>("OK", HttpStatus.CREATED);
 		return new ResponseEntity<String>("KO", HttpStatus.INTERNAL_SERVER_ERROR);
