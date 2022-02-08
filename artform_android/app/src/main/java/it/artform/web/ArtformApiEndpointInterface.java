@@ -3,6 +3,7 @@ package it.artform.web;
 import it.artform.pojos.User;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -19,7 +20,7 @@ public interface ArtformApiEndpointInterface {
     @PUT("http://localhost:8080/artform/utente/{username}")
     Call<User> updateUser(@Path("username") String username, @Body User user);
 
-    @PUT("http://localhost:8080/artform/utente/{username}")
+    @DELETE("http://localhost:8080/artform/utente/{username}")
     String deleteUser(@Path("username") String username);
 
 }
