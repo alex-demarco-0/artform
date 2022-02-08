@@ -49,7 +49,8 @@ public class MainActivity extends Activity {
             datiRegistrazioneListView.setAdapter(aa);
         }
 
-        // TEST - pulsante home
+        // TEST ADM- pulsante home
+        /*
         Button homeButton = findViewById(R.id.homeButton);
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +71,8 @@ public class MainActivity extends Activity {
                 });
             }
         });
-
+*/
+        // TEST MS - pulsante home
         // TEST - pulsante settings
         settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {
