@@ -5,8 +5,10 @@ import java.util.List;
 import it.artform.pojos.*;
 
 public interface ArtformRepository {
-	
+	// recupera da DB in base a ID
 	Utente findUtenteById(long id);
+	
+	// recupera da DB in base a Username
 	Utente findUtenteByUsername(String username);
 	int saveUtente(Utente u);
 	int updateUtente(Utente u);
