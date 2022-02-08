@@ -41,6 +41,11 @@ public class JdbcArtformRepository implements ArtformRepository {
 	public int deleteUtente(long id) {
 		return jdbcTemplate.update("DELETE FROM utente WHERE ID=?", id);
 	}
+	
+	@Override
+	public int deleteUtente(String username) {
+		return jdbcTemplate.update("DELETE FROM utente WHERE username=?", username);
+	}
 
 	@Override
 	public int savePost(Post p) {

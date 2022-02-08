@@ -11,6 +11,7 @@ public interface ArtformRepository {
 	int saveUtente(Utente u);
 	int updateUtente(Utente u);
 	int deleteUtente(long id);
+	int deleteUtente(String username);
 	//int activateUserNotifications(Utente u1, Utente u2);
 	
 	Post findPost();
