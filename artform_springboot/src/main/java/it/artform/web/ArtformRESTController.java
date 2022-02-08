@@ -16,16 +16,18 @@ import it.artform.pojos.*;
 public class ArtformRESTController {
 	
 	@Autowired
-	ArtformRepository artformRepository = null;
-	
+	ArtformRepository artformRepository;
+	// Utente by id
 	@RequestMapping(value="/artform/utente/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Utente> getUtenteById(@PathVariable int id) {
 		Utente u = this.artformRepository.findUtenteById(id);
-		System.out.println(u);
-		if(u != null)
+		if(u != null) {
 			return new ResponseEntity<Utente>(u, HttpStatus.OK);
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}	
 	}
+	
 	
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.GET)
 	public ResponseEntity<Utente> getUtenteByUsername(@PathVariable String username) {

@@ -27,7 +27,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             PostDBAdapter.KEY_TOPIC + " varchar(50) NOT NULL, " + // FK
             PostDBAdapter.KEY_TAGS + " varchar(100) NOT NULL, " +
             PostDBAdapter.KEY_PUBLICATION_DATE + " timestamp NOT NULL, " +
-            PostDBAdapter.KEY_LIKE + " integer NOT NULL DEFAULT '0', " +
+            PostDBAdapter.KEY_LIKE + "integer NOT NULL DEFAULT '0', " +
             PostDBAdapter.KEY_TYPE + " boolean NOT NULL, " +
             "FOREIGN KEY (" + PostDBAdapter.KEY_USER + ") " +
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "), " +
