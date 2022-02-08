@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import it.artform.pojos.*;
 
-@Repository
+@Repository(value="MYSQL")
 public class JdbcArtformRepository implements ArtformRepository {
 	
 	@Autowired
