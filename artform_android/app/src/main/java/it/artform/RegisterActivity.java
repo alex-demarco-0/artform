@@ -12,7 +12,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends Activity {
-
     EditText nomeEditText = null;
     EditText cognomeEditText = null;
     EditText emailEditText = null;
@@ -60,7 +59,7 @@ public class RegisterActivity extends Activity {
                     return;
                 }
 
-                //passaggio parametri alla MainActivity (una volta superato il controllo dei campi)
+                // TEST - passaggio parametri alla MainActivity (una volta superato il controllo dei campi)
                 Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
                 registraIntent.putExtra("nome", "nome: " + nomeEditText.getText());
                 registraIntent.putExtra("cognome", "cognome: " + cognomeEditText.getText());
