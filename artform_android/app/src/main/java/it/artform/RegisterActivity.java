@@ -8,8 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import it.artform.databases.UserDBAdapter;
+import it.artform.pojos.User;
 
 public class RegisterActivity extends Activity {
     EditText nomeEditText = null;
@@ -69,6 +73,22 @@ public class RegisterActivity extends Activity {
                     registraIntent.putExtra("telefono", "telefono: "+ telefonoEditText.getText());
                 registraIntent.putExtra("password", "password: " + passwordEditText.getText());
                 startActivity(registraIntent);
+
+                //creazione oggetto utente (attenzione a telefono nullo e punteggio)
+                /*User newUser = new User(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
+                        String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);*/
+                //post sul db locale
+                UserDBAdapter udba = new UserDBAdapter(RegisterActivity.this);
+                try {
+                    udba.open();
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                udba.createUser(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
+                        String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);
+                udba.close();
+                //post sul db server
+
             }
         });
 
@@ -91,14 +111,17 @@ public class RegisterActivity extends Activity {
             return "Inserisci nome";
         if(cognomeEditText.getText().toString().equals(""))
             return "Inserisci cognome";
+        // verificare con con query che email e username non siano già posseduti da un utente sul DB (server)
         String email = emailEditText.getText().toString();
         String regex = "^(.+)@(.+)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
         if(email.equals("") || !matcher.matches()) //con regular expression
             return "Inserisci email valida";
+        // qui
         if(usernameEditText.getText().toString().equals(""))
             return "Inserisci username";
+        // qui
         String tel = telefonoEditText.getText().toString();
         if(!tel.equals(""))
             try {
