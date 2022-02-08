@@ -70,11 +70,8 @@ public class RegisterActivity extends Activity {
                 }
 
                 //post sul db server
-                Retrofit retrofit = new Retrofit.Builder()
-                        .baseUrl("http://10.0.2.2:8080/artform")
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build();
-                ArtformApiEndpointInterface apiService = retrofit.create(ArtformApiEndpointInterface.class);
+                AFGlobal app = (AFGlobal) getApplication();
+                ArtformApiEndpointInterface apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
                 Call<User> postUserCall = apiService.addUser(new User(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
                         String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0));
                 postUserCall.enqueue(new Callback<User>() {
