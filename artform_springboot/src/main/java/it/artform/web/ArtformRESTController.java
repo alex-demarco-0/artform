@@ -17,6 +17,7 @@ public class ArtformRESTController {
 	
 	@Autowired
 	ArtformRepository artformRepository;
+	
 	// Utente by id
 	@RequestMapping(value="/artform/utente/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Utente> getUtenteById(@PathVariable int id) {
@@ -27,7 +28,6 @@ public class ArtformRESTController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}	
 	}
-	
 	
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.GET)
 	public ResponseEntity<Utente> getUtenteByUsername(@PathVariable String username) {
