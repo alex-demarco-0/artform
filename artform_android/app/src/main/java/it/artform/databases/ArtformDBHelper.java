@@ -5,6 +5,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.sql.SQLException;
+import java.util.Date;
+
 public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "artform.db";
     private static final int DATABASE_VERSION = 1;
@@ -112,6 +115,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
         database.execSQL(CREATE_SAVED_POSTS);
         database.execSQL(CREATE_USER_NOTIFICATIONS);
         database.execSQL(CREATE_USER_BADGES);
+
     }
 
     @Override
