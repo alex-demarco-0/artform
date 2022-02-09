@@ -30,5 +30,6 @@
     <!-- SettingsActivity-->
     <string name="impostazioni">Impostazioni</string>
     <string name="logout">logout</string>
+    <string name="search">Cerca</string>
 
 </resources>

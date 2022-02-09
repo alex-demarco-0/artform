@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
         }
 
         // TEST ADM- pulsante home
-        /*
+
         Button homeButton = findViewById(R.id.homeButton);
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +71,7 @@ public class MainActivity extends Activity {
                 });
             }
         });
-*/
+
         // TEST MS - pulsante home
         // TEST - pulsante settings
         settingsButton = findViewById(R.id.settingsButton);
