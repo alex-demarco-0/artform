@@ -13,4 +13,9 @@ public class User {
         this.points = points;
     }
 
+    @Override
+    public String toString() {
+        return name + ", " + surname + ", " + username + ", " + phone + ", " + password + ", " + points;
+    }
+
 }

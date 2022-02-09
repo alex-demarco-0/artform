@@ -50,7 +50,6 @@ public class MainActivity extends Activity {
         }
 
         // TEST ADM- pulsante home
-
         Button homeButton = findViewById(R.id.homeButton);
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,11 +61,11 @@ public class MainActivity extends Activity {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         if(response.isSuccessful())
-                            Toast.makeText(MainActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "Richiesta GET effettuata", Toast.LENGTH_LONG).show();
                     }
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(MainActivity.this, "Si è verificato un problema durante la registrazione", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Richiesta GET non effettuata", Toast.LENGTH_LONG).show();
                     }
                 });
             }
@@ -115,7 +114,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        pdba.close();
+        //pdba.close();
     }
 
 }
