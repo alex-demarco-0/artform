@@ -10,6 +10,7 @@ public interface ArtformRepository {
 	
 	// recupera da DB in base a Username
 	Utente findUtenteByUsername(String username);
+	Utente findUtenteByEmail(String email);
 	int saveUtente(Utente u);
 	int updateUtente(Utente u);
 	//int deleteUtente(long id);

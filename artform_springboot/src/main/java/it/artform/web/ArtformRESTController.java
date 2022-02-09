@@ -29,7 +29,7 @@ public class ArtformRESTController {
 			return new ResponseEntity<Utente>(u, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}	
+		}
 	}
 	*/
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.GET)
@@ -38,6 +38,14 @@ public class ArtformRESTController {
 		if(u != null)
 			return new ResponseEntity<Utente>(u, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/utente_email/{email}", method=RequestMethod.GET)
+	public boolean getUtenteByEmail(@PathVariable String email) {
+		Utente u = this.artformRepository.findUtenteByEmail(email);
+		if(u != null)
+			return true;
+		return false;
 	}
 	
 	@RequestMapping(value="/artform/utente", method=RequestMethod.POST)
