@@ -26,6 +26,11 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 	
 	@Override
+	public Utente findUtenteByEmail(String email) {
+		return jdbcTemplate.queryForObject("SELECT * from utente WHERE email=?", BeanPropertyRowMapper.newInstance(Utente.class), email);
+	}
+	
+	@Override
 	public int saveUtente(Utente u) {
 		return jdbcTemplate.update("INSERT INTO utente (nome, cognome, username, email, numeroTelefono, password) VALUES (?, ?, ?, ?, ?, ?)",
 				new Object[] {u.getNome(), u.getCognome(), u.getUsername(), u.getEmail(), u.getNumeroTelefono(), u.getPassword()});
