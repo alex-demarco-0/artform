@@ -11,7 +11,7 @@ import java.util.Date;
 public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "artform.db";
     private static final int DATABASE_VERSION = 1;
-
+    // create user table
     private static final String CREATE_USER = "CREATE TABLE IF NOT EXISTS " +
             UserDBAdapter.DATABASE_TABLE +
             " (" + UserDBAdapter.KEY_USERID + " integer PRIMARY KEY AUTOINCREMENT, " +
@@ -22,6 +22,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             UserDBAdapter.KEY_PHONE + " varchar(10) DEFAULT NULL, " +
             UserDBAdapter.KEY_PASSWORD + " varchar(50) NOT NULL, " +
             UserDBAdapter.KEY_POINTS + " integer NOT NULL DEFAULT '0');";
+    // create post table
     private static final String CREATE_POST = "CREATE TABLE IF NOT EXISTS " +
             PostDBAdapter.DATABASE_TABLE +
             " (" + PostDBAdapter.KEY_POSTID + " integer PRIMARY KEY AUTOINCREMENT, " +
@@ -36,6 +37,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "), " +
             "FOREIGN KEY (" + PostDBAdapter.KEY_TOPIC + ") " +
             "REFERENCES " + TopicDBAdapter.DATABASE_TABLE + " (" + TopicDBAdapter.KEY_TOPICID + "));";
+    // create notification table
     private static final String CREATE_NOTIFICATION = "CREATE TABLE IF NOT EXISTS " +
             NotificationDBAdapter.DATABASE_TABLE +
             " (" + NotificationDBAdapter.KEY_NOTIFICATIONID + " integer PRIMARY KEY AUTOINCREMENT, " +
@@ -46,6 +48,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             NotificationDBAdapter.KEY_USER + " integer NOT NULL, " +
             "FOREIGN KEY (" + NotificationDBAdapter.KEY_USER + ") " +
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "));";
+    // create commission table
     private static final String CREATE_COMMISSION = "CREATE TABLE IF NOT EXISTS " +
             CommissionDBAdapter.DATABASE_TABLE +
             " (" + CommissionDBAdapter.KEY_COMMISSIONID + " integer PRIMARY KEY AUTOINCREMENT, " +
@@ -59,16 +62,19 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "), " +
             "FOREIGN KEY (" + CommissionDBAdapter.KEY_CUSTOMER + ") " +
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "));";
+    // create topic table
     private static final String CREATE_TOPIC = "CREATE TABLE IF NOT EXISTS " +
             TopicDBAdapter.DATABASE_TABLE +
             " (" + TopicDBAdapter.KEY_TOPICID + " integer PRIMARY KEY AUTOINCREMENT, " +
             TopicDBAdapter.KEY_NAME + " varchar(30) NOT NULL);";
+    // create badge table
     private static final String CREATE_BADGE = "CREATE TABLE IF NOT EXISTS " +
             BadgeDBAdapter.DATABASE_TABLE +
             " (" + BadgeDBAdapter.KEY_BADGEID + " integer PRIMARY KEY AUTOINCREMENT, " +
             BadgeDBAdapter.KEY_NAME + " varchar(30) NOT NULL, " +
             BadgeDBAdapter.KEY_DESCRIPTION + " varchar(100) NOT NULL, " +
             BadgeDBAdapter.KEY_POINTS + " integer NOT NULL);";
+    // create saved_posts table
     private static final String CREATE_SAVED_POSTS = "CREATE TABLE IF NOT EXISTS " +
             SavedPostsDBAdapter.DATABASE_TABLE +
             " (" + SavedPostsDBAdapter.KEY_SAVED_POST_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
@@ -78,6 +84,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "), " +
             "FOREIGN KEY (" + SavedPostsDBAdapter.KEY_POSTID + ") " +
             "REFERENCES " + PostDBAdapter.DATABASE_TABLE + " (" + PostDBAdapter.KEY_POSTID + "));";
+    // create user_notification table
     private static final String CREATE_USER_NOTIFICATIONS = "CREATE TABLE IF NOT EXISTS " +
             UserNotificationsDBAdapter.DATABASE_TABLE +
             " (" + UserNotificationsDBAdapter.KEY_USER_NOTIFICATIONS_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
@@ -87,6 +94,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "), " +
             "FOREIGN KEY (" + UserNotificationsDBAdapter.KEY_USER_EXT_ID + ") " +
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "));";
+    // create user_badge table
     private static final String CREATE_USER_BADGES = "CREATE TABLE IF NOT EXISTS " +
             UserBadgesDBAdapter.DATABASE_TABLE +
             " (" + UserBadgesDBAdapter.KEY_USER_BADGES_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
