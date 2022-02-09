@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 import it.artform.databases.UserDBAdapter;
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
+import it.artform.web.UserCheckCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -22,6 +23,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RegisterActivity extends Activity {
+    AFGlobal app = null;
+    ArtformApiEndpointInterface apiService = null;
     EditText nomeEditText = null;
     EditText cognomeEditText = null;
     EditText emailEditText = null;
@@ -41,13 +44,16 @@ public class RegisterActivity extends Activity {
         emailEditText = findViewById(R.id.emailEditText);
         usernameEditText = findViewById(R.id.usernameEditText);
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null)
+        if (bundle != null)
             usernameEditText.setText(bundle.getString("username"));
         telefonoEditText = findViewById(R.id.telefonoEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         password2EditText = findViewById(R.id.password2EditText);
         Button registratiButton = findViewById(R.id.registratiButton);
         Button cancellaButton = findViewById(R.id.cancellaButton);
+
+        app = (AFGlobal) getApplication();
+        apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
         registratiButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,22 +70,21 @@ public class RegisterActivity extends Activity {
                 */
 
                 String campoMancante = controllaCampi();
-                if(!campoMancante.equals("")) {
+                if (!campoMancante.equals("")) {
                     Toast.makeText(RegisterActivity.this, campoMancante, Toast.LENGTH_LONG).show();
                     return;
                 }
 
                 //post sul db server
-                AFGlobal app = (AFGlobal) getApplication();
-                ArtformApiEndpointInterface apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
-                Call<User> postUserCall = apiService.addUser(new User(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
-                        String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0));
+                User newUser = new User(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
+                        String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);
+                Toast.makeText(RegisterActivity.this, newUser.toString(), Toast.LENGTH_LONG).show();
+                Call<User> postUserCall = apiService.addUser(newUser);
                 postUserCall.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         int statusCode = response.code();
-                        //if(statusCode == 200) {
-                        if(response.isSuccessful()) {
+                        if (statusCode == 200) {
                             Toast.makeText(RegisterActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show();
                             //User newUser = response.body();
                             //creazione oggetto utente (attenzione a telefono nullo e punteggio)
@@ -96,25 +101,29 @@ public class RegisterActivity extends Activity {
                             udba.createUser(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
                                     String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);
                             udba.close();
-                        }
+                            // TEST - passaggio parametri alla MainActivity (una volta superato il controllo dei campi)
+                            Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                            registraIntent.putExtra("nome", "nome: " + nomeEditText.getText());
+                            registraIntent.putExtra("cognome", "cognome: " + cognomeEditText.getText());
+                            registraIntent.putExtra("email", "email: " + emailEditText.getText());
+                            registraIntent.putExtra("username", "username: " + usernameEditText.getText());
+                            if (!telefonoEditText.getText().toString().equals(""))
+                                registraIntent.putExtra("telefono", "telefono: " + telefonoEditText.getText());
+                            registraIntent.putExtra("password", "password: " + passwordEditText.getText());
+                            startActivity(registraIntent);
+                            // TEST
+                        } else
+                            Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione", Toast.LENGTH_LONG).show();
+
                     }
+
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
                         Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione", Toast.LENGTH_LONG).show();
                     }
                 });
 
-                // TEST - passaggio parametri alla MainActivity (una volta superato il controllo dei campi)
-                Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
-                registraIntent.putExtra("nome", "nome: " + nomeEditText.getText());
-                registraIntent.putExtra("cognome", "cognome: " + cognomeEditText.getText());
-                registraIntent.putExtra("email", "email: " + emailEditText.getText());
-                registraIntent.putExtra("username", "username: " + usernameEditText.getText());
-                if(!telefonoEditText.getText().toString().equals(""))
-                    registraIntent.putExtra("telefono", "telefono: "+ telefonoEditText.getText());
-                registraIntent.putExtra("password", "password: " + passwordEditText.getText());
-                startActivity(registraIntent);
-                // TEST
+
             }
         });
 
@@ -133,35 +142,54 @@ public class RegisterActivity extends Activity {
     }
 
     public String controllaCampi() {
-        if(nomeEditText.getText().toString().equals(""))
+        // nome
+        if (nomeEditText.getText().toString().equals(""))
             return "Inserisci nome";
-        if(cognomeEditText.getText().toString().equals(""))
+        // cognome
+        if (cognomeEditText.getText().toString().equals(""))
             return "Inserisci cognome";
         // verificare con con query che email e username non siano già posseduti da un utente sul DB (server)
+        // email
         String email = emailEditText.getText().toString();
         String regex = "^(.+)@(.+)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
-        if(email.equals("") || !matcher.matches()) //con regular expression
+        if (email.equals("") || !matcher.matches()) //con regular expression
             return "Inserisci email valida";
-        // qui
-        if(usernameEditText.getText().toString().equals(""))
+        // TEST
+        Call<User> emailExists = apiService.checkEmailExists(email);
+        UserCheckCallback eccb = new UserCheckCallback(1);
+        emailExists.enqueue(eccb);
+        String emailRes = eccb.toString();
+        if (emailRes != null)
+            return emailRes;
+        // username
+        if (usernameEditText.getText().toString().equals(""))
             return "Inserisci username";
-        // qui
+        // TEST
+        Call<User> usernameExists = apiService.getUserByUsername(usernameEditText.getText().toString());
+        UserCheckCallback uccb = new UserCheckCallback(1);
+        usernameExists.enqueue(uccb);
+        String usernameRes = uccb.toString();
+        if (usernameRes != null)
+            return usernameRes;
+        // telefono
         String tel = telefonoEditText.getText().toString();
-        if(!tel.equals(""))
+        if (!tel.equals(""))
             try {
                 Double.parseDouble(tel);
-            } catch(NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 return "Inserisci un telefono corretto";
             }
+        // password
         String pw = passwordEditText.getText().toString();
-        if(pw.equals(""))
+        if (pw.equals(""))
             return "Inserisci password";
+        // ripeti password
         String pw2 = password2EditText.getText().toString();
-        if(pw2.equals(""))
+        if (pw2.equals(""))
             return "Ripeti password";
-        if(!pw.equals(pw2))
+        if (!pw.equals(pw2))
             return "Le password non corrispondono";
         return "";
     }
