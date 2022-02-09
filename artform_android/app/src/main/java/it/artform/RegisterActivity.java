@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 import it.artform.databases.UserDBAdapter;
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
-import it.artform.web.EmailCheckCallback;
+import it.artform.web.UserCheckCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,7 +44,7 @@ public class RegisterActivity extends Activity {
         emailEditText = findViewById(R.id.emailEditText);
         usernameEditText = findViewById(R.id.usernameEditText);
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null)
+        if (bundle != null)
             usernameEditText.setText(bundle.getString("username"));
         telefonoEditText = findViewById(R.id.telefonoEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
@@ -70,7 +70,7 @@ public class RegisterActivity extends Activity {
                 */
 
                 String campoMancante = controllaCampi();
-                if(!campoMancante.equals("")) {
+                if (!campoMancante.equals("")) {
                     Toast.makeText(RegisterActivity.this, campoMancante, Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -84,7 +84,7 @@ public class RegisterActivity extends Activity {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         int statusCode = response.code();
-                        if(statusCode == 200) {
+                        if (statusCode == 200) {
                             Toast.makeText(RegisterActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show();
                             //User newUser = response.body();
                             //creazione oggetto utente (attenzione a telefono nullo e punteggio)
@@ -107,16 +107,16 @@ public class RegisterActivity extends Activity {
                             registraIntent.putExtra("cognome", "cognome: " + cognomeEditText.getText());
                             registraIntent.putExtra("email", "email: " + emailEditText.getText());
                             registraIntent.putExtra("username", "username: " + usernameEditText.getText());
-                            if(!telefonoEditText.getText().toString().equals(""))
-                                registraIntent.putExtra("telefono", "telefono: "+ telefonoEditText.getText());
+                            if (!telefonoEditText.getText().toString().equals(""))
+                                registraIntent.putExtra("telefono", "telefono: " + telefonoEditText.getText());
                             registraIntent.putExtra("password", "password: " + passwordEditText.getText());
                             startActivity(registraIntent);
                             // TEST
-                        }
-                        else
+                        } else
                             Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione", Toast.LENGTH_LONG).show();
 
                     }
+
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
                         Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione", Toast.LENGTH_LONG).show();
@@ -142,59 +142,54 @@ public class RegisterActivity extends Activity {
     }
 
     public String controllaCampi() {
-        if(nomeEditText.getText().toString().equals(""))
+        // nome
+        if (nomeEditText.getText().toString().equals(""))
             return "Inserisci nome";
-        if(cognomeEditText.getText().toString().equals(""))
+        // cognome
+        if (cognomeEditText.getText().toString().equals(""))
             return "Inserisci cognome";
         // verificare con con query che email e username non siano già posseduti da un utente sul DB (server)
+        // email
         String email = emailEditText.getText().toString();
         String regex = "^(.+)@(.+)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
-        if(email.equals("") || !matcher.matches()) //con regular expression
+        if (email.equals("") || !matcher.matches()) //con regular expression
             return "Inserisci email valida";
         // TEST
         Call<User> emailExists = apiService.checkEmailExists(email);
-        EmailCheckCallback eccb = new EmailCheckCallback();
+        UserCheckCallback eccb = new UserCheckCallback(1);
         emailExists.enqueue(eccb);
         String emailRes = eccb.toString();
-        if(emailRes != null)
+        if (emailRes != null)
             return emailRes;
-        /*
-        emailExists.enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                if(response.code() == 200)
-                    return "E-mail già esistente";
-                else if(response.code() != 404)
-                    return "ERROR CHECKING EMAIL";
-                //Toast.makeText(RegisterActivity.this, response.toString(), Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                return "ERROR CHECKING EMAIL";
-                //Toast.makeText(RegisterActivity.this, "ERROR CHECKING EMAIL", Toast.LENGTH_SHORT).show();
-                //return;
-            }
-        });
-        */
-        if(usernameEditText.getText().toString().equals(""))
+        // username
+        if (usernameEditText.getText().toString().equals(""))
             return "Inserisci username";
-        // qui
+        // TEST
+        Call<User> usernameExists = apiService.getUserByUsername(usernameEditText.getText().toString());
+        UserCheckCallback uccb = new UserCheckCallback(1);
+        usernameExists.enqueue(uccb);
+        String usernameRes = uccb.toString();
+        if (usernameRes != null)
+            return usernameRes;
+        // telefono
         String tel = telefonoEditText.getText().toString();
-        if(!tel.equals(""))
+        if (!tel.equals(""))
             try {
                 Double.parseDouble(tel);
-            } catch(NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 return "Inserisci un telefono corretto";
             }
+        // password
         String pw = passwordEditText.getText().toString();
-        if(pw.equals(""))
+        if (pw.equals(""))
             return "Inserisci password";
+        // ripeti password
         String pw2 = password2EditText.getText().toString();
-        if(pw2.equals(""))
+        if (pw2.equals(""))
             return "Ripeti password";
-        if(!pw.equals(pw2))
+        if (!pw.equals(pw2))
             return "Le password non corrispondono";
         return "";
     }
