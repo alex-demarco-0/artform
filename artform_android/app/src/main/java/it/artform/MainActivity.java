@@ -61,7 +61,7 @@ public class MainActivity extends Activity {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
                         if(response.isSuccessful())
-                            Toast.makeText(MainActivity.this, "Richiesta GET effettuata", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, response.body().toString(), Toast.LENGTH_LONG).show();
                     }
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
