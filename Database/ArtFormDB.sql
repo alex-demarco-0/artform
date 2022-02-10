@@ -183,13 +183,14 @@ CREATE TABLE IF NOT EXISTS `utente` (
   `numeroTelefono` varchar(10) DEFAULT NULL,
   `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs NOT NULL,
   `punteggio` int NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.utente: ~3 rows (circa)
+-- Dump dei dati della tabella ArtForm.utente: ~4 rows (circa)
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
 INSERT INTO `utente` (`ID`, `nome`, `cognome`, `username`, `email`, `numeroTelefono`, `password`, `punteggio`) VALUES
-	(1, 'Manbir', 'Aceveda', 'arianna', 'ift@', '338', 'password', 0),
+	(1, 'Manbir', 'Aceveda', 'arianna', 'ift@k.it', '338', 'password', 0),
 	(2, 'Alessandro', 'Dituri', 'dv8d', '@#', NULL, 'pass', 101),
 	(3, 'Mario', 'Rossi', 'marione', 'm@', NULL, '123456', 0),
 	(4, 'Gerico', 'Cris', 'Hiloman3', '@@', '441', 'kkkka', 3);
