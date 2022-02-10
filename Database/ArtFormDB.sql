@@ -184,7 +184,8 @@ CREATE TABLE IF NOT EXISTS `utente` (
   `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs NOT NULL,
   `punteggio` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`ID`),
-  UNIQUE KEY `username` (`username`)
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dump dei dati della tabella ArtForm.utente: ~4 rows (circa)
