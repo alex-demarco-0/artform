@@ -117,7 +117,7 @@ public class LoginActivity extends Activity {
                         loginButton.setEnabled(false);
                     }
                 }
-                // TEST
+
                  */
                 // TEST
                 Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);

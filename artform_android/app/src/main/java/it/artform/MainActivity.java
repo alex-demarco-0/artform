@@ -27,6 +27,7 @@ import retrofit2.Response;
 public class MainActivity extends Activity {
     PostDBAdapter pdba = null;
     Button settingsButton = null;
+    Button commissionButton = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,16 @@ public class MainActivity extends Activity {
             }
         });
 
-        // TEST MS - pulsante home
+        // TEST - pulsante commission / Progressbar
+        commissionButton = findViewById(R.id.commissionButton);
+        commissionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent openCommissionActivity = new Intent(MainActivity.this, CommissionActivity.class);
+
+                startActivity(openCommissionActivity);
+            }
+        });
         // TEST - pulsante settings
         settingsButton = findViewById(R.id.settingsButton);
         settingsButton.setOnClickListener(new View.OnClickListener() {

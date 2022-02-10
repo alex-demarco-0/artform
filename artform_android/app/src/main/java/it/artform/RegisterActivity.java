@@ -39,6 +39,7 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_register);
 
         //istanziamento campi EditText
+
         nomeEditText = findViewById(R.id.nomeEditText);
         cognomeEditText = findViewById(R.id.cognomeEditText);
         emailEditText = findViewById(R.id.emailEditText);
@@ -112,6 +113,7 @@ public class RegisterActivity extends Activity {
                             if (!telefonoEditText.getText().toString().equals(""))
                                 registraIntent.putExtra("telefono", "telefono: " + telefonoEditText.getText());
                             registraIntent.putExtra("password", "password: " + passwordEditText.getText());
+
                             startActivity(registraIntent);
                             // TEST
                         } else

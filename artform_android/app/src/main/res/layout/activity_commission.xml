@@ -5,24 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CommissionActivity">
-
-    <TextView
+    <EditText
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="285dp"
-        android:layout_marginBottom="554dp"
-        android:text="Nome e Cognome" />
-
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="81dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="164dp"
-        android:layout_marginBottom="542dp"
+        android:layout_marginEnd="300dp"
+        android:layout_marginBottom="624dp"
         android:hint="Nome" />
 
     <EditText
@@ -31,37 +21,30 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="542dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginBottom="614dp"
         android:hint="Cognome" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="322dp"
-        android:layout_marginBottom="477dp"
-        android:text="E-mail" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="126dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="86dp"
-        android:layout_marginBottom="470dp"
-        android:hint="E-mail" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="284dp"
-        android:layout_marginBottom="405dp"
-        android:text="Genere di disegno" />
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="470dp"
+        android:hint="E-mail" />
+
+    <Spinner
+        android:id="@+id/genereDisegnoSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="266dp"
+        android:layout_marginBottom="404dp"
+        android:autofillHints="Genere" />
 
     <EditText
         android:id="@+id/genereDisegno"
@@ -73,14 +56,6 @@
         android:layout_marginBottom="396dp"
         android:hint="Inserisci il genere di disegno" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="272dp"
-        android:layout_marginBottom="333dp"
-        android:text="Scadenza di consegna" />
 
     <TextView
         android:id="@+id/scadenza"
