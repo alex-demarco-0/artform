@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,7 @@ import java.io.IOException;
 
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
+import it.artform.web.GetLoggingUserTask;
 import it.artform.web.UserCheckCallback;
 import it.artform.web.UserGetCallback;
 import retrofit2.Call;
@@ -32,6 +35,7 @@ public class LoginActivity extends Activity {
     private String username = "";
     private String password = "";
     private int checkPass = 5; // contatore credenziali errate
+    ProgressBar loggingProgressBar = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +67,8 @@ public class LoginActivity extends Activity {
         Button goToRegister = findViewById(R.id.goToRegister);
         CheckBox saveLoginCheckBox = findViewById(R.id.saveLoginCheckBox);
         TextView forgotPassword = findViewById(R.id.forgotPassword);
+        loggingProgressBar = findViewById(R.id.loggingProgressBar);
+        loggingProgressBar.setVisibility(View.INVISIBLE);
 
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
@@ -82,7 +88,7 @@ public class LoginActivity extends Activity {
                     return;
                 }
                 // controllo credenziali
-                Call<User> getLoggingUser = apiService.getUserByUsername(username);
+                //Call<User> getLoggingUser = apiService.getUserByUsername(username);
                 /*
                 getLoggingUser.enqueue(new Callback<User>() {
                     @Override
@@ -109,7 +115,7 @@ public class LoginActivity extends Activity {
                     e.printStackTrace();
                 }
                  */
-
+                new GetLoggingUserTask(apiService, LoginActivity.this.loggingProgressBar, LoginActivity.this.loggingUser).execute(username);
                 Toast.makeText(LoginActivity.this, loggingUser.toString(), Toast.LENGTH_SHORT).show();
                 //User loggingUser = ugcb.getUser();
                 //Toast.makeText(LoginActivity.this, ugcb.getUser().toString(), Toast.LENGTH_SHORT).show();

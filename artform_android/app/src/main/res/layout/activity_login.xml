@@ -91,5 +91,12 @@
         android:layout_marginTop="502dp"
         android:text="usr     pwd" />
 
+    <ProgressBar
+        android:id="@+id/loggingProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
 
