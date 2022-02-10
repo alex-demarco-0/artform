@@ -5,15 +5,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CommissionActivity">
-    <EditText
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/azzuroLogo"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Contacts"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="name" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:hint="surname" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:hint="@string/e_mail" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="135dp"
+            android:textSize="18dp"
+            android:gravity="left"
+            android:text="Select topics: " />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="135dp"
+            android:gravity="right" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="175dp"
+            android:textSize="18dp"
+            android:gravity="left"
+            android:text="Select date: " />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="175dp"
+            android:gravity="right" />
+
+    </RelativeLayout>
+
+
+    <!--EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="300dp"
-        android:layout_marginBottom="624dp"
+        android:layout_marginEnd="277dp"
+        android:layout_marginBottom="539dp"
         android:hint="Nome" />
+
 
     <EditText
         android:id="@+id/surname"
@@ -21,91 +100,89 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="188dp"
-        android:layout_marginBottom="614dp"
+        android:layout_marginEnd="179dp"
+        android:layout_marginBottom="544dp"
         android:hint="Cognome" />
 
-
     <EditText
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="176dp"
-        android:layout_marginBottom="470dp"
-        android:hint="E-mail" />
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="176dp"
+            android:layout_marginBottom="470dp"
+            android:hint="E-mail" />
 
-    <Spinner
-        android:id="@+id/genereDisegnoSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="266dp"
-        android:layout_marginBottom="404dp"
-        android:autofillHints="Genere" />
+        <Spinner
+            android:id="@+id/genereDisegnoSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="266dp"
+            android:layout_marginBottom="404dp"
+            android:autofillHints="Genere" />
 
-    <EditText
-        android:id="@+id/genereDisegno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="396dp"
-        android:hint="Inserisci il genere di disegno" />
+        <EditText
+            android:id="@+id/genereDisegno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="33dp"
+            android:layout_marginBottom="396dp"
+            android:hint="Inserisci il genere di disegno" />
 
 
-    <TextView
-        android:id="@+id/scadenza"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="117dp"
-        android:layout_marginBottom="329dp"
-        android:hint="xx/yy/zzzz" />
+        <TextView
+            android:id="@+id/scadenza"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="117dp"
+            android:layout_marginBottom="329dp"
+            android:hint="xx/yy/zzzz" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="265dp"
-        android:layout_marginBottom="268dp"
-        android:text="Informazioni sul disegno" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="226dp"
+            android:layout_marginBottom="288dp"
+            android:text="Informazioni sul disegno" />
 
-    <EditText
-        android:id="@+id/info"
-        android:layout_width="177dp"
-        android:layout_height="154dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="130dp"
-        android:hint="Scrivi..." />
+        <EditText
+            android:id="@+id/info"
+            android:layout_width="177dp"
+            android:layout_height="154dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="130dp"
+            android:hint="Scrivi..." />
 
-    <Button
-        android:id="@+id/confirmCommission"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="55dp"
-        android:layout_marginBottom="52dp"
-        android:hint="Conferma" />
+        <Button
+            android:id="@+id/confirmCommission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="55dp"
+            android:layout_marginBottom="52dp"
+            android:hint="Conferma" />
 
-    <Button
-        android:id="@+id/resetForm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="253dp"
-        android:layout_marginBottom="49dp"
-        android:hint="Reset" />
-
+        <Button
+            android:id="@+id/resetForm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="55dp"
+            android:layout_marginEnd="253dp"
+            android:layout_marginBottom="49dp"
+            android:hint="Reset" /-->
 
 </RelativeLayout>

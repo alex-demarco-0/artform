@@ -6,17 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/azzuroLogo"
-        android:src="@mipmap/ic_launcher_round" />
+        android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/azzuroLogo"
+            android:src="@mipmap/ic_launcher_round" />
 
-    <ListView
-        android:id="@+id/settingsListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Settings"
+            android:textSize="25dp" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,6 +34,11 @@
         android:gravity="bottom"
         android:orientation="vertical"
         android:padding="25dp">
+
+        <ListView
+            android:id="@+id/settingsListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <TextView
             android:id="@+id/logoutTextView"
