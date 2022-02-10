@@ -37,7 +37,7 @@ public class ExternalProfileActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }
-        );
+        ); 
 
         notifyMeExternalProfile=(Button) findViewById(R.id.nofifyMeExternalProfile);
         notifyMeExternalProfile.setOnClickListener(
