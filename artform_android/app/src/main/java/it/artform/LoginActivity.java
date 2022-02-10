@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -41,6 +42,9 @@ public class LoginActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         // lettura credenziali da SharedPreferences
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
@@ -115,8 +119,17 @@ public class LoginActivity extends Activity {
                     e.printStackTrace();
                 }
                  */
-                new GetLoggingUserTask(apiService, LoginActivity.this.loggingProgressBar, LoginActivity.this.loggingUser).execute(username);
-                Toast.makeText(LoginActivity.this, loggingUser.toString(), Toast.LENGTH_SHORT).show();
+                //new GetLoggingUserTask(apiService, LoginActivity.this.loggingProgressBar, LoginActivity.this.loggingUser).execute(username);
+                loggingProgressBar.setVisibility(View.VISIBLE);
+                Call<User> getLoggingUser = apiService.getUserByUsername(username);
+                try {
+                    loggingUser = getLoggingUser.execute().body();
+                } catch (IOException e) {
+                    Toast.makeText(LoginActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+                loggingProgressBar.setVisibility(View.INVISIBLE);
+                //Toast.makeText(LoginActivity.this, loggingUser.toString(), Toast.LENGTH_SHORT).show();
                 //User loggingUser = ugcb.getUser();
                 //Toast.makeText(LoginActivity.this, ugcb.getUser().toString(), Toast.LENGTH_SHORT).show();
                 if (loggingUser == null) {
