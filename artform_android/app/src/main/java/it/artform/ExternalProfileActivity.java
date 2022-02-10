@@ -44,9 +44,10 @@ public class ExternalProfileActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(ExternalProfileActivity.this, "Hai attivato le notifiche per l'utente *nome utente* ", Toast.LENGTH_LONG).show();
+                            Toast.makeText(ExternalProfileActivity.this, "Hai attivato le notifiche per l'utente *nome utente* ", Toast.LENGTH_LONG).show();
                     }
                 }
+
         );
 
     }
