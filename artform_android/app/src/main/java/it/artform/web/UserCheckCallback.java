@@ -19,8 +19,10 @@ public class UserCheckCallback implements Callback<User> {
     public void onResponse(Call<User> call, Response<User> response) {
         if(response.code() == 200)
             resString = (emailCheck ? "Email" : "Username") + "Username già esistente";
+        /*
         else if(response.code() != 404)
             resString = "ERROR CHECKING " + (emailCheck ? "Email" : "Username");
+         */
     }
 
     @Override

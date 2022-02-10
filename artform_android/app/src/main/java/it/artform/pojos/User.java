@@ -8,6 +8,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.username = username;
+        this.email = email;
         this.phone = phone;
         this.password = password;
         this.points = points;
@@ -15,7 +16,7 @@ public class User {
 
     @Override
     public String toString() {
-        return name + ", " + surname + ", " + username + ", " + phone + ", " + password + ", " + points;
+        return name + ", " + surname + ", " + username + ", " + email + ", " + phone + ", " + password + ", " + points;
     }
 
 }

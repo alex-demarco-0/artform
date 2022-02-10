@@ -5,7 +5,7 @@
     <!-- aiuto -->
 
     <!-- LoginActivity -->
-    <string name="login_button">Login</string>
+    <string name="login_button">Log In</string>
     <string name="register_button">Register</string>
     <string name="clear">Cancella</string>
     <string name="password_dimenticata">Password Dimenticata</string>
@@ -29,7 +29,7 @@
     <string name="registrati">Registrati</string>
     <!-- SettingsActivity-->
     <string name="impostazioni">Impostazioni</string>
-    <string name="logout">logout</string>
+    <string name="logout">log Out</string>
     <string name="search">Cerca</string>
 
 </resources>

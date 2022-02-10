@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AFGlobal extends Application {
-    public static final String BASE_URL = "http://172.29.224.1:8080/"; //varia in base alla macchina
+    public static final String BASE_URL = "http://172.23.224.1:8080/"; //varia in base alla macchina
     Retrofit retrofit = null;
 
     public AFGlobal() {

@@ -114,7 +114,6 @@ public class RegisterActivity extends Activity {
                             // TEST
                         } else
                             Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione", Toast.LENGTH_LONG).show();
-
                     }
 
                     @Override

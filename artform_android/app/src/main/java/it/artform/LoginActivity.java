@@ -12,8 +12,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class LoginActivity extends Activity {
+import it.artform.pojos.User;
+import it.artform.web.ArtformApiEndpointInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+public class LoginActivity extends Activity {
+    AFGlobal app = null;
+    ArtformApiEndpointInterface apiService = null;
     private final static String SHARED_PREFERENCES = "SharedPrefs";
     private final static String LOGIN_USER_KEY = "username";
     private final static String LOGIN_PWD_KEY = "password";
@@ -52,13 +59,37 @@ public class LoginActivity extends Activity {
         CheckBox saveLoginCheckBox = findViewById(R.id.saveLoginCheckBox);
         TextView forgotPassword = findViewById(R.id.forgotPassword);
 
+        app = (AFGlobal) getApplication();
+        apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
+
         // pulsante Login
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 username = loginUsername.getText().toString();
                 password = loginPassword.getText().toString();
-                // controllo password
+                if (username.equals("")) {
+                    Toast.makeText(LoginActivity.this, "Inserisci username", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (password.equals("")) {
+                    Toast.makeText(LoginActivity.this, "Inserisci password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                // controllo credenziali
+                Call<User> getUserCall = apiService.getUserByUsername(username);
+                getUserCall.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if(response.code() != 200)
+                            Toast.makeText(LoginActivity.this, "Utente non esistente, per favore registrati", Toast.LENGTH_LONG).show();
+                    }
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        Toast.makeText(LoginActivity.this, "ERROR CHECKING USERNAME", Toast.LENGTH_LONG).show();
+                    }
+                });
+
                 if (username.equals("admin") && password.equals("admin")) {
                     Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                     mainIntent.putExtra("username", "username: " + username);
@@ -70,7 +101,7 @@ public class LoginActivity extends Activity {
                         editor.putString(LOGIN_PWD_KEY, password);
                         editor.commit();
                     }
-                    Toast.makeText(LoginActivity.this, "Login effetuato", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Accesso effetuato", Toast.LENGTH_LONG).show();
                     checkPass = 5;
                     startActivity(mainIntent);
                     //finish();   commentato per facilitare i test
