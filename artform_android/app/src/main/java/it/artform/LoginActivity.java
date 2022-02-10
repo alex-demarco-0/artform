@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
 import it.artform.web.UserCheckCallback;
@@ -26,6 +28,7 @@ public class LoginActivity extends Activity {
     private final static String SHARED_PREFERENCES = "SharedPrefs";
     private final static String LOGIN_USER_KEY = "username";
     private final static String LOGIN_PWD_KEY = "password";
+    private User loggingUser = null;
     private String username = "";
     private String password = "";
     private int checkPass = 5; // contatore credenziali errate
@@ -80,10 +83,36 @@ public class LoginActivity extends Activity {
                 }
                 // controllo credenziali
                 Call<User> getLoggingUser = apiService.getUserByUsername(username);
-                UserGetCallback ugcb = new UserGetCallback();
-                getLoggingUser.enqueue(ugcb);
-                User loggingUser = ugcb.getUser();
+                /*
+                getLoggingUser.enqueue(new Callback<User>() {
+                    @Override
+                    public void onResponse(Call<User> call, Response<User> response) {
+                        if(response.isSuccessful()) {
+                            loggingUser = response.body();
+                            Toast.makeText(LoginActivity.this, response.body() + " -- " + loggingUser.toString(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    @Override
+                    public void onFailure(Call<User> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+                //UserGetCallback ugcb = new UserGetCallback(LoginActivity.this);
+                //getLoggingUser.enqueue(ugcb);
+                /*
+                //Response<User> res = null;
+                //User loggingUser = null;
+                try {
+                    res = getLoggingUser.execute();
+                    loggingUser = res.body();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                 */
+
                 Toast.makeText(LoginActivity.this, loggingUser.toString(), Toast.LENGTH_SHORT).show();
+                //User loggingUser = ugcb.getUser();
+                //Toast.makeText(LoginActivity.this, ugcb.getUser().toString(), Toast.LENGTH_SHORT).show();
                 if (loggingUser == null) {
                     Toast.makeText(LoginActivity.this, "Utente non esistente, per favore registrati", Toast.LENGTH_LONG).show();
                     return;
