@@ -38,8 +38,8 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public int updateUtente(Utente u) {
-		return jdbcTemplate.update("UPDATE utente SET nome=?, cognome=?, username=?, email=?, numeroTelefono=?, password=?, punteggio=? WHERE ID=?",
-				new Object[] {u.getNome(), u.getCognome(), u.getUsername(), u.getEmail(), u.getNumeroTelefono(), u.getPassword(), u.getPunteggio(), u.getID()});
+		return jdbcTemplate.update("UPDATE utente SET nome=?, cognome=?, username=?, email=?, numeroTelefono=?, password=?, punteggio=? WHERE username=?",
+				new Object[] {u.getNome(), u.getCognome(), u.getUsername(), u.getEmail(), u.getNumeroTelefono(), u.getPassword(), u.getPunteggio(), u.getUsername()});
 	}
 /*
 	@Override
