@@ -2,20 +2,20 @@ package it.artform.pojos;
 
 public class Badge {
 	
-	private final int ID;
+	//private final int ID;
 	private String contenuto;
 	private int punteggio;
 	
-	public Badge(int ID) {
-		this.ID = ID;
-		this.contenuto = "";
-		this.punteggio = 0;
+	public Badge(/*int ID*/String contenuto, int punteggio) {
+		//this.ID = ID;
+		this.contenuto = contenuto;
+		this.punteggio = punteggio;
 	}
-		
+	/*	
 	public int getID() {
 		return ID;
 	}
-	
+	*/
 	public String getContenuto() {
 		return contenuto;
 	}
