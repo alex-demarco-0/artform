@@ -78,7 +78,9 @@ public class RegisterActivity extends Activity {
                 //post sul db server
                 User newUser = new User(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
                         String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);
+                // TEST
                 Toast.makeText(RegisterActivity.this, newUser.toString(), Toast.LENGTH_LONG).show();
+                // TEST
                 Call<User> postUserCall = apiService.addUser(newUser);
                 postUserCall.enqueue(new Callback<User>() {
                     @Override

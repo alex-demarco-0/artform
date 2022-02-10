@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
+import it.artform.web.UserCheckCallback;
+import it.artform.web.UserGetCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -77,19 +79,21 @@ public class LoginActivity extends Activity {
                     return;
                 }
                 // controllo credenziali
-                Call<User> getUserCall = apiService.getUserByUsername(username);
-                getUserCall.enqueue(new Callback<User>() {
-                    @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
-                        if(response.code() != 200)
-                            Toast.makeText(LoginActivity.this, "Utente non esistente, per favore registrati", Toast.LENGTH_LONG).show();
-                    }
-                    @Override
-                    public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(LoginActivity.this, "ERROR CHECKING USERNAME", Toast.LENGTH_LONG).show();
-                    }
-                });
-
+                Call<User> getLoggingUser = apiService.getUserByUsername(username);
+                UserGetCallback ugcb = new UserGetCallback();
+                getLoggingUser.enqueue(ugcb);
+                User loggingUser = ugcb.getUser();
+                Toast.makeText(LoginActivity.this, loggingUser.toString(), Toast.LENGTH_SHORT).show();
+                if (loggingUser == null) {
+                    Toast.makeText(LoginActivity.this, "Utente non esistente, per favore registrati", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (!loggingUser.getPassword().equals(password)) {
+                    Toast.makeText(LoginActivity.this, "Password errata", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                /*
+                // TEST
                 if (username.equals("admin") && password.equals("admin")) {
                     Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
                     mainIntent.putExtra("username", "username: " + username);
@@ -109,14 +113,22 @@ public class LoginActivity extends Activity {
                     Toast.makeText(LoginActivity.this, "Credenziali errate", Toast.LENGTH_LONG).show();
                     checkPass--;
                     if (checkPass == 0){
-                        Toast.makeText(LoginActivity.this, "HAI SBAGLIATO PASS TROPPE VOLTE", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "HAI SBAGLIATO PASSWORD TROPPE VOLTE", Toast.LENGTH_LONG).show();
                         loginButton.setEnabled(false);
                     }
                 }
+                // TEST
+                 */
+                // TEST
+                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                mainIntent.putExtra("username", "username: " + username);
+                mainIntent.putExtra("password", "password: " + password);
+                Toast.makeText(LoginActivity.this, "Accesso effetuato", Toast.LENGTH_SHORT).show();
+                startActivity(mainIntent);
             }
         });
 
-        // campo per passare alla'RegisterActivity
+        // campo per passare alla RegisterActivity
         goToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

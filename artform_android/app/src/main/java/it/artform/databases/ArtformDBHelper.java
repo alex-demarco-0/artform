@@ -17,8 +17,8 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             " (" + UserDBAdapter.KEY_USERID + " integer PRIMARY KEY AUTOINCREMENT, " +
             UserDBAdapter.KEY_NAME + " varchar(50) NOT NULL, " +
             UserDBAdapter.KEY_SURNAME + " varchar(50) NOT NULL, " +
-            UserDBAdapter.KEY_USERNAME + " varchar(50) NOT NULL, " +
-            UserDBAdapter.KEY_EMAIL + " varchar(50) NOT NULL," +
+            UserDBAdapter.KEY_USERNAME + " varchar(50) UNIQUE NOT NULL, " +
+            UserDBAdapter.KEY_EMAIL + " varchar(50) UNIQUE NOT NULL," +
             UserDBAdapter.KEY_PHONE + " varchar(10) DEFAULT NULL, " +
             UserDBAdapter.KEY_PASSWORD + " varchar(50) NOT NULL, " +
             UserDBAdapter.KEY_POINTS + " integer NOT NULL DEFAULT '0');";
