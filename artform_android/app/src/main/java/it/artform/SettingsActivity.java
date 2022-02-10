@@ -32,7 +32,6 @@ public class SettingsActivity extends Activity {
             @Override
             public void onClick(View view) {
                 finish();
-                moveTaskToBack(true);
             }
         });
     }

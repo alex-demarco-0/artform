@@ -2,12 +2,14 @@ package it.artform;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Button;
 
 public class CommissionActivity extends Activity {
-
+    Button confirmCommission = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commission);
+
     }
 }
