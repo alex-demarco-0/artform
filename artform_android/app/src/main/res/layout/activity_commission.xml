@@ -29,8 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
         <EditText
             android:id="@+id/name"
@@ -53,32 +53,70 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="135dp"
-            android:textSize="18dp"
+            android:layout_marginTop="145dp"
             android:gravity="left"
-            android:text="Select topics: " />
+            android:text="Select topics: "
+            android:textColor="@color/grigio"
+            android:textSize="18dp" />
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
-            android:layout_marginTop="135dp"
+            android:layout_marginTop="145dp"
             android:gravity="right" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="175dp"
-            android:textSize="18dp"
+            android:layout_marginTop="185dp"
             android:gravity="left"
-            android:text="Select date: " />
+            android:text="Select date: "
+            android:textColor="@color/grigio"
+            android:textSize="18dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
-            android:layout_marginTop="175dp"
+            android:layout_marginTop="185dp"
             android:gravity="right" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:gravity="left"
+            android:text="What do you want??"
+            android:textColor="@color/grigio"
+            android:textSize="18dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="275dp"
+            android:gravity="top|left"
+            android:hint="Enter here"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:maxLines="10"
+            android:minLines="6"
+            android:scrollbars="vertical" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="450dp"
+            android:text="Sumbit" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="450dp"
+            android:layout_marginRight="90dp"
+            android:text="Reset" />
 
     </RelativeLayout>
 
