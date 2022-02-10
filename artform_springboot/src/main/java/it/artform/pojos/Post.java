@@ -7,9 +7,9 @@ public class Post {
 	//private final int ID;
 	private final Date dataPubblicazione ;
 	private String topic;
-	private String[] tags; // oppure ArrayList<String>
+	private String[] tags; // oppure ArrayList<String> ?
 	private int like;
-	private final boolean tipologia;
+	private final boolean tipologia; // boolean ?
 	
 	public Post(/*int ID, */String topic, String[] tags, boolean tipologia) {
 		//this.ID = ID;

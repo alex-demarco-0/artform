@@ -7,7 +7,7 @@ public class Notifica {
 	
 	private final Date data;
 	private final int categoria;
-		/* 1 = Artista per il quale � stata attivata l�opzione di notifica pubblica un contenuto;
+		/* 1 = Artista per il quale è stata attivata l'opzione di notifica pubblica un contenuto;
 		 * 2 = Utente esterno attribuisce un like ad un proprio contenuto;
 		 * 3 = Richiesta di commissione;
 		 * 4 = Guadagno di punti;
