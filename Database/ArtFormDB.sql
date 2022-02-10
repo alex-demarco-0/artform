@@ -194,7 +194,8 @@ INSERT INTO `utente` (`ID`, `nome`, `cognome`, `username`, `email`, `numeroTelef
 	(1, 'Manbir', 'Aceveda', 'arianna', 'ift@k.it', '338', 'password', 0),
 	(2, 'Alessandro', 'Dituri', 'dv8d', '@#', NULL, 'pass', 101),
 	(3, 'Mario', 'Rossi', 'marione', 'm@', NULL, '123456', 0),
-	(4, 'Gerico', 'Cris', 'Hiloman3', '@@', '441', 'kkkka', 3);
+	(4, 'Gerico', 'Cris', 'Hiloman3', '@@', '441', 'kkkka', 3),
+	(7, 'ADMIN', 'ADMIN', 'admin', 'admin@admin.com', '000', 'admin', 999);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
