@@ -33,7 +33,7 @@ public class ArtformRESTController {
 	}
 	*/
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.GET)
-	public ResponseEntity<Utente> getUtenteByUsername(@PathVariable String username) {
+	public ResponseEntity<Utente> getUtente(@PathVariable String username) {
 		Utente u = this.artformRepository.findUtenteByUsername(username);
 		if(u != null)
 			return new ResponseEntity<Utente>(u, HttpStatus.OK);
@@ -119,7 +119,7 @@ public class ArtformRESTController {
 		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
 	}
 	
-	
+	///
 	
 	@RequestMapping(value="/artform/utente/{id}/commissioni", method=RequestMethod.GET)
 	public List<Commissione> getAllCommissioni(@PathVariable int utenteId) {

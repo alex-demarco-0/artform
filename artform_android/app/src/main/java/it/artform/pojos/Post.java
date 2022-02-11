@@ -3,6 +3,7 @@ package it.artform.pojos;
 import java.util.Date;
 
 public class Post {
+    // inserire id
     private final String contentSrc;
     private final long userId;
     private String title, topic, tags;
