@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -19,11 +18,7 @@ import java.io.IOException;
 
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
-import it.artform.web.GetLoggingUserTask;
-import it.artform.web.UserCheckCallback;
-import it.artform.web.UserGetCallback;
 import retrofit2.Call;
-import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends Activity {
@@ -43,28 +38,26 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // TEST - disabilitazione strict mode per richiesta Retrofit sincrona
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+        //
 
         // lettura credenziali da SharedPreferences
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFERENCES, Context.MODE_PRIVATE);
         username = prefs.getString(LOGIN_USER_KEY, "NO_USER");
         password = prefs.getString(LOGIN_PWD_KEY, "NO_PWD");
 
-        TextView TESTprefs = findViewById(R.id.TESTprefs);                    // TEST
+        // TEST
+        TextView TESTprefs = findViewById(R.id.TESTprefs);
         TESTprefs.setText(username + ", " + password);
+        //
 
-        // se presenti effettua l'accesso passando direttamente all'activity successiva
-        if(!username.equals("NO_USER") && !password.equals("NO_PWD")) {
-            Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-            mainIntent.putExtra("username", "username: " + username);
-            mainIntent.putExtra("password", "password: " + password);
-            Toast.makeText(LoginActivity.this, "Login effetuato", Toast.LENGTH_LONG).show();
-            startActivity(mainIntent);
-            //finish();   commentato per facilitare i test
-        }
+        // se memorizzati effettua l'accesso direttamente passando all'activity successiva
+        if(!username.equals("NO_USER") && !password.equals("NO_PWD"))
+            credentialsOk();
 
-        // istanziamento campi edit e button
+        // istanziamento widget UI
         EditText loginUsername = findViewById(R.id.loginUsername);
         EditText loginPassword = findViewById(R.id.loginPassword);
         Button loginButton = findViewById(R.id.loginButton);
@@ -74,6 +67,7 @@ public class LoginActivity extends Activity {
         loggingProgressBar = findViewById(R.id.loggingProgressBar);
         loggingProgressBar.setVisibility(View.INVISIBLE);
 
+        // preparazione richiesta RESTful
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
@@ -91,92 +85,46 @@ public class LoginActivity extends Activity {
                     Toast.makeText(LoginActivity.this, "Inserisci password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // controllo credenziali
-                //Call<User> getLoggingUser = apiService.getUserByUsername(username);
-                /*
-                getLoggingUser.enqueue(new Callback<User>() {
-                    @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
-                        if(response.isSuccessful()) {
-                            loggingUser = response.body();
-                            Toast.makeText(LoginActivity.this, response.body() + " -- " + loggingUser.toString(), Toast.LENGTH_LONG).show();
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<User> call, Throwable t) {
-                        t.printStackTrace();
-                    }
-                });
-                //UserGetCallback ugcb = new UserGetCallback(LoginActivity.this);
-                //getLoggingUser.enqueue(ugcb);
-                /*
-                //Response<User> res = null;
-                //User loggingUser = null;
-                try {
-                    res = getLoggingUser.execute();
-                    loggingUser = res.body();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                 */
-                //new GetLoggingUserTask(apiService, LoginActivity.this.loggingProgressBar, LoginActivity.this.loggingUser).execute(username);
+
+                // controllo credenziali dal server
                 loggingProgressBar.setVisibility(View.VISIBLE);
                 Call<User> getLoggingUser = apiService.getUserByUsername(username);
                 try {
-                    loggingUser = getLoggingUser.execute().body();
+                    Response<User> getLoggingUserResponse = getLoggingUser.execute();
+                    loggingUser = getLoggingUserResponse.body();
                 } catch (IOException e) {
-                    Toast.makeText(LoginActivity.this, e.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "ERROR CHECKING USER: " + e.toString(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
                 loggingProgressBar.setVisibility(View.INVISIBLE);
-                //Toast.makeText(LoginActivity.this, loggingUser.toString(), Toast.LENGTH_SHORT).show();
-                //User loggingUser = ugcb.getUser();
-                //Toast.makeText(LoginActivity.this, ugcb.getUser().toString(), Toast.LENGTH_SHORT).show();
+
                 if (loggingUser == null) {
                     Toast.makeText(LoginActivity.this, "Utente non esistente, per favore registrati", Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (!loggingUser.getPassword().equals(password)) {
+                    if (checkPass == 0) {
+                        Toast.makeText(LoginActivity.this, "Hai sbagliato password troppe volte", Toast.LENGTH_LONG).show();
+                        loginButton.setEnabled(false);
+                        return;
+                    }
                     Toast.makeText(LoginActivity.this, "Password errata", Toast.LENGTH_LONG).show();
+                    checkPass--;
                     return;
                 }
-                /*
-                // TEST
-                if (username.equals("admin") && password.equals("admin")) {
-                    Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                    mainIntent.putExtra("username", "username: " + username);
-                    mainIntent.putExtra("password", "password: " + password);
-                    // memorizzazione persistente delle credenziali (corrette) nel file SharedPreferences
-                    if(saveLoginCheckBox.isChecked()) {
-                        SharedPreferences.Editor editor = prefs.edit();
-                        editor.putString(LOGIN_USER_KEY, username);
-                        editor.putString(LOGIN_PWD_KEY, password);
-                        editor.commit();
-                    }
-                    Toast.makeText(LoginActivity.this, "Accesso effetuato", Toast.LENGTH_LONG).show();
-                    checkPass = 5;
-                    startActivity(mainIntent);
-                    //finish();   commentato per facilitare i test
-                } else {
-                    Toast.makeText(LoginActivity.this, "Credenziali errate", Toast.LENGTH_LONG).show();
-                    checkPass--;
-                    if (checkPass == 0){
-                        Toast.makeText(LoginActivity.this, "HAI SBAGLIATO PASSWORD TROPPE VOLTE", Toast.LENGTH_LONG).show();
-                        loginButton.setEnabled(false);
-                    }
+                // credenziali OK
+                // memorizzazione persistente delle credenziali corrette nel file SharedPreferences se checkBox spuntato
+                if(saveLoginCheckBox.isChecked()) {
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putString(LOGIN_USER_KEY, username);
+                    editor.putString(LOGIN_PWD_KEY, password);
+                    editor.commit();
                 }
-
-                 */
-                // TEST
-                Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                mainIntent.putExtra("username", "username: " + username);
-                mainIntent.putExtra("password", "password: " + password);
-                Toast.makeText(LoginActivity.this, "Accesso effetuato", Toast.LENGTH_SHORT).show();
-                startActivity(mainIntent);
+                credentialsOk();
             }
         });
 
-        // campo per passare alla RegisterActivity
+        // pulsante per passare alla RegisterActivity
         goToRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -188,7 +136,7 @@ public class LoginActivity extends Activity {
             }
         });
 
-        // campo per password dimenicata
+        // pulsante per password dimenicata
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -197,6 +145,18 @@ public class LoginActivity extends Activity {
                 startActivity(openRegisterActivity);
             }
         });
+    }
+
+    // metodo per passare alla MainActivity una volta che le credenziali sono corrette
+    private void credentialsOk() {
+        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+        // TEST
+        mainIntent.putExtra("username", "username: " + username);
+        mainIntent.putExtra("password", "password: " + password);
+        //
+        Toast.makeText(LoginActivity.this, "Benvenuto " + username, Toast.LENGTH_LONG).show();
+        startActivity(mainIntent);
+        //finish();   //commentato per facilitare i test
     }
 
 }
