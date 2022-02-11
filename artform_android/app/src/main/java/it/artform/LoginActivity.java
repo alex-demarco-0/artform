@@ -93,7 +93,7 @@ public class LoginActivity extends Activity {
                     Response<User> getLoggingUserResponse = getLoggingUser.execute();
                     loggingUser = getLoggingUserResponse.body();
                 } catch (IOException e) {
-                    Toast.makeText(LoginActivity.this, "ERROR CHECKING USER: " + e.toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Si è verificato un problema durante l'accesso: " + e.toString(), Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
                 loggingProgressBar.setVisibility(View.INVISIBLE);
