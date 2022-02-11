@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/creaTextView"
+        android:id="@+id/createTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -15,20 +15,20 @@
         android:text="@string/create_account" />
 
     <EditText
-        android:id="@+id/nomeEditText"
+        android:id="@+id/nameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/creaTextView"
+        android:layout_below="@+id/createTextView"
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="@string/nome" />
 
     <EditText
-        android:id="@+id/cognomeEditText"
+        android:id="@+id/surnameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nomeEditText"
+        android:layout_below="@+id/nameEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -39,7 +39,7 @@
         android:id="@+id/emailEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cognomeEditText"
+        android:layout_below="@+id/surnameEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -58,7 +58,7 @@
         android:hint="@string/username" />
 
     <EditText
-        android:id="@+id/telefonoEditText"
+        android:id="@+id/phoneEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/usernameEditText"
@@ -72,7 +72,7 @@
         android:id="@+id/passwordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/telefonoEditText"
+        android:layout_below="@+id/phoneEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -91,7 +91,7 @@
         android:hint="@string/password2" />
 
     <Button
-        android:id="@+id/registratiButton"
+        android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password2EditText"
@@ -103,7 +103,7 @@
         android:text="@string/registrati" />
 
     <Button
-        android:id="@+id/cancellaButton"
+        android:id="@+id/clearButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/password2EditText"
@@ -111,7 +111,7 @@
         android:layout_marginStart="76dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="92dp"
-        android:layout_toEndOf="@+id/registratiButton"
+        android:layout_toEndOf="@+id/registerButton"
         android:text="@string/clear" />
 
 </RelativeLayout>

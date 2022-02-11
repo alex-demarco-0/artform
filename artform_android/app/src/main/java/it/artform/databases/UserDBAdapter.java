@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.SQLException;
 
+import it.artform.pojos.User;
+
 public class UserDBAdapter {
     private Context context;
     private SQLiteDatabase database;
@@ -48,18 +50,18 @@ public class UserDBAdapter {
         return values;
     }
 
-    public long createUser(String name, String surname, String username, String email, String phone, String password, int points) {
-        ContentValues userValues = createContentValues(name, surname, username, email, phone, password, points);
+    public long createUser(User u) {
+        ContentValues userValues = createContentValues(u.getName(), u.getSurname(), u.getUsername(), u.getEmail(), u.getPhone(), u.getPassword(), u.getPoints());
         return database.insertOrThrow(DATABASE_TABLE, null, userValues);
     }
 
-    public boolean updateUser(long userID, String name, String surname, String username, String email, String phone, String password, int points) {
-        ContentValues updateValues = createContentValues(name, surname, username, email, phone, password, points);
-        return database.update(DATABASE_TABLE, updateValues, KEY_USERID + "=" + userID, null) > 0;
+    public boolean updateUser(String username, User u) {
+        ContentValues updateValues = createContentValues(u.getName(), u.getSurname(), u.getUsername(), u.getEmail(), u.getPhone(), u.getPassword(), u.getPoints());
+        return database.update(DATABASE_TABLE, updateValues, KEY_USERNAME + "=" + username, null) > 0;
     }
 
-    public boolean deleteUser(long userID) {
-        return database.delete(DATABASE_TABLE, KEY_USERID + "=" + userID, null) > 0;
+    public boolean deleteUser(String username) {
+        return database.delete(DATABASE_TABLE, KEY_USERNAME + "=" + username, null) > 0;
     }
 
     public Cursor fetchAllUsers() {
@@ -72,8 +74,8 @@ public class UserDBAdapter {
         return mCursor;
     }
 
-    public void givePoints(long userID, int current, int points) {
-        database.rawQuery("UPDATE " + DATABASE_TABLE + " SET " + KEY_POINTS + " = '" + (current + points) + "' WHERE " + KEY_USERID + " = " + userID, null);
+    public void givePoints(String username, int current, int points) {
+        database.rawQuery("UPDATE " + DATABASE_TABLE + " SET " + KEY_POINTS + " = '" + (current + points) + "' WHERE " + KEY_USERNAME + " = " + username, null);
     }
 
 }

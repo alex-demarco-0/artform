@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,11 +26,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RegisterActivity extends Activity {
     AFGlobal app = null;
     ArtformApiEndpointInterface apiService = null;
-    EditText nomeEditText = null;
-    EditText cognomeEditText = null;
+    EditText nameEditText = null;
+    EditText surnameEditText = null;
     EditText emailEditText = null;
     EditText usernameEditText = null;
-    EditText telefonoEditText = null;
+    EditText phoneEditText = null;
     EditText passwordEditText = null;
     EditText password2EditText = null;
 
@@ -39,119 +40,110 @@ public class RegisterActivity extends Activity {
         setContentView(R.layout.activity_register);
 
         //istanziamento campi EditText
-
-        nomeEditText = findViewById(R.id.nomeEditText);
-        cognomeEditText = findViewById(R.id.cognomeEditText);
+        nameEditText = findViewById(R.id.nameEditText);
+        surnameEditText = findViewById(R.id.surnameEditText);
         emailEditText = findViewById(R.id.emailEditText);
         usernameEditText = findViewById(R.id.usernameEditText);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
             usernameEditText.setText(bundle.getString("username"));
-        telefonoEditText = findViewById(R.id.telefonoEditText);
+        phoneEditText = findViewById(R.id.phoneEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         password2EditText = findViewById(R.id.password2EditText);
-        Button registratiButton = findViewById(R.id.registratiButton);
-        Button cancellaButton = findViewById(R.id.cancellaButton);
+        Button registerButton = findViewById(R.id.registerButton);
+        Button clearButton = findViewById(R.id.clearButton);
 
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
-        registratiButton.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*controllo campi + toast (assegnato al metodo controllaCampi() al di fuori di onCreate())
+                /*
+                controllo campi + Toast (assegnato al metodo checkFields() al di fuori di onCreate())
                 nome richiesto
                 cognome richiesto
-                email richiesto e nel formato corretto
-                username richiesto
-                telefono se presente deve contenere solo cifre numeriche
+                email richiesto, nel formato corretto e non presente sul Database
+                username richiesto e non presente sul Database
+                telefono facoltativo, se inserito deve contenere solo cifre numeriche
                 password richiesto
                 password2 deve corrispondere a password
-                il toast deve descrivere ciò che manca
+                il Toast deve dare avviso all'utente del calmpo mancante/incorretto
                 */
-
-                String campoMancante = controllaCampi();
-                if (!campoMancante.equals("")) {
-                    Toast.makeText(RegisterActivity.this, campoMancante, Toast.LENGTH_LONG).show();
+                String missingField = checkFields();
+                if (!missingField.equals("")) {
+                    Toast.makeText(RegisterActivity.this, missingField, Toast.LENGTH_LONG).show();
                     return;
                 }
 
-                //post sul db server
-                User newUser = new User(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
-                        String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);
-                // TEST
-                Toast.makeText(RegisterActivity.this, newUser.toString(), Toast.LENGTH_LONG).show();
-                // TEST
+                // creazione oggetto nuovo utente
+                User newUser = new User(String.valueOf(nameEditText.getText()), String.valueOf(surnameEditText.getText()), String.valueOf(usernameEditText.getText()),
+                        String.valueOf(emailEditText.getText()), String.valueOf(phoneEditText.getText()), String.valueOf(passwordEditText.getText()), 0);
+
+                // richiesta POST sul Database server
                 Call<User> postUserCall = apiService.addUser(newUser);
                 postUserCall.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-                        int statusCode = response.code();
-                        if (statusCode == 200) {
-                            Toast.makeText(RegisterActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show();
-                            //User newUser = response.body();
-                            //creazione oggetto utente (attenzione a telefono nullo e punteggio)
-                            //prendere da risposta server
-                             /*User newUser = new User(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
-                                        String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);*/
+                        if (response.isSuccessful()) {
                             //post sul db locale
                             UserDBAdapter udba = new UserDBAdapter(RegisterActivity.this);
                             try {
                                 udba.open();
                             } catch (SQLException throwables) {
+                                Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione (errore SQLite)", Toast.LENGTH_LONG).show();
                                 throwables.printStackTrace();
                             }
-                            udba.createUser(String.valueOf(nomeEditText.getText()), String.valueOf(cognomeEditText.getText()), String.valueOf(usernameEditText.getText()),
-                                    String.valueOf(emailEditText.getText()), String.valueOf(telefonoEditText.getText()), String.valueOf(passwordEditText.getText()), 0);
+                            udba.createUser(newUser);
                             udba.close();
+
+                            Toast.makeText(RegisterActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show();
+
+                            Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
                             // TEST - passaggio parametri alla MainActivity (una volta superato il controllo dei campi)
-                            Intent registraIntent = new Intent(RegisterActivity.this, MainActivity.class);
-                            registraIntent.putExtra("nome", "nome: " + nomeEditText.getText());
-                            registraIntent.putExtra("cognome", "cognome: " + cognomeEditText.getText());
-                            registraIntent.putExtra("email", "email: " + emailEditText.getText());
-                            registraIntent.putExtra("username", "username: " + usernameEditText.getText());
-                            if (!telefonoEditText.getText().toString().equals(""))
-                                registraIntent.putExtra("telefono", "telefono: " + telefonoEditText.getText());
-                            registraIntent.putExtra("password", "password: " + passwordEditText.getText());
-
-                            startActivity(registraIntent);
-                            // TEST
+                            mainIntent.putExtra("nome", "nome: " + nameEditText.getText());
+                            mainIntent.putExtra("cognome", "cognome: " + surnameEditText.getText());
+                            mainIntent.putExtra("email", "email: " + emailEditText.getText());
+                            mainIntent.putExtra("username", "username: " + usernameEditText.getText());
+                            if (!phoneEditText.getText().toString().equals(""))
+                                mainIntent.putExtra("telefono", "telefono: " + phoneEditText.getText());
+                            mainIntent.putExtra("password", "password: " + passwordEditText.getText());
+                            //
+                            startActivity(mainIntent);
+                            //finish();
                         } else
-                            Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione: ERROR " + response.code(), Toast.LENGTH_LONG).show();
                     }
-
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione", Toast.LENGTH_LONG).show();
+                        Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione: " + t.toString(), Toast.LENGTH_LONG).show();
+                        t.printStackTrace();
                     }
                 });
-
-
             }
         });
 
-        cancellaButton.setOnClickListener(new View.OnClickListener() {
+        clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nomeEditText.getText().clear();
-                cognomeEditText.getText().clear();
+                nameEditText.getText().clear();
+                surnameEditText.getText().clear();
                 emailEditText.getText().clear();
                 usernameEditText.getText().clear();
-                telefonoEditText.getText().clear();
+                phoneEditText.getText().clear();
                 passwordEditText.getText().clear();
                 password2EditText.getText().clear();
             }
         });
     }
 
-    public String controllaCampi() {
+    public String checkFields() {
         // nome
-        if (nomeEditText.getText().toString().equals(""))
+        if (nameEditText.getText().toString().equals(""))
             return "Inserisci nome";
         // cognome
-        if (cognomeEditText.getText().toString().equals(""))
+        if (surnameEditText.getText().toString().equals(""))
             return "Inserisci cognome";
-        // verificare con con query che email e username non siano già posseduti da un utente sul DB (server)
         // email
         String email = emailEditText.getText().toString();
         String regex = "^(.+)@(.+)$";
@@ -159,30 +151,39 @@ public class RegisterActivity extends Activity {
         Matcher matcher = pattern.matcher(email);
         if (email.equals("") || !matcher.matches()) //con regular expression
             return "Inserisci email valida";
-        // TEST
+        // verifica che l'email non sia già posseduta da un utente sul Database server
         Call<User> emailExists = apiService.checkEmailExists(email);
-        UserCheckCallback eccb = new UserCheckCallback(1);
-        emailExists.enqueue(eccb);
-        String emailRes = eccb.toString();
-        if (emailRes != null)
-            return emailRes;
+        User existingUser = null;
+        try {
+            existingUser = emailExists.execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Problema durante la verifica dell'email: " + e.toString();
+        }
+        if (existingUser != null)
+            return "Email già esistente";
         // username
-        if (usernameEditText.getText().toString().equals(""))
+        String username = usernameEditText.getText().toString();
+        if (username.equals(""))
             return "Inserisci username";
-        // TEST
-        Call<User> usernameExists = apiService.getUserByUsername(usernameEditText.getText().toString());
-        UserCheckCallback uccb = new UserCheckCallback(1);
-        usernameExists.enqueue(uccb);
-        String usernameRes = uccb.toString();
-        if (usernameRes != null)
-            return usernameRes;
+        // verifica che l'username non sia già posseduto da un utente sul Database server
+        Call<User> usernameExists = apiService.getUserByUsername(username);
+        existingUser = null;
+        try {
+            existingUser = usernameExists.execute().body();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Problema durante la verifica dell'username: " + e.toString();
+        }
+        if (existingUser != null)
+            return "Username già esistente";
         // telefono
-        String tel = telefonoEditText.getText().toString();
-        if (!tel.equals(""))
+        String phone = phoneEditText.getText().toString();
+        if (!phone.equals(""))
             try {
-                Double.parseDouble(tel);
+                Double.parseDouble(phone);
             } catch (NumberFormatException e) {
-                return "Inserisci un telefono corretto";
+                return "Inserisci un numero telefonico corretto";
             }
         // password
         String pw = passwordEditText.getText().toString();
@@ -192,8 +193,10 @@ public class RegisterActivity extends Activity {
         String pw2 = password2EditText.getText().toString();
         if (pw2.equals(""))
             return "Ripeti password";
-        if (!pw.equals(pw2))
+        if (!pw.equals(pw2)) {
+            password2EditText.getText().clear();
             return "Le password non corrispondono";
+        }
         return "";
     }
 
