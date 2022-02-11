@@ -2,14 +2,12 @@ package it.artform.pojos;
 
 public class Utente {
 	
-	//private int id;
 	private String nome, cognome, username, email, numeroTelefono, password;
 	private int punteggio;
 	
 	public Utente() {}
 
-	public Utente(/*int id, */String nome, String cognome, String username, String email, String numeroTelefono, String password, int punteggio) {
-		//this.id = id;
+	public Utente(String nome, String cognome, String username, String email, String numeroTelefono, String password, int punteggio) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.username = username;
@@ -17,11 +15,7 @@ public class Utente {
 		this.password = password;
 		this.punteggio = punteggio;
 	}
-	/*
-	public int getID() {
-		return id;
-	}
-	*/
+	
 	public String getNome() {
 		return nome;
 	}
@@ -84,7 +78,7 @@ public class Utente {
 	//TEST
 	@Override
 	public String toString() {
-		return "Utente ["/*ID=" + id + "*/+"nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", email="
+		return "Utente [nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", email="
 				+ email + ", numeroTelefono=" + numeroTelefono + ", password=" + password + "]";
 	}
 
