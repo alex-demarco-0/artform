@@ -58,12 +58,12 @@ public class LoginActivity extends Activity {
             credentialsOk();
 
         // istanziamento widget UI
-        EditText loginUsername = findViewById(R.id.loginUsername);
-        EditText loginPassword = findViewById(R.id.loginPassword);
+        EditText usernameEditText = findViewById(R.id.usernameEditText);
+        EditText passwordEditText = findViewById(R.id.passwordEditText);
         Button loginButton = findViewById(R.id.loginButton);
-        Button goToRegister = findViewById(R.id.goToRegister);
+        Button registerButton = findViewById(R.id.registerButton);
         CheckBox saveLoginCheckBox = findViewById(R.id.saveLoginCheckBox);
-        TextView forgotPassword = findViewById(R.id.forgotPassword);
+        TextView forgotPasswordTextView = findViewById(R.id.forgotPasswordTextView);
         loggingProgressBar = findViewById(R.id.loggingProgressBar);
         loggingProgressBar.setVisibility(View.INVISIBLE);
 
@@ -75,8 +75,8 @@ public class LoginActivity extends Activity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                username = loginUsername.getText().toString();
-                password = loginPassword.getText().toString();
+                username = usernameEditText.getText().toString();
+                password = passwordEditText.getText().toString();
                 if (username.equals("")) {
                     Toast.makeText(LoginActivity.this, "Inserisci username", Toast.LENGTH_SHORT).show();
                     return;
@@ -125,11 +125,11 @@ public class LoginActivity extends Activity {
         });
 
         // pulsante per passare alla RegisterActivity
-        goToRegister.setOnClickListener(new View.OnClickListener() {
+        registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent openRegisterActivityIntent= new Intent(LoginActivity.this, RegisterActivity.class);
-                String un = loginUsername.getText().toString(); //passaggio parametro username nella RegisterActivity se l'utente lo ha inserito
+                String un = usernameEditText.getText().toString(); //passaggio parametro username nella RegisterActivity se l'utente lo ha inserito
                 if(!un.equals(""))
                     openRegisterActivityIntent.putExtra("username", un);
                 startActivity(openRegisterActivityIntent);
@@ -137,7 +137,7 @@ public class LoginActivity extends Activity {
         });
 
         // pulsante per password dimenicata
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
+        forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(LoginActivity.this, "ACTIVITY PASSWORD ...", Toast.LENGTH_LONG).show();

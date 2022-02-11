@@ -22,7 +22,7 @@
         android:src="@mipmap/ic_launcher_foreground" />
 
     <EditText
-        android:id="@+id/loginUsername"
+        android:id="@+id/usernameEditText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -31,7 +31,7 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/loginPassword"
+        android:id="@+id/passwordEditText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -51,7 +51,7 @@
         android:text="@string/login_button" />
 
     <Button
-        android:id="@+id/goToRegister"
+        android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -62,7 +62,7 @@
         android:text="@string/register_button" />
 
     <TextView
-        android:id="@+id/forgotPassword"
+        android:id="@+id/forgotPasswordTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -75,7 +75,7 @@
         android:id="@+id/saveLoginCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/forgotPassword"
+        android:layout_above="@+id/forgotPasswordTextView"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="5dp"
         android:text="Memorizza credenziali" />
