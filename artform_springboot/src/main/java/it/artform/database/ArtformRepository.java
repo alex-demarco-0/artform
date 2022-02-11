@@ -1,38 +1,40 @@
 package it.artform.database;
 
+import java.util.Date;
 import java.util.List;
 
 import it.artform.pojos.*;
 
 public interface ArtformRepository {
-	// recupera da DB in base a ID
-	//Utente findUtenteById(long id);
-	
-	// recupera da DB in base a Username
+
+	//Utente
 	Utente findUtenteByUsername(String username);
 	Utente findUtenteByEmail(String email);
 	int saveUtente(Utente u);
 	int updateUtente(Utente u);
-	//int deleteUtente(long id);
 	int deleteUtente(String username);
-	//int activateUserNotifications(Utente u1, Utente u2);
+	int activateUserNotifications(String username1, String username2);
 	
-	Post findPost();
+	//Post
+	Post findPost(long id);
 	List<Post> findAllPostsByUtente(String username);
 	int savePost(Post p);
 	int updatePost(Post p);
-	int deletePost();
-	//int saveUserPost(Utente u, Post p);
+	int deletePost(long id);
+	//int saveUserPost(String username, long id);
 
-	Notifica findNotifica();
+	//Notifica
+	Notifica findNotifica(Date d);
 	int saveNotifica(Notifica p);
 	List<Notifica> findAllNotifiche();
 
-	Badge findBadge();
+	//Badge
+	Badge findBadge(String nome);
 	int saveBadge(Badge b);
 	
-	Commissione findCommissione();
+	//Commissione
+	Commissione findCommissione(long id);
 	int saveCommissione(Commissione c);
-	List<Commissione> findAllCommissioni(long utenteId);
+	List<Commissione> findCommissioniByArtista(String username);
 	
 }

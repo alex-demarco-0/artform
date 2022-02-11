@@ -1,5 +1,6 @@
 package it.artform.database;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,7 @@ public class JdbcArtformRepository implements ArtformRepository {
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-/*
-	@Override
-	public Utente findUtenteById(long id) {
-		return jdbcTemplate.queryForObject("SELECT * from utente WHERE ID=?", BeanPropertyRowMapper.newInstance(Utente.class), id);
-	}
-*/
+
 	@Override
 	public Utente findUtenteByUsername(String username) {
 		return jdbcTemplate.queryForObject("SELECT * from utente WHERE username=?", BeanPropertyRowMapper.newInstance(Utente.class), username);
@@ -41,15 +37,16 @@ public class JdbcArtformRepository implements ArtformRepository {
 		return jdbcTemplate.update("UPDATE utente SET nome=?, cognome=?, username=?, email=?, numeroTelefono=?, password=?, punteggio=? WHERE username=?",
 				new Object[] {u.getNome(), u.getCognome(), u.getUsername(), u.getEmail(), u.getNumeroTelefono(), u.getPassword(), u.getPunteggio(), u.getUsername()});
 	}
-/*
-	@Override
-	public int deleteUtente(long id) {
-		return jdbcTemplate.update("DELETE FROM utente WHERE ID=?", id);
-	}
-*/
+
 	@Override
 	public int deleteUtente(String username) {
 		return jdbcTemplate.update("DELETE FROM utente WHERE username=?", username);
+	}
+	
+	@Override
+	public int activateUserNotifications(String username1, String username2) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
@@ -59,14 +56,14 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
-	public Post findPost() {
+	public Post findPost(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
 	public List<Post> findAllPostsByUtente(String username) {
-		return jdbcTemplate.query("SELECT * from post INNER JOIN utente ON post.utenteID = utente.ID WHERE username=?", BeanPropertyRowMapper.newInstance(Post.class), username);
+		return jdbcTemplate.query("SELECT * from post WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(Post.class), username);
 	}
 
 	@Override
@@ -76,7 +73,7 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
-	public int deletePost() {
+	public int deletePost(long id) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -88,7 +85,7 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
-	public Notifica findNotifica() {
+	public Notifica findNotifica(Date d) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -106,7 +103,7 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
-	public Badge findBadge() {
+	public Badge findBadge(String nome) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -118,16 +115,14 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
-	public Commissione findCommissione() {
+	public Commissione findCommissione(long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Commissione> findAllCommissioni(long utenteId) {
-		return jdbcTemplate.query("SELECT * from commissione WHERE artistaID=?", BeanPropertyRowMapper.newInstance(Commissione.class), utenteId);
-	}
-	
-	
+	public List<Commissione> findCommissioniByArtista(String username) {
+		return jdbcTemplate.query("SELECT * from commissione WHERE artistaUsername=?", BeanPropertyRowMapper.newInstance(Commissione.class), username);
+	}	
 
 }
