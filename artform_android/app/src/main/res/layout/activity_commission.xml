@@ -6,26 +6,127 @@
     android:layout_height="match_parent"
     tools:context=".CommissionActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/azzuroLogo"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_launcher_round" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Contacts"
-            android:textSize="25dp" />
-    </LinearLayout>
+    <include
+        android:id="@+id/layout"
+        layout="@layout/toolbar" />
 
     <RelativeLayout
+        android:id="@+id/formLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:hint="Insert Name" />
+
+        <EditText
+            android:id="@+id/surnameEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/nameEditText"
+            android:fontFamily="serif"
+            android:hint="Insert Surname" />
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/surnameEditText"
+            android:fontFamily="serif"
+            android:hint="Insert E-mail" />
+
+        <LinearLayout
+            android:id="@+id/topicLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailEditText"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/topicTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Select topics: "
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/topicSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Topics" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dateLayotu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topicLayout"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="Select date: "
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/dateSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Topics" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="220dp"
+            android:fontFamily="serif"
+            android:gravity="top|left"
+            android:hint="Enter here"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:maxLines="10"
+            android:minLines="6"
+            android:scrollbars="vertical" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/formLayout"
+        android:padding="10dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="80dp"
+            android:fontFamily="serif"
+            android:text="Sumbit" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="80dp"
+            android:fontFamily="serif"
+            android:text="Reset" />
+
+    </RelativeLayout>
+</RelativeLayout>
+
+    <!--RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
@@ -39,27 +140,30 @@
             android:hint="name" />
 
         <EditText
+            android:id="@+id/surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="45dp"
+            android:layout_below="@+id/name"
             android:hint="surname" />
 
         <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
+            android:layout_below="@+id/surname"
             android:hint="@string/e_mail" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="145dp"
+            android:layout_below="@+id/email"
             android:gravity="left"
             android:text="Select topics: "
             android:textColor="@color/grigio"
             android:textSize="18dp" />
 
         <Spinner
+            android:id="@+id/topicSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
@@ -75,7 +179,8 @@
             android:textColor="@color/grigio"
             android:textSize="18dp" />
 
-        <TextView
+        <EditText
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="150dp"
@@ -92,6 +197,7 @@
             android:textSize="18dp" />
 
         <EditText
+            android:id="@+id/details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="275dp"
@@ -121,7 +227,7 @@
     </RelativeLayout>
 
 
-    <!--EditText
+    <!-EditText
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -222,5 +328,3 @@
             android:layout_marginEnd="253dp"
             android:layout_marginBottom="49dp"
             android:hint="Reset" /-->
-
-</RelativeLayout>

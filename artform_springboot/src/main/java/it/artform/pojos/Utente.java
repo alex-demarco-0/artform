@@ -5,7 +5,10 @@ public class Utente {
 	//private int id;
 	private String nome, cognome, username, email, numeroTelefono, password;
 	private int punteggio;
-
+	
+	public Utente() {
+		
+	}
 	public Utente(/*int id, */String nome, String cognome, String username, String email, String numeroTelefono, String password, int punteggio) {
 		//this.id = id;
 		this.nome = nome;
