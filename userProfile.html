@@ -1,26 +1,27 @@
-<!DOCTYPE html>
+<DOCTYPE! html>
 <html>
-    <head>
-        <title>UserProfile</title>
-        <style type="text/css">
-          #propic{ display:block;
-            margin:0px auto;
-          text-align:center}
-          #badge{
-            width: 50px;
-            height: 50px;
-            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/003/678/261/small/quality-badge-icon-design-medal-and-ribbon-illustration-free-vector.jpg');
-          background-repeat: no-repeat;
-          background-position: center center;
-        }
-        </style>
-    </head>
-    
-    <body>
-        <button>Badges</button>  <button style="position:absolute; right: 10px;">Settings</button>
-        <img id="propic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEKWsrQjrLklNeCqRe4FXVCTLKzyQaXWqwWUDyFvq8e1YXaPFu-thyqOzkiwXLshME9H0&usqp=CAU">  
-       
-        <p style="margin: auto; text-align: center; margin-top: 10px;" ;>Bio/tags</p>
-    </body>
-    
+  <head>
+    <title>ArtForm userProfile</title>
+    <link rel="stylesheet" type="text/css" href="userProfile.css"
+  </head>
+  <body>
+    <div class="buttonsTop">
+      <button id="badgesB" type="button" name="badgeButton">Badges</button>
+      <button id="notifyB" type="button" name="notifyMeButton">Notify me</button>
+    </div>
+    <div class="container">
+      <div class="propic">
+        <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/profile-2673119-2217781.png" width="100" class="rounded-circle">
+      </div>
+      <h3 class="mt-2 mb-0">*Nome utente*</h3> <span>*BIO*</span>
+      <div class="px-4 mt-1">
+         <p class="fonts">*TAGS*</p>
+      </div>
+      <div class="buttons">
+         <button class="btn btn-outline-primary px-4">Contact me</button>
+      </div>
+    </div>
+    <div class="posts">
+    </div>
+  </body>
 </html>
