@@ -6,7 +6,7 @@ import it.artform.pojos.*;
 
 public interface ArtformRepository {
 	// recupera da DB in base a ID
-	Utente findUtenteById(long id);
+	//Utente findUtenteById(long id);
 	
 	// recupera da DB in base a Username
 	Utente findUtenteByUsername(String username);
@@ -18,6 +18,7 @@ public interface ArtformRepository {
 	//int activateUserNotifications(Utente u1, Utente u2);
 	
 	Post findPost();
+	List<Post> findAllPostsByUtente(String username);
 	int savePost(Post p);
 	int updatePost(Post p);
 	int deletePost();
