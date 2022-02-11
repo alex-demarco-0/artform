@@ -21,7 +21,7 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.password = password;
-        this.points = points;
+        this.points = 0;
     }
 
     public String getName() {

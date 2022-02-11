@@ -14,12 +14,12 @@ public class JdbcArtformRepository implements ArtformRepository {
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
-
+/*
 	@Override
 	public Utente findUtenteById(long id) {
 		return jdbcTemplate.queryForObject("SELECT * from utente WHERE ID=?", BeanPropertyRowMapper.newInstance(Utente.class), id);
 	}
-	
+*/
 	@Override
 	public Utente findUtenteByUsername(String username) {
 		return jdbcTemplate.queryForObject("SELECT * from utente WHERE username=?", BeanPropertyRowMapper.newInstance(Utente.class), username);
@@ -62,6 +62,11 @@ public class JdbcArtformRepository implements ArtformRepository {
 	public Post findPost() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public List<Post> findAllPostsByUtente(String username) {
+		return jdbcTemplate.query("SELECT * from post INNER JOIN utente ON post.utenteID = utente.ID WHERE username=?", BeanPropertyRowMapper.newInstance(Post.class), username);
 	}
 
 	@Override
