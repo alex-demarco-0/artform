@@ -48,7 +48,7 @@
   <table id="TAB11" populated="true" UUID="488c0b98-a1c9-4072-b0ae-38b010f9ea4d" name="post" objectType="TABLE" physicalName="post" >
    <remarks></remarks>
    <folder id="FOLTAB111" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL12" populated="true" UUID="55626523-af0e-4cd2-948a-51808c4e65e0" autoIncrement="false" autoIncrementSequenceName="post_ID_seq" defaultValue="" name="ID" nullable="0" physicalName="ID" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL12" populated="true" UUID="55626523-af0e-4cd2-948a-51808c4e65e0" autoIncrement="true" autoIncrementSequenceName="post_ID_seq" defaultValue="" name="ID" nullable="0" physicalName="ID" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL13" populated="true" UUID="026b7c0a-4eb3-45b7-88f6-0a7e4b5cac97" autoIncrement="false" autoIncrementSequenceName="post_titolo_seq" defaultValue="" name="titolo" nullable="0" physicalName="titolo" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
