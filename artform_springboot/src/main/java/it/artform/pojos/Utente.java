@@ -1,7 +1,6 @@
 package it.artform.pojos;
 
 public class Utente {
-	
 	private String nome, cognome, username, email, numeroTelefono, password;
 	private int punteggio;
 	
@@ -13,7 +12,7 @@ public class Utente {
 		this.username = username;
 		this.numeroTelefono = numeroTelefono;
 		this.password = password;
-		this.punteggio = punteggio;
+		this.punteggio = 0;
 	}
 	
 	public String getNome() {

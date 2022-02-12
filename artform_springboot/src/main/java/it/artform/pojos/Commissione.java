@@ -3,19 +3,25 @@ package it.artform.pojos;
 import java.util.Date;
 
 public class Commissione {
-	String titolo;
-	double prezzo;
-	Date data;
-	String artista, cliente;
-	String indirizzoConto;
+	private final int Id;
+	private final String titolo;
+	private final double prezzo;
+	private final Date data;
+	private final String artistaUsername, clienteUsername;
+	private final String indirizzoConto;
 	
-	public Commissione(String titolo, double prezzo, String artista, String cliente, String indirizzoConto) {
+	public Commissione(int Id, String titolo, double prezzo, String artistaUsername, String clienteUsername, String indirizzoConto) {
+		this.Id = Id;
 		this.titolo = titolo;
 		this.prezzo = prezzo;
 		this.data = new Date();
-		this.artista = artista;
-		this.cliente = cliente;
+		this.artistaUsername = artistaUsername;
+		this.clienteUsername = clienteUsername;
 		this.indirizzoConto = indirizzoConto;
+	}
+	
+	public int getId() {
+		return Id;
 	}
 	
 	public String getTitolo() {
@@ -30,12 +36,12 @@ public class Commissione {
 		return data;
 	}
 
-	public String getArtista() {
-		return artista;
+	public String getArtistaUsername() {
+		return artistaUsername;
 	}
 
-	public String getCliente() {
-		return cliente;
+	public String getClienteUsername() {
+		return clienteUsername;
 	}
 
 	public String getIndirizzoConto() {

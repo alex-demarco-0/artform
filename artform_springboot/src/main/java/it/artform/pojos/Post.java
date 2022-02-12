@@ -3,27 +3,28 @@ package it.artform.pojos;
 import java.util.Date;
 
 public class Post {
-	
-	//private final int ID;
+	private final int Id;
 	private final Date dataPubblicazione ;
 	private String topic;
 	private String[] tags; // oppure ArrayList<String> ?
 	private int like;
 	private final boolean tipologia; // boolean ?
+	private final String utenteUsername;
 	
-	public Post(/*int ID, */String topic, String[] tags, boolean tipologia) {
-		//this.ID = ID;
+	public Post(int Id, String topic, String[] tags, boolean tipologia, String utenteUsername) {
+		this.Id = Id;
 		this.dataPubblicazione = new Date();
 		this.topic = topic;
 		this.tags = tags;
 		this.like = 0;
 		this.tipologia = tipologia;
+		this.utenteUsername = utenteUsername;
 	}
-	/*
-	public int getID() {
-		return ID;
+	
+	public int getId() {
+		return Id;
 	}
-	*/
+	
 	public Date getDataPubblicazione() {
 		return dataPubblicazione;
 	}
@@ -50,6 +51,14 @@ public class Post {
 	
 	public void addLike() {
 		this.like++;
+	}
+
+	public boolean getTipologia() {
+		return tipologia;
+	}
+
+	public String getUtenteUsername() {
+		return utenteUsername;
 	}
 
 }
