@@ -23,6 +23,9 @@ public class ExternalProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_external_profile);
 
+
+
+
         externalProfilePic=findViewById(R.id.externalProfileImageView);
         usernameExternalProfile=findViewById(R.id.usernameExternalProfile);
         tagsExternalProfile=findViewById(R.id.tagsExternalProfile);

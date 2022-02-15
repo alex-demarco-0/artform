@@ -17,7 +17,7 @@ public class SettingsActivity extends Activity {
 
         setContentView(R.layout.activity_settings);
         //ListView dei settings
-        settingsListView = (ListView) findViewById(R.id.settingsListView);
+       // settingsListView = (ListView) findViewById(R.id.settingsListView);
         // inizializzazione
         ArrayList<String> arrayList= new ArrayList<>();
         arrayList.add("Saved post");
@@ -27,13 +27,13 @@ public class SettingsActivity extends Activity {
         arrayList.add("Assistenza");
         arrayList.add("Informazioni");
 
-        TextView logoutTextView = findViewById(R.id.logoutTextView);
-        logoutTextView.setOnClickListener(new View.OnClickListener() {
+        //TextView logoutTextView = findViewById(R.id.logoutTextView);
+        /*logoutTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
-        });
+        });*/
     }
 }
 

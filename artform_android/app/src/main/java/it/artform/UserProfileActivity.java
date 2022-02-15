@@ -12,6 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import it.artform.pojos.User;
+import it.artform.web.ArtformApiEndpointInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UserProfileActivity extends Activity {
     ImageView userProfilePic;
@@ -30,6 +37,25 @@ public class UserProfileActivity extends Activity {
         tagsUserProfile=findViewById(R.id.tagsUserProfile);
         settings=findViewById(R.id.settingsUserProfile);
         badgeUserProfile=findViewById(R.id.badgeButtonUserProfile);
+
+    // imposta USERNAME del profilo personale,
+        AFGlobal app = (AFGlobal) getApplication();
+        ArtformApiEndpointInterface apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
+        Call<User> getUserCall = apiService.getUserByUsername(AFGlobal.getLoggedUser());
+        getUserCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(UserProfileActivity.this, response.body().getName().toString(), Toast.LENGTH_LONG).show();
+                    usernameUserProfile.setText(response.body().getName());
+                }
+            }
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(UserProfileActivity.this, "Richiesta GET non effettuata", Toast.LENGTH_LONG).show();
+            }
+        });
+
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -6,15 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".CommissionActivity">
 
-    <include
-        android:id="@+id/layout"
-        layout="@layout/toolbar" />
+
 
     <RelativeLayout
         android:id="@+id/formLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout"
         android:padding="16dp">
 
         <EditText

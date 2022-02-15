@@ -27,7 +27,7 @@ import retrofit2.Response;
 public class MainActivity extends Activity {
     PostDBAdapter pdba = null;
     Button settingsButton = null;
-    Button commissionButton = null;
+    Button externalProfileButton = null;
     ListView datiRegistrazioneListView = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,13 +73,13 @@ public class MainActivity extends Activity {
         });
 
         // TEST - pulsante commission / Progressbar
-        commissionButton = findViewById(R.id.commissionButton);
-        commissionButton.setOnClickListener(new View.OnClickListener() {
+        externalProfileButton = findViewById(R.id.externalProfileButton);
+        externalProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent openCommissionActivity = new Intent(MainActivity.this, CommissionActivity.class);
+                Intent openExternalProfileActivity = new Intent(MainActivity.this, ExternalProfileActivity.class);
 
-                startActivity(openCommissionActivity);
+                startActivity(openExternalProfileActivity);
             }
         });
         // TEST - pulsante settings
@@ -89,6 +89,15 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 Intent openSettingsActivity= new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(openSettingsActivity);
+            }
+        });
+        // TEST - pulsante profilo personale
+        Button profileButton = findViewById(R.id.profileButton);
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent openUserProfileActivity = new Intent(MainActivity.this, UserProfileActivity.class);
+                startActivity(openUserProfileActivity);
             }
         });
 

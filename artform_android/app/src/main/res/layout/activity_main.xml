@@ -48,15 +48,19 @@
         android:text="Home" />
 
     <Button
-        android:id="@+id/commissionButton"
+        android:id="@+id/externalProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="2dp"
         android:layout_marginBottom="21dp"
         android:layout_toEndOf="@+id/homeButton"
-        android:text="Commission" />
+        android:text="External" />
 
-
+<Button
+    android:id="@+id/profileButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/profilo" />
 
 </RelativeLayout>

@@ -5,15 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
-    <include
-        android:id="@+id/layout"
-        layout="@layout/toolbar" />
 
     <SearchView
         android:id="@+id/simpleSearchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout"
         android:hint="@string/search" />
 
     <Spinner
