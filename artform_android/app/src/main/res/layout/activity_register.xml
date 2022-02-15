@@ -1,42 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/nomeEditText"
+    <TextView
+        android:id="@+id/createTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Nome" />
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/create_account" />
 
     <EditText
-        android:id="@+id/cognomeEditText"
+        android:id="@+id/nameEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nomeEditText"
+        android:layout_below="@+id/createTextView"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="@string/nome" />
+
+    <EditText
+        android:id="@+id/surnameEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Cognome" />
+        android:hint="@string/cognome" />
 
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cognomeEditText"
+        android:layout_below="@+id/surnameEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:text="Email" />
+        android:hint="@string/e_mail" />
 
     <EditText
         android:id="@+id/usernameEditText"
@@ -47,10 +55,10 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Username" />
+        android:hint="@string/username" />
 
     <EditText
-        android:id="@+id/telefonoEditText"
+        android:id="@+id/phoneEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/usernameEditText"
@@ -58,21 +66,21 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="phone"
-        android:text="Telefono (facoltativo)" />
+        android:hint="@string/telefono" />
 
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/telefonoEditText"
+        android:layout_below="@+id/phoneEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="Password" />
+        android:hint="@string/password" />
 
     <EditText
-        android:id="@+id/password2EditTextText"
+        android:id="@+id/password2EditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordEditText"
@@ -80,15 +88,30 @@
         android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="Conferma password" />
+        android:hint="@string/password2" />
 
     <Button
-        android:id="@+id/registratiButton"
+        android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/password2EditText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="false"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="12dp"
         android:layout_marginBottom="92dp"
-        android:text="Registrati" />
+        android:text="@string/registrati" />
+
+    <Button
+        android:id="@+id/clearButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password2EditText"
+        android:layout_alignParentBottom="false"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="92dp"
+        android:layout_toEndOf="@+id/registerButton"
+        android:text="@string/clear" />
 
 </RelativeLayout>

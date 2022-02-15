@@ -1,5 +1,35 @@
 <resources>
     <string name="app_name">ArtForm</string>
-    <string name="login_button">Login</string>
+
+
+    <!-- aiuto -->
+
+    <!-- LoginActivity -->
+    <string name="login_button">Log In</string>
     <string name="register_button">Register</string>
+    <string name="clear">Cancella</string>
+    <string name="password_dimenticata">Password Dimenticata</string>
+
+    <!-- barra di navigazione MainActivity -->
+    <string name="home">HOME</string>
+    <string name="cerca">SEARCH</string>
+    <string name="pubblica">PUB</string>
+    <string name="notifiche">NOTIFY</string>
+    <string name="profilo">PROFILE</string>
+
+    <!-- campi RegisterActivity -->
+    <string name="create_account">Crea un account</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
+    <string name="e_mail">E-mail</string>
+    <string name="username">Username</string>
+    <string name="telefono">Telefono (facoltativo)</string>
+    <string name="password">Password</string>
+    <string name="password2">Ripeti password</string>
+    <string name="registrati">Registrati</string>
+    <!-- SettingsActivity-->
+    <string name="impostazioni">Impostazioni</string>
+    <string name="logout">log Out</string>
+    <string name="search">Cerca</string>
+
 </resources>

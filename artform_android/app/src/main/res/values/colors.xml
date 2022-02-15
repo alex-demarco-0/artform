@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="fluo">#A3F307</color>
+    <color name="azzuroLogo">#38b6ff</color>
+    <color name="rosso">#FF0000</color>
+    <color name="grigio">#A9A9A9</color>
 </resources>
