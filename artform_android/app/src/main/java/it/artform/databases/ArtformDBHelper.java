@@ -26,7 +26,8 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_POST = "CREATE TABLE IF NOT EXISTS " +
             PostDBAdapter.DATABASE_TABLE +
             " (" + PostDBAdapter.KEY_POSTID + " integer PRIMARY KEY AUTOINCREMENT, " +
-            PostDBAdapter.KEY_USER + " integer NOT NULL, " + // FK
+            PostDBAdapter.KEY_EXTERNAL_ID + " integer UNIQUE NOT NULL, " +
+            PostDBAdapter.KEY_USER + " varchar(50) NOT NULL, " + // FK
             PostDBAdapter.KEY_TITLE + " varchar(50) NOT NULL, " +
             PostDBAdapter.KEY_TOPIC + " varchar(50) NOT NULL, " + // FK
             PostDBAdapter.KEY_TAGS + " varchar(100) NOT NULL, " +
@@ -34,9 +35,9 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             PostDBAdapter.KEY_LIKE + "integer NOT NULL DEFAULT '0', " +
             PostDBAdapter.KEY_TYPE + " boolean NOT NULL, " +
             "FOREIGN KEY (" + PostDBAdapter.KEY_USER + ") " +
-            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "), " +
+            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "), " +
             "FOREIGN KEY (" + PostDBAdapter.KEY_TOPIC + ") " +
-            "REFERENCES " + TopicDBAdapter.DATABASE_TABLE + " (" + TopicDBAdapter.KEY_TOPICID + "));";
+            "REFERENCES " + TopicDBAdapter.DATABASE_TABLE + " (" + TopicDBAdapter.KEY_NAME + "));";
     // create notification table
     private static final String CREATE_NOTIFICATION = "CREATE TABLE IF NOT EXISTS " +
             NotificationDBAdapter.DATABASE_TABLE +
