@@ -49,7 +49,7 @@ public class PostArrayAdapter extends ArrayAdapter<Post> {
         ViewHolder vh = (ViewHolder) convertView.getTag();
         Post p = getItem(position);
         vh.userTextView.setText(""+p.getUser());
-        vh.tagsTextView.setText(p.getTags());
+        //vh.tagsTextView.setText(p.getTags());
         vh.likeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

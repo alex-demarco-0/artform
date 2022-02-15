@@ -7,7 +7,7 @@ public class User {
     private String name;
     @SerializedName("cognome")
     private String surname;
-    private String username, email;
+    private String username /* server DB PK */, email;
     @SerializedName("numeroTelefono")
     private String phone;
     private String password;
@@ -78,6 +78,10 @@ public class User {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public void increasePoints(int points) {
+        this.points += points;
     }
 
     @Override

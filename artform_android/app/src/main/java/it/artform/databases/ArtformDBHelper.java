@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "artform.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     // create user table
     private static final String CREATE_USER = "CREATE TABLE IF NOT EXISTS " +
             UserDBAdapter.DATABASE_TABLE +

@@ -10,8 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AFGlobal extends Application {
     public static final String BASE_URL = "http://172.23.224.1:8080/"; //varia in base alla macchina
-    Retrofit retrofit = null;
     private static String loggedUser = null; //variabile username utente acceduto (?)
+    Retrofit retrofit = null;
 
     public AFGlobal() {
         retrofit = new Retrofit.Builder()
