@@ -22,10 +22,17 @@
           left: 20px;
         }
     </style>
+
+    <script type="text/javascript" language="javascript">
+      function goToSettings(){
+        window.location="settings.html"
+      }
+    </script>
+
   </head>
   <body style="background-color:#E6E6FA;">
     <button id="badgesButton" name="badges" >Badges</button>
-    <button id="settingsButton" name="settings">Settings</button>
+    <button id="settingsButton" onClick="return goToSettings();" name="settings">Settings</button>
     <div class="propic">
     <img src="https://static.thenounproject.com/png/576092-200.png">
     </div>
