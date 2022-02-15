@@ -21,7 +21,6 @@
             android:id="@+id/nameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="serif"
             android:hint="Insert Name" />
 
         <EditText
@@ -29,7 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/nameEditText"
-            android:fontFamily="serif"
             android:hint="Insert Surname" />
 
         <EditText
@@ -37,7 +35,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/surnameEditText"
-            android:fontFamily="serif"
             android:hint="Insert E-mail" />
 
         <LinearLayout
@@ -52,7 +49,6 @@
                 android:id="@+id/topicTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="serif"
                 android:text="Select topics: "
                 android:textSize="20sp" />
 
@@ -64,7 +60,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/dateLayotu"
+            android:id="@+id/dateLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/topicLayout"
@@ -75,7 +71,6 @@
                 android:id="@+id/dateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="serif"
                 android:text="Select date: "
                 android:textSize="20sp" />
 
@@ -87,11 +82,10 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/details"
+            android:id="@+id/detailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="220dp"
-            android:fontFamily="serif"
             android:gravity="top|left"
             android:hint="Enter here"
             android:inputType="textMultiLine"
@@ -108,19 +102,19 @@
         android:padding="10dp">
 
         <Button
+            android:id="@+id/sumbitButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginStart="80dp"
-            android:fontFamily="serif"
             android:text="Sumbit" />
 
         <Button
+            android:id="@+id/resetButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="80dp"
-            android:fontFamily="serif"
             android:text="Reset" />
 
     </RelativeLayout>
