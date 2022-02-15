@@ -68,34 +68,34 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_TOPIC = "CREATE TABLE IF NOT EXISTS " +
             TopicDBAdapter.DATABASE_TABLE +
             " (" + TopicDBAdapter.KEY_TOPICID + " integer PRIMARY KEY AUTOINCREMENT, " +
-            TopicDBAdapter.KEY_NAME + " varchar(30) NOT NULL);";
+            TopicDBAdapter.KEY_NAME + " varchar(30) UNIQUE NOT NULL);";
     // create badge table
     private static final String CREATE_BADGE = "CREATE TABLE IF NOT EXISTS " +
             BadgeDBAdapter.DATABASE_TABLE +
             " (" + BadgeDBAdapter.KEY_BADGEID + " integer PRIMARY KEY AUTOINCREMENT, " +
-            BadgeDBAdapter.KEY_NAME + " varchar(30) NOT NULL, " +
+            BadgeDBAdapter.KEY_NAME + " varchar(30) UNIQUE NOT NULL, " +
             BadgeDBAdapter.KEY_DESCRIPTION + " varchar(100) NOT NULL, " +
             BadgeDBAdapter.KEY_POINTS + " integer NOT NULL);";
     // create saved_posts table
     private static final String CREATE_SAVED_POSTS = "CREATE TABLE IF NOT EXISTS " +
             SavedPostsDBAdapter.DATABASE_TABLE +
             " (" + SavedPostsDBAdapter.KEY_SAVED_POST_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
-            SavedPostsDBAdapter.KEY_USERID + " integer NOT NULL, " +
-            SavedPostsDBAdapter.KEY_POSTID + " integer NOT NULL, " +
-            "FOREIGN KEY (" + SavedPostsDBAdapter.KEY_USERID + ") " +
-            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "), " +
-            "FOREIGN KEY (" + SavedPostsDBAdapter.KEY_POSTID + ") " +
-            "REFERENCES " + PostDBAdapter.DATABASE_TABLE + " (" + PostDBAdapter.KEY_POSTID + "));";
+            SavedPostsDBAdapter.KEY_USER_USERNAME + " varchar(50) NOT NULL, " +
+            SavedPostsDBAdapter.KEY_POST_ID + " integer NOT NULL, " +
+            "FOREIGN KEY (" + SavedPostsDBAdapter.KEY_USER_USERNAME + ") " +
+            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "), " +
+            "FOREIGN KEY (" + SavedPostsDBAdapter.KEY_POST_ID + ") " +
+            "REFERENCES " + PostDBAdapter.DATABASE_TABLE + " (" + PostDBAdapter.KEY_EXTERNAL_ID + "));";
     // create user_notification table
     private static final String CREATE_USER_NOTIFICATIONS = "CREATE TABLE IF NOT EXISTS " +
             UserNotificationsDBAdapter.DATABASE_TABLE +
             " (" + UserNotificationsDBAdapter.KEY_USER_NOTIFICATIONS_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
-            UserNotificationsDBAdapter.KEY_USERID + " integer NOT NULL, " +
-            UserNotificationsDBAdapter.KEY_USER_EXT_ID + " integer NOT NULL, " +
-            "FOREIGN KEY (" + UserNotificationsDBAdapter.KEY_USERID + ") " +
-            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "), " +
-            "FOREIGN KEY (" + UserNotificationsDBAdapter.KEY_USER_EXT_ID + ") " +
-            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "));";
+            UserNotificationsDBAdapter.KEY_USER_USERNAME + " integer NOT NULL, " +
+            UserNotificationsDBAdapter.KEY_USER_EXT_USERNAME + " integer NOT NULL, " +
+            "FOREIGN KEY (" + UserNotificationsDBAdapter.KEY_USER_USERNAME + ") " +
+            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "), " +
+            "FOREIGN KEY (" + UserNotificationsDBAdapter.KEY_USER_EXT_USERNAME + ") " +
+            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "));";
     // create user_badge table
     private static final String CREATE_USER_BADGES = "CREATE TABLE IF NOT EXISTS " +
             UserBadgesDBAdapter.DATABASE_TABLE +

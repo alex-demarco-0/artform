@@ -13,8 +13,8 @@ public class TopicDBAdapter {
     private ArtformDBHelper dbHelper;
 
     protected static final String DATABASE_TABLE = "topic";
-    protected static final String KEY_TOPICID = "_id"; //PK autoincrement
-    protected static final String KEY_NAME = "name";
+    protected static final String KEY_TOPICID = "_id"; // PK autoincrement
+    protected static final String KEY_NAME = "name"; // server DB PK
 
     public TopicDBAdapter(Context context) {
         this.context = context;
