@@ -4,29 +4,40 @@ import java.util.Date;
 
 public class Post {
 	private final int Id;
-	private final Date dataPubblicazione ;
+	private final String utenteUsername;
+	private String titolo;
 	private String topic;
 	private String[] tags; // oppure ArrayList<String> ?
+	private final Date dataPubblicazione;
 	private int like;
 	private final boolean tipologia; // boolean ?
-	private final String utenteUsername;
 	
-	public Post(int Id, String topic, String[] tags, boolean tipologia, String utenteUsername) {
+	
+	public Post(int Id, String utenteUsername, String titolo, String topic, String[] tags, boolean tipologia) {
 		this.Id = Id;
-		this.dataPubblicazione = new Date();
+		this.utenteUsername = utenteUsername;
+		this.titolo = titolo;
 		this.topic = topic;
 		this.tags = tags;
+		this.dataPubblicazione = new Date();
 		this.like = 0;
 		this.tipologia = tipologia;
-		this.utenteUsername = utenteUsername;
 	}
 	
 	public int getId() {
 		return Id;
 	}
 	
-	public Date getDataPubblicazione() {
-		return dataPubblicazione;
+	public String getUtenteUsername() {
+		return utenteUsername;
+	}
+	
+	public String getTitolo() {
+		return titolo;
+	}
+	
+	public void setTitolo(String titolo) {
+		this.titolo = titolo;
 	}
 	
 	public String getTopic() {
@@ -45,6 +56,10 @@ public class Post {
 		this.tags = tags;
 	}
 	
+	public Date getDataPubblicazione() {
+		return dataPubblicazione;
+	}
+	
 	public int getLike() {
 		return like;
 	}
@@ -55,10 +70,6 @@ public class Post {
 
 	public boolean getTipologia() {
 		return tipologia;
-	}
-
-	public String getUtenteUsername() {
-		return utenteUsername;
 	}
 
 }
