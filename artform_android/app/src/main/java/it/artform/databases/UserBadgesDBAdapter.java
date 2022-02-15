@@ -14,8 +14,8 @@ public class UserBadgesDBAdapter {
 
     protected static final String DATABASE_TABLE = "userBadges";
     protected static final String KEY_USER_BADGES_ID = "_id"; //PK autoincrement
-    protected static final String KEY_USERID = "userId";
-    protected static final String KEY_BADGEID = "badgeId";
+    protected static final String KEY_USER_USERNAME = "userUsername";
+    protected static final String KEY_BADGE_NAME = "badgeName";
 
     public UserBadgesDBAdapter(Context context) {
         this.context = context;
@@ -31,21 +31,21 @@ public class UserBadgesDBAdapter {
         dbHelper.close();
     }
 
-    private ContentValues createContentValues(long userId, long badgeId) {
+    private ContentValues createContentValues(String userUsername, String badgeName) {
         ContentValues values = new ContentValues();
-        values.put( KEY_USERID, userId );
-        values.put( KEY_BADGEID, badgeId );
+        values.put( KEY_USER_USERNAME, userUsername );
+        values.put( KEY_BADGE_NAME, badgeName );
         return values;
     }
 
-    public long earnBadge(long userId, long badgeId) {
-        ContentValues postValues = createContentValues(userId, badgeId);
+    public long earnBadge(String userUsername, String badgeName) {
+        ContentValues postValues = createContentValues(userUsername, badgeName);
         return database.insertOrThrow(DATABASE_TABLE, null, postValues);
     }
 
-    public Cursor fetchUserBadges(long userId) {
-        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_USERID, KEY_BADGEID },
-                KEY_USERID + " = " + userId, null, null, null, null, null);
+    public Cursor fetchUserBadges(String userUsername) {
+        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_USER_USERNAME, KEY_BADGE_NAME },
+                KEY_USER_USERNAME + " = " + userUsername, null, null, null, null, null);
         return mCursor;
     }
 

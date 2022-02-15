@@ -100,12 +100,12 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_USER_BADGES = "CREATE TABLE IF NOT EXISTS " +
             UserBadgesDBAdapter.DATABASE_TABLE +
             " (" + UserBadgesDBAdapter.KEY_USER_BADGES_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
-            UserBadgesDBAdapter.KEY_USERID + " integer NOT NULL, " +
-            UserBadgesDBAdapter.KEY_BADGEID + " integer NOT NULL, " +
-            "FOREIGN KEY (" + UserBadgesDBAdapter.KEY_USERID + ") " +
-            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "), " +
-            "FOREIGN KEY (" + UserBadgesDBAdapter.KEY_BADGEID + ") " +
-            "REFERENCES " + BadgeDBAdapter.DATABASE_TABLE + " (" + BadgeDBAdapter.KEY_BADGEID + "));";
+            UserBadgesDBAdapter.KEY_USER_USERNAME + " integer NOT NULL, " +
+            UserBadgesDBAdapter.KEY_BADGE_NAME + " integer NOT NULL, " +
+            "FOREIGN KEY (" + UserBadgesDBAdapter.KEY_USER_USERNAME + ") " +
+            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "), " +
+            "FOREIGN KEY (" + UserBadgesDBAdapter.KEY_BADGE_NAME + ") " +
+            "REFERENCES " + BadgeDBAdapter.DATABASE_TABLE + " (" + BadgeDBAdapter.KEY_NAME + "));";
 
     //private static final String DATABASE_CREATE = CREATE_USER + CREATE_POST + CREATE_NOTIFICATION;
 
