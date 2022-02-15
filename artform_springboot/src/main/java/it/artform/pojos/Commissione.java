@@ -10,11 +10,11 @@ public class Commissione {
 	private final String artistaUsername, clienteUsername;
 	private final String indirizzoConto;
 	
-	public Commissione(int Id, String titolo, double prezzo, String artistaUsername, String clienteUsername, String indirizzoConto) {
+	public Commissione(int Id, String titolo, double prezzo, Date data, String artistaUsername, String clienteUsername, String indirizzoConto) {
 		this.Id = Id;
 		this.titolo = titolo;
 		this.prezzo = prezzo;
-		this.data = new Date();
+		this.data = data;
 		this.artistaUsername = artistaUsername;
 		this.clienteUsername = clienteUsername;
 		this.indirizzoConto = indirizzoConto;
@@ -47,6 +47,5 @@ public class Commissione {
 	public String getIndirizzoConto() {
 		return indirizzoConto;
 	}
-
 
 }

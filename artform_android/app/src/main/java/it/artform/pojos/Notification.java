@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Notification {
     @SerializedName("data")
-    private final Date date;
+    private final Date date; // server DB PK
     @SerializedName("categoria")
     private final int category;
     @SerializedName("descrizione")

@@ -1,19 +1,61 @@
 package it.artform.pojos;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 public class Commission {
-    private final String title, accountAddress;
+    @SerializedName("Id")
+    private final int id; // server DB PK
+    @SerializedName("titolo")
+    private final String title;
+    @SerializedName("prezzo")
     private final double price;
+    @SerializedName("data")
     private final Date date;
-    private final long artistId, customerId;
+    @SerializedName("artistaUsername")
+    private final String artistUsername;
+    @SerializedName("clienteUsername")
+    private final String customerUsername;
+    @SerializedName("indirizzoConto")
+    private final String accountAddress;
 
-    public Commission(String title, double price, Date date, long artistId, long customerId, String accountAddress) {
+    public Commission(int id, String title, double price, Date date, String artistUsername, String customerUsername, String accountAddress) {
+        this.id = id;
         this.title = title;
         this.price = price;
         this.date = new Date();
-        this.artistId = artistId;
-        this.customerId = customerId;
+        this.artistUsername = artistUsername;
+        this.customerUsername = customerUsername;
         this.accountAddress = accountAddress;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getArtist() {
+        return artistUsername;
+    }
+
+    public String getCustomer() {
+        return customerUsername;
+    }
+
+    public String getAccountAddress() {
+        return accountAddress;
+    }
+
 }

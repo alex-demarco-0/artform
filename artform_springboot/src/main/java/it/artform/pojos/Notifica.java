@@ -17,13 +17,13 @@ public class Notifica {
 	private final URL collegamento;
 	private final String utenteUsername;
 	
-	public Notifica(int categoria, String utenteUsername) throws MalformedURLException {
-		this.data = new Date();
+	public Notifica(String data, int categoria, String descrizione, String collegamento, String utenteUsername) throws MalformedURLException {
+		this.data = new Date(Date.parse(data));
 		this.categoria = categoria;
 		this.utenteUsername = utenteUsername;
 		// if()  generazione descrizione in base alla categoria
 		this.descrizione = "";
-		this.collegamento = new URL("");
+		this.collegamento = new URL(collegamento);
 		if (categoria == 1) {
 			//this.descrizione = "<utenteUsername> ha pubblicato un nuovo contenuto.";
 		}
