@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ExternalProfileActivity">
-
+    <include
+        android:id="@+id/layout"
+        layout="@layout/toolbar" />
     <ImageView
         android:id="@+id/externalProfileImageView"
         android:layout_width="140dp"

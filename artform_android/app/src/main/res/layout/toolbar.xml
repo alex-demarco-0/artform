@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/azzuroLogo">
+    android:background="@color/teal_200">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,7 +22,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_toEndOf="@+id/goBackArrow"
-            android:fontFamily="serif"
+            android:fontFamily="monospace"
             android:text="@string/app_name"
             android:textSize="22sp" />
     </RelativeLayout>

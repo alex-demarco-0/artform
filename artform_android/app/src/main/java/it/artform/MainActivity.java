@@ -28,16 +28,16 @@ public class MainActivity extends Activity {
     PostDBAdapter pdba = null;
     Button settingsButton = null;
     Button commissionButton = null;
-
+    ListView datiRegistrazioneListView = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         // TEST - dati registrazione
-        ListView datiRegistrazioneListView = findViewById(R.id.datiRegistrazioneListView);
-
+        datiRegistrazioneListView = findViewById(R.id.datiRegistrazioneListView);
         Bundle datiRegistrazione = getIntent().getExtras();
+
         if(datiRegistrazione != null) {
             String[] listaDatiRegistrazione = new String[datiRegistrazione.size()];
             int i = 0;

@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NotificationActivity">
-
+    <include
+        android:id="@+id/layout"
+        layout="@layout/toolbar" />
     <!-- TEST -->
     <ListView
         android:id="@+id/testCacheNotifListView"
