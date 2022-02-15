@@ -6,17 +6,21 @@ import java.util.Date;
 
 public class Post {
     @SerializedName("Id")
-    private final long id; // server DB PK
+    private final int id; // server DB PK
+    @SerializedName("utenteUsername")
     private final String userUsername;
+    @SerializedName("titolo")
     private String title;
     private String topic;
     private String[] tags;
+    @SerializedName("dataPubblicazione")
     private final Date publicationDate;
     private int like;
+    @SerializedName("tipologia")
     private final boolean type; //true = image, false = video
     private String contentSrc; // directory media file
 
-    public Post(long id, String userUsername, String title, String topic, String[] tags, Date publicationDate, int like, boolean type) {
+    public Post(int id, String userUsername, String title, String topic, String[] tags, Date publicationDate, int like, boolean type) {
         this.id = id;
         this.userUsername = userUsername;
         this.title = title;
@@ -28,7 +32,7 @@ public class Post {
         this.contentSrc = null;
     }
 
-    public long getId() { return this.id; }
+    public int getId() { return this.id; }
 
     public String getUser() {
         return this.userUsername;

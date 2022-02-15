@@ -15,7 +15,7 @@ public class UserDBAdapter {
     private ArtformDBHelper dbHelper;
 
     protected static final String DATABASE_TABLE = "user";
-    protected static final String KEY_USERID = "_id"; //PK autoincrement
+    protected static final String KEY_USERID = "_id"; // PK autoincrement
     protected static final String KEY_NAME = "name";
     protected static final String KEY_SURNAME = "surname";
     protected static final String KEY_USERNAME = "username"; // server DB PK
