@@ -110,6 +110,7 @@ public class RegisterActivity extends Activity {
                                 mainIntent.putExtra("telefono", "telefono: " + phoneEditText.getText());
                             mainIntent.putExtra("password", "password: " + passwordEditText.getText());
                             //
+                            AFGlobal.setLoggedUser(String.valueOf(usernameEditText.getText()));
                             startActivity(mainIntent);
                             //finish();
                         } else
