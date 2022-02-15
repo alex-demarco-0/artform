@@ -46,9 +46,9 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             NotificationDBAdapter.KEY_CATEGORY + " tinyint NOT NULL, " +
             NotificationDBAdapter.KEY_DESCRIPTION + " varchar(150) NOT NULL, " +
             NotificationDBAdapter.KEY_LINK + " varchar(1500) DEFAULT NULL, " +
-            NotificationDBAdapter.KEY_USER + " integer NOT NULL, " +
+            NotificationDBAdapter.KEY_USER + " varchar(50) NOT NULL, " +
             "FOREIGN KEY (" + NotificationDBAdapter.KEY_USER + ") " +
-            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "));";
+            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "));";
     // create commission table
     private static final String CREATE_COMMISSION = "CREATE TABLE IF NOT EXISTS " +
             CommissionDBAdapter.DATABASE_TABLE +

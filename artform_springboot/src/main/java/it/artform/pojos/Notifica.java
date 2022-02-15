@@ -50,5 +50,4 @@ public class Notifica {
 		return utenteUsername;
 	}
 	
-
 }
