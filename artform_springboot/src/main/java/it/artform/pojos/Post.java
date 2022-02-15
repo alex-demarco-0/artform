@@ -11,9 +11,10 @@ public class Post {
 	private final Date dataPubblicazione;
 	private int like;
 	private final boolean tipologia; // boolean ?
+	private final String contenutoSrc;
 	
 	
-	public Post(int Id, String utenteUsername, String titolo, String topic, String[] tags, boolean tipologia) {
+	public Post(int Id, String utenteUsername, String titolo, String topic, String[] tags, boolean tipologia, String contenutoSrc) {
 		this.Id = Id;
 		this.utenteUsername = utenteUsername;
 		this.titolo = titolo;
@@ -22,6 +23,7 @@ public class Post {
 		this.dataPubblicazione = new Date();
 		this.like = 0;
 		this.tipologia = tipologia;
+		this.contenutoSrc = contenutoSrc;
 	}
 	
 	public int getId() {
@@ -70,6 +72,10 @@ public class Post {
 
 	public boolean getTipologia() {
 		return tipologia;
+	}
+	
+	public String getContenutoSrc() {
+		return contenutoSrc;
 	}
 
 }

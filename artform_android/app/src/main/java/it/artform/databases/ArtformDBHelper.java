@@ -21,7 +21,8 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             UserDBAdapter.KEY_EMAIL + " varchar(50) UNIQUE NOT NULL," +
             UserDBAdapter.KEY_PHONE + " varchar(10) DEFAULT NULL, " +
             UserDBAdapter.KEY_PASSWORD + " varchar(50) NOT NULL, " +
-            UserDBAdapter.KEY_POINTS + " integer NOT NULL DEFAULT '0');";
+            UserDBAdapter.KEY_POINTS + " integer NOT NULL DEFAULT '0', " +
+            UserDBAdapter.KEY_PROFILEPIC + " varchar(300) NOT NULL);";
     // create post table
     private static final String CREATE_POST = "CREATE TABLE IF NOT EXISTS " +
             PostDBAdapter.DATABASE_TABLE +
@@ -34,6 +35,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             PostDBAdapter.KEY_PUBLICATION_DATE + " timestamp NOT NULL, " +
             PostDBAdapter.KEY_LIKE + "integer NOT NULL DEFAULT '0', " +
             PostDBAdapter.KEY_TYPE + " boolean NOT NULL, " +
+            PostDBAdapter.KEY_CONTENT + " varchar(300) NOT NULL, " +
             "FOREIGN KEY (" + PostDBAdapter.KEY_USER + ") " +
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "), " +
             "FOREIGN KEY (" + PostDBAdapter.KEY_TOPIC + ") " +
