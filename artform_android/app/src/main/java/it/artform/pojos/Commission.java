@@ -24,7 +24,7 @@ public class Commission {
         this.id = id;
         this.title = title;
         this.price = price;
-        this.date = new Date();
+        this.date = date;
         this.artistUsername = artistUsername;
         this.customerUsername = customerUsername;
         this.accountAddress = accountAddress;
