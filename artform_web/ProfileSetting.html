@@ -9,8 +9,13 @@ Descrizione: project work, pagina web di impostazioni del profilo
         <title>Impostazioni</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+        #body{
+          font-family:sans-serif, helvetica;
+        }
+        </style>
     </head>
-    <body bgcolor="#E6E6FA">
+    <body id="body" bgcolor="#E6E6FA">
         <div align=center>
             <font size='5' color='black'>Profile Settings </font>
             <img src="https://cdn1.iconfinder.com/data/icons/carbon-design-system-vol-7/32/settings-1024.png" width="20" height="20" vspace="-10" hspace="-10">
@@ -21,12 +26,10 @@ Descrizione: project work, pagina web di impostazioni del profilo
 <br>
 <br>
 <br>
-             <p align=center><input type="button" onclick="changeUsername()" value="change username">  
+             <p align=center><input type="button" onclick="changeUsername()" value="change username">
              <p align=center><input type="button" onclick="modBioTag()" value="modify bio/tags">
-             <p align=center><input type="button" onclick="changePhoPro()" value="change photo profile">            
+             <p align=center><input type="button" onclick="changePhoPro()" value="change photo profile">
         </div>
     </body>
    <script src="profileSettings.js"></script>
 </html>
-
-       

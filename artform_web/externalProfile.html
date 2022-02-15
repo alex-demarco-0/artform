@@ -4,6 +4,9 @@
   <head>
     <title>UserProfile ArtForm</title>
     <style type="text/css">
+        #body{
+          font-family:sans-serif, helvetica;
+        }
         .propic {
           text-align: center;
           margin: 20px 0;
@@ -21,9 +24,18 @@
           position:absolute;
           left: 20px;
         }
+        #posts{
+           width: auto;
+           height: 500px;
+           margin-top:20px;
+           padding: 10px;
+           background: #eee;
+           border: 1px solid #ccc;
+           overflow: scroll;
+         }
     </style>
   </head>
-  <body style="background-color:#E6E6FA;">
+  <body id="body" style="background-color:#E6E6FA;">
     <button id="badgesButton" name="badges" >Badges</button>
     <button id="notifyMeButton" name="nofifyMe">Notify Me</button>
     <div class="propic">
@@ -34,6 +46,8 @@
       <p>*bio*</p>
       <p>*tags*</p>
       <button id="contactMeButton" name="contactMe">Contact me</button>
+    </div>
+    <div id="posts">
     </div>
   </body>
 </html>

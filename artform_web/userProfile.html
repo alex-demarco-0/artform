@@ -21,6 +21,18 @@
           position:absolute;
           left: 20px;
         }
+        #posts{
+           width: auto;
+           height: 500px;
+           margin-top:20px;
+           padding: 10px;
+           background: #eee;
+           border: 1px solid #ccc;
+           overflow: scroll;
+         }
+         #body{
+           font-family:sans-serif, helvetica;
+         }
     </style>
 
     <script type="text/javascript" language="javascript">
@@ -30,7 +42,7 @@
     </script>
 
   </head>
-  <body style="background-color:#E6E6FA;">
+  <body id="body" style="background-color:#E6E6FA;">
     <button id="badgesButton" name="badges" >Badges</button>
     <button id="settingsButton" onClick="return goToSettings();" name="settings">Settings</button>
     <div class="propic">
@@ -40,6 +52,8 @@
       <h2>*USERNAME*</h2>
       <p>*bio*</p>
       <p>*tags*</p>
+    </div>
+    <div id="posts">
     </div>
   </body>
 </html>
