@@ -51,10 +51,10 @@
     <column id="COL12" populated="true" UUID="55626523-af0e-4cd2-948a-51808c4e65e0" autoIncrement="true" autoIncrementSequenceName="post_ID_seq" defaultValue="" name="ID" nullable="0" physicalName="ID" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL13" populated="true" UUID="026b7c0a-4eb3-45b7-88f6-0a7e4b5cac97" autoIncrement="false" autoIncrementSequenceName="post_titolo_seq" defaultValue="" name="titolo" nullable="0" physicalName="titolo" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL13" populated="true" UUID="174ccd36-f2ec-48ac-93c3-c7043872e71d" autoIncrement="false" autoIncrementSequenceName="utente_username_seq" defaultValue="" name="utenteUsername" nullable="0" physicalName="utenteUsername" precision="50" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL14" populated="true" UUID="3d435d9e-e752-49d9-be3d-99d26b743315" autoIncrement="false" autoIncrementSequenceName="post_dataPubblicazione_seq" defaultValue="" name="dataPubblicazione" nullable="0" physicalName="dataPubblicazione" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
+    <column id="COL14" populated="true" UUID="026b7c0a-4eb3-45b7-88f6-0a7e4b5cac97" autoIncrement="false" autoIncrementSequenceName="post_titolo_seq" defaultValue="" name="titolo" nullable="0" physicalName="titolo" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     <column id="COL15" populated="true" UUID="4e998ece-038a-4aed-8a07-e11b2b189dca" autoIncrement="false" autoIncrementSequenceName="post_topic_seq" defaultValue="" name="topic" nullable="0" physicalName="topic" precision="30" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -63,14 +63,14 @@
     <column id="COL16" populated="true" UUID="81b361a7-c400-4b17-bc69-966bab315145" autoIncrement="false" autoIncrementSequenceName="post_tags_seq" defaultValue="" name="tags" nullable="0" physicalName="tags" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL17" populated="true" UUID="3fb77853-66fd-474d-ab0c-6d6773b04146" autoIncrement="false" autoIncrementSequenceName="post_like_seq" defaultValue="0" name="like" nullable="0" physicalName="like" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL17" populated="true" UUID="3d435d9e-e752-49d9-be3d-99d26b743315" autoIncrement="false" autoIncrementSequenceName="post_dataPubblicazione_seq" defaultValue="" name="dataPubblicazione" nullable="0" physicalName="dataPubblicazione" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
      <remarks></remarks>
     </column>
-    <column id="COL18" populated="true" UUID="3af86998-1d40-49df-b6c0-20d4ca4dbf1d" autoIncrement="false" autoIncrementSequenceName="post_tipologia_seq" defaultValue="" name="tipologia" nullable="0" physicalName="tipologia" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="16" userDefinedTypeUUID="a26374aa-3026-4bb8-b564-eb2e186dfa5d" >
+    <column id="COL18" populated="true" UUID="3fb77853-66fd-474d-ab0c-6d6773b04146" autoIncrement="false" autoIncrementSequenceName="post_like_seq" defaultValue="0" name="like" nullable="0" physicalName="like" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+     <remarks></remarks>
+    </column>
+    <column id="COL19" populated="true" UUID="3af86998-1d40-49df-b6c0-20d4ca4dbf1d" autoIncrement="false" autoIncrementSequenceName="post_tipologia_seq" defaultValue="" name="tipologia" nullable="0" physicalName="tipologia" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks>Boolean o altro?</remarks>
-    </column>
-    <column id="COL19" populated="true" UUID="174ccd36-f2ec-48ac-93c3-c7043872e71d" autoIncrement="false" autoIncrementSequenceName="utente_username_seq" defaultValue="" name="utenteUsername" nullable="0" physicalName="utenteUsername" precision="50" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
-     <remarks></remarks>
     </column>
     </folder>
     <folder id="FOLTAB113" populated="true" name="Exported Keys" physicalName="Exported Keys" type="3">
@@ -170,7 +170,7 @@
     <column id="COL45" populated="true" UUID="210ca903-106c-42b3-a5bb-5907d65f1fd9" autoIncrement="false" autoIncrementSequenceName="notifica_contenuto_seq" defaultValue="" name="descrizione" nullable="0" physicalName="descrizione" precision="150" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL46" populated="true" UUID="4aeb5d1e-496f-4ca5-849c-51555ea5d498" autoIncrement="false" autoIncrementSequenceName="notifica_collegamento_seq" defaultValue="" name="collegamento" nullable="1" physicalName="collegamento" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL46" populated="true" UUID="4aeb5d1e-496f-4ca5-849c-51555ea5d498" autoIncrement="false" autoIncrementSequenceName="notifica_collegamento_seq" defaultValue="" name="collegamento" nullable="1" physicalName="collegamento" precision="1500" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     <column id="COL47" populated="true" UUID="63b19860-b42e-4b31-89d2-165f1a427e95" autoIncrement="false" autoIncrementSequenceName="utente_username_seq" defaultValue="" name="utenteUsername" nullable="0" physicalName="utenteUsername" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
@@ -189,7 +189,7 @@
   </table>
   <relationships>
    <relationship id="REL50" populated="true" UUID="e8963fcc-63f9-426a-8443-f3186e9d56c9" deferrability="7" deleteRule="3" fk-table-ref="TAB11" fkCardinality="7" identifying="false" name="utente_post_fk" physicalName="utente_post_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP51" populated="true" UUID="7ec9eb04-b99c-4c9b-89fc-0a73b36d48c9" fk-column-ref="COL19" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
+    <column-mapping id="CMP51" populated="true" UUID="7ec9eb04-b99c-4c9b-89fc-0a73b36d48c9" fk-column-ref="COL13" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
    <relationship id="REL52" populated="true" UUID="c7044a2c-3c1f-4ea2-b245-d5b67eda4cb5" deferrability="7" deleteRule="3" fk-table-ref="TAB11" fkCardinality="7" identifying="false" name="post_salvati" physicalName="post_salvati" pk-table-ref="TAB1" pkCardinality="7" updateRule="3" >
     <column-mapping id="CMP53" populated="true" UUID="d4c3c74c-1c27-43bb-89f7-52539d7bb513" fk-column-ref="COL12" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
@@ -221,7 +221,7 @@
   <table-pane table-ref="TAB1" x="341" y="209" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB11" x="681" y="209" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB22" x="45" y="209" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
-  <table-pane table-ref="TAB28" x="704" y="427" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
+  <table-pane table-ref="TAB28" x="707" y="430" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB32" x="327" y="428" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-pane table-ref="TAB42" x="323" y="35" bgColor="0xeeeeee" fgColor="0x000000" rounded="false" dashed="false"/>
   <table-link relationship-ref="REL50" pkConnection="0.3700787401574803" fkConnection="0.3333333333333333" rLineColor="0x000000" pkLabelText="" fkLabelText="" orientation="33"/>

@@ -135,16 +135,16 @@
     <column id="COL35" populated="true" UUID="3df887ab-c3d6-40e4-b4e6-ced1271ddbc2" autoIncrement="false" autoIncrementSequenceName="commissione_prezzo_seq" defaultValue="" name="prezzo" nullable="0" physicalName="prezzo" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="8" userDefinedTypeUUID="4fc90970-b2e5-41dd-911c-cc605d87e7a8" >
      <remarks></remarks>
     </column>
-    <column id="COL36" populated="true" UUID="0f89ec14-171b-4a16-9279-fd952016fbe0" autoIncrement="false" autoIncrementSequenceName="commissione_indirizzoConto_seq" defaultValue="" name="indirizzoConto" nullable="0" physicalName="indirizzoConto" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL36" populated="true" UUID="cd01e0bb-e063-4293-8170-ccd44d3ab28a" autoIncrement="false" autoIncrementSequenceName="commissione_data_seq" defaultValue="" name="data" nullable="0" physicalName="data" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
      <remarks></remarks>
     </column>
-    <column id="COL37" populated="true" UUID="cd01e0bb-e063-4293-8170-ccd44d3ab28a" autoIncrement="false" autoIncrementSequenceName="commissione_data_seq" defaultValue="" name="data" nullable="0" physicalName="data" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="93" userDefinedTypeUUID="6497d8de-0e00-40d6-a42e-e2adca83be64" >
+    <column id="COL37" populated="true" UUID="314c8d6b-bcf5-4196-aab8-bdb077e70215" autoIncrement="false" autoIncrementSequenceName="utente_username_seq" defaultValue="" name="artistaUsername" nullable="0" physicalName="artistaUsername" precision="50" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL38" populated="true" UUID="314c8d6b-bcf5-4196-aab8-bdb077e70215" autoIncrement="false" autoIncrementSequenceName="utente_username_seq" defaultValue="" name="artistaUsername" nullable="0" physicalName="artistaUsername" precision="50" referenceCount="2" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL38" populated="true" UUID="31355d28-84d4-41aa-818d-433556c8c42a" autoIncrement="false" autoIncrementSequenceName="commissione_clienteUsername_seq" defaultValue="" name="clienteUsername" nullable="0" physicalName="clienteUsername" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL39" populated="true" UUID="31355d28-84d4-41aa-818d-433556c8c42a" autoIncrement="false" autoIncrementSequenceName="commissione_clienteUsername_seq" defaultValue="" name="clienteUsername" nullable="0" physicalName="clienteUsername" precision="50" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL39" populated="true" UUID="0f89ec14-171b-4a16-9279-fd952016fbe0" autoIncrement="false" autoIncrementSequenceName="commissione_indirizzoConto_seq" defaultValue="" name="indirizzoConto" nullable="0" physicalName="indirizzoConto" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     </folder>
@@ -195,13 +195,13 @@
     <column-mapping id="CMP53" populated="true" UUID="d4c3c74c-1c27-43bb-89f7-52539d7bb513" fk-column-ref="COL12" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
    <relationship id="REL54" populated="true" UUID="ea2b6c17-40aa-4588-bc23-93a7c349e7a6" deferrability="7" deleteRule="3" fk-table-ref="TAB32" fkCardinality="7" identifying="false" name="artista_commissione_fk" physicalName="artista_commissione_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP55" populated="true" UUID="7ebc60c3-5ca5-4a9e-b136-4ece7ec06053" fk-column-ref="COL38" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
+    <column-mapping id="CMP55" populated="true" UUID="7ebc60c3-5ca5-4a9e-b136-4ece7ec06053" fk-column-ref="COL37" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
    <relationship id="REL56" populated="true" UUID="329987f7-9954-49fc-b660-0eb8919cedaf" deferrability="7" deleteRule="3" fk-table-ref="TAB42" fkCardinality="7" identifying="false" name="utente_notifica_fk" physicalName="utente_notifica_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
     <column-mapping id="CMP57" populated="true" UUID="54f23ebd-5588-4d52-9c10-43669cfa2e96" fk-column-ref="COL47" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
    <relationship id="REL58" populated="true" UUID="b1497f56-0456-4310-a9ab-82f8517e001b" deferrability="7" deleteRule="3" fk-table-ref="TAB32" fkCardinality="7" identifying="false" name="cliente_commissione_fk" physicalName="cliente_commissione_fk" pk-table-ref="TAB1" pkCardinality="2" updateRule="3" >
-    <column-mapping id="CMP59" populated="true" UUID="062ea943-f121-4028-adc8-c05bae7b4de0" fk-column-ref="COL39" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
+    <column-mapping id="CMP59" populated="true" UUID="062ea943-f121-4028-adc8-c05bae7b4de0" fk-column-ref="COL38" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
    </relationship>
    <relationship id="REL60" populated="true" UUID="cd6b3e3f-9da5-4944-b692-de1bb1863cd6" deferrability="7" deleteRule="3" fk-table-ref="TAB1" fkCardinality="7" identifying="false" name="notifiche_utente" physicalName="notifiche_utente" pk-table-ref="TAB1" pkCardinality="7" updateRule="3" >
     <column-mapping id="CMP61" populated="true" UUID="6b886511-b49d-420e-b0b4-9ed977f89459" fk-column-ref="COL2" name="Column Mapping" physicalName="Column Mapping" pk-column-ref="COL2" />
