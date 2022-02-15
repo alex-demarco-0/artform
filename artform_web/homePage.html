@@ -6,12 +6,23 @@
       #bottomBar{
         position:absolute;
         bottom: 20px;
+        left:400px
 
       }
       #bottomButtons{
         position:absolute;
         right: 20px;
         bottom:20px;
+      }
+      #posts{
+         width: auto;
+         height: 550px;
+         margin-top:20px;
+         padding: 10px;
+         background: #eee;
+         border: 1px solid #ccc;
+         overflow: scroll;
+       }
       }
     </style>
     <script type="text/javascript" language="javascript">
@@ -25,12 +36,15 @@
   </head>
   <body style="background-color:#E6E6FA">
     <h1 id="titleTop">ArtForm</h1>
-    <div id="bottomBar">
-      <input type="text" name="search" value="" style="width: 500px;">
+    <div id="posts">
+    </div>
+    <button style="position:absolute; left: 20px; bottom:20px;">Homepage</button>
+      <div id="bottomBar">
+        <input type="text" name="search" value="" style="width: 800px;">
       </div>
       <div id="bottomButtons">
-        <button id="addPostButton" name="addPost">Add Post</button>
-        <button  onClick="return goToNotifications();"id="notificationsButton" name="button">Notifications</button>
+        <button id="addPostButton" name="addPost">Add post</button>
+        <button  onClick="return goToNotifications();"id="notificationsButton" name="button">Notifications<button>
         <button onClick="return goToProfile();" id="profileButton" name="button">Profile</button>
       </div>
 
