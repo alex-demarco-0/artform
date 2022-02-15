@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 AFGlobal app = (AFGlobal) getApplication();
                 ArtformApiEndpointInterface apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
-                Call<User> getUserCall = apiService.getUserByUsername("arianna");
+                Call<User> getUserCall = apiService.getUserByUsername(AFGlobal.getLoggedUser());
                 getUserCall.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {

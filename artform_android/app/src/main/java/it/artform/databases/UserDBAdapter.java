@@ -18,7 +18,7 @@ public class UserDBAdapter {
     protected static final String KEY_USERID = "_id"; //PK autoincrement
     protected static final String KEY_NAME = "name";
     protected static final String KEY_SURNAME = "surname";
-    protected static final String KEY_USERNAME = "username";
+    protected static final String KEY_USERNAME = "username"; // server DB PK
     protected static final String KEY_EMAIL = "email";
     protected static final String KEY_PHONE = "phone";
     protected static final String KEY_PASSWORD = "password";

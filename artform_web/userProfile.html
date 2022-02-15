@@ -1,27 +1,38 @@
+<!DOCTYPE html>
 <DOCTYPE! html>
 <html>
   <head>
-    <title>ArtForm userProfile</title>
-    <link rel="stylesheet" type="text/css" href="userProfile.css"
+    <title>UserProfile ArtForm</title>
+    <style type="text/css">
+        .propic {
+          text-align: center;
+          margin: 20px 0;
+          padding: 20px;
+          }
+        .infos {
+          text-align: center;
+          margin: 20px 0;
+        }
+        #settingsButton{
+           position:absolute;
+           right: 20px;
+        }
+        #badgesButton{
+          position:absolute;
+          left: 20px;
+        }
+    </style>
   </head>
-  <body>
-    <div class="buttonsTop">
-      <button id="badgesB" type="button" name="badgeButton">Badges</button>
-      <button id="notifyB" type="button" name="notifyMeButton">Notify me</button>
+  <body style="background-color:#E6E6FA;">
+    <button id="badgesButton" name="badges" >Badges</button>
+    <button id="settingsButton" name="settings">Settings</button>
+    <div class="propic">
+    <img src="https://static.thenounproject.com/png/576092-200.png">
     </div>
-    <div class="container">
-      <div class="propic">
-        <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/profile-2673119-2217781.png" width="100" class="rounded-circle">
-      </div>
-      <h3 class="mt-2 mb-0">*Nome utente*</h3> <span>*BIO*</span>
-      <div class="px-4 mt-1">
-         <p class="fonts">*TAGS*</p>
-      </div>
-      <div class="buttons">
-         <button class="btn btn-outline-primary px-4">Contact me</button>
-      </div>
-    </div>
-    <div class="posts">
+    <div class="infos">
+      <h2>*USERNAME*</h2>
+      <p>*bio*</p>
+      <p>*tags*</p>
     </div>
   </body>
 </html>

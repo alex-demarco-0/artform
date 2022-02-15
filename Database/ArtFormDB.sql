@@ -106,13 +106,13 @@ CREATE TABLE IF NOT EXISTS `notificheUtente` (
 -- Dump della struttura di tabella ArtForm.post
 CREATE TABLE IF NOT EXISTS `post` (
   `Id` int NOT NULL AUTO_INCREMENT,
+  `utenteUsername` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `titolo` varchar(50) NOT NULL,
+  `topic` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `tags` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `dataPubblicazione` timestamp NOT NULL,
   `like` int NOT NULL DEFAULT '0',
   `tipologia` varchar(50) NOT NULL,
-  `utenteUsername` varchar(50) NOT NULL,
-  `dataPubblicazione` timestamp NOT NULL,
-  `topic` varchar(50) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `FK_post_utente` (`utenteUsername`),
   KEY `FK_post_topic` (`topic`),
@@ -122,9 +122,9 @@ CREATE TABLE IF NOT EXISTS `post` (
 
 -- Dump dei dati della tabella ArtForm.post: ~2 rows (circa)
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
-INSERT INTO `post` (`Id`, `titolo`, `tags`, `like`, `tipologia`, `utenteUsername`, `dataPubblicazione`, `topic`) VALUES
-	(1, 'Velociraptor', '#dinosaur #animals #cute #3d', 2, 'true', 'arianna', '2021-12-09 17:25:11', '3D'),
-	(2, 'Paesaggio commissione', '#paesaggio #landscape #nature', 0, 'true', 'arianna', '2021-12-14 15:28:09', 'Tradizionale');
+INSERT INTO `post` (`Id`, `utenteUsername`, `titolo`, `topic`, `tags`, `dataPubblicazione`, `like`, `tipologia`) VALUES
+	(1, 'arianna', 'Velociraptor', '3D', '#dinosaur #animals #cute #3d', '2021-12-09 17:25:11', 2, 'true'),
+	(2, 'arianna', 'Paesaggio commissione', 'Tradizionale', '#paesaggio #landscape #nature', '2021-12-14 15:28:09', 0, 'true');
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.postSalvati
@@ -198,10 +198,13 @@ INSERT INTO `utente` (`nome`, `cognome`, `username`, `email`, `numeroTelefono`, 
 	('Manbir', 'Aceveda', 'arianna', 'ift@k.it', '338', 'password', 1),
 	('Zante', 'Aceveda', 'ariannolo', 'i@k.it', NULL, 'pwd', 0),
 	('Zanteccio', 'Aceveda', 'ariannolohh', 'i@khh.it', NULL, 'pwd', 0),
+	('Hylo', 'hghgh', 'arinolo', 'aaaa@ggg.it', '', 'hy', 0),
 	('as', 'as', 'as', 'as@i.it', '', 'as', 0),
+	('GGO', 'uyuyuyuyuy', 'bghghghghg', 'i@.it', NULL, 'trtrtrtr', 0),
 	('Alessandro', 'Dituri', 'dv8d', '@#', NULL, 'pass', 101),
 	('Gerico', 'Cris', 'Hiloman3', '@@', '441', 'kkkka', 3),
 	('Mario', 'Rossi', 'marione', 'm@', NULL, '123456', 0),
+	('Gabbo', 'Uop', 'pollastro', 'a6@i.it', '0', 'oi', 0),
 	('as', 'sd', 'sd', 'sd@l.it', NULL, 'sd', 0),
 	('u', 'u', 'u', 'uu@i.it', '8', 'u', 0);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;

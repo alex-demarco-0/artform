@@ -54,8 +54,10 @@ public class LoginActivity extends Activity {
         //
 
         // se memorizzati effettua l'accesso direttamente passando all'activity successiva
-        if(!username.equals("NO_USER") && !password.equals("NO_PWD"))
+        if(!username.equals("NO_USER") && !password.equals("NO_PWD")) {
+            AFGlobal.setLoggedUser(username);
             credentialsOk();
+        }
 
         // istanziamento widget UI
         EditText usernameEditText = findViewById(R.id.usernameEditText);
@@ -154,6 +156,7 @@ public class LoginActivity extends Activity {
         mainIntent.putExtra("username", "username: " + username);
         mainIntent.putExtra("password", "password: " + password);
         //
+        AFGlobal.setLoggedUser(username);
         Toast.makeText(LoginActivity.this, "Benvenuto " + username, Toast.LENGTH_LONG).show();
         startActivity(mainIntent);
         //finish();   //commentato per facilitare i test
