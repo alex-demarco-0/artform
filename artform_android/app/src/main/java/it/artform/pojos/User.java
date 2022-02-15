@@ -13,8 +13,10 @@ public class User {
     private String password;
     @SerializedName("punteggio")
     private int points;
+    @SerializedName("immagineProfiloSrc")
+    private String profilePicSrc;
 
-    public User(String name, String surname, String username, String email, String phone, String password, int points) {
+    public User(String name, String surname, String username, String email, String phone, String password, int points, String profilePicSrc) {
         this.name = name;
         this.surname = surname;
         this.username = username;
@@ -22,6 +24,7 @@ public class User {
         this.phone = phone;
         this.password = password;
         this.points = points;
+        this.profilePicSrc = profilePicSrc;
     }
 
     public String getName() {
@@ -82,6 +85,14 @@ public class User {
 
     public void increasePoints(int points) {
         this.points += points;
+    }
+
+    public String getProfilePicSrc() {
+        return profilePicSrc;
+    }
+
+    public void setProfilePicSrc(String profilePicSrc) {
+        this.profilePicSrc = profilePicSrc;
     }
 
     @Override

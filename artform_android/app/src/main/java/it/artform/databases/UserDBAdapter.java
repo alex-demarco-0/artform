@@ -23,6 +23,7 @@ public class UserDBAdapter {
     protected static final String KEY_PHONE = "phone";
     protected static final String KEY_PASSWORD = "password";
     protected static final String KEY_POINTS = "points";
+    protected static final String KEY_PROFILEPIC = "profilePicSrc";
 
     public UserDBAdapter(Context context) {
         this.context = context;
@@ -38,7 +39,7 @@ public class UserDBAdapter {
         dbHelper.close();
     }
 
-    private ContentValues createContentValues(String name, String surname, String username, String email, String phone, String password, int points) {
+    private ContentValues createContentValues(String name, String surname, String username, String email, String phone, String password, int points, String profilePicSrc) {
         ContentValues values = new ContentValues();
         values.put( KEY_NAME, name );
         values.put( KEY_SURNAME, surname );
@@ -47,16 +48,17 @@ public class UserDBAdapter {
         values.put( KEY_PHONE, phone );
         values.put( KEY_PASSWORD, password );
         values.put( KEY_POINTS, points );
+        values.put( KEY_PROFILEPIC, profilePicSrc );
         return values;
     }
 
     public long createUser(User u) {
-        ContentValues userValues = createContentValues(u.getName(), u.getSurname(), u.getUsername(), u.getEmail(), u.getPhone(), u.getPassword(), u.getPoints());
+        ContentValues userValues = createContentValues(u.getName(), u.getSurname(), u.getUsername(), u.getEmail(), u.getPhone(), u.getPassword(), u.getPoints(), u.getProfilePicSrc());
         return database.insertOrThrow(DATABASE_TABLE, null, userValues);
     }
 
     public boolean updateUser(String username, User u) {
-        ContentValues updateValues = createContentValues(u.getName(), u.getSurname(), u.getUsername(), u.getEmail(), u.getPhone(), u.getPassword(), u.getPoints());
+        ContentValues updateValues = createContentValues(u.getName(), u.getSurname(), u.getUsername(), u.getEmail(), u.getPhone(), u.getPassword(), u.getPoints(), u.getProfilePicSrc());
         return database.update(DATABASE_TABLE, updateValues, KEY_USERNAME + "=" + username, null) > 0;
     }
 
@@ -65,11 +67,11 @@ public class UserDBAdapter {
     }
 
     public Cursor fetchAllUsers() {
-        return database.query(DATABASE_TABLE, new String[] { KEY_USERID, KEY_NAME, KEY_SURNAME, KEY_USERNAME, KEY_EMAIL, KEY_PHONE, KEY_PASSWORD, KEY_POINTS }, null, null, null, null, null);
+        return database.query(DATABASE_TABLE, new String[] { KEY_USERID, KEY_NAME, KEY_SURNAME, KEY_USERNAME, KEY_EMAIL, KEY_PHONE, KEY_PASSWORD, KEY_POINTS, KEY_PROFILEPIC }, null, null, null, null, null);
     }
 
     public Cursor fetchUsersByFilter(String filter) {
-        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_USERID, KEY_NAME, KEY_SURNAME, KEY_USERNAME, KEY_EMAIL, KEY_PHONE, KEY_PASSWORD, KEY_POINTS },
+        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_USERID, KEY_NAME, KEY_SURNAME, KEY_USERNAME, KEY_EMAIL, KEY_PHONE, KEY_PASSWORD, KEY_POINTS, KEY_PROFILEPIC },
                 KEY_USERNAME + " like '%"+ filter + "%'", null, null, null, null, null);
         return mCursor;
     }
