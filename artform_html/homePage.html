@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Homepage ArtForm</title>
+
     <style type="text/css">
       #bottomBar{
         position:absolute;
@@ -13,7 +14,18 @@
         right: 20px;
         bottom:20px;
       }
-    </style>
+      </style>
+
+      <script type="text/javascript" language="javascript">
+        function goToProfile(){
+          window.location="userProfile.html";
+        }
+        function goToNotifications(){
+          window.location="notifiche.html";
+        }
+
+      </script>
+
   </head>
   <body style="background-color:#E6E6FA">
     <h1 id="titleTop">ArtForm</h1>
@@ -22,8 +34,8 @@
       </div>
       <div id="bottomButtons">
         <button id="addPostButton" name="addPost">Add Post</button>
-        <button id="notificationsButton" name="button">Notifications</button>
-        <button id="profileButton" name="button">Profile</button>
+        <button onClick="return goToNotifications();" id="notificationsButton" name="button">Notifications</button>
+        <button onclick="return goToProfile();"id="profileButton" name="button">Profile</button>
       </div>
 
   </body>
