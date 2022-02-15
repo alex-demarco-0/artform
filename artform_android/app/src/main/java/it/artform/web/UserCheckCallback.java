@@ -1,9 +1,17 @@
+/*
+
+
+    DEPRECATO
+
+
+ */
 package it.artform.web;
 
 import it.artform.pojos.User;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
 
 public class UserCheckCallback implements Callback<User> {
     private boolean emailCheck = true; // 1 = true = controllo email, 0 = false = controllo username
