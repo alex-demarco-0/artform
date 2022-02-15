@@ -27,9 +27,9 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             PostDBAdapter.DATABASE_TABLE +
             " (" + PostDBAdapter.KEY_POSTID + " integer PRIMARY KEY AUTOINCREMENT, " +
             PostDBAdapter.KEY_EXTERNAL_ID + " integer UNIQUE NOT NULL, " +
-            PostDBAdapter.KEY_USER + " varchar(50) NOT NULL, " + // FK
+            PostDBAdapter.KEY_USER + " varchar(50) NOT NULL, " +
             PostDBAdapter.KEY_TITLE + " varchar(50) NOT NULL, " +
-            PostDBAdapter.KEY_TOPIC + " varchar(50) NOT NULL, " + // FK
+            PostDBAdapter.KEY_TOPIC + " varchar(50) NOT NULL, " +
             PostDBAdapter.KEY_TAGS + " varchar(100) NOT NULL, " +
             PostDBAdapter.KEY_PUBLICATION_DATE + " timestamp NOT NULL, " +
             PostDBAdapter.KEY_LIKE + "integer NOT NULL DEFAULT '0', " +
@@ -42,7 +42,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_NOTIFICATION = "CREATE TABLE IF NOT EXISTS " +
             NotificationDBAdapter.DATABASE_TABLE +
             " (" + NotificationDBAdapter.KEY_NOTIFICATIONID + " integer PRIMARY KEY AUTOINCREMENT, " +
-            NotificationDBAdapter.KEY_DATE + " timestamp NOT NULL, " +
+            NotificationDBAdapter.KEY_DATE + " timestamp UNIQUE NOT NULL, " +
             NotificationDBAdapter.KEY_CATEGORY + " tinyint NOT NULL, " +
             NotificationDBAdapter.KEY_DESCRIPTION + " varchar(150) NOT NULL, " +
             NotificationDBAdapter.KEY_LINK + " varchar(1500) DEFAULT NULL, " +
@@ -53,16 +53,17 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_COMMISSION = "CREATE TABLE IF NOT EXISTS " +
             CommissionDBAdapter.DATABASE_TABLE +
             " (" + CommissionDBAdapter.KEY_COMMISSIONID + " integer PRIMARY KEY AUTOINCREMENT, " +
+            PostDBAdapter.KEY_EXTERNAL_ID + " integer UNIQUE NOT NULL, " +
             CommissionDBAdapter.KEY_TITLE + " varchar(100) NOT NULL, " +
             CommissionDBAdapter.KEY_PRICE + " double NOT NULL, " +
             CommissionDBAdapter.KEY_DATE + " timestamp NOT NULL, " +
-            CommissionDBAdapter.KEY_ARTIST + " integer NOT NULL, " +
-            CommissionDBAdapter.KEY_CUSTOMER + " integer NOT NULL, " +
+            CommissionDBAdapter.KEY_ARTIST + " varchar(50) NOT NULL, " +
+            CommissionDBAdapter.KEY_CUSTOMER + " varchar(50) NOT NULL, " +
             CommissionDBAdapter.KEY_ACCOUNT_ADDRESS + " varchar(50) NOT NULL, " +
             "FOREIGN KEY (" + CommissionDBAdapter.KEY_ARTIST + ") " +
-            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "), " +
+            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "), " +
             "FOREIGN KEY (" + CommissionDBAdapter.KEY_CUSTOMER + ") " +
-            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERID + "));";
+            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "));";
     // create topic table
     private static final String CREATE_TOPIC = "CREATE TABLE IF NOT EXISTS " +
             TopicDBAdapter.DATABASE_TABLE +
