@@ -32,21 +32,28 @@ Descrizione: project work, pagina web di registrazione
           border-radius: 4px;
           background: #D291BC;
         }
+        .inputForm{
+          width: auto;
+          height: 25px;
+          border-width:thin;
+          border-radius: 4px;
+
+        }
         </style>
     </head>
     <body id="body" bgcolor="#E9CFEC">
       <div id="registerDiv">
         <div align=center>
-          <img src="logoAFtrasparente.png" width="250" height="250" vspace="0" hspace="0"><br>
+          <img src="logoAFtrasparente.png" width="200" height="200" vspace="0" hspace="0"><br>
           <b><font size='5' color='black'> La piattaforma dove l’arte prende forma </font></b></div><br>
           <br>
-     <form>
-        <p align=center><font color="black" size="4">Nome  <input type="text" id="nome"></font></p>
-        <p align=center><font color="black" size="4">Cognome  <input type="text" id="cognome"></font></p>
-        <p align=center><font color="black" size="4">Username  <input type="text" id="username"></font></p>
-        <p align=center><font color="black" size="4">Email  <input type="text" id=""email></font></p>
-        <p align=center><font color="black" size="4">Password  <input type="password" id="pwd"></font></p>
-        <p align=center><font color="black" size="4">Numero di telefono <input type="text" id="numeroTelefono"></font></p>
+     <form
+        <p align=center><font color="black" size="4">Nome  <input class="inputForm" type="text" id="nome"></font></p>
+        <p align=center><font color="black" size="4">Cognome  <input class="inputForm" type="text" id="cognome"></font></p>
+        <p align=center><font color="black" size="4">Username  <input class="inputForm" type="text" id="username"></font></p>
+        <p align=center><font color="black" size="4">Email  <input class="inputForm" type="text" id=""email></font></p>
+        <p align=center><font color="black" size="4">Password  <input class="inputForm" type="password" id="pwd"></font></p>
+        <p align=center><font color="black" size="4">Numero di telefono <input class="inputForm" type="text" id="numeroTelefono"></font></p>
         <p align=center><button onclick="registrazione()" value="Conferma"> Conferma</button> <button type="reset">Reset</button>
      </form>
         <p align=center>Hai già un account?<a id="login" href="login.html">Accedi</a></p>
