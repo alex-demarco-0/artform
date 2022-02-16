@@ -22,13 +22,17 @@ public interface ArtformRepository {
 	int deletePost(int id);
 	
 	//Notifica
-	Notifica findNotifica(String username, Date d);
+	Notifica findNotifica(String username, Date data);
 	List<Notifica> findNotificheByUtente(String username);
-	int saveNotifica(Notifica p);
+	int saveNotifica(Notifica n);
 
 	//Badge
 	Badge findBadge(String nome);
+	List<Badge> findAllBadges();
 	int saveBadge(Badge b); //forse non serve
+	
+	//Topic
+	List<String> findAllTopics();
 	
 	//Commissione
 	Commissione findCommissione(int id);

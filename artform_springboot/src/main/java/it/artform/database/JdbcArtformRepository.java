@@ -71,33 +71,40 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
-	public Notifica findNotifica(String username, Date d) {
-		// TODO Auto-generated method stub
-		return null;
+	public Notifica findNotifica(String username, Date data) {
+		return jdbcTemplate.queryForObject("SELECT * from notifica WHERE utenteUsername=? AND data=?", BeanPropertyRowMapper.newInstance(Notifica.class), username, data);
 	}
 
 	@Override
 	public List<Notifica> findNotificheByUtente(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query("SELECT * from notifica WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(Notifica.class), username);
 	}
 
 	@Override
-	public int saveNotifica(Notifica p) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int saveNotifica(Notifica n) {
+		return jdbcTemplate.update("INSERT INTO notifica (data, categoria, descrizione, collegamento, utenteUsername) VALUES (?, ?, ?, ?, ?)",
+				new Object[] {n.getData(), n.getCategoria(),n.getDescrizione(), n.getCollegamento(), n.getUtenteUsername()});
 	}
 
 	@Override
 	public Badge findBadge(String nome) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.queryForObject("SELECT * from badge WHERE nome=?", BeanPropertyRowMapper.newInstance(Badge.class), nome);
+	}
+	
+	@Override
+	public List<Badge> findAllBadges() {
+		return jdbcTemplate.query("SELECT * from badge", BeanPropertyRowMapper.newInstance(Badge.class));
 	}
 
 	@Override
 	public int saveBadge(Badge b) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("INSERT INTO badge (nome, descrizione, punteggio) VALUES (?, ?, ?)",
+				new Object[] {b.getNome(), b.getDescrizione(), b.getPunteggio()});
+	}
+	
+	@Override
+	public List<String> findAllTopics() {
+		return jdbcTemplate.query("SELECT * from topic", BeanPropertyRowMapper.newInstance(String.class));
 	}
 
 	@Override
