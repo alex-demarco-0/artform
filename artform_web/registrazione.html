@@ -13,9 +13,23 @@ Descrizione: project work, pagina web di registrazione
         #body{
           font-family:sans-serif, helvetica;
         }
+        button{
+          font-weight: 700;
+          border:none;
+          color: white;
+          text-decoration: none;
+          padding: .8em 1em calc(.8em + 3px);
+          border-radius: 4px;
+          background: #D291BC;
+        }
         </style>
+        <script type="text/javascript" language="javascript">
+            function login(){
+              window.location="login.html";
+            }
+        </script>
     </head>
-    <body id="body" bgcolor="#E6E6FA">
+    <body id="body" bgcolor="#E9CFEC">
         <div align=center>
           <img src="file:///C:/Users/krona/OneDrive/Desktop/logoAFtrasparente.png" width="180" height="180" vspace="-20" hspace="-20"><br>
           <b><font size='5' color='black'> La piattaforma dove l’arte prende forma </font></b></div><br>
@@ -27,9 +41,9 @@ Descrizione: project work, pagina web di registrazione
         <p align=center><font color="black" size="4">Email  <input type="text" id=""email></font></p>
         <p align=center><font color="black" size="4">Password  <input type="password" id="pwd"></font></p>
         <p align=center><font color="black" size="4">Numero di telefono <input type="text" id="numeroTelefono"></font></p>
-        <p align=center><input type="button" onclick="registrazione()" value="Conferma"> <input type="reset">
+        <p align=center><button onclick="registrazione()" value="Conferma"> Conferma</button> <button type="reset">Reset</button>
      </form>
-        <p align=center>Hai già un account? <input type="button" onclick="login()" value="accedi">
+        <p align=center>Hai già un account? <button onclick="login()" value="accedi"> Accedi </button>
     </body>
     <script src="regitrazioneJS.js"></script>
 </html>

@@ -9,6 +9,13 @@
           margin: 20px 0;
           padding: 20px;
           }
+          #propic{
+            width: 128px;
+            height: 128px;
+            -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 100%
+          }
         .infos {
           text-align: center;
           margin: 20px 0;
@@ -33,6 +40,16 @@
          #body{
            font-family:sans-serif, helvetica;
          }
+
+         #settingsButton, #badgesButton{
+           font-weight: 700;
+           border:none;
+           color: white;
+           text-decoration: none;
+           padding: .8em 1em calc(.8em + 3px);
+           border-radius: 4px;
+           background: #D291BC;
+          }
     </style>
 
     <script type="text/javascript" language="javascript">
@@ -42,11 +59,11 @@
     </script>
 
   </head>
-  <body id="body" style="background-color:#E6E6FA;">
+  <body id="body" style="background-color:#E9CFEC;">
     <button id="badgesButton" name="badges" >Badges</button>
     <button id="settingsButton" onClick="return goToSettings();" name="settings">Settings</button>
     <div class="propic">
-    <img src="https://static.thenounproject.com/png/576092-200.png">
+    <img id="propic" src="https://static.thenounproject.com/png/576092-200.png">
     </div>
     <div class="infos">
       <h2>*USERNAME*</h2>
