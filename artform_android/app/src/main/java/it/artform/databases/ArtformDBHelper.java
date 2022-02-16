@@ -99,8 +99,8 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_USER_NOTIFICATIONS = "CREATE TABLE IF NOT EXISTS " +
             UserNotificationsDBAdapter.DATABASE_TABLE +
             " (" + UserNotificationsDBAdapter.KEY_USER_NOTIFICATIONS_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
-            UserNotificationsDBAdapter.KEY_USER_USERNAME + " integer NOT NULL, " +
-            UserNotificationsDBAdapter.KEY_USER_EXT_USERNAME + " integer NOT NULL, " +
+            UserNotificationsDBAdapter.KEY_USER_USERNAME + " varchar(50) NOT NULL, " +
+            UserNotificationsDBAdapter.KEY_USER_EXT_USERNAME + " varchar(50) NOT NULL, " +
             "FOREIGN KEY (" + UserNotificationsDBAdapter.KEY_USER_USERNAME + ") " +
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "), " +
             "FOREIGN KEY (" + UserNotificationsDBAdapter.KEY_USER_EXT_USERNAME + ") " +
@@ -110,12 +110,23 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_USER_BADGES = "CREATE TABLE IF NOT EXISTS " +
             UserBadgesDBAdapter.DATABASE_TABLE +
             " (" + UserBadgesDBAdapter.KEY_USER_BADGES_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
-            UserBadgesDBAdapter.KEY_USER_USERNAME + " integer NOT NULL, " +
-            UserBadgesDBAdapter.KEY_BADGE_NAME + " integer NOT NULL, " +
+            UserBadgesDBAdapter.KEY_USER_USERNAME + " varchar(50)varchar(50) NOT NULL, " +
+            UserBadgesDBAdapter.KEY_BADGE_NAME + " varchar(30) NOT NULL, " +
             "FOREIGN KEY (" + UserBadgesDBAdapter.KEY_USER_USERNAME + ") " +
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "), " +
             "FOREIGN KEY (" + UserBadgesDBAdapter.KEY_BADGE_NAME + ") " +
             "REFERENCES " + BadgeDBAdapter.DATABASE_TABLE + " (" + BadgeDBAdapter.KEY_NAME + "));";
+
+    // create user_topics table
+    private static final String CREATE_USER_TOPICS = "CREATE TABLE IF NOT EXISTS " +
+            UserTopicsDBAdapter.DATABASE_TABLE +
+            " (" + UserTopicsDBAdapter.KEY_USER_TOPICS_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
+            UserTopicsDBAdapter.KEY_USER_USERNAME + " varchar(50) NOT NULL, " +
+            UserTopicsDBAdapter.KEY_TOPIC_NAME + " varchar(30) NOT NULL, " +
+            "FOREIGN KEY (" + UserTopicsDBAdapter.KEY_USER_USERNAME + ") " +
+            "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "), " +
+            "FOREIGN KEY (" + UserTopicsDBAdapter.KEY_TOPIC_NAME + ") " +
+            "REFERENCES " + TopicDBAdapter.DATABASE_TABLE + " (" + TopicDBAdapter.KEY_NAME + "));";
 
     public ArtformDBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -133,6 +144,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
         database.execSQL(CREATE_SAVED_POSTS);
         database.execSQL(CREATE_USER_NOTIFICATIONS);
         database.execSQL(CREATE_USER_BADGES);
+        database.execSQL(CREATE_USER_TOPICS);
     }
 
     @Override
@@ -146,6 +158,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
         database.execSQL("DROP TABLE IF EXISTS " + SavedPostsDBAdapter.DATABASE_TABLE + ";");
         database.execSQL("DROP TABLE IF EXISTS " + UserNotificationsDBAdapter.DATABASE_TABLE + ";");
         database.execSQL("DROP TABLE IF EXISTS " + UserBadgesDBAdapter.DATABASE_TABLE + ";");
+        database.execSQL("DROP TABLE IF EXISTS " + UserTopicsDBAdapter.DATABASE_TABLE + ";");
         onCreate(database);
     }
 
