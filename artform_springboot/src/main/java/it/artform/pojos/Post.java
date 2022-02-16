@@ -20,6 +20,7 @@ public class Post {
 		this.utenteUsername = utenteUsername;
 		this.titolo = titolo;
 		this.topic = topic;
+		//String iterator
 		this.tags = tags;
 		this.dataPubblicazione = dataPubblicazione;
 		this.like = 0;

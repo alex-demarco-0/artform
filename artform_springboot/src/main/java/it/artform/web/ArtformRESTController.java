@@ -80,7 +80,7 @@ public class ArtformRESTController {
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.DELETE)
 	public ResponseEntity<String> deleteUtente(@PathVariable String username) {
 		if(this.artformRepository.deleteUtente(username) == 1)
-			return new ResponseEntity<String>("OK", HttpStatus.OK);
+			return new ResponseEntity<String>("Utente username=" + username + " DELETED", HttpStatus.OK);
 		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
 	}
 	
@@ -102,6 +102,39 @@ public class ArtformRESTController {
 		if(posts != null)
 			return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/post", method=RequestMethod.POST)
+	public ResponseEntity<Post> addPost(@RequestBody Post newPost) {
+		if(this.artformRepository.savePost(newPost) == 1)
+			return new ResponseEntity<Post>(newPost, HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@RequestMapping(value="/artform/post/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Post> updatePost(@PathVariable int id, @RequestBody Post modPost) {
+		Post p = this.artformRepository.findPost(id);
+		if(p != null) {
+			if(modPost.getTitolo() != null && !modPost.getTitolo().isBlank())
+				p.setTitolo(modPost.getTitolo());
+			if(modPost.getTopic() != null && !modPost.getTopic().isBlank())
+				p.setTopic(modPost.getTitolo());
+			if(modPost.getTags() != null && modPost.getTags().length > 0)
+				p.setTags(modPost.getTags());
+			if(modPost.getLike() > p.getLike())
+				p.addLike();
+			if(this.artformRepository.updatePost(p) == 1)
+				return new ResponseEntity<Post>(p, HttpStatus.OK);
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/post/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<String> deletePost(@PathVariable int id) {
+		if(this.artformRepository.deletePost(id) == 1)
+			return new ResponseEntity<String>("Post Id=" + id + " DELETED", HttpStatus.OK);
+		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
 	}
 	
 	///
