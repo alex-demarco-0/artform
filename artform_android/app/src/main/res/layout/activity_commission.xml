@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".CommissionActivity">
 
-
-
     <RelativeLayout
         android:id="@+id/formLayout"
         android:layout_width="wrap_content"
