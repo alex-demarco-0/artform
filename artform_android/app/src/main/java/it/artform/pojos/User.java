@@ -11,18 +11,20 @@ public class User {
     @SerializedName("numeroTelefono")
     private String phone;
     private String password;
+    private String bio;
     @SerializedName("punteggio")
     private int points;
     @SerializedName("immagineProfiloSrc")
     private String profilePicSrc;
 
-    public User(String name, String surname, String username, String email, String phone, String password, int points, String profilePicSrc) {
+    public User(String name, String surname, String username, String email, String phone, String password, String bio, int points, String profilePicSrc) {
         this.name = name;
         this.surname = surname;
         this.username = username;
         this.email = email;
         this.phone = phone;
         this.password = password;
+        this.bio = bio;
         this.points = points;
         this.profilePicSrc = profilePicSrc;
     }
@@ -75,6 +77,14 @@ public class User {
         this.password = password;
     }
 
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
     public int getPoints() {
         return points;
     }
@@ -97,7 +107,7 @@ public class User {
 
     @Override
     public String toString() {
-        return name + ", " + surname + ", " + username + ", " + email + ", " + phone + ", " + password + ", " + points;
+        return name + ", " + surname + ", " + username + ", " + email + ", " + phone + ", " + password + ", " + bio + ", " + points + ", " + profilePicSrc;
     }
 
 }

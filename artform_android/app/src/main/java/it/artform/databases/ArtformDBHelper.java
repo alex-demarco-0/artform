@@ -20,6 +20,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             UserDBAdapter.KEY_EMAIL + " varchar(50) UNIQUE NOT NULL," +
             UserDBAdapter.KEY_PHONE + " varchar(10) DEFAULT NULL, " +
             UserDBAdapter.KEY_PASSWORD + " varchar(50) NOT NULL, " +
+            UserDBAdapter.KEY_BIO + " varchar(100) DEFAULT NULL, " +
             UserDBAdapter.KEY_POINTS + " integer NOT NULL DEFAULT '0', " +
             UserDBAdapter.KEY_PROFILEPIC + " varchar(300) NOT NULL);";
 
