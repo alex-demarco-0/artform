@@ -6,57 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".UserProfileActivity">
 
-    <ImageView
-        android:id="@+id/userProfileImageView"
-        android:layout_width="140dp"
+    <RelativeLayout
+        android:id="@+id/profileLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="121dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="485dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/usernameUserProfile"
-        android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/badgeButtonUserProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Badge" />
+
+        <ImageView
+            android:id="@+id/userProfileImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="158dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/settingsUserProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Settings" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/infoLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="173dp"
-        android:layout_marginBottom="432dp"
-        android:text="Username" />
+        android:layout_below="@+id/profileLayout"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tagsUserProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="179dp"
-        android:layout_marginBottom="398dp"
-        android:text="Bio/Tags" />
+        <TextView
+            android:id="@+id/usernameUserProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="USERNAME" />
 
-    <Button
-        android:id="@+id/badgeButtonUserProfile"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="330dp"
-        android:layout_marginBottom="657dp"
-        android:hint="Badge" />
+        <TextView
+            android:id="@+id/tagsUserProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BIO/TAGS" />
 
-    <Button
-        android:id="@+id/settingsUserProfile"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="658dp"
-        android:hint="Settings" />
-
+    </LinearLayout>
 </RelativeLayout>
