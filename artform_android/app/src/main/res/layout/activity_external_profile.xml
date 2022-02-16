@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ExternalProfileActivity">
-
+    <include layout="@layout/toolbar" android:id="@+id/toolbar"/>
     <RelativeLayout
+        android:layout_below="@+id/toolbar"
         android:id="@+id/profileLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
