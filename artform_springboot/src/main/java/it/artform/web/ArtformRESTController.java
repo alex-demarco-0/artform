@@ -1,5 +1,6 @@
 package it.artform.web;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -97,7 +98,7 @@ public class ArtformRESTController {
 	}
 	
 	@RequestMapping(value="/artform/utente/{username}/posts", method=RequestMethod.GET)
-	public ResponseEntity<List<Post>> getPost(@PathVariable String username) {
+	public ResponseEntity<List<Post>> getUtentePosts(@PathVariable String username) {
 		List<Post> posts = this.artformRepository.findPostsByUtente(username);
 		if(posts != null)
 			return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
@@ -136,6 +137,39 @@ public class ArtformRESTController {
 			return new ResponseEntity<String>("Post Id=" + id + " DELETED", HttpStatus.OK);
 		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
 	}
+	
+	/* 
+	 * Notifica
+	 */
+	
+	@RequestMapping(value="/artform/utente/{username}/notifiche/{data}", method=RequestMethod.GET)
+	public ResponseEntity<Notifica> getNotifica(@PathVariable String username, Date data) {
+		Notifica n = this.artformRepository.findNotifica(username, data);
+		if(n != null)
+			return new ResponseEntity<Notifica>(n, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/notifiche", method=RequestMethod.GET)
+	public ResponseEntity<List<Notifica>> getNotificheUtente(@PathVariable String username) {
+		List<Notifica> notifications = this.artformRepository.findNotificheByUtente(username);
+		if(notifications != null)
+			return new ResponseEntity<List<Notifica>>(notifications, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/notifiche", method=RequestMethod.POST)
+	public ResponseEntity<Notifica> addNotifica(@RequestBody Notifica newNotifica) {
+		if(this.artformRepository.saveNotifica(newNotifica) == 1)
+			return new ResponseEntity<Notifica>(newNotifica, HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	/* 
+	 * Badge
+	 */
+	
+	
 	
 	///
 	
