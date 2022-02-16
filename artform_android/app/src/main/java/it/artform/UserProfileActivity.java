@@ -68,7 +68,8 @@ public class UserProfileActivity extends Activity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(UserProfileActivity.this, SettingsActivity.class);
+                Intent openSettingsActivity= new Intent(UserProfileActivity.this, SettingsActivity.class);
+                startActivity(openSettingsActivity);
             }
         });
     }

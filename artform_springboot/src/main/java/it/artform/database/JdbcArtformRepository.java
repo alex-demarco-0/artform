@@ -45,7 +45,8 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public Post findPost(int id) {
-		return jdbcTemplate.queryForObject("SELECT * from post WHERE Id=?", BeanPropertyRowMapper.newInstance(Post.class), id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -55,61 +56,56 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public int savePost(Post p) {
-		return jdbcTemplate.update("INSERT INTO post (utenteUsername, titolo, topic, tags, dataPubblicazione, like, tipologia, contenutoSrc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-				new Object[] {p.getUtenteUsername(), p.getTitolo(), p.getTopic(), p.getTags(), p.getDataPubblicazione(), p.getLike(), p.getTipologia(), p.getContenutoSrc()});
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int updatePost(Post p) {
-		return jdbcTemplate.update("UPDATE post SET titolo=?, topic=?, tags=?, like=? WHERE Id=?) VALUES (?, ?, ?, ?, ?)",
-				new Object[] {p.getTitolo(), p.getTopic(), p.getTags(), p.getLike(), p.getId()});
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int deletePost(int id) {
-		return jdbcTemplate.update("DELETE FROM post WHERE Id=?", id);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
-	public Notifica findNotifica(String username, Date data) {
-		return jdbcTemplate.queryForObject("SELECT * from notifica WHERE utenteUsername=? AND data=?", BeanPropertyRowMapper.newInstance(Notifica.class), username, data);
+	public Notifica findNotifica(String username, Date d) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Notifica> findNotificheByUtente(String username) {
-		return jdbcTemplate.query("SELECT * from notifica WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(Notifica.class), username);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	public int saveNotifica(Notifica n) {
-		return jdbcTemplate.update("INSERT INTO notifica (data, categoria, descrizione, collegamento, utenteUsername) VALUES (?, ?, ?, ?, ?)",
-				new Object[] {n.getData(), n.getCategoria(),n.getDescrizione(), n.getCollegamento(), n.getUtenteUsername()});
+	public int saveNotifica(Notifica p) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public Badge findBadge(String nome) {
-		return jdbcTemplate.queryForObject("SELECT * from badge WHERE nome=?", BeanPropertyRowMapper.newInstance(Badge.class), nome);
-	}
-	
-	@Override
-	public List<Badge> findAllBadges() {
-		return jdbcTemplate.query("SELECT * from badge", BeanPropertyRowMapper.newInstance(Badge.class));
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int saveBadge(Badge b) {
-		return jdbcTemplate.update("INSERT INTO badge (nome, descrizione, punteggio) VALUES (?, ?, ?)",
-				new Object[] {b.getNome(), b.getDescrizione(), b.getPunteggio()});
-	}
-	
-	@Override
-	public List<String> findAllTopics() {
-		return jdbcTemplate.query("SELECT * from topic", BeanPropertyRowMapper.newInstance(String.class));
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public Commissione findCommissione(int id) {
-		return jdbcTemplate.queryForObject("SELECT * from commissione WHERE Id=?", BeanPropertyRowMapper.newInstance(Commissione.class), id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -119,34 +115,32 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public List<Commissione> findCommissioniByCliente(String username) {
-		return jdbcTemplate.query("SELECT * from commissione WHERE clienteUsername=?", BeanPropertyRowMapper.newInstance(Commissione.class), username);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int saveCommissione(Commissione c) {
-		return jdbcTemplate.update("INSERT INTO commissione (titolo, prezzo, data, artistaUsername, clienteUsername, indirizzoConto) VALUES (?, ?, ?, ?, ?, ?)",
-				new Object[] {c.getTitolo(), c.getPrezzo(), c.getData(), c.getArtistaUsername(), c.getClienteUsername(), c.getIndirizzoConto()});
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public List<Post> findUserSavedPosts(String username) {
-		return jdbcTemplate.query("SELECT p.* FROM post p INNER JOIN postSalvati ps ON p.Id = ps.postID WHERE ps.utenteUsername=?", BeanPropertyRowMapper.newInstance(Post.class), username);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int saveUserPost(String username, int id) {
-		return jdbcTemplate.update("INSERT INTO postSalvati (utenteUsername, postID) VALUES (?, ?)",
-				new Object[] {username, id});
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public int deletePostFromSaved(String username, int id) {
-		return jdbcTemplate.update("DELETE FROM postSalvati WHERE utenteUsername=? AND postID=?", username, id);
-	}
-	
-	@Override
-	public int deleteAllPostsFromSaved(String username) {
-		return jdbcTemplate.update("DELETE FROM postSalvati WHERE utenteUsername=?", username);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override

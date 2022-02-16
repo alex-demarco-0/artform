@@ -17,19 +17,6 @@
         android:layout_marginBottom="300dp" />
 
     <!-- TEST -->
-
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="22dp"
-        android:text="impostazioni" />
-
     <ListView
         android:id="@+id/feedListView"
         android:layout_width="match_parent"
