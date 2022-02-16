@@ -151,50 +151,45 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public List<String> findUserActiveNotifications(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query("SELECT utenteExtUsername FROM notificheUtente WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(String.class), username);
 	}
 
 	@Override
 	public int activateUserNotifications(String username1, String username2) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("INSERT INTO notificheUtente (utenteUsername, utenteExtUsername) VALUES (?, ?)",
+				new Object[] {username1, username2});
 	}
 
 	@Override
 	public int deactivateUserNotifications(String username1, String username2) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("DELETE FROM postSalvati WHERE utenteUsername=? AND utenteExtUsername=?", username1, username2);
 	}
 
 	@Override
 	public List<Badge> findUserBadges(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query("SELECT b.* FROM badge b INNER JOIN badgeUtente bu ON b.nome = bu.badgeNome WHERE bu.utenteUsername=?", BeanPropertyRowMapper.newInstance(Badge.class), username);
 	}
 
 	@Override
 	public int userObtainsBadge(String username, String nome) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("INSERT INTO badgeUtente (utenteUsername, badgeNome) VALUES (?, ?)",
+				new Object[] {username, nome});
 	}
 
 	@Override
 	public List<String> findUserSelectedTopics(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query("SELECT topicNome FROM topicUtente WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(String.class), username);
 	}
 
 	@Override
 	public int userSelectsTopic(String username, String nome) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("INSERT INTO topicUtente (utenteUsername, topicNome) VALUES (?, ?)",
+				new Object[] {username, nome});
 	}
 
 	@Override
 	public int userDeselectsTopic(String username, String nome) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("DELETE FROM topicUtente WHERE utenteUsername=? AND topicNome=?", username, nome);
 	}	
 
 }
