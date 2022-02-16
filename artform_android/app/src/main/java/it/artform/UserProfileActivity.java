@@ -48,6 +48,7 @@ public class UserProfileActivity extends Activity {
                 if(response.isSuccessful()){
                     Toast.makeText(UserProfileActivity.this, response.body().getName().toString(), Toast.LENGTH_LONG).show();
                     usernameUserProfile.setText(response.body().getName());
+
                 }
             }
             @Override
@@ -56,6 +57,12 @@ public class UserProfileActivity extends Activity {
             }
         });
 
+        badgeUserProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
