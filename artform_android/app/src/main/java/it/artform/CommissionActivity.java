@@ -13,7 +13,9 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 
+import it.artform.pojos.Topic;
 import it.artform.web.ArtformApiEndpointInterface;
+import retrofit2.Call;
 
 public class CommissionActivity extends Activity {
     AFGlobal app = null;
@@ -48,7 +50,6 @@ public class CommissionActivity extends Activity {
 
 
         //Spinner che prende in input i topics dal database
-
 
         // bottone per cancellare i campi inseriti
         Button resetButton = findViewById(R.id.resetButton);

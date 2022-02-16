@@ -1,5 +1,6 @@
 package it.artform.web;
 
+import it.artform.pojos.Topic;
 import it.artform.pojos.User;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -26,5 +27,9 @@ public interface ArtformApiEndpointInterface {
 
     @DELETE("/artform/utente/{username}")
     String deleteUser(@Path("username") String username);
+
+    // topics
+    @GET("/artform/topic")
+    Call<Topic> getAllTopic(@Path("name") String name);
 
 }
