@@ -45,8 +45,7 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public Post findPost(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.queryForObject("SELECT * from post WHERE Id=?", BeanPropertyRowMapper.newInstance(Post.class), id);
 	}
 
 	@Override
@@ -56,20 +55,19 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public int savePost(Post p) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("INSERT INTO post (Id, utenteUsername, titolo, topic, tags, dataPubblicazione, like, tipologia, contenutoSrc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+				new Object[] {p.getId(), p.getUtenteUsername(), p.getTitolo(), p.getTopic(), p.getTags(), p.getDataPubblicazione(), p.getLike(), p.getTipologia(), p.getContenutoSrc()});
 	}
 
 	@Override
 	public int updatePost(Post p) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("UPDATE post SET titolo=?, topic=?, tags=?, like=? WHERE Id=?) VALUES (?, ?, ?, ?, ?)",
+				new Object[] {p.getTitolo(), p.getTopic(), p.getTags(), p.getLike(), p.getId()});
 	}
 
 	@Override
 	public int deletePost(int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("DELETE FROM post WHERE Id=?", id);
 	}
 
 	@Override
