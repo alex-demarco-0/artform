@@ -22,7 +22,7 @@ Descrizione: project work, pagina web di login
           border-radius: 4px;
           background: #D291BC;
         }
-        #buttonLogin{
+        #buttonLogin, #inputRegister {
           font-weight: 700;
           border:none;
           color: white;
@@ -37,13 +37,18 @@ Descrizione: project work, pagina web di login
             window.location="registrazione.html";
           }
           function login(){
-            window.location="homePage.html";
+            var password=document.getElementById("pwd").value;
+            var username=document.getElementById("inputUsername").value;
+            if (password=="admin" && username=="admin"){
+              window.location="homePage.html";
+            }else window.alert("Credenziali non valide/utente inesistente");
+
           }
         </script>
     </head>
     <body id="body" bgcolor="#E9CFEC">
 <form>
-        <div align=center><img src="file:///C:/Users/krona/OneDrive/Desktop/logoAFtrasparente.png" width="180" height="180" vspace="0" hspace="0"><br>
+        <div align=center><img src="logoAFtrasparente.png" width="250" height="250" vspace="0" hspace="0"><br>
         <b><font size='5' color='black'>La piattaforma dove l’arte prende forma</font></b></div>
 <br>
         <div align=center>
@@ -52,7 +57,7 @@ Descrizione: project work, pagina web di login
           <input id="buttonLogin" type="button" value="Accedi" onclick="login()">
           <button type="reset">Reset</button></div>
 </form>
-    <p align=center>Sei nuovo? Crea un nuovo accont <button value="Registrati" onclick="registrazione()">Registrati</button></p>
+    <p align=center>Sei nuovo? Crea un nuovo accont <input id="inputRegister" type="button" value="Registrati" onclick="registrazione()"></p>
     </body>
    <script src="login.js"></script>
 </html>
