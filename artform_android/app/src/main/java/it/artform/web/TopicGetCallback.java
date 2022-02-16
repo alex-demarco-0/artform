@@ -21,8 +21,9 @@ public class TopicGetCallback implements Callback<Topic> {
 
     @Override
     public void onResponse(Call<Topic> call, Response<Topic> response) {
-        if (response.isSuccessful()){
-
+        if (response.isSuccessful()) {
+            topic = new Topic(response.body().getName());
+            Toast.makeText(cxt, topic.getName(), Toast.LENGTH_SHORT).show();
         }
     }
 
