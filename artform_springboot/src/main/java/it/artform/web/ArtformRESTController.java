@@ -21,6 +21,10 @@ public class ArtformRESTController {
 	@Autowired
 	ArtformRepository artformRepository;
 	
+	/* 
+	 * Utente
+	 */
+	
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.GET)
 	public ResponseEntity<Utente> getUtente(@PathVariable String username) {
 		Utente u = this.artformRepository.findUtente(username);
@@ -79,6 +83,10 @@ public class ArtformRESTController {
 			return new ResponseEntity<String>("OK", HttpStatus.OK);
 		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
 	}
+	
+	/* 
+	 * Post
+	 */
 	
 	@RequestMapping(value="/artform/post/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Post> getPost(@PathVariable int id) {
