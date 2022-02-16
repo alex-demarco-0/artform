@@ -169,7 +169,79 @@ public class ArtformRESTController {
 	 * Badge
 	 */
 	
+	@RequestMapping(value="/artform/badge/{nome}", method=RequestMethod.GET)
+	public ResponseEntity<Badge> getBadge(@PathVariable String nome) {
+		Badge b = this.artformRepository.findBadge(nome);
+		if(b != null)
+			return new ResponseEntity<Badge>(b, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
 	
+	@RequestMapping(value="/artform/badges", method=RequestMethod.GET)
+	public ResponseEntity<List<Badge>> getAllBadges() {
+		List<Badge> badges = this.artformRepository.findAllBadges();
+		if(badges != null)
+			return new ResponseEntity<List<Badge>>(badges, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/badges", method=RequestMethod.POST)
+	public ResponseEntity<Badge> addBadge(@RequestBody Badge newBadge) {
+		if(this.artformRepository.saveBadge(newBadge) == 1)
+			return new ResponseEntity<Badge>(newBadge, HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	/* 
+	 * Topic
+	 */
+	
+	@RequestMapping(value="/artform/topics", method=RequestMethod.GET)
+	public ResponseEntity<List<String>> getAllTopics() {
+		List<String> topics = this.artformRepository.findAllTopics();
+		if(topics != null)
+			return new ResponseEntity<List<String>>(topics, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	/* 
+	 * Commissione
+	 */
+	
+	@RequestMapping(value="/artform/commissione/{id}", method=RequestMethod.GET)
+	public ResponseEntity<Commissione> getCommissione(@PathVariable int id) {
+		Commissione c = this.artformRepository.findCommissione(id);
+		if(c != null)
+			return new ResponseEntity<Commissione>(c, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/commissioni_da_artista", method=RequestMethod.GET)
+	public ResponseEntity<List<Commissione>> getCommissioniAsArtista(@PathVariable String username) {
+		List<Commissione> commissioni = this.artformRepository.findCommissioniByArtista(username);
+		if(commissioni != null)
+			return new ResponseEntity<List<Commissione>>(commissioni, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/commissioni_da_cliente", method=RequestMethod.GET)
+	public ResponseEntity<List<Commissione>> getCommissioniAsCliente(@PathVariable String username) {
+		List<Commissione> commissioni = this.artformRepository.findCommissioniByCliente(username);
+		if(commissioni != null)
+			return new ResponseEntity<List<Commissione>>(commissioni, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/commissione", method=RequestMethod.POST)
+	public ResponseEntity<Commissione> addCommissione(@RequestBody Commissione newCommissione) {
+		if(this.artformRepository.saveCommissione(newCommissione) == 1)
+			return new ResponseEntity<Commissione>(newCommissione, HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	/* 
+	 * Post Salvati
+	 */
 	
 	///
 	
