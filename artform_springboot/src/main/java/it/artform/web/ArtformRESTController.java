@@ -96,6 +96,14 @@ public class ArtformRESTController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
+	@RequestMapping(value="/artform/utente/{username}/posts", method=RequestMethod.GET)
+	public ResponseEntity<List<Post>> getPost(@PathVariable String username) {
+		List<Post> posts = this.artformRepository.findPostsByUtente(username);
+		if(posts != null)
+			return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
 	///
 	
 	@RequestMapping(value="/artform/utente/{username}/commissioni", method=RequestMethod.GET)

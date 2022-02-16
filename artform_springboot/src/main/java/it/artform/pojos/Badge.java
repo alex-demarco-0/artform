@@ -1,8 +1,10 @@
 package it.artform.pojos;
 
 public class Badge {
-	private final String nome, descrizione;
-	private final int punteggio;
+	private String nome, descrizione;
+	private int punteggio;
+	
+	public Badge() {}
 	
 	public Badge(String nome, String descrizione, int punteggio) {
 		this.nome = nome;

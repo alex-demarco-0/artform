@@ -3,12 +3,14 @@ package it.artform.pojos;
 import java.util.Date;
 
 public class Commissione {
-	private final int Id;
-	private final String titolo;
-	private final double prezzo;
-	private final Date data;
-	private final String artistaUsername, clienteUsername;
-	private final String indirizzoConto;
+	private int Id;
+	private String titolo;
+	private double prezzo;
+	private Date data;
+	private String artistaUsername, clienteUsername;
+	private String indirizzoConto;
+	
+	public Commissione() {}
 	
 	public Commissione(int Id, String titolo, double prezzo, Date data, String artistaUsername, String clienteUsername, String indirizzoConto) {
 		this.Id = Id;

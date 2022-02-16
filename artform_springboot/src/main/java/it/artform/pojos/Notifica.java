@@ -5,17 +5,19 @@ import java.net.URL;
 import java.util.Date;
 
 public class Notifica {
-	private final Date data;
-	private final int categoria;
+	private Date data;
+	private int categoria;
 		/* 1 = Artista per il quale è stata attivata l'opzione di notifica pubblica un contenuto;
 		 * 2 = Utente esterno attribuisce un like ad un proprio contenuto;
 		 * 3 = Richiesta di commissione;
 		 * 4 = Guadagno di punti;
 		 * 5 = Ottenimento distintivo;
 		 */
-	private final String descrizione;
-	private final URL collegamento;
-	private final String utenteUsername;
+	private String descrizione;
+	private URL collegamento;
+	private String utenteUsername;
+	
+	public Notifica() {}
 	
 	public Notifica(String data, int categoria, String descrizione, String collegamento, String utenteUsername) throws MalformedURLException {
 		this.data = new Date(Date.parse(data));
