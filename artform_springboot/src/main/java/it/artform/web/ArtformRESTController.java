@@ -23,7 +23,7 @@ public class ArtformRESTController {
 	
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.GET)
 	public ResponseEntity<Utente> getUtente(@PathVariable String username) {
-		Utente u = this.artformRepository.findUtenteByUsername(username);
+		Utente u = this.artformRepository.findUtente(username);
 		if(u != null)
 			return new ResponseEntity<Utente>(u, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -46,7 +46,7 @@ public class ArtformRESTController {
 
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.PUT)
 	public ResponseEntity<Utente> updateUtente(@PathVariable String username, @RequestBody Utente modUtente) {
-		Utente u = this.artformRepository.findUtenteByUsername(username);
+		Utente u = this.artformRepository.findUtente(username);
 		if(u != null) {
 			if(modUtente.getNome() != null && !modUtente.getNome().isBlank())
 				u.setNome(modUtente.getNome());
@@ -60,6 +60,8 @@ public class ArtformRESTController {
 				u.setNumeroTelefono(modUtente.getNumeroTelefono());
 			if(modUtente.getPassword() != null && !modUtente.getPassword().isBlank())
 				u.setPassword(modUtente.getPassword());
+			if(modUtente.getBio() != null && !modUtente.getBio().isBlank())
+				u.setBio(modUtente.getBio());
 			if(modUtente.getPunteggio() >= u.getPunteggio())
 				u.setPunteggio(modUtente.getPunteggio());
 			if(modUtente.getImmagineProfiloSrc() != null && !modUtente.getImmagineProfiloSrc().isBlank())

@@ -1,18 +1,19 @@
 package it.artform.pojos;
 
 public class Utente {
-	private String nome, cognome, username, email, numeroTelefono, password;
+	private String nome, cognome, username, email, numeroTelefono, password, bio;
 	private int punteggio;
 	private String immagineProfiloSrc;
 	
 	public Utente() {}
 
-	public Utente(String nome, String cognome, String username, String email, String numeroTelefono, String password, int punteggio, String immagineProfiloSrc) {
+	public Utente(String nome, String cognome, String username, String email, String numeroTelefono, String password, String bio, int punteggio, String immagineProfiloSrc) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.username = username;
 		this.numeroTelefono = numeroTelefono;
 		this.password = password;
+		this.bio = bio;
 		this.punteggio = punteggio;
 		this.immagineProfiloSrc = immagineProfiloSrc;
 	}
@@ -63,6 +64,14 @@ public class Utente {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getBio() {
+		return bio;
+	}
+
+	public void setBio(String bio) {
+		this.bio = bio;
 	}
 	
 	public int getPunteggio() {
