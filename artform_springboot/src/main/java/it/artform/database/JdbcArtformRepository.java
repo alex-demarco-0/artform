@@ -55,8 +55,8 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public int savePost(Post p) {
-		return jdbcTemplate.update("INSERT INTO post (Id, utenteUsername, titolo, topic, tags, dataPubblicazione, like, tipologia, contenutoSrc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-				new Object[] {p.getId(), p.getUtenteUsername(), p.getTitolo(), p.getTopic(), p.getTags(), p.getDataPubblicazione(), p.getLike(), p.getTipologia(), p.getContenutoSrc()});
+		return jdbcTemplate.update("INSERT INTO post (utenteUsername, titolo, topic, tags, dataPubblicazione, like, tipologia, contenutoSrc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+				new Object[] {p.getUtenteUsername(), p.getTitolo(), p.getTopic(), p.getTags(), p.getDataPubblicazione(), p.getLike(), p.getTipologia(), p.getContenutoSrc()});
 	}
 
 	@Override
@@ -109,8 +109,7 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public Commissione findCommissione(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.queryForObject("SELECT * from commissione WHERE Id=?", BeanPropertyRowMapper.newInstance(Commissione.class), id);
 	}
 
 	@Override
@@ -120,14 +119,13 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public List<Commissione> findCommissioniByCliente(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query("SELECT * from commissione WHERE clienteUsername=?", BeanPropertyRowMapper.newInstance(Commissione.class), username);
 	}
 
 	@Override
 	public int saveCommissione(Commissione c) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("INSERT INTO commissione (titolo, prezzo, data, artistaUsername, clienteUsername, indirizzoConto) VALUES (?, ?, ?, ?, ?, ?)",
+				new Object[] {c.getTitolo(), c.getPrezzo(), c.getData(), c.getArtistaUsername(), c.getClienteUsername(), c.getIndirizzoConto()});
 	}
 
 	@Override
