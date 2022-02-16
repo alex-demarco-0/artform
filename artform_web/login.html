@@ -12,6 +12,16 @@ Descrizione: project work, pagina web di login
         <style type="text/css">
         #body{
           font-family:sans-serif, helvetica;
+          background: linear-gradient(#E9CFEC, #7575CF);
+        }
+        #loginDiv{
+              background-color: #fff;
+              width: 40%;
+              margin: 80px auto;
+              border-radius: 10px;
+              padding: 20px;
+              border-left: 5px solid #D291BC;
+              box-shadow: 0px 0px 0px 0px #3f51b5;
         }
         button{
           font-weight: 700;
@@ -22,7 +32,7 @@ Descrizione: project work, pagina web di login
           border-radius: 4px;
           background: #D291BC;
         }
-        #buttonLogin{
+        #buttonLogin, #inputRegister {
           font-weight: 700;
           border:none;
           color: white;
@@ -33,26 +43,30 @@ Descrizione: project work, pagina web di login
         }
         </style>
         <script type="text/javascript" language="javascript">
-          function registrazione(){
-            window.location="registrazione.html";
-          }
           function login(){
-            window.location="homePage.html";
+            var password=document.getElementById("pwd").value;
+            var username=document.getElementById("inputUsername").value;
+            if (password=="admin" && username=="admin"){
+              window.location="homePage.html";
+            }else window.alert("Credenziali non valide/utente inesistente");
+
           }
         </script>
     </head>
-    <body id="body" bgcolor="#E9CFEC">
-<form>
-        <div align=center><img src="file:///C:/Users/krona/OneDrive/Desktop/logoAFtrasparente.png" width="180" height="180" vspace="0" hspace="0"><br>
-        <b><font size='5' color='black'>La piattaforma dove l’arte prende forma</font></b></div>
-<br>
-        <div align=center>
-          <p><font color="black" size="4">Username <input id="inputUsername"type="text"></p></font>
-          <p><font color="black" size="4">Password <input type="password" id="pwd"></p>
+    <body id="body" bgcolor:#E9CFEC>
+      <div id="loginDiv">
+        <form>
+          <div align=center><img src="logoAFtrasparente.png" width="250" height="250" vspace="0" hspace="0"><br>
+          <b><font size='5' color='black'>La piattaforma dove l’arte prende forma</font></b></div>
+          <br>
+          <div align=center>
+          <p><font color="black" size="4">Username <input id="inputUsername" type="text" placeholder="Ex. youremail@mail.com"></p></font>
+          <p><font color="black" size="4">Password <input type="password" id="pwd" placeholder="Ex. A123@paswod"></p>
           <input id="buttonLogin" type="button" value="Accedi" onclick="login()">
           <button type="reset">Reset</button></div>
-</form>
-    <p align=center>Sei nuovo? Crea un nuovo accont <button value="Registrati" onclick="registrazione()">Registrati</button></p>
+        </form>
+        <p align=center>Sei nuovo? <a id="register" href="registrazione.html">Crea un nuovo accont </a></p>
+      </div>
     </body>
    <script src="login.js"></script>
 </html>
