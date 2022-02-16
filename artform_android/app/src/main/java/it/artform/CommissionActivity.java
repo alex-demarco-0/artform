@@ -47,6 +47,9 @@ public class CommissionActivity extends Activity {
         });
 
 
+        //Spinner che prende in input i topics dal database
+
+
         // bottone per cancellare i campi inseriti
         Button resetButton = findViewById(R.id.resetButton);
         resetButton.setOnClickListener(new View.OnClickListener() {

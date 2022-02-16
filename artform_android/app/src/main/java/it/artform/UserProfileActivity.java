@@ -46,9 +46,10 @@ public class UserProfileActivity extends Activity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(UserProfileActivity.this, response.body().getName().toString(), Toast.LENGTH_LONG).show();
-                    usernameUserProfile.setText(response.body().getName());
+                    Toast.makeText(UserProfileActivity.this, response.body().toString(), Toast.LENGTH_LONG).show();
 
+                    usernameUserProfile.setText(response.body().getName());
+                    tagsUserProfile.setText(response.body().getBio());
                 }
             }
             @Override
