@@ -130,20 +130,23 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public List<Post> findUserSavedPosts(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query("SELECT p.* FROM post p INNER JOIN postSalvati ps ON p.Id = ps.postID WHERE ps.utenteUsername=?", BeanPropertyRowMapper.newInstance(Post.class), username);
 	}
 
 	@Override
 	public int saveUserPost(String username, int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("INSERT INTO postSalvati (utenteUsername, postID) VALUES (?, ?)",
+				new Object[] {username, id});
 	}
 
 	@Override
 	public int deletePostFromSaved(String username, int id) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.update("DELETE FROM postSalvati WHERE utenteUsername=? AND postID=?", username, id);
+	}
+	
+	@Override
+	public int deleteAllPostsFromSaved(String username) {
+		return jdbcTemplate.update("DELETE FROM postSalvati WHERE utenteUsername=?", username);
 	}
 
 	@Override

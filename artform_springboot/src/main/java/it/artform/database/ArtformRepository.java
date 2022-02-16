@@ -44,6 +44,7 @@ public interface ArtformRepository {
 	List<Post> findUserSavedPosts(String username);
 	int saveUserPost(String username, int id);
 	int deletePostFromSaved(String username, int id);
+	int deleteAllPostsFromSaved(String username);
 	
 	//Notifiche Utente
 	List<String> findUserActiveNotifications(String username);
