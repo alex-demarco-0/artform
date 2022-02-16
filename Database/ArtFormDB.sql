@@ -174,6 +174,20 @@ INSERT INTO `topic` (`nome`) VALUES
 	('Wallpaper');
 /*!40000 ALTER TABLE `topic` ENABLE KEYS */;
 
+-- Dump della struttura di tabella ArtForm.topicUtente
+CREATE TABLE IF NOT EXISTS `topicUtente` (
+  `utenteUsername` varchar(50) NOT NULL,
+  `topicNome` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`utenteUsername`,`topicNome`),
+  KEY `FK_topicUtente_topic` (`topicNome`),
+  CONSTRAINT `FK_topicUtente_topic` FOREIGN KEY (`topicNome`) REFERENCES `topic` (`nome`),
+  CONSTRAINT `FK_topicUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dump dei dati della tabella ArtForm.topicUtente: ~0 rows (circa)
+/*!40000 ALTER TABLE `topicUtente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `topicUtente` ENABLE KEYS */;
+
 -- Dump della struttura di tabella ArtForm.utente
 CREATE TABLE IF NOT EXISTS `utente` (
   `nome` varchar(50) NOT NULL,
