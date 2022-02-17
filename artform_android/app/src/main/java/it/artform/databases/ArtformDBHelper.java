@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "artform.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     //private static final String DATABASE_CREATE = CREATE_USER + CREATE_POST + CREATE_NOTIFICATION;
 
@@ -110,7 +110,7 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_USER_BADGES = "CREATE TABLE IF NOT EXISTS " +
             UserBadgesDBAdapter.DATABASE_TABLE +
             " (" + UserBadgesDBAdapter.KEY_USER_BADGES_ID + " integer PRIMARY KEY AUTOINCREMENT, " +
-            UserBadgesDBAdapter.KEY_USER_USERNAME + " varchar(50)varchar(50) NOT NULL, " +
+            UserBadgesDBAdapter.KEY_USER_USERNAME + " varchar(50) NOT NULL, " +
             UserBadgesDBAdapter.KEY_BADGE_NAME + " varchar(30) NOT NULL, " +
             "FOREIGN KEY (" + UserBadgesDBAdapter.KEY_USER_USERNAME + ") " +
             "REFERENCES " + UserDBAdapter.DATABASE_TABLE + " (" + UserDBAdapter.KEY_USERNAME + "), " +
