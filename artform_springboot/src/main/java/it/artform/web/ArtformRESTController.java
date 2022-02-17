@@ -138,6 +138,13 @@ public class ArtformRESTController {
 		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
 	}
 	
+	@RequestMapping(value="/artform/utente/{username}/posts", method=RequestMethod.DELETE)
+	public ResponseEntity<String> deleteAllUtentePosts(@PathVariable String username) {
+		if(this.artformRepository.deleteAllPostsByUtente(username) > 0)
+			return new ResponseEntity<String>("All User username=" + username + "'s Posts DELETED", HttpStatus.OK);
+		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
+	}
+	
 	/* 
 	 * Notifica
 	 */
@@ -267,10 +274,42 @@ public class ArtformRESTController {
 	
 	@RequestMapping(value="/artform/utente/{username}/post_salvati", method=RequestMethod.DELETE)
 	public ResponseEntity<String> removeAllPostsFromSaved(@PathVariable String username) {
-		if(this.artformRepository.deleteAllPostsFromSaved(username) == 1)
+		if(this.artformRepository.deleteAllPostsFromSaved(username) > 0)
 			return new ResponseEntity<String>("REMOVED all User username=" + username + "'s saved Posts", HttpStatus.OK);
 		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
 	}
 	
+	/* 
+	 * Notifiche Utente
+	 */
+	
+	@RequestMapping(value="/artform/utente/{username}/notifiche_attive", method=RequestMethod.GET)
+	public ResponseEntity<List<String>> getUserActiveNotifications(@PathVariable String username) {
+		List<String> activeNotifications = this.artformRepository.findUserActiveNotifications(username);
+		if(activeNotifications != null)
+			return new ResponseEntity<List<String>>(activeNotifications, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/notifiche_attive", method=RequestMethod.POST)
+	public ResponseEntity<Utente> activateUserNotifications(@PathVariable String username1, @RequestBody String username2) {
+		if(this.artformRepository.activateUserNotifications(username1, username2) == 1)
+			return new ResponseEntity<Utente>(this.artformRepository.findUtente(username2), HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/notifiche_attive/{username2}", method=RequestMethod.DELETE)
+	public ResponseEntity<String> deactivateUserNotifications(@PathVariable String username1, String username2) {
+		if(this.artformRepository.deactivateUserNotifications(username1, username2) == 1)
+			return new ResponseEntity<String>("User username=" + username1 + " Notifications for User username=" + username2 + " DEACTIVATED", HttpStatus.OK);
+		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/notifiche_attive", method=RequestMethod.DELETE)
+	public ResponseEntity<String> deactivateAllUserNotifications(@PathVariable String username) {
+		if(this.artformRepository.deactivateAllUserNotifications(username) > 0)
+			return new ResponseEntity<String>("DEACTIVATED all User username=" + username + "'s active Notifications", HttpStatus.OK);
+		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
+	}
 
 }

@@ -69,6 +69,11 @@ public class JdbcArtformRepository implements ArtformRepository {
 	public int deletePost(int id) {
 		return jdbcTemplate.update("DELETE FROM post WHERE Id=?", id);
 	}
+	
+	@Override
+	public int deleteAllPostsByUtente(String username) {
+		return jdbcTemplate.update("DELETE FROM post WHERE utenteUsername=?", username);
+	}
 
 	@Override
 	public Notifica findNotifica(String username, Date data) {
@@ -162,7 +167,12 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public int deactivateUserNotifications(String username1, String username2) {
-		return jdbcTemplate.update("DELETE FROM postSalvati WHERE utenteUsername=? AND utenteExtUsername=?", username1, username2);
+		return jdbcTemplate.update("DELETE FROM notificheUtente WHERE utenteUsername=? AND utenteExtUsername=?", username1, username2);
+	}
+	
+	@Override
+	public int deactivateAllUserNotifications(String username) {
+		return jdbcTemplate.update("DELETE FROM notificheUtente WHERE utenteUsername=?", username);
 	}
 
 	@Override

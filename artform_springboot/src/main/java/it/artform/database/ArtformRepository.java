@@ -20,6 +20,7 @@ public interface ArtformRepository {
 	int savePost(Post p);
 	int updatePost(Post p);
 	int deletePost(int id);
+	int deleteAllPostsByUtente(String username);
 	
 	//Notifica
 	Notifica findNotifica(String username, Date data);
@@ -50,6 +51,7 @@ public interface ArtformRepository {
 	List<String> findUserActiveNotifications(String username);
 	int activateUserNotifications(String username1, String username2);
 	int deactivateUserNotifications(String username1, String username2);
+	int deactivateAllUserNotifications(String username);
 	
 	//Badge Utente
 	List<Badge> findUserBadges(String username);
