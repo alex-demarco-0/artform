@@ -104,14 +104,14 @@ public class ArtformRESTController {
 			return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+	// sistemare
 	@RequestMapping(value="/artform/post", method=RequestMethod.POST)
 	public ResponseEntity<Post> addPost(@RequestBody Post newPost) {
 		if(this.artformRepository.savePost(newPost) == 1)
 			return new ResponseEntity<Post>(newPost, HttpStatus.CREATED);
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
+	// sistemare
 	@RequestMapping(value="/artform/post/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Post> updatePost(@PathVariable int id, @RequestBody Post modPost) {
 		Post p = this.artformRepository.findPost(id);
@@ -120,7 +120,7 @@ public class ArtformRESTController {
 				p.setTitolo(modPost.getTitolo());
 			if(modPost.getTopic() != null && !modPost.getTopic().isBlank())
 				p.setTopic(modPost.getTitolo());
-			if(modPost.getTags() != null && modPost.getTags().length > 0)
+			if(modPost.getTags() != null && !modPost.getTags().isBlank())
 				p.setTags(modPost.getTags());
 			if(modPost.getLike() > p.getLike())
 				p.addLike();
@@ -246,7 +246,7 @@ public class ArtformRESTController {
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	/* 
+	/*
 	 * Post Salvati
 	 */
 	
@@ -283,22 +283,22 @@ public class ArtformRESTController {
 	 * Notifiche Utente
 	 */
 	
-	@RequestMapping(value="/artform/utente/{username}/notifiche_attive", method=RequestMethod.GET)
-	public ResponseEntity<List<String>> getUserActiveNotifications(@PathVariable String username) {
-		List<String> activeNotifications = this.artformRepository.findUserActiveNotifications(username);
+	@RequestMapping(value="/artform/utente/{username1}/notifiche_attive", method=RequestMethod.GET)
+	public ResponseEntity<List<Utente>> getUserActiveNotifications(@PathVariable String username) {
+		List<Utente> activeNotifications = this.artformRepository.findUserActiveNotifications(username);
 		if(activeNotifications != null)
-			return new ResponseEntity<List<String>>(activeNotifications, HttpStatus.OK);
+			return new ResponseEntity<List<Utente>>(activeNotifications, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
-	@RequestMapping(value="/artform/utente/{username}/notifiche_attive", method=RequestMethod.POST)
+
+	@RequestMapping(value="/artform/utente/{username1}/notifiche_attive", method=RequestMethod.POST)
 	public ResponseEntity<Utente> activateUserNotifications(@PathVariable String username1, @RequestBody String username2) {
 		if(this.artformRepository.activateUserNotifications(username1, username2) == 1)
 			return new ResponseEntity<Utente>(this.artformRepository.findUtente(username2), HttpStatus.CREATED);
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
-	@RequestMapping(value="/artform/utente/{username}/notifiche_attive/{username2}", method=RequestMethod.DELETE)
+	// sistemare
+	@RequestMapping(value="/artform/utente/{username1}/notifiche_attive/{username2}", method=RequestMethod.DELETE)
 	public ResponseEntity<String> deactivateUserNotifications(@PathVariable String username1, String username2) {
 		if(this.artformRepository.deactivateUserNotifications(username1, username2) == 1)
 			return new ResponseEntity<String>("User username=" + username1 + "'s Notifications for User username=" + username2 + " DEACTIVATED", HttpStatus.OK);
@@ -323,7 +323,7 @@ public class ArtformRESTController {
 			return new ResponseEntity<List<Badge>>(userBadges, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+	// sistemare
 	@RequestMapping(value="/artform/utente/{username}/badges", method=RequestMethod.POST)
 	public ResponseEntity<Badge> userObtainsBadge(@PathVariable String username, @RequestBody String nome) {
 		if(this.artformRepository.giveBadgeToUser(username, nome) == 1)
@@ -336,13 +336,13 @@ public class ArtformRESTController {
 	 */
 	
 	@RequestMapping(value="/artform/utente/{username}/topics", method=RequestMethod.GET)
-	public ResponseEntity<List<String>> getUserSelectedTopics(@PathVariable String username) {
-		List<String> userTopics = this.artformRepository.findUserSelectedTopics(username);
+	public ResponseEntity<List<Topic>> getUserSelectedTopics(@PathVariable String username) {
+		List<Topic> userTopics = this.artformRepository.findUserSelectedTopics(username);
 		if(userTopics != null)
-			return new ResponseEntity<List<String>>(userTopics, HttpStatus.OK);
+			return new ResponseEntity<List<Topic>>(userTopics, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+	// sistemare
 	@RequestMapping(value="/artform/utente/{username}/topics", method=RequestMethod.POST)
 	public ResponseEntity<String> userSelectsTopic(@PathVariable String username, @RequestBody String nome) {
 		if(this.artformRepository.addTopicToUserSelection(username, nome) == 1)

@@ -155,8 +155,8 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
-	public List<String> findUserActiveNotifications(String username) {
-		return jdbcTemplate.query("SELECT utenteExtUsername FROM notificheUtente WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(String.class), username);
+	public List<Utente> findUserActiveNotifications(String username) {
+		return jdbcTemplate.query("SELECT ue.* FROM notificheUtente nu INNER JOIN utente ue ON nu.utenteExtUsername = ue.username WHERE nu.utenteUsername=?", BeanPropertyRowMapper.newInstance(Utente.class), username);
 	}
 
 	@Override
@@ -187,8 +187,8 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
-	public List<String> findUserSelectedTopics(String username) {
-		return jdbcTemplate.query("SELECT topicNome FROM topicUtente WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(String.class), username);
+	public List<Topic> findUserSelectedTopics(String username) {
+		return jdbcTemplate.query("SELECT t.* FROM topicUtente tu INNER JOIN topic t ON tu.topicNome = t.nome WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(Topic.class), username);
 	}
 
 	@Override

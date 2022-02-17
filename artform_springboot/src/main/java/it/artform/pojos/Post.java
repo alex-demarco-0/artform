@@ -1,15 +1,14 @@
 package it.artform.pojos;
 
-import java.util.Arrays;
 import java.util.Date;
 
 public class Post {
 	private int Id;
 	private String utenteUsername, titolo, topic;
-	private String[] tags; // oppure ArrayList<String> ?
+	private String tags; // oppure ArrayList<String> ?
 	private Date dataPubblicazione;
 	private int like;
-	private boolean tipologia; // boolean ?
+	private String tipologia; // boolean ?
 	private String contenutoSrc;
 	
 	public Post() {}
@@ -59,11 +58,11 @@ public class Post {
 		this.topic = topic;
 	}
 	
-	public String[] getTags() {
+	public String getTags() {
 		return tags;
 	}
 	
-	public void setTags(String[] tags) {
+	public void setTags(String tags) {
 		//String iterator
 		this.tags = tags;
 	}
@@ -88,11 +87,11 @@ public class Post {
 		this.like++;
 	}
 
-	public boolean getTipologia() {
+	public String getTipologia() {
 		return tipologia;
 	}
 	
-	public void setTipologia(boolean tipologia) {
+	public void setTipologia(String tipologia) {
 		this.tipologia = tipologia;
 	}
 	

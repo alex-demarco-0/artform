@@ -14,7 +14,7 @@ public class Notifica {
 		 * 5 = Ottenimento distintivo;
 		 */
 	private String descrizione;
-	private URL collegamento;
+	private String collegamento;
 	private String utenteUsername;
 	
 	public Notifica() {}
@@ -56,11 +56,11 @@ public class Notifica {
 		this.descrizione = descrizione;
 	}
 	
-	public URL getCollegamento() {
+	public String getCollegamento() {
 		return collegamento;
 	}
 	
-	public void setCollegamento(URL collegamento) {
+	public void setCollegamento(String collegamento) {
 		this.collegamento = collegamento;
 	}
 	

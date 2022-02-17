@@ -48,7 +48,7 @@ public interface ArtformRepository {
 	int deleteAllPostsFromSaved(String username);
 	
 	//Notifiche Utente
-	List<String> findUserActiveNotifications(String username);
+	List<Utente> findUserActiveNotifications(String username);
 	int activateUserNotifications(String username1, String username2);
 	int deactivateUserNotifications(String username1, String username2);
 	int deactivateAllUserNotifications(String username);
@@ -58,7 +58,7 @@ public interface ArtformRepository {
 	int giveBadgeToUser(String username, String nome);
 
 	//Topic Utente
-	List<String> findUserSelectedTopics(String username);
+	List<Topic> findUserSelectedTopics(String username);
 	int addTopicToUserSelection(String username, String nome);
 	int removeTopicFromUserSelection(String username, String nome);
 	int removeAllTopicsFromUserSelection(String username);
