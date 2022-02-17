@@ -301,7 +301,7 @@ public class ArtformRESTController {
 	@RequestMapping(value="/artform/utente/{username}/notifiche_attive/{username2}", method=RequestMethod.DELETE)
 	public ResponseEntity<String> deactivateUserNotifications(@PathVariable String username1, String username2) {
 		if(this.artformRepository.deactivateUserNotifications(username1, username2) == 1)
-			return new ResponseEntity<String>("User username=" + username1 + " Notifications for User username=" + username2 + " DEACTIVATED", HttpStatus.OK);
+			return new ResponseEntity<String>("User username=" + username1 + "'s Notifications for User username=" + username2 + " DEACTIVATED", HttpStatus.OK);
 		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
 	}
 	
@@ -329,6 +329,39 @@ public class ArtformRESTController {
 		if(this.artformRepository.giveBadgeToUser(username, nome) == 1)
 			return new ResponseEntity<Badge>(this.artformRepository.findBadge(nome), HttpStatus.CREATED);
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	/* 
+	 * Topic Utente
+	 */
+	
+	@RequestMapping(value="/artform/utente/{username}/topics", method=RequestMethod.GET)
+	public ResponseEntity<List<String>> getUserSelectedTopics(@PathVariable String username) {
+		List<String> userTopics = this.artformRepository.findUserSelectedTopics(username);
+		if(userTopics != null)
+			return new ResponseEntity<List<String>>(userTopics, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/topics", method=RequestMethod.POST)
+	public ResponseEntity<String> userSelectsTopic(@PathVariable String username, @RequestBody String nome) {
+		if(this.artformRepository.addTopicToUserSelection(username, nome) == 1)
+			return new ResponseEntity<String>(nome, HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/topics/{nome}", method=RequestMethod.DELETE)
+	public ResponseEntity<String> userDeselectsTopic(@PathVariable String username, String nome) {
+		if(this.artformRepository.removeTopicFromUserSelection(username, nome) == 1)
+			return new ResponseEntity<String>("User username=" + username + "'s Topic nome=" + nome + " DESELECTED", HttpStatus.OK);
+		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/topics", method=RequestMethod.DELETE)
+	public ResponseEntity<String> userDeselectsAllTopics(@PathVariable String username) {
+		if(this.artformRepository.removeAllTopicsFromUserSelection(username) > 0)
+			return new ResponseEntity<String>("All User username=" + username + "'s Topics DESELECTED", HttpStatus.OK);
+		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
 	}
 
 }

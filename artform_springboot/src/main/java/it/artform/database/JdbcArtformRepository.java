@@ -192,14 +192,19 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
-	public int userSelectsTopic(String username, String nome) {
+	public int addTopicToUserSelection(String username, String nome) {
 		return jdbcTemplate.update("INSERT INTO topicUtente (utenteUsername, topicNome) VALUES (?, ?)",
 				new Object[] {username, nome});
 	}
 
 	@Override
-	public int userDeselectsTopic(String username, String nome) {
+	public int removeTopicFromUserSelection(String username, String nome) {
 		return jdbcTemplate.update("DELETE FROM topicUtente WHERE utenteUsername=? AND topicNome=?", username, nome);
-	}	
+	}
+	
+	@Override
+	public int removeAllTopicsFromUserSelection(String username) {
+		return jdbcTemplate.update("DELETE FROM topicUtente WHERE utenteUsername=?", username);
+	}
 
 }

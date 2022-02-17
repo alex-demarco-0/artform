@@ -59,7 +59,8 @@ public interface ArtformRepository {
 
 	//Topic Utente
 	List<String> findUserSelectedTopics(String username);
-	int userSelectsTopic(String username, String nome);
-	int userDeselectsTopic(String username, String nome);
+	int addTopicToUserSelection(String username, String nome);
+	int removeTopicFromUserSelection(String username, String nome);
+	int removeAllTopicsFromUserSelection(String username);
 	
 }
