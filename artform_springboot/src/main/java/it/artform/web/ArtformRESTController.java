@@ -311,5 +311,24 @@ public class ArtformRESTController {
 			return new ResponseEntity<String>("DEACTIVATED all User username=" + username + "'s active Notifications", HttpStatus.OK);
 		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
 	}
+	
+	/* 
+	 * Badge Utente
+	 */
+	
+	@RequestMapping(value="/artform/utente/{username}/badges", method=RequestMethod.GET)
+	public ResponseEntity<List<Badge>> getUserBadges(@PathVariable String username) {
+		List<Badge> userBadges = this.artformRepository.findUserBadges(username);
+		if(userBadges != null)
+			return new ResponseEntity<List<Badge>>(userBadges, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/badges", method=RequestMethod.POST)
+	public ResponseEntity<Badge> userObtainsBadge(@PathVariable String username, @RequestBody String nome) {
+		if(this.artformRepository.giveBadgeToUser(username, nome) == 1)
+			return new ResponseEntity<Badge>(this.artformRepository.findBadge(nome), HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
 
 }

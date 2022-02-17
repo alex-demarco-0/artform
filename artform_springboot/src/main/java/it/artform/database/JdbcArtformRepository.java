@@ -181,7 +181,7 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
-	public int userObtainsBadge(String username, String nome) {
+	public int giveBadgeToUser(String username, String nome) {
 		return jdbcTemplate.update("INSERT INTO badgeUtente (utenteUsername, badgeNome) VALUES (?, ?)",
 				new Object[] {username, nome});
 	}

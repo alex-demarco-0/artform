@@ -55,7 +55,7 @@ public interface ArtformRepository {
 	
 	//Badge Utente
 	List<Badge> findUserBadges(String username);
-	int userObtainsBadge(String username, String nome);
+	int giveBadgeToUser(String username, String nome);
 
 	//Topic Utente
 	List<String> findUserSelectedTopics(String username);
