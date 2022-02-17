@@ -6,7 +6,7 @@ public class Utente {
 	private String immagineProfiloSrc;
 	
 	public Utente() {}
-
+/*
 	public Utente(String nome, String cognome, String username, String email, String numeroTelefono, String password, String bio, int punteggio, String immagineProfiloSrc) {
 		this.nome = nome;
 		this.cognome = cognome;
@@ -17,7 +17,7 @@ public class Utente {
 		this.punteggio = punteggio;
 		this.immagineProfiloSrc = immagineProfiloSrc;
 	}
-	
+*/
 	public String getNome() {
 		return nome;
 	}
@@ -94,11 +94,11 @@ public class Utente {
 		this.immagineProfiloSrc = immagineProfiloSrc;
 	}
 	
-	//TEST
+	/*
 	@Override
 	public String toString() {
 		return "Utente [nome=" + nome + ", cognome=" + cognome + ", username=" + username + ", email="
 				+ email + ", numeroTelefono=" + numeroTelefono + ", password=" + password + "]";
 	}
-
+*/
 }

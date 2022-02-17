@@ -18,7 +18,7 @@ public class Notifica {
 	private String utenteUsername;
 	
 	public Notifica() {}
-	
+/*
 	public Notifica(String data, int categoria, String descrizione, String collegamento, String utenteUsername) throws MalformedURLException {
 		this.data = new Date(Date.parse(data));
 		this.categoria = categoria;
@@ -31,25 +31,45 @@ public class Notifica {
 		}
 		// if()  aggiunta collegamento in base a categoria ecc.
 	}
-	
+*/
 	public Date getData() {
 		return data;
+	}
+	
+	public void setData(Date data) {
+		this.data = data;
 	}
 	
 	public int getCategoria() {
 		return categoria;
 	}
 	
+	public void setCategoria(int categoria) {
+		this.categoria = categoria;
+	}
+	
 	public String getDescrizione() {
 		return descrizione;
+	}
+	
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 	
 	public URL getCollegamento() {
 		return collegamento;
 	}
 	
+	public void setCollegamento(URL collegamento) {
+		this.collegamento = collegamento;
+	}
+	
 	public String getUtenteUsername() {
 		return utenteUsername;
+	}
+	
+	public void setUtenteUsername(String utenteUsername) {
+		this.utenteUsername = utenteUsername;
 	}
 	
 }
