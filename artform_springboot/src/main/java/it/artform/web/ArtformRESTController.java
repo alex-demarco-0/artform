@@ -243,11 +243,34 @@ public class ArtformRESTController {
 	 * Post Salvati
 	 */
 	
-	///
-	
-	@RequestMapping(value="/artform/utente/{username}/commissioni", method=RequestMethod.GET)
-	public List<Commissione> getAllCommissioni(@PathVariable String username) {
-		return this.artformRepository.findCommissioniByArtista(username);
+	@RequestMapping(value="/artform/utente/{username}/post_salvati", method=RequestMethod.GET)
+	public ResponseEntity<List<Post>> getUserSavedPosts(@PathVariable String username) {
+		List<Post> savedPosts = this.artformRepository.findUserSavedPosts(username);
+		if(savedPosts != null)
+			return new ResponseEntity<List<Post>>(savedPosts, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
+	
+	@RequestMapping(value="/artform/utente/{username}/post_salvati", method=RequestMethod.POST)
+	public ResponseEntity<Post> addPostToSaved(@PathVariable String username, @RequestBody int id) {
+		if(this.artformRepository.saveUserPost(username, id) == 1)
+			return new ResponseEntity<Post>(this.artformRepository.findPost(id), HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/post_salvati/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<String> removePostFromSaved(@PathVariable String username, int id) {
+		if(this.artformRepository.deletePostFromSaved(username, id) == 1)
+			return new ResponseEntity<String>("Post Id=" + id + " REMOVED from User username=" + username + "'s saved", HttpStatus.OK);
+		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/utente/{username}/post_salvati", method=RequestMethod.DELETE)
+	public ResponseEntity<String> removeAllPostsFromSaved(@PathVariable String username) {
+		if(this.artformRepository.deleteAllPostsFromSaved(username) == 1)
+			return new ResponseEntity<String>("REMOVED all User username=" + username + "'s saved Posts", HttpStatus.OK);
+		return new ResponseEntity<String>("NOT_FOUND", HttpStatus.NOT_FOUND);
+	}
+	
 
 }
