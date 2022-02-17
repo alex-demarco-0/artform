@@ -33,7 +33,7 @@ public interface ArtformRepository {
 	int saveBadge(Badge b); //forse non serve
 	
 	//Topic
-	List<String> findAllTopics();
+	List<Topic> findAllTopics();
 	
 	//Commissione
 	Commissione findCommissione(int id);

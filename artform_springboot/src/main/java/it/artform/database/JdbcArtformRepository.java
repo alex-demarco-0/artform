@@ -108,8 +108,8 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 	
 	@Override
-	public List<String> findAllTopics() {
-		return jdbcTemplate.query("SELECT * from topic", BeanPropertyRowMapper.newInstance(String.class));
+	public List<Topic> findAllTopics() {
+		return jdbcTemplate.query("SELECT nome from topic", BeanPropertyRowMapper.newInstance(Topic.class));
 	}
 
 	@Override
