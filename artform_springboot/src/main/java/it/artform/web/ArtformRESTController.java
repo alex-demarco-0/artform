@@ -34,7 +34,7 @@ public class ArtformRESTController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@RequestMapping(value="/artform/utente_email/{email}", method=RequestMethod.GET) //potrebbe ritornare solo String
+	@RequestMapping(value="/artform/utente_email/{email}", method=RequestMethod.GET)
 	public ResponseEntity<Utente> getUtenteByEmail(@PathVariable String email) {
 		Utente u = this.artformRepository.findUtenteByEmail(email);
 		if(u != null)

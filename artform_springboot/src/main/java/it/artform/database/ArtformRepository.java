@@ -9,7 +9,7 @@ public interface ArtformRepository {
 
 	//Utente
 	Utente findUtente(String username);
-	Utente findUtenteByEmail(String email); //serve per controllo email esistente, si potrebbe ottimizzare recuperando la sola colonna
+	Utente findUtenteByEmail(String email);
 	int saveUtente(Utente u);
 	int updateUtente(Utente u);
 	int deleteUtente(String username);
