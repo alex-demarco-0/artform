@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,6 +14,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
@@ -38,7 +45,7 @@ public class UserProfileActivity extends Activity {
         settings=findViewById(R.id.settingsUserProfile);
         badgeUserProfile=findViewById(R.id.badgeButtonUserProfile);
 
-    // imposta USERNAME del profilo personale,
+        // imposta USERNAME del profilo personale
         AFGlobal app = (AFGlobal) getApplication();
         ArtformApiEndpointInterface apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
         Call<User> getUserCall = apiService.getUserByUsername(AFGlobal.getLoggedUser());
@@ -47,8 +54,16 @@ public class UserProfileActivity extends Activity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
                     Toast.makeText(UserProfileActivity.this, response.body().toString(), Toast.LENGTH_LONG).show();
-
-                    usernameUserProfile.setText(response.body().getName());
+                    Picasso.get().load(response.body().getProfilePicSrc()).fit().into(userProfilePic);
+                    /*
+                    try {
+                        URL profilePicSrc = new URL(response.body().getProfilePicSrc());
+                        userProfilePic.setImageURI(profilePicSrc);
+                    } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                    }
+                    */
+                    usernameUserProfile.setText(response.body().getUsername());
                     tagsUserProfile.setText(response.body().getBio());
                 }
             }
