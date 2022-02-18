@@ -109,7 +109,9 @@
         userXmlHttp.onreadystatechange = function() {
             if(userXmlHttp.readyState == 4 && userXmlHttp.status == 200) {
                 var userObj = JSON.parse(userXmlHttp.responseText);
-                document.getElementById("propic").setAttribute("src", userObj.immagineProfiloSrc);
+                //document.getElementById("propic").setAttribute("src", userObj.immagineProfiloSrc);
+                document.getElementById("userUsername").innerHTML = userObj.username;
+                document.getElementById("userBio").innerHTML = userObj.bio;
             }
         };
         userXmlHttp.open("GET", "http://localhost:8080/artform/utente/arianna");
@@ -152,9 +154,9 @@
     <img id="propic" src="https://static.thenounproject.com/png/576092-200.png">
     </div>
     <div class="infos">
-      <h2>*USERNAME*</h2>
-      <p>*bio*</p>
-      <p>*tags*</p>
+      <h2 id="userUsername">*USERNAME*</h2>
+      <p id="userBio">*bio*</p>
+      <p id="userTags">*tags*</p>
     </div>
     <div id="posts">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
