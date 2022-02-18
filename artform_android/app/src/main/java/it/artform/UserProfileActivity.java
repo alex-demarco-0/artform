@@ -23,27 +23,28 @@ import java.net.URL;
 
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
+import it.artform.web.DownloadImageTask;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserProfileActivity extends Activity {
-    ImageView userProfilePic;
-    TextView usernameUserProfile;
-    TextView tagsUserProfile;
-    Button settings;
-    Button badgeUserProfile;
+    ImageView userProfilePic = null;
+    TextView usernameUserProfile = null;
+    TextView tagsUserProfile = null;
+    Button settings = null;
+    Button badgeUserProfile = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        userProfilePic=findViewById(R.id.userProfileImageView);
-        usernameUserProfile=findViewById(R.id.usernameUserProfile);
-        tagsUserProfile=findViewById(R.id.tagsUserProfile);
-        settings=findViewById(R.id.settingsUserProfile);
-        badgeUserProfile=findViewById(R.id.badgeButtonUserProfile);
+        userProfilePic = findViewById(R.id.userProfileImageView);
+        usernameUserProfile = findViewById(R.id.usernameUserProfile);
+        tagsUserProfile = findViewById(R.id.tagsUserProfile);
+        settings = findViewById(R.id.settingsUserProfile);
+        badgeUserProfile = findViewById(R.id.badgeButtonUserProfile);
 
         // imposta USERNAME del profilo personale
         AFGlobal app = (AFGlobal) getApplication();
@@ -54,15 +55,10 @@ public class UserProfileActivity extends Activity {
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
                     Toast.makeText(UserProfileActivity.this, response.body().toString(), Toast.LENGTH_LONG).show();
-                    Picasso.get().load(response.body().getProfilePicSrc()).fit().into(userProfilePic);
-                    /*
-                    try {
-                        URL profilePicSrc = new URL(response.body().getProfilePicSrc());
-                        userProfilePic.setImageURI(profilePicSrc);
-                    } catch (URISyntaxException e) {
-                        e.printStackTrace();
-                    }
-                    */
+                    String profilePicUri = AFGlobal.BASE_URL + response.body().getProfilePicSrc();
+                    //new DownloadImageTask(UserProfileActivity.this.userProfilePic).execute(profilePicUri);
+                    Picasso.get().load(profilePicUri).resize(130, 130).centerCrop().into(UserProfileActivity.this.userProfilePic);
+
                     usernameUserProfile.setText(response.body().getUsername());
                     tagsUserProfile.setText(response.body().getBio());
                 }

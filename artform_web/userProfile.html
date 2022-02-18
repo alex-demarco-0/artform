@@ -104,17 +104,18 @@
     </style>
 
     <script type="text/javascript" language="javascript">
+      var base_url = "http://localhost:8080/";
       function onPageLoaded() {
         var userXmlHttp = new XMLHttpRequest();
         userXmlHttp.onreadystatechange = function() {
             if(userXmlHttp.readyState == 4 && userXmlHttp.status == 200) {
                 var userObj = JSON.parse(userXmlHttp.responseText);
-                document.getElementById("propic").setAttribute("src", userObj.immagineProfiloSrc);
+                document.getElementById("propic").setAttribute("src", base_url + userObj.immagineProfiloSrc);
                 document.getElementById("userUsername").innerHTML = userObj.username;
                 document.getElementById("userBio").innerHTML = userObj.bio;
             }
         };
-        userXmlHttp.open("GET", "http://localhost:8080/artform/utente/arianna");
+        userXmlHttp.open("GET", base_url + "artform/utente/arianna");
         userXmlHttp.send(null);
       }
       function goToSettings(){
