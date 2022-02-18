@@ -104,13 +104,24 @@
     </style>
 
     <script type="text/javascript" language="javascript">
+      function onPageLoaded() {
+        var userXmlHttp = new XMLHttpRequest();
+        userXmlHttp.onreadystatechange = function() {
+            if(userXmlHttp.readyState == 4 && userXmlHttp.status == 200) {
+                var userObj = JSON.parse(userXmlHttp.responseText);
+                document.getElementById("propic").setAttribute("src", userObj.immagineProfiloSrc);
+            }
+        };
+        userXmlHttp.open("GET", "http://localhost:8080/artform/utente/arianna");
+        userXmlHttp.send(null);
+      }
       function goToSettings(){
         window.location="settings.html"
       }
     </script>
 
   </head>
-  <body id="body" style="background-color:#E9CFEC;">
+  <body id="body" onload="onPageLoaded();" style="background-color:#E9CFEC;">
     <!-- <button id="badgesButton" name="badges" >Badges</button> -->
     <div class="dropdown">
       <button class="dropbtn">Dropdown</button>
