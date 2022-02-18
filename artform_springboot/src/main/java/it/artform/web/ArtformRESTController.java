@@ -283,7 +283,7 @@ public class ArtformRESTController {
 	 * Notifiche Utente
 	 */
 	
-	@RequestMapping(value="/artform/utente/{username1}/notifiche_attive", method=RequestMethod.GET)
+	@RequestMapping(value="/artform/utente/{username}/notifiche_attive", method=RequestMethod.GET)
 	public ResponseEntity<List<Utente>> getUserActiveNotifications(@PathVariable String username) {
 		List<Utente> activeNotifications = this.artformRepository.findUserActiveNotifications(username);
 		if(activeNotifications != null)
