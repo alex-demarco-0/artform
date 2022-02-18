@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+Data inizio: 01/11/2021
+Data ultima modifica: 15/02/2022
+Descrizione: project work, pagina web delle impostazioni
+-->
+<html>
+    <head>
+        <title>Impostazioni</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+        button {
+            font-weight: 700;
+            border:none;
+            color: white;
+            text-decoration: none;
+            padding: .8em 1em calc(.8em + 3px);
+            border-radius: 4px;
+            background: #D291BC;
+        }
+        #body{
+          font-family:sans-serif, helvetica;
+        }
+        </style>
+        <script type="text/javascript" language="javascript">
+          function logout(){
+            window.location="login.html";
+          }
+          function security(){
+            window.location="SecuritySetting.html";
+          }
+          function profileSettings(){
+            window.location="ProfileSetting.html";
+          }
+        </script>
+    </head>
+    <body id="body" bgcolor="#E9CFEC">
+        <div align=center>
+            <font size='5' color='black'> Settings </font>
+            <img src="https://cdn1.iconfinder.com/data/icons/carbon-design-system-vol-7/32/settings-1024.png" width="20" height="20" vspace="-10" hspace="-10">
+        <div><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+             <p align=center><button onclick="profileSettings()" value="Profile Settings">Profile settings</button>
+             <p align=center><button onclick="postSaved()" value="Post Saved">Saved posts</button>
+             <p align=center><button onclick="security()" value="Security">Security settings</button>
+             <p align=center><button onclick="logout()" value="Logout">Logout</button>
+        </div>
+    </body>

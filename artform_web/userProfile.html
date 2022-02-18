@@ -109,7 +109,7 @@
         userXmlHttp.onreadystatechange = function() {
             if(userXmlHttp.readyState == 4 && userXmlHttp.status == 200) {
                 var userObj = JSON.parse(userXmlHttp.responseText);
-                //document.getElementById("propic").setAttribute("src", userObj.immagineProfiloSrc);
+                document.getElementById("propic").setAttribute("src", userObj.immagineProfiloSrc);
                 document.getElementById("userUsername").innerHTML = userObj.username;
                 document.getElementById("userBio").innerHTML = userObj.bio;
             }
