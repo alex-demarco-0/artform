@@ -1,7 +1,6 @@
 package it.artform;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ExternalProfileActivity extends AppCompatActivity {
+public class ExternalProfileActivity extends Activity {
     ImageView externalProfilePic;
     TextView usernameExternalProfile;
     TextView tagsExternalProfile;
@@ -22,6 +21,9 @@ public class ExternalProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_external_profile);
+
+
+
 
         externalProfilePic=findViewById(R.id.externalProfileImageView);
         usernameExternalProfile=findViewById(R.id.usernameExternalProfile);

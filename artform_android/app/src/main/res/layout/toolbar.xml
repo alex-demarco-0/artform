@@ -2,29 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/teal_200">
+    android:paddingStart="16dp"
+    android:background="@color/azzuroLogo">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp">
-
-        <ImageView
-            android:id="@+id/goBackArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_baseline_arrow_back_24" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/goBackArrow"
-            android:fontFamily="monospace"
-            android:text="@string/app_name"
-            android:textSize="22sp" />
-    </RelativeLayout>
+        android:layout_centerVertical="true"
+        android:text="@string/app_name"
+        android:textSize="25dp" />
 
 </RelativeLayout>

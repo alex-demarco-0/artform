@@ -8,33 +8,59 @@ import it.artform.pojos.*;
 public interface ArtformRepository {
 
 	//Utente
-	Utente findUtenteByUsername(String username);
+	Utente findUtente(String username);
 	Utente findUtenteByEmail(String email);
 	int saveUtente(Utente u);
 	int updateUtente(Utente u);
 	int deleteUtente(String username);
-	int activateUserNotifications(String username1, String username2);
-	
+		
 	//Post
-	Post findPost(long id);
-	List<Post> findAllPostsByUtente(String username);
+	Post findPost(int id);
+	List<Post> findPostsByUtente(String username);
 	int savePost(Post p);
 	int updatePost(Post p);
-	int deletePost(long id);
-	//int saveUserPost(String username, long id);
-
+	int deletePost(int id);
+	int deleteAllPostsByUtente(String username);
+	
 	//Notifica
-	Notifica findNotifica(Date d);
-	int saveNotifica(Notifica p);
-	List<Notifica> findAllNotifiche();
+	Notifica findNotifica(String username, Date data);
+	List<Notifica> findNotificheByUtente(String username);
+	int saveNotifica(Notifica n);
 
 	//Badge
 	Badge findBadge(String nome);
-	int saveBadge(Badge b);
+	List<Badge> findAllBadges();
+	int saveBadge(Badge b); //forse non serve
+	
+	//Topic
+	List<Topic> findAllTopics();
 	
 	//Commissione
-	Commissione findCommissione(long id);
-	int saveCommissione(Commissione c);
+	Commissione findCommissione(int id);
 	List<Commissione> findCommissioniByArtista(String username);
+	List<Commissione> findCommissioniByCliente(String username);
+	int saveCommissione(Commissione c);
+	
+	//Post Salvati
+	List<Post> findUserSavedPosts(String username);
+	int saveUserPost(String username, int id);
+	int deletePostFromSaved(String username, int id);
+	int deleteAllPostsFromSaved(String username);
+	
+	//Notifiche Utente
+	List<Utente> findUserActiveNotifications(String username);
+	int activateUserNotifications(String username1, String username2);
+	int deactivateUserNotifications(String username1, String username2);
+	int deactivateAllUserNotifications(String username);
+	
+	//Badge Utente
+	List<Badge> findUserBadges(String username);
+	int giveBadgeToUser(String username, String nome);
+
+	//Topic Utente
+	List<Topic> findUserSelectedTopics(String username);
+	int addTopicToUserSelection(String username, String nome);
+	int removeTopicFromUserSelection(String username, String nome);
+	int removeAllTopicsFromUserSelection(String username);
 	
 }

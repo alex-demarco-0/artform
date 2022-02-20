@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TopicDBAdapter {
     private Context context;
@@ -13,8 +15,8 @@ public class TopicDBAdapter {
     private ArtformDBHelper dbHelper;
 
     protected static final String DATABASE_TABLE = "topic";
-    protected static final String KEY_TOPICID = "_id"; //PK autoincrement
-    protected static final String KEY_NAME = "name";
+    protected static final String KEY_TOPICID = "_id"; // PK autoincrement
+    protected static final String KEY_NAME = "name"; // server DB PK
 
     public TopicDBAdapter(Context context) {
         this.context = context;
@@ -32,7 +34,7 @@ public class TopicDBAdapter {
 
     private ContentValues createContentValues(String name) {
         ContentValues values = new ContentValues();
-        values.put( KEY_NAME, name );
+        values.put(KEY_NAME, name);
         return values;
     }
 
@@ -42,13 +44,14 @@ public class TopicDBAdapter {
     }
 
     public Cursor fetchTopicByName(String name) {
-        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_NAME },
-                KEY_NAME + " = "+ name, null, null, null, null, null);
+        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[]{KEY_NAME},
+                KEY_NAME + " = " + name, null, null, null, null, null);
         return mCursor;
     }
 
     public Cursor fetchAllTopics() {
-        return database.query(DATABASE_TABLE, new String[] { KEY_NAME }, null, null, null, null, null);
+        return database.query(DATABASE_TABLE, new String[]{KEY_NAME}, null, null, null, null, null);
     }
+
 
 }

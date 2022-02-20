@@ -25,9 +25,10 @@ CREATE TABLE IF NOT EXISTS `badge` (
   PRIMARY KEY (`nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.badge: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.badge: ~3 rows (circa)
 /*!40000 ALTER TABLE `badge` DISABLE KEYS */;
 INSERT INTO `badge` (`nome`, `descrizione`, `punteggio`) VALUES
+	('Easy', 'gg', 8),
 	('Primo contenuto pubblicato', '', 0),
 	('Veterano', '', 1000);
 /*!40000 ALTER TABLE `badge` ENABLE KEYS */;
@@ -35,15 +36,17 @@ INSERT INTO `badge` (`nome`, `descrizione`, `punteggio`) VALUES
 -- Dump della struttura di tabella ArtForm.badgeUtente
 CREATE TABLE IF NOT EXISTS `badgeUtente` (
   `utenteUsername` varchar(50) NOT NULL,
-  `badgeNome` varchar(50) NOT NULL DEFAULT '',
+  `badgeNome` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`utenteUsername`,`badgeNome`) USING BTREE,
   KEY `FK_badgeUtente_badge` (`badgeNome`) USING BTREE,
   CONSTRAINT `FK_badgeUtente_badge` FOREIGN KEY (`badgeNome`) REFERENCES `badge` (`nome`),
   CONSTRAINT `FK_badgeUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.badgeUtente: ~0 rows (circa)
+-- Dump dei dati della tabella ArtForm.badgeUtente: ~1 rows (circa)
 /*!40000 ALTER TABLE `badgeUtente` DISABLE KEYS */;
+INSERT INTO `badgeUtente` (`utenteUsername`, `badgeNome`) VALUES
+	('arianna', 'Veterano');
 /*!40000 ALTER TABLE `badgeUtente` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.commissione
@@ -60,13 +63,14 @@ CREATE TABLE IF NOT EXISTS `commissione` (
   KEY `FK_commissione_utente_2` (`clienteUsername`),
   CONSTRAINT `FK_commissione_utente` FOREIGN KEY (`artistaUsername`) REFERENCES `utente` (`username`),
   CONSTRAINT `FK_commissione_utente_2` FOREIGN KEY (`clienteUsername`) REFERENCES `utente` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.commissione: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.commissione: ~3 rows (circa)
 /*!40000 ALTER TABLE `commissione` DISABLE KEYS */;
 INSERT INTO `commissione` (`Id`, `titolo`, `prezzo`, `data`, `artistaUsername`, `clienteUsername`, `indirizzoConto`) VALUES
 	(11, 'richiesta disegno velociraptor 3D', 17, '2021-12-13 15:32:51', 'arianna', 'dv8d', 'IT67X'),
-	(12, 'richiesta disegno paesaggio', 20, '2021-12-14 15:27:20', 'dv8d', 'arianna', 'AA9B7');
+	(12, 'richiesta disegno paesaggio', 20, '2021-12-14 15:27:20', 'dv8d', 'arianna', 'AA9B7'),
+	(13, 'test', 200000, '2021-11-14 15:27:20', 'marione', 'arianna', 'AA9B7');
 /*!40000 ALTER TABLE `commissione` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.notifica
@@ -81,9 +85,10 @@ CREATE TABLE IF NOT EXISTS `notifica` (
   CONSTRAINT `FK_notifica_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.notifica: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.notifica: ~3 rows (circa)
 /*!40000 ALTER TABLE `notifica` DISABLE KEYS */;
 INSERT INTO `notifica` (`data`, `categoria`, `descrizione`, `collegamento`, `utenteUsername`) VALUES
+	('2021-11-10 13:23:18', 4, 'Hai ottenuto 210 punti!', 'http://www.cacca.it/', 'arianna'),
 	('2021-12-06 16:57:53', 0, 'Prima registrazione', NULL, 'arianna'),
 	('2021-12-10 13:23:18', 4, 'Hai ottenuto 210 punti!', NULL, 'arianna');
 /*!40000 ALTER TABLE `notifica` ENABLE KEYS */;
@@ -99,8 +104,11 @@ CREATE TABLE IF NOT EXISTS `notificheUtente` (
   CONSTRAINT `FK_notificheUtente_utenteExt` FOREIGN KEY (`utenteExtUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.notificheUtente: ~0 rows (circa)
+-- Dump dei dati della tabella ArtForm.notificheUtente: ~2 rows (circa)
 /*!40000 ALTER TABLE `notificheUtente` DISABLE KEYS */;
+INSERT INTO `notificheUtente` (`utenteUsername`, `utenteExtUsername`) VALUES
+	('admin', 'arianna'),
+	('pollastro', 'admin');
 /*!40000 ALTER TABLE `notificheUtente` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.post
@@ -113,18 +121,19 @@ CREATE TABLE IF NOT EXISTS `post` (
   `dataPubblicazione` timestamp NOT NULL,
   `like` int NOT NULL DEFAULT '0',
   `tipologia` varchar(50) NOT NULL,
+  `contenutoSrc` varchar(300) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `FK_post_utente` (`utenteUsername`),
   KEY `FK_post_topic` (`topic`),
   CONSTRAINT `FK_post_topic` FOREIGN KEY (`topic`) REFERENCES `topic` (`nome`),
   CONSTRAINT `FK_post_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dump dei dati della tabella ArtForm.post: ~2 rows (circa)
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
-INSERT INTO `post` (`Id`, `utenteUsername`, `titolo`, `topic`, `tags`, `dataPubblicazione`, `like`, `tipologia`) VALUES
-	(1, 'arianna', 'Velociraptor', '3D', '#dinosaur #animals #cute #3d', '2021-12-09 17:25:11', 2, 'true'),
-	(2, 'arianna', 'Paesaggio commissione', 'Tradizionale', '#paesaggio #landscape #nature', '2021-12-14 15:28:09', 0, 'true');
+INSERT INTO `post` (`Id`, `utenteUsername`, `titolo`, `topic`, `tags`, `dataPubblicazione`, `like`, `tipologia`, `contenutoSrc`) VALUES
+	(1, 'arianna', 'Velociraptor', '3D', '#dinosaur #animals #cute #3d', '2021-12-09 17:25:11', 2, 'true', 'just'),
+	(2, 'arianna', 'Paesaggio commissione', 'Tradizionale', '#paesaggio #landscape #nature', '2021-12-14 15:28:09', 0, 'true', '');
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.postSalvati
@@ -173,6 +182,18 @@ INSERT INTO `topic` (`nome`) VALUES
 	('Wallpaper');
 /*!40000 ALTER TABLE `topic` ENABLE KEYS */;
 
+-- Dump della struttura di tabella ArtForm.topicUtente
+CREATE TABLE IF NOT EXISTS `topicUtente` (
+  `utenteUsername` varchar(50) NOT NULL,
+  `topicNome` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`utenteUsername`,`topicNome`),
+  KEY `FK_topicUtente_topic` (`topicNome`),
+  CONSTRAINT `FK_topicUtente_topic` FOREIGN KEY (`topicNome`) REFERENCES `topic` (`nome`),
+  CONSTRAINT `FK_topicUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dump dei dati della tabella ArtForm.topicUtente: ~1 rows (circa)
+/*!40000 ALTER TABLE `topicUtente` DISABLE KEYS */;
 -- Dump della struttura di tabella ArtForm.utente
 CREATE TABLE IF NOT EXISTS `utente` (
   `nome` varchar(50) NOT NULL,
@@ -181,32 +202,35 @@ CREATE TABLE IF NOT EXISTS `utente` (
   `email` varchar(50) NOT NULL,
   `numeroTelefono` varchar(10) DEFAULT NULL,
   `password` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs NOT NULL,
+  `bio` varchar(100) DEFAULT NULL,
   `punteggio` int NOT NULL DEFAULT '0',
+  `immagineProfiloSrc` varchar(300) NOT NULL,
   PRIMARY KEY (`username`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.utente: ~15 rows (circa)
+-- Dump dei dati della tabella ArtForm.utente: ~19 rows (circa)
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` (`nome`, `cognome`, `username`, `email`, `numeroTelefono`, `password`, `punteggio`) VALUES
-	('aa', 'aa', 'a', 'a@a.it', '', 'a', 0),
-	('aa', 'aa', 'admiaan', 'a@i.it', '55', 'aa', 0),
-	('ADMIN', 'ADMIN', 'admin', 'admin@admin.com', '000', 'admin', 999),
-	('ad', 'ad', 'admindd', 'a@i.com', '23', 'ad', 0),
-	('ad', 'ad', 'adminddo', 'aoo@i.com', '23', 'ad', 0),
-	('aa', 'aa', 'admuiaan', 'ua@i.it', '55', 'aa', 0),
-	('Manbir', 'Aceveda', 'arianna', 'ift@k.it', '338', 'password', 1),
-	('Zante', 'Aceveda', 'ariannolo', 'i@k.it', NULL, 'pwd', 0),
-	('Zanteccio', 'Aceveda', 'ariannolohh', 'i@khh.it', NULL, 'pwd', 0),
-	('Hylo', 'hghgh', 'arinolo', 'aaaa@ggg.it', '', 'hy', 0),
-	('as', 'as', 'as', 'as@i.it', '', 'as', 0),
-	('GGO', 'uyuyuyuyuy', 'bghghghghg', 'i@.it', NULL, 'trtrtrtr', 0),
-	('Alessandro', 'Dituri', 'dv8d', '@#', NULL, 'pass', 101),
-	('Gerico', 'Cris', 'Hiloman3', '@@', '441', 'kkkka', 3),
-	('Mario', 'Rossi', 'marione', 'm@', NULL, '123456', 0),
-	('Gabbo', 'Uop', 'pollastro', 'a6@i.it', '0', 'oi', 0),
-	('as', 'sd', 'sd', 'sd@l.it', NULL, 'sd', 0),
-	('u', 'u', 'u', 'uu@i.it', '8', 'u', 0);
+INSERT INTO `utente` (`nome`, `cognome`, `username`, `email`, `numeroTelefono`, `password`, `bio`, `punteggio`, `immagineProfiloSrc`) VALUES
+	('aa', 'aa', 'a', 'a@a.it', '', 'a', NULL, 0, ''),
+	('aa', 'aa', 'admiaan', 'a@i.it', '55', 'aa', NULL, 0, ''),
+	('ADMIN', 'ADMIN', 'admin', 'admin@admin.com', '000', 'admin', NULL, 999, ''),
+	('ad', 'ad', 'admindd', 'a@i.com', '23', 'ad', NULL, 0, ''),
+	('ad', 'ad', 'adminddo', 'aoo@i.com', '23', 'ad', NULL, 0, ''),
+	('aa', 'aa', 'admuiaan', 'ua@i.it', '55', 'aa', NULL, 0, ''),
+	('Manbir', 'Aceveda', 'arianna', 'ift@k.it', '338', 'password', 'hey #you', 1, 'http://localhost:8080/media/userProfilePics/arianna.jpg'),
+	('Zante', 'Aceveda', 'ariannolo', 'i@k.it', NULL, 'pwd', NULL, 0, ''),
+	('Zanteccio', 'Aceveda', 'ariannolohh', 'i@khh.it', NULL, 'pwd', NULL, 0, ''),
+	('Hylo', 'hghgh', 'arinolo', 'aaaa@ggg.it', '', 'hy', NULL, 0, ''),
+	('as', 'as', 'as', 'as@i.it', '', 'as', NULL, 0, ''),
+	('GGO', 'uyuyuyuyuy', 'bghghghghg', 'i@.it', NULL, 'trtrtrtr', NULL, 0, ''),
+	('Alessandro', 'Dituri', 'dv8d', '@#', NULL, 'pass', NULL, 101, ''),
+	('Gerico', 'Cris', 'Hiloman3', '@@', '441', 'kkkka', NULL, 3, ''),
+	('Mario', 'Rossi', 'marione', 'm@', NULL, '123456', NULL, 0, ''),
+	('Gabbo', 'Uop', 'pollastro', 'a6@i.it', '0', 'oi', NULL, 0, ''),
+	('as', 'sd', 'sd', 'sd@l.it', NULL, 'sd', NULL, 0, ''),
+	('gesuita', 'manolo', 'sterzata', 'r@i.com', '', 'popo', '', 0, ''),
+	('u', 'u', 'u', 'uu@i.it', '8', 'u', NULL, 0, '');
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

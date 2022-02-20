@@ -17,19 +17,6 @@
         android:layout_marginBottom="300dp" />
 
     <!-- TEST -->
-
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="22dp"
-        android:text="impostazioni" />
-
     <ListView
         android:id="@+id/feedListView"
         android:layout_width="match_parent"
@@ -48,15 +35,19 @@
         android:text="Home" />
 
     <Button
-        android:id="@+id/commissionButton"
+        android:id="@+id/externalProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="2dp"
         android:layout_marginBottom="21dp"
         android:layout_toEndOf="@+id/homeButton"
-        android:text="Commission" />
+        android:text="External" />
 
-
+<Button
+    android:id="@+id/profileButton"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/profilo" />
 
 </RelativeLayout>

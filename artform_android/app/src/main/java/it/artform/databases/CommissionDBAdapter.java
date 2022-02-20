@@ -57,13 +57,13 @@ public class CommissionDBAdapter {
     }
 
     public Cursor fetchCommissionsByArtist(String artistUsername) {
-        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_COMMISSIONID, KEY_TITLE, KEY_PRICE, KEY_DATE, KEY_ARTIST, KEY_CUSTOMER, KEY_ACCOUNT_ADDRESS },
+        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_COMMISSIONID, KEY_EXTERNAL_ID, KEY_TITLE, KEY_PRICE, KEY_DATE, KEY_ARTIST, KEY_CUSTOMER, KEY_ACCOUNT_ADDRESS },
                 KEY_ARTIST + " = "+ artistUsername, null, null, null, null, null);
         return mCursor;
     }
 
     public Cursor fetchCommissionsByCustomer(String customerUsername) {
-        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_COMMISSIONID, KEY_TITLE, KEY_PRICE, KEY_DATE, KEY_ARTIST, KEY_CUSTOMER, KEY_ACCOUNT_ADDRESS },
+        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_COMMISSIONID, KEY_EXTERNAL_ID, KEY_TITLE, KEY_PRICE, KEY_DATE, KEY_ARTIST, KEY_CUSTOMER, KEY_ACCOUNT_ADDRESS },
                 KEY_CUSTOMER + " = "+ customerUsername, null, null, null, null, null);
         return mCursor;
     }

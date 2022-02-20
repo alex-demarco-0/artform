@@ -13,7 +13,10 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 
+import it.artform.pojos.Topic;
 import it.artform.web.ArtformApiEndpointInterface;
+import retrofit2.Call;
+import retrofit2.Retrofit;
 
 public class CommissionActivity extends Activity {
     AFGlobal app = null;
@@ -24,6 +27,7 @@ public class CommissionActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commission);
 
+// istanziamento widget UI
         EditText nameEditText = findViewById(R.id.nameEditText);
         EditText surnameEditText = findViewById(R.id.surnameEditText);
         EditText emailEditText = findViewById(R.id.emailEditText);
@@ -38,6 +42,7 @@ public class CommissionActivity extends Activity {
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
 
+
         // bottone per INVIO del form
         Button sumbitButton = findViewById(R.id.sumbitButton);
         sumbitButton.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +50,10 @@ public class CommissionActivity extends Activity {
             public void onClick(View view) {
             }
         });
+
+
+        //Spinner che prende in input i topics dal database
+
 
 
         // bottone per cancellare i campi inseriti
@@ -61,4 +70,5 @@ public class CommissionActivity extends Activity {
 
 
     }
+
 }

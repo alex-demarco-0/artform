@@ -25,6 +25,7 @@ public class PostDBAdapter {
     protected static final String KEY_PUBLICATION_DATE = "publicationDate";
     protected static final String KEY_LIKE = "like";
     protected static final String KEY_TYPE = "type";
+    protected static final String KEY_CONTENT = "contentSrc";
 
     public PostDBAdapter(Context context) {
         this.context = context;
@@ -40,7 +41,7 @@ public class PostDBAdapter {
         dbHelper.close();
     }
 
-    private ContentValues createContentValues(int id, String userUsername, String title, String topic, String[] tags, Date publicationDate, int like, boolean type) {
+    private ContentValues createContentValues(int id, String userUsername, String title, String topic, String[] tags, Date publicationDate, int like, boolean type, String contentSrc) {
         ContentValues values = new ContentValues();
         values.put( KEY_EXTERNAL_ID, id );
         values.put( KEY_USER, userUsername );
@@ -53,16 +54,17 @@ public class PostDBAdapter {
         values.put( KEY_PUBLICATION_DATE, String.valueOf(publicationDate) );
         values.put( KEY_LIKE, like );
         values.put( KEY_TYPE, type );
+        values.put( KEY_CONTENT, contentSrc );
         return values;
     }
 
     public long createPost(Post p) {
-        ContentValues postValues = createContentValues(p.getId(), p.getUser(), p.getTitle(), p.getTopic(), p.getTags(), p.getPublicationDate(), p.getLike(), p.getType());
+        ContentValues postValues = createContentValues(p.getId(), p.getUser(), p.getTitle(), p.getTopic(), p.getTags(), p.getPublicationDate(), p.getLike(), p.getType(), p.getContentSrc());
         return database.insertOrThrow(DATABASE_TABLE, null, postValues);
     }
 
     public boolean updatePost(int id, Post p) {
-        ContentValues updateValues = createContentValues(p.getId(), p.getUser(), p.getTitle(), p.getTopic(), p.getTags(), p.getPublicationDate(), p.getLike(), p.getType());
+        ContentValues updateValues = createContentValues(p.getId(), p.getUser(), p.getTitle(), p.getTopic(), p.getTags(), p.getPublicationDate(), p.getLike(), p.getType(), p.getContentSrc());
         return database.update(DATABASE_TABLE, updateValues, KEY_EXTERNAL_ID + "=" + id, null) > 0;
     }
 
@@ -71,11 +73,11 @@ public class PostDBAdapter {
     }
 
     public Cursor fetchAllPosts() {
-        return database.query(DATABASE_TABLE, new String[] { KEY_POSTID, KEY_USER, KEY_TITLE, KEY_TOPIC, KEY_TAGS, KEY_PUBLICATION_DATE, KEY_LIKE, KEY_TYPE }, null, null, null, null, null);
+        return database.query(DATABASE_TABLE, new String[] { KEY_POSTID, KEY_EXTERNAL_ID, KEY_USER, KEY_TITLE, KEY_TOPIC, KEY_TAGS, KEY_PUBLICATION_DATE, KEY_LIKE, KEY_TYPE, KEY_CONTENT }, null, null, null, null, null);
     }
 
     public Cursor fetchUserPosts(String username) {
-        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_POSTID, KEY_EXTERNAL_ID, KEY_USER, KEY_TITLE, KEY_TOPIC, KEY_TAGS, KEY_PUBLICATION_DATE, KEY_LIKE, KEY_TYPE },
+        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_POSTID, KEY_EXTERNAL_ID, KEY_USER, KEY_TITLE, KEY_TOPIC, KEY_TAGS, KEY_PUBLICATION_DATE, KEY_LIKE, KEY_TYPE, KEY_CONTENT },
                 KEY_USER + " = " + username, null, null, null, null, null);
         return mCursor;
     }

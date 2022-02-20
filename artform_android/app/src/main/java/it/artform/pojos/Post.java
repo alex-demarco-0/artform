@@ -18,9 +18,10 @@ public class Post {
     private int like;
     @SerializedName("tipologia")
     private final boolean type; //true = image, false = video
-    private String contentSrc; // directory media file
+    @SerializedName("contenutoSrc")
+    private final String contentSrc; // directory media file
 
-    public Post(int id, String userUsername, String title, String topic, String[] tags, Date publicationDate, int like, boolean type) {
+    public Post(int id, String userUsername, String title, String topic, String[] tags, Date publicationDate, int like, boolean type, String contentSrc) {
         this.id = id;
         this.userUsername = userUsername;
         this.title = title;
@@ -29,7 +30,7 @@ public class Post {
         this.publicationDate = publicationDate;
         this.like = like;
         this.type = type;
-        this.contentSrc = null;
+        this.contentSrc = contentSrc;
     }
 
     public int getId() { return this.id; }
@@ -80,10 +81,6 @@ public class Post {
 
     public String getContentSrc() {
         return this.contentSrc;
-    }
-
-    public void setContentSrc(String contentSrc) {
-        this.contentSrc = contentSrc;
     }
 
 }

@@ -7,14 +7,14 @@
     tools:context=".CommissionActivity">
 
     <include
-        android:id="@+id/layout"
+        android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
     <RelativeLayout
         android:id="@+id/formLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout"
+        android:layout_below="@+id/toolbar"
         android:padding="16dp">
 
         <EditText

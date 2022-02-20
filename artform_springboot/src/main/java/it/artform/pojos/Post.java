@@ -3,33 +3,43 @@ package it.artform.pojos;
 import java.util.Date;
 
 public class Post {
-	private final int Id;
-	private final String utenteUsername;
-	private String titolo;
-	private String topic;
-	private String[] tags; // oppure ArrayList<String> ?
-	private final Date dataPubblicazione;
+	private int Id;
+	private String utenteUsername, titolo, topic;
+	private String tags; // oppure ArrayList<String> ?
+	private Date dataPubblicazione;
 	private int like;
-	private final boolean tipologia; // boolean ?
+	private String tipologia; // boolean ?
+	private String contenutoSrc;
 	
-	
-	public Post(int Id, String utenteUsername, String titolo, String topic, String[] tags, boolean tipologia) {
+	public Post() {}
+/*
+	public Post(int Id, String utenteUsername, String titolo, String topic, String[] tags, Date dataPubblicazione, boolean tipologia, String contenutoSrc) {
 		this.Id = Id;
 		this.utenteUsername = utenteUsername;
 		this.titolo = titolo;
 		this.topic = topic;
+		//String iterator
 		this.tags = tags;
-		this.dataPubblicazione = new Date();
+		this.dataPubblicazione = dataPubblicazione;
 		this.like = 0;
 		this.tipologia = tipologia;
+		this.contenutoSrc = contenutoSrc;
 	}
-	
+*/
 	public int getId() {
 		return Id;
 	}
 	
+	public void setId(int id) {
+		Id = id;
+	}
+	
 	public String getUtenteUsername() {
 		return utenteUsername;
+	}
+	
+	public void setUtenteUsername(String utenteUsername) {
+		this.utenteUsername = utenteUsername;
 	}
 	
 	public String getTitolo() {
@@ -48,11 +58,12 @@ public class Post {
 		this.topic = topic;
 	}
 	
-	public String[] getTags() {
+	public String getTags() {
 		return tags;
 	}
 	
-	public void setTags(String[] tags) {
+	public void setTags(String tags) {
+		//String iterator
 		this.tags = tags;
 	}
 	
@@ -60,16 +71,43 @@ public class Post {
 		return dataPubblicazione;
 	}
 	
+	public void setDataPubblicazione(Date dataPubblicazione) {
+		this.dataPubblicazione = dataPubblicazione;
+	}
+	
 	public int getLike() {
 		return like;
+	}
+	
+	public void setLike(int like) {
+		this.like = like;
 	}
 	
 	public void addLike() {
 		this.like++;
 	}
 
-	public boolean getTipologia() {
+	public String getTipologia() {
 		return tipologia;
 	}
-
+	
+	public void setTipologia(String tipologia) {
+		this.tipologia = tipologia;
+	}
+	
+	public String getContenutoSrc() {
+		return contenutoSrc;
+	}
+	
+	public void setContenutoSrc(String contenutoSrc) {
+		this.contenutoSrc = contenutoSrc;
+	}
+/*
+	@Override
+	public String toString() {
+		return "Post [Id=" + Id + ", utenteUsername=" + utenteUsername + ", titolo=" + titolo + ", topic=" + topic
+				+ ", tags=" + Arrays.toString(tags) + ", dataPubblicazione=" + dataPubblicazione + ", like=" + like
+				+ ", tipologia=" + tipologia + ", contenutoSrc=" + contenutoSrc + "]";
+	}
+*/
 }

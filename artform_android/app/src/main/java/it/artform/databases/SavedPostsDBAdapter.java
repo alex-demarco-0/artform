@@ -13,9 +13,9 @@ public class SavedPostsDBAdapter {
     private ArtformDBHelper dbHelper;
 
     protected static final String DATABASE_TABLE = "savedPosts";
-    protected static final String KEY_SAVED_POST_ID = "_id"; //PK autoincrement
-    protected static final String KEY_USERID = "userId";
-    protected static final String KEY_POSTID = "postId";
+    protected static final String KEY_SAVED_POST_ID = "_id"; // PK autoincrement
+    protected static final String KEY_USER_USERNAME = "userUsername"; // server DB PK
+    protected static final String KEY_POST_ID = "postId"; // server DB PK
 
     public SavedPostsDBAdapter(Context context) {
         this.context = context;
@@ -31,25 +31,25 @@ public class SavedPostsDBAdapter {
         dbHelper.close();
     }
 
-    private ContentValues createContentValues(long userId, long postId) {
+    private ContentValues createContentValues(String userUsername, int postId) {
         ContentValues values = new ContentValues();
-        values.put( KEY_USERID, userId );
-        values.put( KEY_POSTID, postId );
+        values.put( KEY_USER_USERNAME, userUsername );
+        values.put( KEY_POST_ID, postId );
         return values;
     }
 
-    public long savePost(long userId, long postId) {
-        ContentValues postValues = createContentValues(userId, postId);
+    public long savePost(String userUsername, int postId) {
+        ContentValues postValues = createContentValues(userUsername, postId);
         return database.insertOrThrow(DATABASE_TABLE, null, postValues);
     }
 
-    public Cursor fetchUserSavedPosts(long userId) {
-        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_USERID, KEY_POSTID },
-                KEY_USERID + " = " + userId, null, null, null, null, null);
+    public Cursor fetchUserSavedPosts(String userUsername) {
+        Cursor mCursor = database.query(true, DATABASE_TABLE, new String[] { KEY_USER_USERNAME, KEY_POST_ID },
+                KEY_USER_USERNAME + " = " + userUsername, null, null, null, null, null);
         return mCursor;
     }
 
-    public boolean deletePostFromSaved(long userId, long postId) {
-        return database.delete(DATABASE_TABLE, KEY_USERID + " = " + userId + " AND " + KEY_POSTID + " = " + postId, null) > 0;
+    public boolean deletePostFromSaved(String userUsername, int postId) {
+        return database.delete(DATABASE_TABLE, KEY_USER_USERNAME + " = " + userUsername + " AND " + KEY_POST_ID + " = " + postId, null) > 0;
     }
 }

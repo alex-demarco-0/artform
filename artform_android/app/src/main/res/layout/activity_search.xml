@@ -5,19 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SearchActivity">
+
     <include
-        android:id="@+id/layout"
+        android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <SearchView
-        android:id="@+id/simpleSearchView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/layout"
-        android:hint="@string/search" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
 
-    <Spinner
-        android:id="@+id/topicSpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <SearchView
+            android:id="@+id/simpleSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search" />
+
+        <Spinner
+            android:id="@+id/topicSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
 </RelativeLayout>

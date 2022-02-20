@@ -79,7 +79,7 @@ public class RegisterActivity extends Activity {
                 // creazione oggetto nuovo utente
                 User newUser = new User(String.valueOf(nameEditText.getText()), String.valueOf(surnameEditText.getText()),
                         String.valueOf(usernameEditText.getText()), String.valueOf(emailEditText.getText()),
-                        String.valueOf(phoneEditText.getText()), String.valueOf(passwordEditText.getText()), 0);
+                        String.valueOf(phoneEditText.getText()), String.valueOf(passwordEditText.getText()), "", 0, "");
 
                 // richiesta POST sul Database server
                 Call<User> postUserCall = apiService.addUser(newUser);
