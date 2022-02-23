@@ -15,11 +15,16 @@ button{
 .propic {
   text-align: center;
   margin: 20px 0;
-  padding: 20px;
+  }
+  #propic{
+    width: 128px;
+    height: 128px;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: 100%
   }
 .infos {
   text-align: center;
-  margin: 20px 0;
 }
 #notifyMeButton{
    position:absolute;

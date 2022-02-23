@@ -1,7 +1,6 @@
 .propic {
   text-align: center;
   margin: 20px 0;
-  padding: 20px;
   }
   #propic{
     width: 128px;
@@ -12,7 +11,6 @@
   }
 .infos {
   text-align: center;
-  margin: 20px 0;
 }
 #settingsButton{
    position:absolute;
