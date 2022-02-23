@@ -1,0 +1,32 @@
+#settingsDiv{
+      width: 40%;
+      margin: 80px auto;
+      border-radius: 10px;
+      padding: 30px;
+      border-left: 5px;
+}
+button {
+    font-weight: 700;
+    border:none;
+    color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 4px;
+    background: #D291BC;
+}
+#body{
+  font-family:sans-serif, helvetica;
+  background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
+  background-attachment: fixed;
+}
+</style>
+<script type="text/javascript" language="javascript">
+  function logout(){
+    window.location="login.html";
+  }
+  function security(){
+    window.location="SecuritySetting.html";
+  }
+  function profileSettings(){
+    window.location="ProfileSetting.html";
+  }
