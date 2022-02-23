@@ -41,16 +41,16 @@ public class PostDBAdapter {
         dbHelper.close();
     }
 
-    private ContentValues createContentValues(int id, String userUsername, String title, String topic, String[] tags, Date publicationDate, int like, boolean type, String contentSrc) {
+    private ContentValues createContentValues(int id, String userUsername, String title, String topic, String tags, Date publicationDate, int like, boolean type, String contentSrc) {
         ContentValues values = new ContentValues();
         values.put( KEY_EXTERNAL_ID, id );
         values.put( KEY_USER, userUsername );
         values.put( KEY_TITLE, title );
         values.put( KEY_TOPIC, topic );
-        String tagsStr = "";
+        /*String tagsStr = "";
         for(String tag: tags)
-            tagsStr += (", " + tag);
-        values.put( KEY_TAGS, tagsStr );
+            tagsStr += (", " + tag);*/
+        values.put( KEY_TAGS, tags );
         values.put( KEY_PUBLICATION_DATE, String.valueOf(publicationDate) );
         values.put( KEY_LIKE, like );
         values.put( KEY_TYPE, type );

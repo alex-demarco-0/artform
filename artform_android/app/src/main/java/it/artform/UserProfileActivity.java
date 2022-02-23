@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -21,7 +22,10 @@ import com.squareup.picasso.Picasso;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.List;
 
+import it.artform.feed.PostGridAdapter;
+import it.artform.pojos.Post;
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
 import it.artform.web.DownloadImageTask;
@@ -49,6 +53,7 @@ public class UserProfileActivity extends Activity {
         badgeUserProfile = findViewById(R.id.userProfileBadgeButton);
         userPostsGridView = findViewById(R.id.userPostsGridView);
 
+
         // carica e imposta i dati del profilo personale nelle View
         AFGlobal app = (AFGlobal) getApplication();
         ArtformApiEndpointInterface apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
@@ -65,13 +70,11 @@ public class UserProfileActivity extends Activity {
 
                     usernameUserProfile.setText(loggedUser.getUsername());
                     tagsUserProfile.setText(loggedUser.getBio());
-
-
                 }
             }
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(UserProfileActivity.this, "Richiesta GET non effettuata", Toast.LENGTH_LONG).show();
+                Toast.makeText(UserProfileActivity.this, "Richiesta GET dell'Utente non effettuata", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -87,6 +90,31 @@ public class UserProfileActivity extends Activity {
             public void onClick(View view) {
                 Intent openSettingsActivity= new Intent(UserProfileActivity.this, SettingsActivity.class);
                 startActivity(openSettingsActivity);
+            }
+        });
+
+        //GET dei Post dell'utente
+        Call<List<Post>> getUserPostsCall = apiService.getUserPosts(AFGlobal.getLoggedUser());
+        getUserPostsCall.enqueue(new Callback<List<Post>>() {
+            @Override
+            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+                if(response.isSuccessful()) {
+                    List<Post> userPosts = response.body();
+                    //Caricamento dei post dll'utente nella GridView
+                    if(userPosts.size() > 0) {
+                        userPostsGridView.setAdapter(new PostGridAdapter(UserProfileActivity.this, userPosts));
+                        userPostsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                                //Toast.makeText(getBaseContext(), "Grid Item " + (position + 1) + " Selected", Toast.LENGTH_LONG).show();
+                                openPostDetails(position);
+                            }
+                        });
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<List<Post>> call, Throwable t) {
+                Toast.makeText(UserProfileActivity.this, "Richiesta GET dei Post dell'Utente non effettuata", Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -115,5 +143,9 @@ public class UserProfileActivity extends Activity {
                 break;
         }*/
         return false;
+    }
+
+    private void openPostDetails(int pos) {
+
     }
 }
