@@ -61,7 +61,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/userBioTagsTextView"
             android:layout_marginTop="15dp"
-            android:numColumns="3" />
+            android:numColumns="3"
+            android:horizontalSpacing="5dp"
+            android:verticalSpacing="5dp" />
 
     </RelativeLayout>
 

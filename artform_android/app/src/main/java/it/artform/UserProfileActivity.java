@@ -30,7 +30,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserProfileActivity extends Activity {
-    ImageView userProfilePic = null;
+    ImageView userProfilePicImageView = null;
     TextView usernameUserProfile = null;
     TextView tagsUserProfile = null;
     Button settings = null;
@@ -42,7 +42,7 @@ public class UserProfileActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
-        userProfilePic = findViewById(R.id.userProfilePicImageView);
+        userProfilePicImageView = findViewById(R.id.userProfilePicImageView);
         usernameUserProfile = findViewById(R.id.userProfileUsernameTextView);
         tagsUserProfile = findViewById(R.id.userBioTagsTextView);
         settings = findViewById(R.id.userProfileSettingsButton);
@@ -61,7 +61,7 @@ public class UserProfileActivity extends Activity {
                     //Toast.makeText(UserProfileActivity.this, loggedUser.toString(), Toast.LENGTH_LONG).show();
                     String profilePicUri = AFGlobal.BASE_URL + loggedUser.getProfilePicSrc();
                     //new DownloadImageTask(UserProfileActivity.this.userProfilePic).execute(profilePicUri);
-                    Picasso.get().load(profilePicUri).resize(130, 130).centerCrop().into(UserProfileActivity.this.userProfilePic);
+                    Picasso.get().load(profilePicUri).resize(130, 130).centerCrop().into(UserProfileActivity.this.userProfilePicImageView);
 
                     usernameUserProfile.setText(loggedUser.getUsername());
                     tagsUserProfile.setText(loggedUser.getBio());
