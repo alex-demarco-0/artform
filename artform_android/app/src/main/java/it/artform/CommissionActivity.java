@@ -58,13 +58,14 @@ public class CommissionActivity extends Activity {
             @Override
             public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
                 List<Topic> myTopicList = response.body();
-               /* for (Topic topic : myTopicList) {
+                ArrayList<String> stringTopic = new ArrayList<>();
+               for (Topic topic : myTopicList) {
                     String content = "";
                     content = topic.getName();
+                    stringTopic.add(content);
                     //topicSpinner.append(content);
-                } */
-                ArrayAdapter<Topic> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, myTopicList);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, stringTopic);
                 topicSpinner.setAdapter(adapter);
 
             }
