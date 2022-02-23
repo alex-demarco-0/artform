@@ -44,7 +44,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/emailEditText"
             android:text="Select topics: "
-            android:textSize="19sp" />
+            android:textSize="19sp"
+            android:layout_marginTop="5dp" />
+
 
 
         <Spinner
@@ -53,7 +55,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/emailEditText"
             android:layout_toRightOf="@+id/topicTextView"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:layout_marginTop="-5dp" />
 
         <TextView
             android:id="@+id/dateTextView"
