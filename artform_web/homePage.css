@@ -48,6 +48,7 @@ button{
         left: 125px;
         align:bottom;
       }
+      
       #posts{
          width: auto;
          height: 530px;
@@ -58,6 +59,7 @@ button{
          overflow: scroll;
         overflow-x: hidden;
        }
+
        #body{
          font-family:sans-serif, helvetica;
          background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
@@ -69,5 +71,4 @@ button{
          height: 25px;
          border-width:thin;
          border-radius: 4px;
-
        }
