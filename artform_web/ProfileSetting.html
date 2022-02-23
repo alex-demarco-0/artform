@@ -10,6 +10,15 @@ Descrizione: project work, pagina web di impostazioni del profilo
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style type="text/css">
+        #profSettingsDiv{
+              background-color: #fff;
+              width: 40%;
+              margin: 80px auto;
+              border-radius: 10px;
+              padding: 30px;
+              border-left: 5px solid #D291BC;
+              box-shadow: 0px 0px 0px 0px #3f51b5;
+        }
         #body{
           font-family:sans-serif, helvetica;
           background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
@@ -28,15 +37,13 @@ Descrizione: project work, pagina web di impostazioni del profilo
     </head>
     <body id="body" bgcolor="#E9CFEC">
         <div align=center>
+          <br>
+          <br>
+          <br>
+          <br>
             <font size='5' color='black'>Profile Settings </font>
             <img src="https://cdn1.iconfinder.com/data/icons/carbon-design-system-vol-7/32/settings-1024.png" width="20" height="20" vspace="-10" hspace="-10">
-        <div><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+        <div id="profSettingsDiv"><br>
              <p align=center><button onclick="changeUsername()" value="change username"> Change username </button>
              <p align=center><button onclick="modBioTag()" value="modify bio/tags"> Modify bio & tags </button>
              <p align=center><button onclick="changePhoPro()" value="change photo profile"> Change photo profile</button>
