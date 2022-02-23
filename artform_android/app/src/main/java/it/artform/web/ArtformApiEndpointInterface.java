@@ -75,7 +75,7 @@ public interface ArtformApiEndpointInterface {
     Call<Badge> addBadge(@Body Badge badge);
 
     // Topic
-    @GET("/artform/topic")
+    @GET("/artform/topics")
     Call<List<Topic>> getAllTopics();
 
     // Commission

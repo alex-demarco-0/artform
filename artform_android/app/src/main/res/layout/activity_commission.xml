@@ -56,10 +56,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <TextView
+                <Spinner
                     android:id="@+id/topicSpinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
             </androidx.core.widget.NestedScrollView>
             <!--Spinner
                 android:id="@+id/topicSpinner"
@@ -86,7 +86,7 @@
             <Spinner
                 android:id="@+id/dateSpinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:autofillHints="Topics" />
         </LinearLayout>
 
