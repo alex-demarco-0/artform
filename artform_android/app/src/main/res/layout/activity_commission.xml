@@ -46,18 +46,14 @@
             android:text="Select topics: "
             android:textSize="19sp" />
 
-        <androidx.core.widget.NestedScrollView
+
+        <Spinner
+            android:id="@+id/topicSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/emailEditText"
-            android:layout_toRightOf="@+id/topicTextView">
-
-            <Spinner
-                android:id="@+id/topicSpinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"/>
-        </androidx.core.widget.NestedScrollView>
+            android:layout_toRightOf="@+id/topicTextView"
+            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/dateTextView"
