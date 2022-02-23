@@ -7,14 +7,19 @@ button{
         border-radius: 4px;
         background: #D291BC;
       }
+
       img{
         border-radius: 8px;
       }
 
       #bottomBar{
         position:absolute;
-        left:200px;
+        left:300px;
         align:bottom;
+      }
+
+      #searchImg{
+
       }
 
       .bottom{
@@ -27,20 +32,20 @@ button{
       }
 
       #buttonProfile{
-        right:0px;
+        right:30px;
       }
 
       #buttonNot{
-        right: 50px;
+        right: 125px;
       }
 
       #buttonAdd{
-        right:100px;
+        right:230px;
       }
 
        #home{
         position:absolute;
-        left: 20px;
+        left: 125px;
         align:bottom;
       }
       #posts{
