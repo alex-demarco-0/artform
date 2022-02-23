@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import it.artform.pojos.Topic;
@@ -45,24 +47,26 @@ public class CommissionActivity extends Activity {
 
         // preparazione richiesta GET
         // Manbir... test
-        TextView topicSpinner = findViewById(R.id.topicSpinner);
+        Spinner topicSpinner = findViewById(R.id.topicSpinner);
 
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
 
         Call<List<Topic>> call = apiService.getAllTopics();
-
         call.enqueue(new Callback<List<Topic>>() {
             @Override
             public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
                 List<Topic> myTopicList = response.body();
-                String[] oneTopic = new String[myTopicList.size()];
+               /* for (Topic topic : myTopicList) {
+                    String content = "";
+                    content = topic.getName();
+                    //topicSpinner.append(content);
+                } */
+                ArrayAdapter<Topic> adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, myTopicList);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                topicSpinner.setAdapter(adapter);
 
-                for (int i = 0; i < myTopicList.size(); i++)
-                    oneTopic[i] = myTopicList.get(i).getName();
-
-                nameEditText.setText(oneTopic[1]);
             }
 
             @Override
@@ -71,11 +75,6 @@ public class CommissionActivity extends Activity {
                 t.printStackTrace();
             }
         });
-        //  Response<Topic> getAllTopicRespone = call.execute();
-        // topic = getAllTopicRespone.body();
-
-        //  nameEditText.setText(topic.getName());
-
 
         // bottone per INVIO del form
         Button sumbitButton = findViewById(R.id.sumbitButton);
