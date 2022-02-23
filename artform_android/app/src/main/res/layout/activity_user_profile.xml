@@ -6,57 +6,78 @@
     android:layout_height="match_parent"
     tools:context=".UserProfileActivity">
     <include layout="@layout/toolbar" android:id="@+id/toolbar"/>
+
     <RelativeLayout
-        android:layout_below="@+id/toolbar"
         android:id="@+id/profileLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
         android:padding="16dp">
 
         <Button
-            android:id="@+id/badgeButtonUserProfile"
+            android:id="@+id/userProfileBadgeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:text="Badge" />
 
         <ImageView
-            android:id="@+id/userProfileImageView"
+            android:id="@+id/userProfilePicImageView"
             android:layout_width="130dp"
             android:layout_height="130dp"
+            android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
-            android:layout_marginEnd="158dp"
+            android:layout_marginTop="30dp"
             tools:srcCompat="@tools:sample/avatars" />
 
         <Button
-            android:id="@+id/settingsUserProfile"
+            android:id="@+id/userProfileSettingsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:text="Settings" />
 
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/infoLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/profileLayout"
-        android:gravity="center"
-        android:orientation="vertical">
-
         <TextView
-            android:id="@+id/usernameUserProfile"
+            android:id="@+id/userProfileUsernameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_below="@+id/userProfilePicImageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
             android:text="USERNAME" />
 
         <TextView
-            android:id="@+id/tagsUserProfile"
+            android:id="@+id/userBioTagsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/userProfileUsernameTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:text="BIO/TAGS" />
 
-    </LinearLayout>
+        <GridView
+            android:id="@+id/userPostsGridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userBioTagsTextView"
+            android:layout_marginTop="15dp"
+            android:numColumns="3" />
+
+    </RelativeLayout>
+
+
+
+
+    <!--
+        <LinearLayout
+            android:id="@+id/infoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileLayout"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+
+        </LinearLayout> -->
 </RelativeLayout>

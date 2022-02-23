@@ -25,10 +25,10 @@ public class ExternalProfileActivity extends Activity {
 
 
 
-        externalProfilePic=findViewById(R.id.externalProfileImageView);
+        externalProfilePic=findViewById(R.id.externalProfilePicImageView);
         usernameExternalProfile=findViewById(R.id.usernameExternalProfile);
         tagsExternalProfile=findViewById(R.id.tagsExternalProfile);
-        badgeExternalProfile=findViewById(R.id.badgeButtonExternalProfile);
+        badgeExternalProfile=findViewById(R.id.externalProfileBadgeButton);
 
         contactMe=(Button) findViewById(R.id.contactmeButton);
         contactMe.setOnClickListener(
