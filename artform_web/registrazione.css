@@ -3,6 +3,13 @@
   background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
   background-attachment: fixed;
 }
+.inputForm{
+  width: auto;
+  height: 25px;
+  border-width:thin;
+  border-radius: 4px;
+}
+
 #registerDiv{
       background-color: #fff;
       width: 40%;
