@@ -25,10 +25,14 @@
         <entry key="..\:/ARTFORM2/artform/artform_android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.17552083333333332" />
         <entry key="..\:/ARTFORM2/artform/artform_android/app/src/main/res/menu/menu_user_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/ARTFORM2/artform/artform_android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3828125" />
+        <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1445" />
+        <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/drawable/background_gradient.xml" value="0.1445" />
+        <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/drawable/ic_baseline_arrow_left_24.xml" value="0.1445" />
+        <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1445" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_commission.xml" value="0.25416666666666665" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_commission2.xml" value="0.25416666666666665" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_external_profile.xml" value="0.264" />
-        <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_login.xml" value="0.1793478260869565" />
+        <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_main.xml" value="0.17300724637681159" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_notification.xml" value="0.22780797101449277" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_register.xml" value="0.1793478260869565" />
@@ -36,6 +40,9 @@
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_settings.xml" value="0.22780797101449277" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/activity_user_profile.xml" value="0.264" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/row_badge.xml" value="0.1328125" />
+        <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/row_main.xml" value="0.22395833333333334" />
+        <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/row_notification.xml" value="0.22395833333333334" />
+        <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/layout/toolbar.xml" value="0.22395833333333334" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/ArtForm/artform/artform_android/app/src/main/res/menu/menu_user_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/ArtForm/artform_android/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
