@@ -76,7 +76,7 @@ public interface ArtformApiEndpointInterface {
 
     // Topic
     @GET("/artform/topic")
-    Call<Topic> getAllTopics();
+    Call<List<Topic>> getAllTopics();
 
     // Commission
     @GET("/artform/commissione/{id}")

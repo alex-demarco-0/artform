@@ -9,8 +9,9 @@ import it.artform.pojos.Topic;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+/*
+public class TopicGetCallback implements Callback<List<Topic>> {
 
-public class TopicGetCallback implements Callback<Topic> {
     private Topic topic = null;
     Context cxt = null;
 
@@ -19,20 +20,21 @@ public class TopicGetCallback implements Callback<Topic> {
         cxt = c;
     }
 
+    public Topic getTopic() {
+        return topic;
+    }
+
     @Override
-    public void onResponse(Call<Topic> call, Response<Topic> response) {
+    public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
         if (response.isSuccessful()) {
-            topic = new Topic(response.body().getName());
+            topic = new Topic(response.body().get());
             Toast.makeText(cxt, topic.getName(), Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
-    public void onFailure(Call<Topic> call, Throwable t) {
+    public void onFailure(Call<List<Topic>> call, Throwable t) {
         t.printStackTrace();
     }
-
-    public Topic getTopic() {
-        return topic;
-    }
 }
+-*/

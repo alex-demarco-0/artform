@@ -10,17 +10,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import java.io.IOException;
+import java.util.List;
 
 import it.artform.pojos.Topic;
 import it.artform.web.ArtformApiEndpointInterface;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class CommissionActivity extends Activity {
     AFGlobal app = null;
     ArtformApiEndpointInterface apiService = null;
+    Topic topic = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +40,41 @@ public class CommissionActivity extends Activity {
         EditText surnameEditText = findViewById(R.id.surnameEditText);
         EditText emailEditText = findViewById(R.id.emailEditText);
         EditText detailEditText = findViewById(R.id.detailEditText);
-        Spinner topicSpinner = findViewById(R.id.topicSpinner);
         Spinner dateSpinner = findViewById(R.id.dateSpinner);
 
 
+        // preparazione richiesta GET
+        // Manbir... test
+        TextView topicSpinner = findViewById(R.id.topicSpinner);
 
-        // preparazione richiesta RESTful
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
+
+        Call<List<Topic>> call = apiService.getAllTopics();
+
+        call.enqueue(new Callback<List<Topic>>() {
+            @Override
+            public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
+                List<Topic> myTopicList = response.body();
+                String[] oneTopic = new String[myTopicList.size()];
+
+                for (int i = 0; i < myTopicList.size(); i++)
+                    oneTopic[i] = myTopicList.get(i).getName();
+
+                nameEditText.setText(oneTopic[1]);
+            }
+
+            @Override
+            public void onFailure(Call<List<Topic>> call, Throwable t) {
+                Toast.makeText(CommissionActivity.this, "Si è verificato un problema durante la richiesta " + t.toString(), Toast.LENGTH_LONG).show();
+                t.printStackTrace();
+            }
+        });
+        //  Response<Topic> getAllTopicRespone = call.execute();
+        // topic = getAllTopicRespone.body();
+
+        //  nameEditText.setText(topic.getName());
 
 
         // bottone per INVIO del form
@@ -53,7 +87,6 @@ public class CommissionActivity extends Activity {
 
 
         //Spinner che prende in input i topics dal database
-
 
 
         // bottone per cancellare i campi inseriti
