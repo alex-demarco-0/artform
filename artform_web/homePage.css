@@ -8,7 +8,6 @@ button{
         background: #D291BC;
       }
       img{
-        margin:2px;
         border-radius: 8px;
       }
 
@@ -17,11 +16,28 @@ button{
         left:200px;
         align:bottom;
       }
-      #bottomButtons{
+
+      .bottom{
+        position: absolute;
+        bottom: 0px;
+      }
+      .bottomButtons{
         position:absolute;
-        right: 20px;
         align:bottom;
       }
+
+      #buttonProfile{
+        right:0px;
+      }
+
+      #buttonNot{
+        right: 50px;
+      }
+
+      #buttonAdd{
+        right:100px;
+      }
+
        #home{
         position:absolute;
         left: 20px;
@@ -29,8 +45,8 @@ button{
       }
       #posts{
          width: auto;
-         height: 550px;
-         margin-top:20px;
+         height: 530px;
+         margin-bottom: 10px;
          padding: 10px;
          background-color: rgba(238, 238, 238, 0.7);
          border: 1px solid #ccc;
@@ -41,6 +57,7 @@ button{
          font-family:sans-serif, helvetica;
          background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
          background-attachment: fixed;
+         overflow-y: hidden;
        }
 
        #inputSearch{
