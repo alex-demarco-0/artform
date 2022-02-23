@@ -19,14 +19,3 @@ button {
   background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
   background-attachment: fixed;
 }
-</style>
-<script type="text/javascript" language="javascript">
-  function logout(){
-    window.location="login.html";
-  }
-  function security(){
-    window.location="SecuritySetting.html";
-  }
-  function profileSettings(){
-    window.location="ProfileSetting.html";
-  }
