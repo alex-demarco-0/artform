@@ -42,7 +42,7 @@ public class CommissionActivity extends Activity {
         EditText surnameEditText = findViewById(R.id.surnameEditText);
         EditText emailEditText = findViewById(R.id.emailEditText);
         EditText detailEditText = findViewById(R.id.detailEditText);
-        Spinner dateSpinner = findViewById(R.id.dateSpinner);
+        //Spinner dateSpinner = findViewById(R.id.dateSpinner);
 
 
         // preparazione richiesta GET
@@ -59,7 +59,7 @@ public class CommissionActivity extends Activity {
             public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
                 List<Topic> myTopicList = response.body();
                 ArrayList<String> stringTopic = new ArrayList<>();
-               for (Topic topic : myTopicList) {
+                for (Topic topic : myTopicList) {
                     String content = "";
                     content = topic.getName();
                     stringTopic.add(content);
