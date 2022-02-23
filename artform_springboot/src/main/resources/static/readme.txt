@@ -5,3 +5,5 @@ i file caricati nella directory 'artform_web' dovrebbero essere trasferiti in qu
 - ! -
 la directory 'media' contiene l'immagine del logo e le directory 'imagePosts', 'videoPosts', 'userProfilePics' costituenti il deposito delle risorse immagini/video;
 le directory contengono rispettivamente i post degli utenti (formato immagine), i post degli utenti (formato video), le immagini dei profili degli utenti (formato immagine).
+I file dei post degli utenti (sia immagine che video) saranno nominati come {Id}.{estensione}.
+Le immagini dei profili degli utenti saranno nominati come {username}.{estensione}.
