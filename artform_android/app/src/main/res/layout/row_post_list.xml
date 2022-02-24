@@ -25,8 +25,7 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentEnd="false"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:text="title" />
+        android:layout_marginTop="15dp" />
 
     <TextView
         android:id="@+id/topicTextView"

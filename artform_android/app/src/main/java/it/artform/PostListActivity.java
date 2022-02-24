@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import java.util.List;
-
 import it.artform.feed.PostArrayAdapter;
 import it.artform.pojos.Post;
 

@@ -11,9 +11,6 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import it.artform.AFGlobal;
 import it.artform.R;
 import it.artform.pojos.Post;

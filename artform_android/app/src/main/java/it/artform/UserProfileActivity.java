@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,17 +18,12 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import it.artform.feed.PostGridAdapter;
 import it.artform.pojos.Post;
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
-import it.artform.web.DownloadImageTask;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
