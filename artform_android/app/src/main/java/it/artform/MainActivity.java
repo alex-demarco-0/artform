@@ -28,6 +28,9 @@ public class MainActivity extends Activity {
     PostDBAdapter pdba = null;
     Button externalProfileButton = null;
     ListView datiRegistrazioneListView = null;
+    Button notification=null;
+    Button addPost=null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,11 +121,20 @@ public class MainActivity extends Activity {
         PostCursorAdapter pca = new PostCursorAdapter(this, allPosts, 1);
         feedListView.setAdapter(pca);
 */
-        Button addPost=(Button) findViewById(R.id.addPostButton);
+        addPost=(Button) findViewById(R.id.addPostButton);
         addPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this, ContentPubActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        notification=(Button) findViewById(R.id.notificationButton);
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this, NotificationActivity.class);
                 startActivity(intent);
             }
         });
