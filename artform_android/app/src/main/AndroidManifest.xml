@@ -4,6 +4,13 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-configuration android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-configuration android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-configuration android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-configuration android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
     <application
         android:name=".AFGlobal"
         android:allowBackup="true"
@@ -13,9 +20,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ArtForm"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".PostListActivity"
-            android:exported="false" />
         <activity
             android:name=".ExternalProfileActivity"
             android:exported="false" />
@@ -39,18 +43,20 @@
             android:exported="false" />
         <activity
             android:name=".ContentPubActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SearchActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false">
+
         </activity>
         <activity
             android:name=".MainActivity"
