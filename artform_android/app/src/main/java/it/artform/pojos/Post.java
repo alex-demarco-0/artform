@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Post implements Serializable {
-    @SerializedName("Id")
     private final int id; // server DB PK
     @SerializedName("utenteUsername")
     private final String userUsername;
@@ -22,7 +21,7 @@ public class Post implements Serializable {
     @SerializedName("contenutoSrc")
     private final String contentSrc; // directory media file
 
-    public Post(int id, String userUsername, String title, String topic, String tags, Date publicationDate, int like, boolean type, String contentSrc) {
+    public Post(String userUsername, String title, String topic, String tags, Date publicationDate, int like, boolean type, String contentSrc, int id) {
         this.id = id;
         this.userUsername = userUsername;
         this.title = title;
