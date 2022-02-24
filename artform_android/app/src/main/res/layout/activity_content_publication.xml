@@ -9,22 +9,41 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <ImageButton
-        android:id="@+id/previewImageView"
+    <RelativeLayout
+        android:id="@+id/imageLayout"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_below="@+id/toolbar"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="16dp"
-        android:src="@android:drawable/ic_input_add"
-        android:contentDescription="@string/addimage"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+
+        <ImageButton
+            android:id="@+id/addImageView"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:clickable="true"
+            android:contentDescription="@string/addimage"
+            android:focusable="true"
+            android:padding="16dp"
+            android:src="@android:drawable/ic_input_add" />
+
+        <ImageView
+            android:id="@+id/previewImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/addImageView"
+            android:layout_alignTop="@+id/addImageView"
+            android:layout_alignRight="@+id/addImageView"
+            android:layout_alignBottom="@+id/addImageView"
+            android:adjustViewBounds="true"
+            android:padding="16dp"
+            android:scaleType="fitCenter" />
+    </RelativeLayout>
+
 
     <LinearLayout
         android:id="@+id/addImageLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/previewImageView"
+        android:layout_below="@+id/imageLayout"
         android:orientation="vertical"
         android:padding="16dp">
 
