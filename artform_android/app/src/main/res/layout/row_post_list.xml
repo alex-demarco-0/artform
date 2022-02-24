@@ -6,8 +6,7 @@
     <ImageView
         android:id="@+id/postImageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher_foreground" />
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/userTextView"
@@ -30,14 +29,24 @@
         android:text="title" />
 
     <TextView
-        android:id="@+id/tagsTextView"
+        android:id="@+id/topicTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="20dp"
         android:layout_below="@+id/userTextView" />
+
+    <TextView
+        android:id="@+id/tagsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="15dp"
+        android:layout_below="@+id/topicTextView" />
 
     <TextView
         android:id="@+id/likeTextView"

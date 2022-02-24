@@ -2,9 +2,10 @@ package it.artform.pojos;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Post {
+public class Post implements Serializable {
     @SerializedName("Id")
     private final int id; // server DB PK
     @SerializedName("utenteUsername")

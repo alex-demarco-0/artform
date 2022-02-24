@@ -23,16 +23,16 @@ import it.artform.pojos.Post;
 
 public class PostGridAdapter extends BaseAdapter {
     private Context ctx = null;
-    private List<Post> userPosts = null;
+    private Post[] userPosts = null;
 
-    public PostGridAdapter(Context context, List<Post> objects) {
+    public PostGridAdapter(Context context, Post[] objects) {
         ctx = context;
         userPosts = objects;
     }
 
     @Override
     public int getCount() {
-        return userPosts.size();
+        return userPosts.length;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class PostGridAdapter extends BaseAdapter {
         }
         else
             postImageView = (ImageView) convertView;
-        Post p = userPosts.get(position);
+        Post p = userPosts[position];
         Picasso.get().load(AFGlobal.BASE_URL + p.getContentSrc()).into(postImageView);
         return postImageView;
     }

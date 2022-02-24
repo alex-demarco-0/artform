@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import it.artform.feed.PostGridAdapter;
@@ -40,6 +41,7 @@ public class UserProfileActivity extends Activity {
     Button settings = null;
     Button badgeUserProfile = null;
     GridView userPostsGridView = null;
+    Post[] userPosts = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,6 @@ public class UserProfileActivity extends Activity {
         settings = findViewById(R.id.userProfileSettingsButton);
         badgeUserProfile = findViewById(R.id.userProfileBadgeButton);
         userPostsGridView = findViewById(R.id.userPostsGridView);
-
 
         // carica e imposta i dati del profilo personale nelle View
         AFGlobal app = (AFGlobal) getApplication();
@@ -99,13 +100,14 @@ public class UserProfileActivity extends Activity {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 if(response.isSuccessful()) {
-                    List<Post> userPosts = response.body();
+                    userPosts = new Post[response.body().size()];
+                    for(int i=0; i<userPosts.length; i++)
+                        userPosts[i] = response.body().get(i);
                     //Caricamento dei post dll'utente nella GridView
-                    if(userPosts.size() > 0) {
+                    if(userPosts.length > 0) {
                         userPostsGridView.setAdapter(new PostGridAdapter(UserProfileActivity.this, userPosts));
                         userPostsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                                //Toast.makeText(getBaseContext(), "Grid Item " + (position + 1) + " Selected", Toast.LENGTH_LONG).show();
                                 openPostDetails(position);
                             }
                         });
@@ -146,6 +148,9 @@ public class UserProfileActivity extends Activity {
     }
 
     private void openPostDetails(int pos) {
-
+        Intent postListIntent = new Intent(UserProfileActivity.this, PostListActivity.class);
+        postListIntent.putExtra("postList", userPosts);
+        postListIntent.putExtra("postIndex", pos);
+        startActivity(postListIntent);
     }
 }

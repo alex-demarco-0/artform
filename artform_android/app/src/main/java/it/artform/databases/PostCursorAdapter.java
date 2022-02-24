@@ -21,7 +21,7 @@ public class PostCursorAdapter extends CursorAdapter {
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup viewGroup) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        View retView = inflater.inflate(R.layout.row_main, viewGroup, false);
+        View retView = inflater.inflate(R.layout.row_post_list, viewGroup, false);
         return retView;
     }
 
