@@ -31,5 +31,6 @@
     <string name="impostazioni">Impostazioni</string>
     <string name="logout">log out</string>
     <string name="search">Cerca</string>
+    <string name="addimage">addImage</string>
 
 </resources>
