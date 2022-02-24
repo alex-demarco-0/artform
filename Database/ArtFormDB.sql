@@ -130,14 +130,17 @@ CREATE TABLE IF NOT EXISTS `post` (
   KEY `FK_post_topic` (`topic`),
   CONSTRAINT `FK_post_topic` FOREIGN KEY (`topic`) REFERENCES `topic` (`nome`),
   CONSTRAINT `FK_post_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dump dei dati della tabella ArtForm.post: ~2 rows (circa)
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
 INSERT INTO `post` (`Id`, `utenteUsername`, `titolo`, `topic`, `tags`, `dataPubblicazione`, `like`, `tipologia`, `contenutoSrc`) VALUES
 	(1, 'arianna', 'Velociraptor', '3D', '#dinosaur #animals #cute #3d', '2021-12-09 17:25:11', 2, 'true', 'just'),
 	(2, 'arianna', 'Paesaggio commissione', 'Tradizionale', '#paesaggio #landscape #nature', '2021-12-14 15:28:09', 0, 'true', ''),
-	(4, 'alex', 'Pulce', 'Animali', '#prurito', '2022-02-23 09:45:27', 0, 'true', 'media/imagePosts/4.jpg');
+	(4, 'alex', 'Pulce', 'Animali', '#prurito', '2022-02-23 09:45:27', 0, 'true', 'media/imagePosts/4.jpg'),
+	(5, 'alex', 'Arch', 'Sci-Fi', '#top', '2022-02-24 14:07:09', 99, 'true', 'media/imagePosts/5.jpg'),
+	(6, 'alex', 'Cutie', 'Animali', '#:3', '2022-02-24 14:07:58', 0, 'true', 'media/imagePosts/6.jpg'),
+	(7, 'alex', 'Chads', 'Animazione', '#strongmans', '2022-02-24 14:09:00', 0, 'true', 'media/imagePosts/7.jpg');
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.postSalvati
@@ -197,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `topicUtente` (
   CONSTRAINT `FK_topicUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.topicUtente: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.topicUtente: ~5 rows (circa)
 /*!40000 ALTER TABLE `topicUtente` DISABLE KEYS */;
 INSERT INTO `topicUtente` (`utenteUsername`, `topicNome`) VALUES
 	('pollastro', '3D'),
