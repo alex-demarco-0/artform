@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `badge` (
   PRIMARY KEY (`nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.badge: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.badge: ~3 rows (circa)
 /*!40000 ALTER TABLE `badge` DISABLE KEYS */;
 INSERT INTO `badge` (`nome`, `descrizione`, `punteggio`) VALUES
 	('Easy', 'gg', 8),
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `badgeUtente` (
   CONSTRAINT `FK_badgeUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.badgeUtente: ~0 rows (circa)
+-- Dump dei dati della tabella ArtForm.badgeUtente: ~2 rows (circa)
 /*!40000 ALTER TABLE `badgeUtente` DISABLE KEYS */;
 INSERT INTO `badgeUtente` (`utenteUsername`, `badgeNome`) VALUES
 	('alex', 'Primo contenuto pubblicato'),
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `commissione` (
   CONSTRAINT `FK_commissione_utente_2` FOREIGN KEY (`clienteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.commissione: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.commissione: ~3 rows (circa)
 /*!40000 ALTER TABLE `commissione` DISABLE KEYS */;
 INSERT INTO `commissione` (`Id`, `titolo`, `prezzo`, `data`, `artistaUsername`, `clienteUsername`, `indirizzoConto`) VALUES
 	(11, 'richiesta disegno velociraptor 3D', 17, '2021-12-13 15:32:51', 'arianna', 'dv8d', 'IT67X'),
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `notifica` (
   CONSTRAINT `FK_notifica_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.notifica: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.notifica: ~4 rows (circa)
 /*!40000 ALTER TABLE `notifica` DISABLE KEYS */;
 INSERT INTO `notifica` (`data`, `categoria`, `descrizione`, `collegamento`, `utenteUsername`) VALUES
 	('2021-11-10 13:23:18', 4, 'Hai ottenuto 210 punti!', 'http://www.cacca.it/', 'arianna'),
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `notificheUtente` (
   CONSTRAINT `FK_notificheUtente_utenteExt` FOREIGN KEY (`utenteExtUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.notificheUtente: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.notificheUtente: ~3 rows (circa)
 /*!40000 ALTER TABLE `notificheUtente` DISABLE KEYS */;
 INSERT INTO `notificheUtente` (`utenteUsername`, `utenteExtUsername`) VALUES
 	('admin', 'arianna'),
@@ -130,14 +130,17 @@ CREATE TABLE IF NOT EXISTS `post` (
   KEY `FK_post_topic` (`topic`),
   CONSTRAINT `FK_post_topic` FOREIGN KEY (`topic`) REFERENCES `topic` (`nome`),
   CONSTRAINT `FK_post_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.post: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.post: ~6 rows (circa)
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
 INSERT INTO `post` (`Id`, `utenteUsername`, `titolo`, `topic`, `tags`, `dataPubblicazione`, `like`, `tipologia`, `contenutoSrc`) VALUES
 	(1, 'arianna', 'Velociraptor', '3D', '#dinosaur #animals #cute #3d', '2021-12-09 17:25:11', 2, 'true', 'just'),
 	(2, 'arianna', 'Paesaggio commissione', 'Tradizionale', '#paesaggio #landscape #nature', '2021-12-14 15:28:09', 0, 'true', ''),
-	(4, 'alex', 'Pulce', 'Animali', '#prurito', '2022-02-23 09:45:27', 0, 'true', 'media/imagePosts/4.jpg');
+	(4, 'alex', 'Pulce', 'Animali', '#prurito', '2022-02-23 09:45:27', 0, 'true', '4.jpg'),
+	(5, 'alex', 'Arch', 'Sci-Fi', '#top', '2022-02-24 14:07:09', 99, 'true', '5.jpg'),
+	(6, 'alex', 'Cutie', 'Animali', '#:3', '2022-02-24 14:07:58', 0, 'true', '6.jpg'),
+	(7, 'alex', 'Chads', 'Animazione', '#strongmans', '2022-02-24 14:09:00', 1, 'true', '7.jpg');
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.postSalvati
@@ -150,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `postSalvati` (
   CONSTRAINT `FK_postSalvati_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.postSalvati: ~3 rows (circa)
+-- Dump dei dati della tabella ArtForm.postSalvati: ~4 rows (circa)
 /*!40000 ALTER TABLE `postSalvati` DISABLE KEYS */;
 INSERT INTO `postSalvati` (`utenteUsername`, `postID`) VALUES
 	('dv8d', 1),
@@ -197,7 +200,7 @@ CREATE TABLE IF NOT EXISTS `topicUtente` (
   CONSTRAINT `FK_topicUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.topicUtente: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.topicUtente: ~5 rows (circa)
 /*!40000 ALTER TABLE `topicUtente` DISABLE KEYS */;
 INSERT INTO `topicUtente` (`utenteUsername`, `topicNome`) VALUES
 	('pollastro', '3D'),
@@ -222,12 +225,12 @@ CREATE TABLE IF NOT EXISTS `utente` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.utente: ~9 rows (circa)
+-- Dump dei dati della tabella ArtForm.utente: ~10 rows (circa)
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
 INSERT INTO `utente` (`nome`, `cognome`, `username`, `email`, `numeroTelefono`, `password`, `bio`, `punteggio`, `immagineProfiloSrc`) VALUES
 	('ADMIN', 'ADMIN', 'admin', 'admin@admin.com', '000', 'admin', NULL, 999, ''),
-	('Alessandro', 'De Marco', 'alex', 'a.demarco@itsrizzoli.it', '3384148744', 'password', 'alien', 0, 'media/userProfilePics/alex.jpg'),
-	('Manbir', 'Aceveda', 'arianna', 'ift@k.it', '338', 'password', 'hey #you', 1, 'media/userProfilePics/arianna.jpg'),
+	('Alessandro', 'De Marco', 'alex', 'a.demarco@itsrizzoli.it', '3384148744', 'password', 'alien', 0, 'alex.jpg'),
+	('Manbir', 'Aceveda', 'arianna', 'ift@k.it', '338', 'password', 'hey #you', 1, 'arianna.jpg'),
 	('Zante', 'Aceveda', 'ariannolo', 'i@k.it', NULL, 'pwd', NULL, 0, ''),
 	('Hylo', 'hghgh', 'arinolo', 'aaaa@ggg.it', '', 'hy', NULL, 0, ''),
 	('Alessandro', 'Dituri', 'dv8d', '@#', NULL, 'pass', NULL, 101, ''),

@@ -9,8 +9,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AFGlobal extends Application {
-    public static final String BASE_URL = "http://172.19.16.1:8080/"; //varia in base alla macchina
-    private static String loggedUser = null; //variabile username utente acceduto (?)
+    public static final String BASE_URL = "http://172.23.224.1:8080/"; //varia in base alla macchina e alla rete
+    public static final String USER_PROPIC_PATH = BASE_URL + "media/userProfilePics/";
+    public static final String POST_IMAGE_PATH = BASE_URL + "media/imagePosts/";
+    public static final String POST_VIDEO_PATH = BASE_URL + "media/videoPosts/";
+    private static String loggedUser = null; //variabile username utente loggato
     Retrofit retrofit = null;
 
     public AFGlobal() {

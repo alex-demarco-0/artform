@@ -11,9 +11,6 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import it.artform.AFGlobal;
 import it.artform.R;
 import it.artform.pojos.Post;
@@ -55,11 +52,13 @@ public class PostArrayAdapter extends ArrayAdapter<Post> {
         }
         ViewHolder vh = (ViewHolder) convertView.getTag();
         Post p = postList[position];
+        //Toast.makeText(ctx, p.toString(), Toast.LENGTH_LONG).show();
         vh.userTextView.setText(String.valueOf(p.getUser()));
         vh.titleTextView.setText(String.valueOf(p.getTitle()));
         vh.topicTextView.setText(String.valueOf(p.getTopic()));
         vh.tagsTextView.setText(String.valueOf(p.getTags()));
-        Picasso.get().load(AFGlobal.BASE_URL + p.getContentSrc()).resize(900, 0).into(vh.postImageView);
+        String postImgUri = AFGlobal.POST_IMAGE_PATH + p.getContentSrc();
+        Picasso.get().load(postImgUri).resize(900, 0).into(vh.postImageView);
         vh.likeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

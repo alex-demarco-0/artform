@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,17 +18,12 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import it.artform.feed.PostGridAdapter;
 import it.artform.pojos.Post;
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
-import it.artform.web.DownloadImageTask;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,7 +59,7 @@ public class UserProfileActivity extends Activity {
                 if(response.isSuccessful()) {
                     User loggedUser = response.body();
                     //Toast.makeText(UserProfileActivity.this, loggedUser.toString(), Toast.LENGTH_LONG).show();
-                    String profilePicUri = AFGlobal.BASE_URL + loggedUser.getProfilePicSrc();
+                    String profilePicUri = AFGlobal.USER_PROPIC_PATH + AFGlobal.getLoggedUser() + ".jpg";
                     //new DownloadImageTask(UserProfileActivity.this.userProfilePic).execute(profilePicUri);
                     Picasso.get().load(profilePicUri).resize(130, 130).centerCrop().into(UserProfileActivity.this.userProfilePicImageView);
 
@@ -103,7 +97,7 @@ public class UserProfileActivity extends Activity {
                     userPosts = new Post[response.body().size()];
                     for(int i=0; i<userPosts.length; i++)
                         userPosts[i] = response.body().get(i);
-                    //Caricamento dei post dll'utente nella GridView
+                    //Caricamento dei post dell'utente nella GridView
                     if(userPosts.length > 0) {
                         userPostsGridView.setAdapter(new PostGridAdapter(UserProfileActivity.this, userPosts));
                         userPostsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

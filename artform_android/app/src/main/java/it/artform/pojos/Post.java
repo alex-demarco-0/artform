@@ -84,4 +84,19 @@ public class Post implements Serializable {
         return this.contentSrc;
     }
 
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", userUsername='" + userUsername + '\'' +
+                ", title='" + title + '\'' +
+                ", topic='" + topic + '\'' +
+                ", tags='" + tags + '\'' +
+                ", publicationDate=" + publicationDate +
+                ", like=" + like +
+                ", type=" + type +
+                ", contentSrc='" + contentSrc + '\'' +
+                '}';
+    }
+
 }
