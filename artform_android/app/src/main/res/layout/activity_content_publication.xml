@@ -1,18 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ContentPubActivity">
-    <include layout="@layout/toolbar" android:id="@+id/toolbar" />
 
-    <ImageButton
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <ImageView
+        android:id="@+id/previewImageView"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_below="@+id/toolbar"
+        android:clickable="true"
+        android:src="@android:drawable/ic_input_add"
+        android:visibility="invisible"
+        android:focusable="true" />
+
+    <RelativeLayout
+        android:id="@+id/addImageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/previewImageView"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter Title" />
+
+        <EditText
+            android:id="@+id/topicEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleEditText"
+            android:hint="Select Topics" />
+
+        <EditText
+            android:id="@+id/tagsEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topicEditText"
+            android:hint="Enter tags" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/publishButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:src="@android:drawable/ic_input_add" />
+        android:layout_below="@+id/addImageLayout"
+        android:layout_marginStart="80dp"
+        android:text="Sumbit" />
 
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addImageLayout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="80dp"
+        android:text="Cancel" />
 </RelativeLayout>
