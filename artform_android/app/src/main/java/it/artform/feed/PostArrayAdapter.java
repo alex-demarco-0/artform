@@ -62,8 +62,8 @@ public class PostArrayAdapter extends ArrayAdapter<Post> {
         vh.titleTextView.setText(String.valueOf(p.getTitle()));
         vh.topicTextView.setText(String.valueOf(p.getTopic()));
         vh.tagsTextView.setText(String.valueOf(p.getTags()));
-        String postImgUri = AFGlobal.POST_IMAGE_PATH + p.getContentSrc();
-        Picasso.get().load(postImgUri).resize(900, 0).into(vh.postImageView);
+        String postResUri = AFGlobal.POST_IMAGE_PATH + p.getId() + ".jpg";
+        Picasso.get().load(postResUri).resize(900, 0).into(vh.postImageView);
         vh.likeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
