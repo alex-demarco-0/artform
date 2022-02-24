@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -30,6 +32,8 @@ public class MainActivity extends Activity {
     ListView datiRegistrazioneListView = null;
     Button notification=null;
     Button addPost=null;
+    Button search=null;
+    BottomNavigationView bnv=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +79,7 @@ public class MainActivity extends Activity {
         });
 
         // TEST - pulsante commission / Progressbar
-        externalProfileButton = findViewById(R.id.externalProfileButton);
+       /* externalProfileButton = findViewById(R.id.externalProfileButton);
         externalProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,7 +96,7 @@ public class MainActivity extends Activity {
                 Intent openUserProfileActivity = new Intent(MainActivity.this, UserProfileActivity.class);
                 startActivity(openUserProfileActivity);
             }
-        });
+        });*/
 
         // TEST - custom ListView post feed
         //ArrayAdapter
@@ -121,7 +125,7 @@ public class MainActivity extends Activity {
         PostCursorAdapter pca = new PostCursorAdapter(this, allPosts, 1);
         feedListView.setAdapter(pca);
 */
-        addPost=(Button) findViewById(R.id.addPostButton);
+       /* addPost=(Button) findViewById(R.id.addPostButton);
         addPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,6 +142,20 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
+
+        search=(Button) findViewById(R.id.searchButton);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intent);
+            }
+        });*/
+        BottomNavigationView bnv;
+        bnv=(BottomNavigationView) findViewById(R.id.navigationView);
+
+
+
     }
 
     @Override

@@ -31,5 +31,7 @@
     <string name="impostazioni">Impostazioni</string>
     <string name="logout">log out</string>
     <string name="search">Cerca</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
