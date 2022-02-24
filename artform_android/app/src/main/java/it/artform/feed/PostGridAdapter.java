@@ -48,7 +48,7 @@ public class PostGridAdapter extends BaseAdapter {
         else
             postImageView = (ImageView) convertView;
         Post p = userPosts[position];
-        Picasso.get().load(AFGlobal.BASE_URL + p.getContentSrc()).into(postImageView);
+        Picasso.get().load(AFGlobal.POST_IMAGE_PATH + p.getContentSrc()).into(postImageView);
         return postImageView;
     }
 
