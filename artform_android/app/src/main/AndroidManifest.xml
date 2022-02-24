@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="it.artform" >
+    package="it.artform">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".AFGlobal"
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ArtForm" >
+        android:theme="@style/Theme.ArtForm"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".PostListActivity"
+            android:exported="false" />
         <activity
             android:name=".ExternalProfileActivity"
             android:exported="false" />
@@ -42,7 +45,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

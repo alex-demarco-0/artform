@@ -2,9 +2,10 @@ package it.artform.pojos;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Post {
+public class Post implements Serializable {
     @SerializedName("Id")
     private final int id; // server DB PK
     @SerializedName("utenteUsername")
@@ -12,7 +13,7 @@ public class Post {
     @SerializedName("titolo")
     private String title;
     private String topic;
-    private String[] tags;
+    private String tags;
     @SerializedName("dataPubblicazione")
     private final Date publicationDate;
     private int like;
@@ -21,7 +22,7 @@ public class Post {
     @SerializedName("contenutoSrc")
     private final String contentSrc; // directory media file
 
-    public Post(int id, String userUsername, String title, String topic, String[] tags, Date publicationDate, int like, boolean type, String contentSrc) {
+    public Post(int id, String userUsername, String title, String topic, String tags, Date publicationDate, int like, boolean type, String contentSrc) {
         this.id = id;
         this.userUsername = userUsername;
         this.title = title;
@@ -55,11 +56,11 @@ public class Post {
         this.topic = topic;
     }
 
-    public String[] getTags() {
+    public String getTags() {
         return this.tags;
     }
 
-    public void setTags(String[] tags) {
+    public void setTags(String tags) {
         this.tags = tags;
     }
 
