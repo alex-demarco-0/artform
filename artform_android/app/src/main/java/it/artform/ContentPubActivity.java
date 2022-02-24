@@ -48,7 +48,7 @@ public class ContentPubActivity extends Activity {
         tagsEditText = findViewById(R.id.tagsEditText);
         String username = AFGlobal.getLoggedUser();
         Date currentDate = null;
-        newPost = new Post(0, username, String.valueOf(titleEditText.getText()), String.valueOf(topicsEditText.getText()), String.valueOf(tagsEditText.getText()), currentDate, 0, true, null);
+        newPost = new Post(0, username, String.valueOf(titleEditText.getText()), String.valueOf(topicsEditText.getText()), String.valueOf(tagsEditText.getText()), currentDate, 0, true);
 
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
