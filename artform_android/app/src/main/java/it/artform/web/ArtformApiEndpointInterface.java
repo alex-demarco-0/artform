@@ -3,12 +3,7 @@ package it.artform.web;
 import java.util.Date;
 import java.util.List;
 
-import it.artform.pojos.Badge;
-import it.artform.pojos.Commission;
-import it.artform.pojos.Notification;
-import it.artform.pojos.Post;
-import it.artform.pojos.Topic;
-import it.artform.pojos.User;
+import it.artform.pojos.*;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
