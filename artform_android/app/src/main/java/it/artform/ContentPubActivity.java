@@ -94,8 +94,6 @@ public class ContentPubActivity extends Activity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                previewImageView.setVisibility(View.GONE);
-                addImageView.setVisibility(View.VISIBLE);
 
                 titleEditText.getText().clear();
                 topicsEditText.getText().clear();
