@@ -26,7 +26,7 @@
 
     <Button
         android:id="@+id/homeButton"
-        android:layout_width="wrap_content"
+        android:layout_width="72dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
@@ -36,11 +36,11 @@
 
     <Button
         android:id="@+id/externalProfileButton"
-        android:layout_width="wrap_content"
+        android:layout_width="79dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="165dp"
-        android:layout_marginBottom="22dp"
+        android:layout_marginStart="229dp"
+        android:layout_marginBottom="19dp"
         android:layout_toEndOf="@+id/homeButton"
         android:text="External" />
 
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="234dp"
+        android:layout_marginEnd="191dp"
         android:layout_marginBottom="23dp"
         android:text="+" />
 
@@ -60,8 +60,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginBottom="20dp"
         android:text="NOTIFICHE" />
 
     <Button
@@ -70,5 +70,14 @@
     android:layout_height="wrap_content"
     android:text="@string/profilo" />
 
+    <Button
+        android:id="@+id/searchButton"
+        android:layout_width="65dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="246dp"
+        android:layout_marginBottom="21dp"
+        android:text="SEARCH" />
 
 </RelativeLayout>
