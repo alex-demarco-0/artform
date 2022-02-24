@@ -21,7 +21,7 @@ public class Post implements Serializable {
     @SerializedName("contenutoSrc")
     private final String contentSrc; // directory media file
 
-    public Post(String userUsername, String title, String topic, String tags, Date publicationDate, int like, boolean type, String contentSrc, int id) {
+    public Post(int id, String userUsername, String title, String topic, String tags, Date publicationDate, int like, boolean type, String contentSrc) {
         this.id = id;
         this.userUsername = userUsername;
         this.title = title;
