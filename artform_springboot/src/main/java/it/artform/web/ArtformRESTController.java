@@ -104,14 +104,14 @@ public class ArtformRESTController {
 			return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	// sistemare
+
 	@RequestMapping(value="/artform/post", method=RequestMethod.POST)
 	public ResponseEntity<Post> addPost(@RequestBody Post newPost) {
 		if(this.artformRepository.savePost(newPost) == 1)
 			return new ResponseEntity<Post>(newPost, HttpStatus.CREATED);
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	// sistemare
+
 	@RequestMapping(value="/artform/post/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Post> updatePost(@PathVariable int id, @RequestBody Post modPost) {
 		Post p = this.artformRepository.findPost(id);
@@ -119,7 +119,7 @@ public class ArtformRESTController {
 			if(modPost.getTitolo() != null && !modPost.getTitolo().isBlank())
 				p.setTitolo(modPost.getTitolo());
 			if(modPost.getTopic() != null && !modPost.getTopic().isBlank())
-				p.setTopic(modPost.getTitolo());
+				p.setTopic(modPost.getTopic());
 			if(modPost.getTags() != null && !modPost.getTags().isBlank())
 				p.setTags(modPost.getTags());
 			if(modPost.getLike() > p.getLike())

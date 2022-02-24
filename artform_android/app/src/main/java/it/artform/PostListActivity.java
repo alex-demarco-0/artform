@@ -17,6 +17,6 @@ public class PostListActivity extends Activity {
         ListView postListView = findViewById(R.id.postListView);
         Bundle bundle = getIntent().getExtras();
         postListView.setAdapter(new PostArrayAdapter(this, R.layout.row_post_list, (Post[]) bundle.getSerializable("postList")));
-        postListView.smoothScrollToPosition((Integer) bundle.get("postIndex"));
+        postListView.setSelection((Integer) bundle.get("postIndex"));
     }
 }

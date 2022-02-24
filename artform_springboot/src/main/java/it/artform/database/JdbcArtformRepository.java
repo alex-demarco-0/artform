@@ -55,13 +55,13 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public int savePost(Post p) {
-		return jdbcTemplate.update("INSERT INTO post (utenteUsername, titolo, topic, tags, dataPubblicazione, like, tipologia, contenutoSrc) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+		return jdbcTemplate.update("INSERT INTO `post` (`utenteUsername`, `titolo`, `topic`, `tags`, `dataPubblicazione`, `like`, `tipologia`, `contenutoSrc`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
 				new Object[] {p.getUtenteUsername(), p.getTitolo(), p.getTopic(), p.getTags(), p.getDataPubblicazione(), p.getLike(), p.getTipologia(), p.getContenutoSrc()});
 	}
 
 	@Override
 	public int updatePost(Post p) {
-		return jdbcTemplate.update("UPDATE post SET titolo=?, topic=?, tags=?, like=? WHERE Id=?) VALUES (?, ?, ?, ?, ?)",
+		return jdbcTemplate.update("UPDATE `post` SET `titolo`=?, `topic`=?, `tags`=?, `like`=? WHERE `Id`=?",
 				new Object[] {p.getTitolo(), p.getTopic(), p.getTags(), p.getLike(), p.getId()});
 	}
 
