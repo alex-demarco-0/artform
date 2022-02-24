@@ -7,6 +7,3 @@ la directory 'media' contiene l'immagine del logo e le directory 'imagePosts', '
 le directory contengono rispettivamente i post degli utenti (formato immagine), i post degli utenti (formato video), le immagini dei profili degli utenti (formato immagine).
 I file dei post degli utenti (sia immagine che video) saranno nominati come {Id}.{estensione}.
 Le immagini dei profili degli utenti saranno nominati come {username}.{estensione}.
-Si potrebbero eliminare le colonne/attributi di Post e Utente relativi ai path delle immagini:
--memorizzando il path;
--risalendo ai nomi dei file (post: id.jpg) (immagine profilo: username.jpg)

@@ -2,7 +2,6 @@ package it.artform;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -10,14 +9,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.sql.SQLException;
-import java.util.Date;
-
-import it.artform.databases.PostCursorAdapter;
 import it.artform.databases.PostDBAdapter;
-import it.artform.databases.UserDBAdapter;
-import it.artform.pojos.Post;
-import it.artform.feed.PostArrayAdapter;
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
 import retrofit2.Call;

@@ -9,6 +9,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AFGlobal extends Application {
+    static AFGlobal AFGlobalInstance = null;
     public static final String BASE_URL = "http://172.23.224.1:8080/"; //varia in base alla macchina e alla rete
     public static final String USER_PROPIC_PATH = BASE_URL + "media/userProfilePics/";
     public static final String POST_IMAGE_PATH = BASE_URL + "media/imagePosts/";
@@ -17,10 +18,18 @@ public class AFGlobal extends Application {
     Retrofit retrofit = null;
 
     public AFGlobal() {
+        AFGlobalInstance = this;
+        Gson gson = new GsonBuilder()
+                .setDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz")
+                .create();
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
+    }
+
+    public static AFGlobal getInstance() {
+        return AFGlobalInstance;
     }
 
     public static String getLoggedUser() {
@@ -30,6 +39,10 @@ public class AFGlobal extends Application {
     public static String setLoggedUser(String username) {
         loggedUser = username;
         return loggedUser;
+    }
+
+    public Retrofit getRetrofit() {
+        return retrofit;
     }
 
 }

@@ -6,7 +6,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Post implements Serializable {
-    @SerializedName("Id")
     private final int id; // server DB PK
     @SerializedName("utenteUsername")
     private final String userUsername;
@@ -19,10 +18,8 @@ public class Post implements Serializable {
     private int like;
     @SerializedName("tipologia")
     private final boolean type; //true = image, false = video
-    @SerializedName("contenutoSrc")
-    private final String contentSrc; // directory media file
 
-    public Post(int id, String userUsername, String title, String topic, String tags, Date publicationDate, int like, boolean type, String contentSrc) {
+    public Post(int id, String userUsername, String title, String topic, String tags, Date publicationDate, int like, boolean type) {
         this.id = id;
         this.userUsername = userUsername;
         this.title = title;
@@ -31,7 +28,6 @@ public class Post implements Serializable {
         this.publicationDate = publicationDate;
         this.like = like;
         this.type = type;
-        this.contentSrc = contentSrc;
     }
 
     public int getId() { return this.id; }
@@ -80,10 +76,6 @@ public class Post implements Serializable {
         return this.type;
     }
 
-    public String getContentSrc() {
-        return this.contentSrc;
-    }
-
     @Override
     public String toString() {
         return "Post{" +
@@ -95,7 +87,6 @@ public class Post implements Serializable {
                 ", publicationDate=" + publicationDate +
                 ", like=" + like +
                 ", type=" + type +
-                ", contentSrc='" + contentSrc + '\'' +
                 '}';
     }
 

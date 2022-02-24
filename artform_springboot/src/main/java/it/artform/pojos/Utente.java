@@ -3,7 +3,6 @@ package it.artform.pojos;
 public class Utente {
 	private String nome, cognome, username, email, numeroTelefono, password, bio;
 	private int punteggio;
-	private String immagineProfiloSrc;
 	
 	public Utente() {}
 /*
@@ -84,14 +83,6 @@ public class Utente {
 	
 	public void incrementaPunteggio(int punteggio) {
 		this.punteggio += punteggio;
-	}
-	
-	public String getImmagineProfiloSrc() {
-		return immagineProfiloSrc;
-	}
-	
-	public void setImmagineProfiloSrc(String immagineProfiloSrc) {
-		this.immagineProfiloSrc = immagineProfiloSrc;
 	}
 	
 	/*
