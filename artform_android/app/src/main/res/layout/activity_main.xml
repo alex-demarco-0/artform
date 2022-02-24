@@ -39,12 +39,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginBottom="21dp"
+        android:layout_marginStart="165dp"
+        android:layout_marginBottom="22dp"
         android:layout_toEndOf="@+id/homeButton"
         android:text="External" />
 
-<Button
+    <Button
+        android:id="@+id/addPostButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="174dp"
+        android:layout_marginBottom="22dp"
+        android:text="+" />
+
+    <Button
+        android:id="@+id/notificationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
     android:id="@+id/profileButton"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

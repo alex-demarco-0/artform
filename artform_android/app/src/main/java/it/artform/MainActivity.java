@@ -118,6 +118,14 @@ public class MainActivity extends Activity {
         PostCursorAdapter pca = new PostCursorAdapter(this, allPosts, 1);
         feedListView.setAdapter(pca);
 */
+        Button addPost=(Button) findViewById(R.id.addPostButton);
+        addPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this, ContentPubActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
