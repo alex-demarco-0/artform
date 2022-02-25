@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserProfileActivity">
-    <include layout="@layout/toolbar" android:id="@+id/toolbar"/>
+
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
 
     <RelativeLayout
         android:id="@+id/profileLayout"
@@ -67,19 +70,4 @@
 
     </RelativeLayout>
 
-
-
-
-    <!--
-        <LinearLayout
-            android:id="@+id/infoLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/profileLayout"
-            android:gravity="center"
-            android:orientation="vertical">
-
-
-
-        </LinearLayout> -->
 </RelativeLayout>
