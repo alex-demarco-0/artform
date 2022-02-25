@@ -5,14 +5,23 @@ import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import it.artform.ResourcesStorageService;
 import it.artform.database.ArtformRepository;
 import it.artform.pojos.*;
 
@@ -21,6 +30,9 @@ public class ArtformRESTController {
 	
 	@Autowired
 	ArtformRepository artformRepository;
+	
+	@Autowired
+	ResourcesStorageService resourcesStorageService;
 	
 	/* 
 	 * Utente
@@ -50,7 +62,7 @@ public class ArtformRESTController {
 	}
 
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.PUT)
-	public ResponseEntity<Utente> updateUtente(@PathVariable String username, @RequestBody Utente modUtente) {
+	public ResponseEntity<Utente> updateUtente(@PathVariable String username, @RequestParam("resource") MultipartFile profilePicResource, @RequestParam("userObj") Utente modUtente) {
 		Utente u = this.artformRepository.findUtente(username);
 		if(u != null) {
 			if(modUtente.getNome() != null && !modUtente.getNome().isBlank())
@@ -69,8 +81,10 @@ public class ArtformRESTController {
 				u.setBio(modUtente.getBio());
 			if(modUtente.getPunteggio() >= u.getPunteggio())
 				u.setPunteggio(modUtente.getPunteggio());
-			if(this.artformRepository.updateUtente(u) == 1)
+			if(this.artformRepository.updateUtente(u) == 1) {
+				resourcesStorageService.storeProfilePic(profilePicResource, modUtente);
 				return new ResponseEntity<Utente>(u, HttpStatus.OK);
+			}
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -104,9 +118,15 @@ public class ArtformRESTController {
 	}
 
 	@RequestMapping(value="/artform/post", method=RequestMethod.POST)
-	public ResponseEntity<Post> addPost(@RequestBody Post newPost) {
-		if(this.artformRepository.savePost(newPost) == 1)
-			return new ResponseEntity<Post>(newPost, HttpStatus.CREATED);
+	public ResponseEntity<Post> addPost(@RequestParam("resource") MultipartFile postResource, @RequestParam("postObj") Post newPost) {
+		if(this.artformRepository.savePost(newPost) == 1) {
+			Post createdPost = this.artformRepository.findPostByParams(newPost.getUtenteUsername(), newPost.getDataPubblicazione());
+			if(newPost.getTipologia().equals("img"))
+				resourcesStorageService.storeImagePost(postResource, createdPost);
+			else
+				resourcesStorageService.storeVideoPost(postResource, createdPost);
+			return new ResponseEntity<Post>(createdPost, HttpStatus.CREATED);
+		}
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
