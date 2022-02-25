@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.FileUtils;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -103,8 +102,8 @@ public class ContentPubActivity extends Activity {
         MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", postFile.getName(), postResource);
         String postJsonObject = new Gson().toJson(newPost);
         RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
-        Call<Post> postCall = apiService.addPost(objectPart, resourcePart);
-        postCall.enqueue(new Callback<Post>() {
+        Call<Post> publishPostCall = apiService.addPost(objectPart, resourcePart);
+        publishPostCall.enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
                 PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
@@ -131,7 +130,7 @@ public class ContentPubActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && data != null){
-            Uri selectedImage  = data.getData();
+            Uri selectedImage = data.getData();
             addImageView.setVisibility(View.GONE);
             previewImageView = findViewById(R.id.previewImageView);
             previewImageView.setImageURI(selectedImage);
