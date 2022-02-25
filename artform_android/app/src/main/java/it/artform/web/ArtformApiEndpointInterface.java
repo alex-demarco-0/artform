@@ -4,12 +4,16 @@ import java.util.Date;
 import java.util.List;
 
 import it.artform.pojos.*;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 public interface ArtformApiEndpointInterface {
@@ -24,8 +28,9 @@ public interface ArtformApiEndpointInterface {
     @POST("/artform/utente")
     Call<User> addUser(@Body User user);
 
+    @Multipart
     @PUT("/artform/utente/{username}")
-    Call<User> updateUser(@Path("username") String username, @Body User user);
+    Call<User> updateUser(@Path("username") String username, @Part("userObj") RequestBody userObj, @Part MultipartBody.Part resource);
 
     @DELETE("/artform/utente/{username}")
     String deleteUser(@Path("username") String username);
@@ -37,8 +42,9 @@ public interface ArtformApiEndpointInterface {
     @GET("/artform/utente/{username}/posts")
     Call<List<Post>> getUserPosts(@Path("username") String username);
 
+    @Multipart
     @POST("/artform/post")
-    Call<Post> addPost(@Body Post post);
+    Call<Post> addPost(@Part("postObj") RequestBody postObj, @Part MultipartBody.Part resource);
 
     @PUT("/artform/post/{id}")
     Call<Post> updatePost(@Path("id") int id, @Body Post post);
