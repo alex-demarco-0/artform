@@ -1,8 +1,11 @@
 package it.artform;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.FileUtils;
 import android.provider.MediaStore;
@@ -12,6 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.gson.Gson;
 
@@ -62,12 +68,19 @@ public class ContentPubActivity extends Activity {
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
+        if (Build.VERSION.SDK_INT >= 23) {
+            int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
+            if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(ContentPubActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            }
+        }
+
         publishButton = findViewById(R.id.publishButton);
         publishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 newPost = new Post(0, username, String.valueOf(titleEditText.getText()), String.valueOf(topicsEditText.getText()), String.valueOf(tagsEditText.getText()), new Date(), 0, "img");
-                //ContentPubActivity.this.uploadPost();
+                ContentPubActivity.this.uploadPost();
                 //Toast.makeText(ContentPubActivity.this, "", Toast.LENGTH_SHORT).show();
             }
         });
@@ -82,11 +95,12 @@ public class ContentPubActivity extends Activity {
             }
         });
     }
-/*
-    private uploadPost() {
-        File postFile = FileUtils.getFile(this, fileUri);
+
+    private void uploadPost() {
+        //TEST
+        File postFile = new File("/sdcard/Download/cRGLP.jpg");
         RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), postFile);
-        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", file.getName(), postResource);
+        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", postFile.getName(), postResource);
         String postJsonObject = new Gson().toJson(newPost);
         RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
         Call<Post> postCall = apiService.addPost(objectPart, resourcePart);
@@ -102,7 +116,6 @@ public class ContentPubActivity extends Activity {
                 }
                 pdba.createPost(newPost);
                 pdba.close();
-
                 Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
             }
 
@@ -112,7 +125,8 @@ public class ContentPubActivity extends Activity {
                 t.printStackTrace();
             }
         });
-*/
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
