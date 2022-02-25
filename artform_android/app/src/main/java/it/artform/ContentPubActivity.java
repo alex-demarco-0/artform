@@ -2,8 +2,10 @@ package it.artform;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.FileUtils;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,17 +38,20 @@ public class ContentPubActivity extends Activity {
     EditText titleEditText, topicsEditText, tagsEditText;
     ImageButton publishImageButton;
     Button publishButton, cancelButton;
-    ImageButton previewImageView;
+    ImageButton addImageView;
+    ImageView previewImageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_publication);
-        previewImageView = findViewById(R.id.previewImageView);
-        previewImageView.setOnClickListener(new View.OnClickListener() {
+        addImageView = findViewById(R.id.addImageView);
+        addImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, 3);
             }
         });
 
@@ -102,6 +107,29 @@ public class ContentPubActivity extends Activity {
                 t.printStackTrace();
             }
         });
+
+        cancelButton = findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                titleEditText.getText().clear();
+                topicsEditText.getText().clear();
+                tagsEditText.getText().clear();
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && data != null){
+            Uri selectedImage  = data.getData();
+            addImageView.setVisibility(View.GONE);
+            previewImageView = findViewById(R.id.previewImageView);
+            previewImageView.setImageURI(selectedImage);
+        }
     }
 
 }
