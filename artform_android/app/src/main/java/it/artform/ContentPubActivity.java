@@ -30,7 +30,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ContentPubActivity extends Activity {
-
     AFGlobal app = null;
     ArtformApiEndpointInterface apiService = null;
     Post newPost = null;
@@ -41,17 +40,17 @@ public class ContentPubActivity extends Activity {
     ImageButton addImageView;
     ImageView previewImageView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_publication);
+
         addImageView = findViewById(R.id.addImageView);
         addImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 3);
+                Intent pickMediaIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(pickMediaIntent, 3);
             }
         });
 
@@ -59,8 +58,6 @@ public class ContentPubActivity extends Activity {
         topicsEditText = findViewById(R.id.topicsEditText);
         tagsEditText = findViewById(R.id.tagsEditText);
         String username = AFGlobal.getLoggedUser();
-        Date currentDate = null;
-        newPost = new Post(0, username, String.valueOf(titleEditText.getText()), String.valueOf(topicsEditText.getText()), String.valueOf(tagsEditText.getText()), currentDate, 0, true);
 
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
@@ -69,8 +66,9 @@ public class ContentPubActivity extends Activity {
         publishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                newPost = new Post(0, username, String.valueOf(titleEditText.getText()), String.valueOf(topicsEditText.getText()), String.valueOf(tagsEditText.getText()), new Date(), 0, "img");
                 ContentPubActivity.this.uploadPost();
-                Toast.makeText(ContentPubActivity.this, "", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(ContentPubActivity.this, "", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -98,7 +96,6 @@ public class ContentPubActivity extends Activity {
                 pdba.close();
 
                 Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
-
             }
 
             @Override
@@ -112,13 +109,11 @@ public class ContentPubActivity extends Activity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 titleEditText.getText().clear();
                 topicsEditText.getText().clear();
                 tagsEditText.getText().clear();
             }
         });
-
     }
 
     @Override
