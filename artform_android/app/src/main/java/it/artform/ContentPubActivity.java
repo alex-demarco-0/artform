@@ -67,20 +67,28 @@ public class ContentPubActivity extends Activity {
             @Override
             public void onClick(View view) {
                 newPost = new Post(0, username, String.valueOf(titleEditText.getText()), String.valueOf(topicsEditText.getText()), String.valueOf(tagsEditText.getText()), new Date(), 0, "img");
-                ContentPubActivity.this.uploadPost();
+                //ContentPubActivity.this.uploadPost();
                 //Toast.makeText(ContentPubActivity.this, "", Toast.LENGTH_SHORT).show();
             }
         });
-    }
 
+        cancelButton = findViewById(R.id.cancelButton);
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                titleEditText.getText().clear();
+                topicsEditText.getText().clear();
+                tagsEditText.getText().clear();
+            }
+        });
+    }
+/*
     private uploadPost() {
         File postFile = FileUtils.getFile(this, fileUri);
         RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), postFile);
         MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", file.getName(), postResource);
         String postJsonObject = new Gson().toJson(newPost);
         RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
-        //MultipartBody.Part objectPart = MultipartBody.Part.createFormData("postObj", "", postObject);
-        //RequestBody postObj = RequestBody.create(okhttp3.MultipartBody.FORM, newPost);
         Call<Post> postCall = apiService.addPost(objectPart, resourcePart);
         postCall.enqueue(new Callback<Post>() {
             @Override
@@ -104,18 +112,7 @@ public class ContentPubActivity extends Activity {
                 t.printStackTrace();
             }
         });
-
-        cancelButton = findViewById(R.id.cancelButton);
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                titleEditText.getText().clear();
-                topicsEditText.getText().clear();
-                tagsEditText.getText().clear();
-            }
-        });
-    }
-
+*/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
