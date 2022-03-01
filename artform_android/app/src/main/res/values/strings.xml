@@ -30,7 +30,10 @@
     <!-- SettingsActivity-->
     <string name="impostazioni">Impostazioni</string>
     <string name="logout">log out</string>
-    <string name="search">Cerca</string>
+    <string name="search">Search...</string>
+    <string name="image_posts">Artworks</string>
+    <string name="video_posts">Videos</string>
+    <string name="users">Artists</string>
     <string name="addimage">addImage</string>
 
 </resources>
