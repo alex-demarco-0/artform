@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
         }
 
         // TEST ADM- pulsante home
-        Button homeButton = findViewById(R.id.homeButton);
+        /*Button homeButton = findViewById(R.id.homeButton);
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +76,7 @@ public class MainActivity extends Activity {
                     }
                 });
             }
-        });
+        });*/
 
         // TEST - pulsante commission / Progressbar
        /* externalProfileButton = findViewById(R.id.externalProfileButton);
@@ -151,7 +151,6 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });*/
-        BottomNavigationView bnv;
         bnv=(BottomNavigationView) findViewById(R.id.navigationView);
 
 

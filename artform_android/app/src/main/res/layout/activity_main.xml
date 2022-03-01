@@ -18,14 +18,9 @@
         android:layout_marginBottom="300dp" >
 
         <!-- TEST -->
-        <ListView
-            android:id="@+id/feedListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/homeButton"
-            android:layout_marginBottom="30dp" />
 
-        <Button
+
+       <!-- <Button
             android:id="@+id/homeButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -34,36 +29,22 @@
             android:layout_marginTop="383dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="226dp"
-            android:text="Home" />
+            android:text="Home" />-->
     </ListView>
 
+    <ListView
+        android:id="@+id/feedListView"
+        android:layout_width="match_parent"
+        android:layout_height="561dp"
+        android:layout_marginBottom="-3dp" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
-        app:labelVisibilityMode="labeled"
-        android:background="@drawable/background_gradient"
-        app:itemBackground="@color/blue"
-        app:itemIconTint="#D291BC"
-        app:itemTextColor="#fff"
-        app:menu="@menu/bottom_navigation_menu" />
+        app:menu="@menu/bottom_navigation"/>
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/my_nav" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView2"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:navGraph="@navigation/my_nav" />
+
 
 </RelativeLayout>
