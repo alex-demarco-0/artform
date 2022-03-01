@@ -4,13 +4,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.sql.SQLException;
 import java.util.Date;
@@ -26,7 +33,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends Activity {
+
+public class MainActivity extends FragmentActivity {
     PostDBAdapter pdba = null;
     Button externalProfileButton = null;
     ListView datiRegistrazioneListView = null;
@@ -151,11 +159,36 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });*/
-        bnv=(BottomNavigationView) findViewById(R.id.navigationView);
-
-
-
+        bnv=(BottomNavigationView) findViewById(R.id.bottomNavigation);
+        bnv.setOnItemSelectedListener(navListener);
     }
+
+    private NavigationBarView.OnItemSelectedListener
+    navListener=new NavigationBarView.OnItemSelectedListener(){
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment=null;
+            switch(item.getItemId()){
+                case R.id.home_item:
+                    selectedFragment=new HomeFragment();
+                    break;
+                case R.id.search_item:
+                    selectedFragment=new SearchFragment();
+                    break;
+                case R.id.add_item:
+                    selectedFragment=new AddFragment();
+                    break;
+                case R.id.notifications_item:
+                    selectedFragment=new NotificationsFragment();
+                    break;
+                case R.id.profile_item:
+                    selectedFragment=new ProfileFragment();
+                    break;
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, selectedFragment).commit();
+            return true;
+        }
+    };
 
     @Override
     protected void onDestroy() {
