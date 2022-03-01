@@ -3,7 +3,6 @@ package it.artform.web;
 import java.util.Date;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -100,6 +99,14 @@ public class ArtformRESTController {
 		Post p = this.artformRepository.findPost(id);
 		if(p != null)
 			return new ResponseEntity<Post>(p, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	@RequestMapping(value="/artform/post/keywords={keywords}", method=RequestMethod.GET)
+	public ResponseEntity<List<Post>> getPostsByKeywords(@PathVariable String keywords) {
+		List<Post> posts = this.artformRepository.findPostsByKeywords(keywords);
+		if(posts != null)
+			return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	

@@ -54,6 +54,11 @@ public class JdbcArtformRepository implements ArtformRepository {
 	}
 
 	@Override
+	public List<Post> findPostsByKeywords(String keywords) {
+		return jdbcTemplate.query("SELECT * from post WHERE titolo LIKE '%" + keywords + "%' OR tags LIKE '%" + keywords + "%'", BeanPropertyRowMapper.newInstance(Post.class));
+	}
+	
+	@Override
 	public List<Post> findPostsByUtente(String username) {
 		return jdbcTemplate.query("SELECT * from post WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(Post.class), username);
 	}
