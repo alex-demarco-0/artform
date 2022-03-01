@@ -48,7 +48,7 @@
             android:name=".ContentPubActivity"
             android:exported="false" />
         <activity
-            android:name=".SearchActivity"
+            android:name=".ImagePostSearchActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
