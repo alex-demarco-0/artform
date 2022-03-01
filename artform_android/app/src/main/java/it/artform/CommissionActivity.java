@@ -75,7 +75,7 @@ public class CommissionActivity extends Activity {
 
             @Override
             public void onFailure(Call<List<Topic>> call, Throwable t) {
-                Toast.makeText(CommissionActivity.this, "Si è verificato un problema durante la richiesta " + t.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(CommissionActivity.this, "Si è verificato un problema durante la richiesta " + t, Toast.LENGTH_LONG).show();
                 t.printStackTrace();
             }
         });

@@ -9,7 +9,6 @@ public class Post {
 	private Date dataPubblicazione;
 	private int like;
 	private String tipologia; // boolean ?
-	private String contenutoSrc;
 	
 	public Post() {}
 /*
@@ -95,13 +94,6 @@ public class Post {
 		this.tipologia = tipologia;
 	}
 	
-	public String getContenutoSrc() {
-		return contenutoSrc;
-	}
-	
-	public void setContenutoSrc(String contenutoSrc) {
-		this.contenutoSrc = contenutoSrc;
-	}
 /*
 	@Override
 	public String toString() {

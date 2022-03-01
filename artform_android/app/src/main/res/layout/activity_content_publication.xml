@@ -9,44 +9,69 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
-    <ImageView
-        android:id="@+id/previewImageView"
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_below="@+id/toolbar"
-        android:clickable="true"
-        android:src="@android:drawable/ic_input_add"
-        android:visibility="invisible"
-        android:focusable="true" />
-
     <RelativeLayout
+        android:id="@+id/imageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+
+        <ImageButton
+            android:id="@+id/addImageView"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:clickable="true"
+            android:contentDescription="@string/addimage"
+            android:focusable="true"
+            android:padding="16dp"
+            android:src="@android:drawable/ic_input_add" />
+
+        <ImageView
+            android:id="@+id/previewImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/addImageView"
+            android:layout_alignTop="@+id/addImageView"
+            android:layout_alignRight="@+id/addImageView"
+            android:layout_alignBottom="@+id/addImageView"
+            android:adjustViewBounds="true"
+            android:padding="16dp"
+            android:scaleType="fitCenter" />
+    </RelativeLayout>
+
+
+    <LinearLayout
         android:id="@+id/addImageLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/previewImageView"
+        android:layout_below="@+id/imageLayout"
+        android:orientation="vertical"
         android:padding="16dp">
 
         <EditText
             android:id="@+id/titleEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Title" />
+            android:hint="Enter Title"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/topicEditText"
+            android:id="@+id/topicsEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/titleEditText"
-            android:hint="Select Topics" />
+            android:hint="Enter Topics"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
         <EditText
             android:id="@+id/tagsEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/topicEditText"
-            android:hint="Enter tags" />
+            android:hint="Enter tags"
+            android:inputType="text"
+            android:minHeight="48dp" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/publishButton"

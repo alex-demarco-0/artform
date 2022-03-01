@@ -14,11 +14,16 @@ import com.squareup.picasso.Picasso;
 import it.artform.AFGlobal;
 import it.artform.R;
 import it.artform.pojos.Post;
+import it.artform.web.ArtformApiEndpointInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PostArrayAdapter extends ArrayAdapter<Post> {
     private Context ctx = null;
     private int res = 0;
     private Post[] postList = null;
+    ArtformApiEndpointInterface apiService = null;
 
     static class ViewHolder {
         ImageView postImageView;
@@ -34,6 +39,7 @@ public class PostArrayAdapter extends ArrayAdapter<Post> {
         ctx = context;
         res = resource;
         postList = objects;
+        apiService = AFGlobal.getInstance().getRetrofit().create(ArtformApiEndpointInterface.class);
     }
 
     @Override
@@ -52,21 +58,36 @@ public class PostArrayAdapter extends ArrayAdapter<Post> {
         }
         ViewHolder vh = (ViewHolder) convertView.getTag();
         Post p = postList[position];
-        //Toast.makeText(ctx, p.toString(), Toast.LENGTH_LONG).show();
         vh.userTextView.setText(String.valueOf(p.getUser()));
         vh.titleTextView.setText(String.valueOf(p.getTitle()));
         vh.topicTextView.setText(String.valueOf(p.getTopic()));
         vh.tagsTextView.setText(String.valueOf(p.getTags()));
-        String postImgUri = AFGlobal.POST_IMAGE_PATH + p.getContentSrc();
-        Picasso.get().load(postImgUri).resize(900, 0).into(vh.postImageView);
+        String postResUri = AFGlobal.POST_IMAGE_PATH + p.getId() + ".jpg";
+        Picasso.get().load(postResUri).resize(900, 0).into(vh.postImageView);
         vh.likeTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //implementare incemento di like
-                Toast.makeText(ctx, "You liked the post from " + vh.userTextView.getText(), Toast.LENGTH_SHORT).show();
+                giveLikeToPost(p);
             }
         });
         return convertView;
+    }
+
+    private void giveLikeToPost(Post p) {
+        p.giveLike();
+        Call<Post> updatePostCall = apiService.updatePost(p.getId(), p);
+        updatePostCall.enqueue(new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(ctx, "You liked " + p.getUser() + "'s post", Toast.LENGTH_SHORT).show();
+                }
+            }
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+                Toast.makeText(ctx, "Error while giving like to the post" + p.getUser(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

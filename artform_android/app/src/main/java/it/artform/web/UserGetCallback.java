@@ -28,7 +28,7 @@ public class UserGetCallback implements Callback<User> {
     public void onResponse(Call<User> call, Response<User> response) {
         if(response.isSuccessful()) {
             user = new User(response.body().getName(), response.body().getSurname(), response.body().getUsername(),
-                    response.body().getEmail(), response.body().getPhone(), response.body().getPassword(), response.body().getBio(), response.body().getPoints(), response.body().getProfilePicSrc());
+                    response.body().getEmail(), response.body().getPhone(), response.body().getPassword(), response.body().getBio(), response.body().getPoints());
             Toast.makeText(ctx, user.toString(), Toast.LENGTH_SHORT).show();
         }
     }

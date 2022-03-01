@@ -69,8 +69,6 @@ public class ArtformRESTController {
 				u.setBio(modUtente.getBio());
 			if(modUtente.getPunteggio() >= u.getPunteggio())
 				u.setPunteggio(modUtente.getPunteggio());
-			if(modUtente.getImmagineProfiloSrc() != null && !modUtente.getImmagineProfiloSrc().isBlank())
-				u.setImmagineProfiloSrc(modUtente.getImmagineProfiloSrc());
 			if(this.artformRepository.updateUtente(u) == 1)
 				return new ResponseEntity<Utente>(u, HttpStatus.OK);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

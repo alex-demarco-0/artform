@@ -28,14 +28,14 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public int saveUtente(Utente u) {
-		return jdbcTemplate.update("INSERT INTO utente (nome, cognome, username, email, numeroTelefono, password, bio, punteggio, immagineProfiloSrc) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-				new Object[] {u.getNome(), u.getCognome(), u.getUsername(), u.getEmail(), u.getNumeroTelefono(), u.getPassword(), u.getBio(), u.getPunteggio(), u.getImmagineProfiloSrc()});
+		return jdbcTemplate.update("INSERT INTO utente (nome, cognome, username, email, numeroTelefono, password, bio, punteggio) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+				new Object[] {u.getNome(), u.getCognome(), u.getUsername(), u.getEmail(), u.getNumeroTelefono(), u.getPassword(), u.getBio(), u.getPunteggio()});
 	}
 
 	@Override
 	public int updateUtente(Utente u) {
-		return jdbcTemplate.update("UPDATE utente SET nome=?, cognome=?, username=?, email=?, numeroTelefono=?, password=?, bio=?, punteggio=?, immagineProfiloSrc=? WHERE username=?",
-				new Object[] {u.getNome(), u.getCognome(), u.getUsername(), u.getEmail(), u.getNumeroTelefono(), u.getPassword(), u.getBio(), u.getPunteggio(), u.getImmagineProfiloSrc(), u.getUsername()});
+		return jdbcTemplate.update("UPDATE utente SET nome=?, cognome=?, username=?, email=?, numeroTelefono=?, password=?, bio=?, punteggio=? WHERE username=?",
+				new Object[] {u.getNome(), u.getCognome(), u.getUsername(), u.getEmail(), u.getNumeroTelefono(), u.getPassword(), u.getBio(), u.getPunteggio(), u.getUsername()});
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public int savePost(Post p) {
-		return jdbcTemplate.update("INSERT INTO `post` (`utenteUsername`, `titolo`, `topic`, `tags`, `dataPubblicazione`, `like`, `tipologia`, `contenutoSrc`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-				new Object[] {p.getUtenteUsername(), p.getTitolo(), p.getTopic(), p.getTags(), p.getDataPubblicazione(), p.getLike(), p.getTipologia(), p.getContenutoSrc()});
+		return jdbcTemplate.update("INSERT INTO `post` (`utenteUsername`, `titolo`, `topic`, `tags`, `dataPubblicazione`, `like`, `tipologia`) VALUES (?, ?, ?, ?, ?, ?, ?)",
+				new Object[] {p.getUtenteUsername(), p.getTitolo(), p.getTopic(), p.getTags(), p.getDataPubblicazione(), p.getLike(), p.getTipologia()});
 	}
 
 	@Override
