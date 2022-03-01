@@ -66,14 +66,14 @@ public class ContentPubActivity extends Activity {
 
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
-
+/*
         if (Build.VERSION.SDK_INT >= 23) {
             int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
             if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(ContentPubActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             }
         }
-
+*/
         publishButton = findViewById(R.id.publishButton);
         publishButton.setOnClickListener(new View.OnClickListener() {
             @Override
