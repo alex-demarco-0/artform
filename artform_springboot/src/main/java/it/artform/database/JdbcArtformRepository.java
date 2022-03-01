@@ -47,6 +47,11 @@ public class JdbcArtformRepository implements ArtformRepository {
 	public Post findPost(int id) {
 		return jdbcTemplate.queryForObject("SELECT * from post WHERE Id=?", BeanPropertyRowMapper.newInstance(Post.class), id);
 	}
+	
+	@Override
+	public Post findPostByParams(String username, Date dataPubblicazione) {
+		return jdbcTemplate.queryForObject("SELECT * from post WHERE utenteUsername=? AND dataPubblicazione=?", BeanPropertyRowMapper.newInstance(Post.class), username, dataPubblicazione);
+	}
 
 	@Override
 	public List<Post> findPostsByUtente(String username) {

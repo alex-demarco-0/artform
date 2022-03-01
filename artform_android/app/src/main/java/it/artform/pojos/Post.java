@@ -17,9 +17,9 @@ public class Post implements Serializable {
     private final Date publicationDate;
     private int like;
     @SerializedName("tipologia")
-    private final boolean type; //true = image, false = video
+    private final String type; //img = image, vid = video
 
-    public Post(int id, String userUsername, String title, String topic, String tags, Date publicationDate, int like, boolean type) {
+    public Post(int id, String userUsername, String title, String topic, String tags, Date publicationDate, int like, String type) {
         this.id = id;
         this.userUsername = userUsername;
         this.title = title;
@@ -72,7 +72,7 @@ public class Post implements Serializable {
         this.like++;
     }
 
-    public boolean getType() {
+    public String getType() {
         return this.type;
     }
 

@@ -40,7 +40,7 @@ public class PostDBAdapter {
         dbHelper.close();
     }
 
-    private ContentValues createContentValues(int id, String userUsername, String title, String topic, String tags, Date publicationDate, int like, boolean type) {
+    private ContentValues createContentValues(int id, String userUsername, String title, String topic, String tags, Date publicationDate, int like, String type) {
         ContentValues values = new ContentValues();
         values.put( KEY_EXTERNAL_ID, id );
         values.put( KEY_USER, userUsername );
