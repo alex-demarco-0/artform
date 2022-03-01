@@ -67,6 +67,13 @@
             android:horizontalSpacing="5dp"
             android:verticalSpacing="5dp" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/badgesReciclerView"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/userProfileBadgeButton"
+            android:layout_marginTop="30dp" />
+
     </RelativeLayout>
 
 </RelativeLayout>
