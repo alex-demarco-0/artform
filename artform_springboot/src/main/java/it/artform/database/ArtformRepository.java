@@ -17,7 +17,7 @@ public interface ArtformRepository {
 	//Post
 	Post findPost(int id);
 	Post findPostByParams(String username, Date dataPubblicazione);
-	List<Post> findPostsByFilters(String topic, String keywords);
+	List<Post> findPostsByFilters(String topic, String keywords, String type);
 	List<Post> findPostsByUtente(String username);
 	int savePost(Post p);
 	int updatePost(Post p);
