@@ -23,13 +23,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ImagePostSearchActivity extends Activity {
+public class UserSearchActivity extends Activity {
     SearchView contentSearchView = null;
     Button searchArtworksButton = null;
     Button searchVideosButton = null;
     Button searchArtistsButton = null;
     Spinner topicSpinner = null;
-    GridView artworksGridView = null;
+    GridView artistsGridView = null;
     TextView noResultTextView = null;
 
     ArtformApiEndpointInterface apiService = null;
@@ -48,7 +48,7 @@ public class ImagePostSearchActivity extends Activity {
         searchVideosButton = findViewById(R.id.searchVideosButton); //activity
         searchArtistsButton = findViewById(R.id.searchArtistsButton); //activity
         topicSpinner = findViewById(R.id.topicSpinner); //fetch topics
-        artworksGridView = findViewById(R.id.artworksGridView); //load posts
+        artistsGridView = findViewById(R.id.artistsGridView); //load posts
         noResultTextView = findViewById(R.id.noResultTextView); //show only when no posts
 
         //web services setup
@@ -71,26 +71,12 @@ public class ImagePostSearchActivity extends Activity {
         }
 
         //listener barra di ricerca
-        contentSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-            @Override
-            public boolean onQueryTextChange(String s) {
-                String selectedTopicName = (selectedTopic == null ? "" : selectedTopic.getName());
-                fetchPosts(selectedTopicName, String.valueOf(contentSearchView.getQuery()));
-                return true;
-            }
-        });
-
-        //listener pulsante Video
         searchVideosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent videoSearchIntent = new Intent(ImagePostSearchActivity.this, VideoPostSearchActivity.class);
+                Intent videoSearchIntent = new Intent(UserSearchActivity.this, VideoPostSearchActivity.class);
                 if(selectedTopic != null)
-                    videoSearchIntent.putExtra("topic", selectedTopic);
+                    videoSearchIntent.putExtra("topic", selectedTopic.getName());
                 videoSearchIntent.putExtra("keywords", contentSearchView.getQuery());
                 startActivity(videoSearchIntent);
             }
@@ -100,9 +86,9 @@ public class ImagePostSearchActivity extends Activity {
         searchArtistsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent userSearchIntent = new Intent(ImagePostSearchActivity.this, UserSearchActivity.class);
+                Intent userSearchIntent = new Intent(UserSearchActivity.this, UserSearchActivity.class);
                 if(selectedTopic != null)
-                    userSearchIntent.putExtra("topic", selectedTopic);
+                    userSearchIntent.putExtra("topic", selectedTopic.getName());
                 userSearchIntent.putExtra("keywords", contentSearchView.getQuery());
                 startActivity(userSearchIntent);
             }
@@ -119,7 +105,7 @@ public class ImagePostSearchActivity extends Activity {
                     Topic[] topics = new Topic[response.body().size()];
                     for(int i=0; i<topics.length; i++)
                         topics[i] = response.body().get(i);
-                    topicSpinner.setAdapter(new ArrayAdapter<Topic>(ImagePostSearchActivity.this, android.R.layout.simple_spinner_dropdown_item, topics));
+                    topicSpinner.setAdapter(new ArrayAdapter<Topic>(UserSearchActivity.this, android.R.layout.simple_spinner_dropdown_item, topics));
                     topicSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -131,11 +117,11 @@ public class ImagePostSearchActivity extends Activity {
                     });
                 }
                 else
-                    Toast.makeText(ImagePostSearchActivity.this, "Error while fetching topics", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UserSearchActivity.this, "Error while fetching topics", Toast.LENGTH_LONG).show();
             }
             @Override
             public void onFailure(Call<List<Topic>> call, Throwable t) {
-                Toast.makeText(ImagePostSearchActivity.this, "Error while fetching topics: " + t.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(UserSearchActivity.this, "Error while fetching topics: " + t.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -152,8 +138,8 @@ public class ImagePostSearchActivity extends Activity {
                     //Caricamento post nella GridView
                     if(searchedPosts.length > 0) {
                         noResultTextView.setVisibility(View.INVISIBLE);
-                        artworksGridView.setAdapter(new PostGridAdapter(ImagePostSearchActivity.this, searchedPosts));
-                        artworksGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        artistsGridView.setAdapter(new PostGridAdapter(UserSearchActivity.this, searchedPosts));
+                        artistsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                                 openPostDetails(position);
                             }
@@ -166,14 +152,14 @@ public class ImagePostSearchActivity extends Activity {
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
                 noResultTextView.setVisibility(View.VISIBLE);
-                Toast.makeText(ImagePostSearchActivity.this, "Error while searching posts: " + t.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(UserSearchActivity.this, "Error while searching posts: " + t.toString(), Toast.LENGTH_LONG).show();
                 t.printStackTrace();
             }
         });
     }
 
     private void openPostDetails(int pos) {
-        Intent postListIntent = new Intent(ImagePostSearchActivity.this, PostListActivity.class);
+        Intent postListIntent = new Intent(UserSearchActivity.this, PostListActivity.class);
         postListIntent.putExtra("postList", searchedPosts);
         postListIntent.putExtra("postIndex", pos);
         startActivity(postListIntent);

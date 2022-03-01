@@ -63,8 +63,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/userBioTagsTextView"
             android:layout_marginTop="15dp"
-            android:numColumns="3"
             android:horizontalSpacing="5dp"
+            android:numColumns="3"
             android:verticalSpacing="5dp" />
 
         <androidx.recyclerview.widget.RecyclerView
