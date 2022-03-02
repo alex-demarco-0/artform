@@ -34,16 +34,17 @@ public class UserSearchActivity extends Activity {
 
     ArtformApiEndpointInterface apiService = null;
 
-    Topic selectedTopic = null;
+    String selectedTopic = null;
     Post[] searchedPosts = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_post_search);
+        setContentView(R.layout.activity_user_search);
 
         //widget setup
         contentSearchView = findViewById(R.id.contentSearchView); //search while typing
+        contentSearchView.setQueryHint("Search…");
         searchArtworksButton = findViewById(R.id.searchArtworksButton); //no listener
         searchVideosButton = findViewById(R.id.searchVideosButton); //activity
         searchArtistsButton = findViewById(R.id.searchArtistsButton); //activity
@@ -62,7 +63,7 @@ public class UserSearchActivity extends Activity {
         Bundle searchParams = getIntent().getExtras();
         if(searchParams != null) {
             contentSearchView.setQuery(searchParams.getCharSequence("keywords"), true);
-            Topic topicParam = (Topic) searchParams.get("topic");
+            String topicParam = searchParams.getString("topic");
             if(topicParam != null) {
                 selectedTopic = topicParam;
                 ArrayAdapter topicsAdapter = (ArrayAdapter) topicSpinner.getAdapter();
@@ -71,29 +72,41 @@ public class UserSearchActivity extends Activity {
         }
 
         //listener barra di ricerca
+        contentSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String s) {
+                //fetchUsers((selectedTopic == null ? "" : selectedTopic), String.valueOf(contentSearchView.getQuery()));
+                return true;
+            }
+        });
+
+        //listener pulsante Opere
+        searchArtworksButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent artworkSearchIntent = new Intent(UserSearchActivity.this, ImagePostSearchActivity.class);
+                if(selectedTopic != null)
+                    artworkSearchIntent.putExtra("topic", selectedTopic);
+                artworkSearchIntent.putExtra("keywords", contentSearchView.getQuery());
+                startActivity(artworkSearchIntent);
+            }
+        });
+
+        //listener pulsante Video
         searchVideosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent videoSearchIntent = new Intent(UserSearchActivity.this, VideoPostSearchActivity.class);
                 if(selectedTopic != null)
-                    videoSearchIntent.putExtra("topic", selectedTopic.getName());
+                    videoSearchIntent.putExtra("topic", selectedTopic);
                 videoSearchIntent.putExtra("keywords", contentSearchView.getQuery());
                 startActivity(videoSearchIntent);
             }
         });
-
-        //listener pulsante Artisti
-        searchArtistsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent userSearchIntent = new Intent(UserSearchActivity.this, UserSearchActivity.class);
-                if(selectedTopic != null)
-                    userSearchIntent.putExtra("topic", selectedTopic.getName());
-                userSearchIntent.putExtra("keywords", contentSearchView.getQuery());
-                startActivity(userSearchIntent);
-            }
-        });
-
     }
 
     private void fetchTopics() {
@@ -102,14 +115,20 @@ public class UserSearchActivity extends Activity {
             @Override
             public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
                 if(response.isSuccessful()) {
-                    Topic[] topics = new Topic[response.body().size()];
-                    for(int i=0; i<topics.length; i++)
-                        topics[i] = response.body().get(i);
-                    topicSpinner.setAdapter(new ArrayAdapter<Topic>(UserSearchActivity.this, android.R.layout.simple_spinner_dropdown_item, topics));
+                    String[] topics = new String[response.body().size() + 1];
+                    topics[0] = "Select topic:";
+                    for(int i=1; i<topics.length; i++)
+                        topics[i] = response.body().get(i-1).getName();
+                    topicSpinner.setAdapter(new ArrayAdapter<String>(UserSearchActivity.this, android.R.layout.simple_spinner_dropdown_item, topics));
                     topicSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            selectedTopic = (Topic) adapterView.getItemAtPosition(i);
+                            if(adapterView.getItemAtPosition(i).equals("Select topic:"))
+                                selectedTopic = null;
+                            else
+                                selectedTopic = String.valueOf(adapterView.getItemAtPosition(i));
+                            //if(!String.valueOf(contentSearchView.getQuery()).equals(""))
+                                //fetchUsers((selectedTopic == null ? "" : selectedTopic), String.valueOf(contentSearchView.getQuery()));
                         }
                         @Override
                         public void onNothingSelected(AdapterView<?> adapterView) {
@@ -125,8 +144,8 @@ public class UserSearchActivity extends Activity {
             }
         });
     }
-
-    private void fetchPosts(String topic, String keywords) {
+/*
+    private void fetchUsers(String topic, String keywords) {
         Call<List<Post>> getPostsByFiltersCall = apiService.getPostsByFilters(topic, keywords, "img");
         getPostsByFiltersCall.enqueue(new Callback<List<Post>>() {
             @Override
@@ -141,7 +160,7 @@ public class UserSearchActivity extends Activity {
                         artistsGridView.setAdapter(new PostGridAdapter(UserSearchActivity.this, searchedPosts));
                         artistsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                                openPostDetails(position);
+                                //openPostDetails(position);
                             }
                         });
                     }
@@ -164,4 +183,6 @@ public class UserSearchActivity extends Activity {
         postListIntent.putExtra("postIndex", pos);
         startActivity(postListIntent);
     }
+*/
+
 }
