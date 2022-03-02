@@ -59,17 +59,10 @@ public class VideoPostSearchActivity extends Activity {
         //GET dei Topic
         fetchTopics();
 
-        //imposta Spinner e SearchView da parametri
+        //imposta SearchView da parametri
         Bundle searchParams = getIntent().getExtras();
-        if(searchParams != null) {
-            contentSearchView.setQuery(searchParams.getCharSequence("keywords"), true);
-            String topicParam = searchParams.getString("topic");
-            if(topicParam != null) {
-                selectedTopic = topicParam;
-                ArrayAdapter topicsAdapter = (ArrayAdapter) topicSpinner.getAdapter();
-                topicSpinner.setSelection(topicsAdapter.getPosition(selectedTopic));
-            }
-        }
+        if(searchParams != null)
+            contentSearchView.setQuery(searchParams.getCharSequence("keywords"), false);
 
         //listener barra di ricerca
         contentSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -119,7 +112,17 @@ public class VideoPostSearchActivity extends Activity {
                     topics[0] = "Select topic:";
                     for(int i=1; i<topics.length; i++)
                         topics[i] = response.body().get(i-1).getName();
-                    topicSpinner.setAdapter(new ArrayAdapter<String>(VideoPostSearchActivity.this, android.R.layout.simple_spinner_dropdown_item, topics));
+                    ArrayAdapter topicsAdapter = new ArrayAdapter<String>(VideoPostSearchActivity.this, android.R.layout.simple_spinner_dropdown_item, topics);
+                    topicSpinner.setAdapter(topicsAdapter);
+                    //imposta Spinner da parametri
+                    Bundle searchParams = getIntent().getExtras();
+                    if(searchParams != null) {
+                        String topicParam = searchParams.getString("topic");
+                        if(topicParam != null) {
+                            selectedTopic = topicParam;
+                            topicSpinner.setSelection(topicsAdapter.getPosition(selectedTopic));
+                        }
+                    }
                     topicSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
