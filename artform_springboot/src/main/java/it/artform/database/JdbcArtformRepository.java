@@ -25,6 +25,13 @@ public class JdbcArtformRepository implements ArtformRepository {
 	public Utente findUtenteByEmail(String email) {
 		return jdbcTemplate.queryForObject("SELECT * from utente WHERE email=?", BeanPropertyRowMapper.newInstance(Utente.class), email);
 	}
+	
+	@Override
+	public List<Utente> findUtentiByFilters(String topic, String keywords) {
+		if(topic != null && !topic.isBlank())
+			return jdbcTemplate.query("SELECT u.* FROM utente u INNER JOIN topicUtente tu ON u.username = tu.utenteUsername WHERE tu.topicNome=? AND tu.utenteUsername LIKE '%" + keywords + "%'", BeanPropertyRowMapper.newInstance(Utente.class), topic);
+		return jdbcTemplate.query("SELECT * from utente WHERE username LIKE '%" + keywords + "%'", BeanPropertyRowMapper.newInstance(Utente.class));
+	}
 
 	@Override
 	public int saveUtente(Utente u) {

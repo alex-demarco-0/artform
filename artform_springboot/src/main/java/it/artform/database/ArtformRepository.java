@@ -10,6 +10,7 @@ public interface ArtformRepository {
 	//Utente
 	Utente findUtente(String username);
 	Utente findUtenteByEmail(String email);
+	List<Utente> findUtentiByFilters(String topic, String keywords);
 	int saveUtente(Utente u);
 	int updateUtente(Utente u);
 	int deleteUtente(String username);

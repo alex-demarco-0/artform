@@ -47,6 +47,14 @@ public class ArtformRESTController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
+	@RequestMapping(value="/artform/utente/topic={topic}/keywords={keywords}", method=RequestMethod.GET)
+	public ResponseEntity<List<Utente>> getUtentiByFilters(@PathVariable String topic, @PathVariable String keywords) {
+		List<Utente> utenti = this.artformRepository.findUtentiByFilters(topic, keywords);
+		if(utenti != null)
+			return new ResponseEntity<List<Utente>>(utenti, HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
 	@RequestMapping(value="/artform/utente", method=RequestMethod.POST)
 	public ResponseEntity<Utente> addUtente(@RequestBody Utente newUtente) {
 		if(this.artformRepository.saveUtente(newUtente) == 1)
