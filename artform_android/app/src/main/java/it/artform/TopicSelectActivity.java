@@ -19,6 +19,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TopicSelectActivity extends Activity {
+    /*
     //api
     AFGlobal app = null;
     ArtformApiEndpointInterface apiService = null;
@@ -70,6 +71,7 @@ public class TopicSelectActivity extends Activity {
                         });
                     }
                     */
+    /*
                 }
             }
 
@@ -87,4 +89,6 @@ public class TopicSelectActivity extends Activity {
 //        homeIntent.putExtra("topicIndex", position);
 //        startActivity(homeIntent);
 //    }
+*/
 }
+
