@@ -3,11 +3,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar" />
+
+    <RelativeLayout
+        android:id="@+id/profileLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Profile Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@+id/toolbar"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/userProfileBadgeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Badges" />
+
+        <ImageView
+            android:id="@+id/userProfilePicImageView"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="30dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/userProfileSettingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="Settings" />
+
+        <TextView
+            android:id="@+id/userProfileUsernameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userProfilePicImageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:text="USERNAME" />
+
+        <TextView
+            android:id="@+id/userBioTagsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userProfileUsernameTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="BIO/TAGS" />
+
+        <GridView
+            android:id="@+id/userPostsGridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userBioTagsTextView"
+            android:layout_marginTop="15dp"
+            android:horizontalSpacing="5dp"
+            android:numColumns="3"
+            android:verticalSpacing="5dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/badgesReciclerView"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/userProfileBadgeButton"
+            android:layout_marginTop="30dp" />
+
+        <TextView
+            android:id="@+id/myPointsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/badgesReciclerView"
+            android:layout_marginTop="20dp"
+            android:text="My Points: " />
+
+    </RelativeLayout>
 
 </RelativeLayout>

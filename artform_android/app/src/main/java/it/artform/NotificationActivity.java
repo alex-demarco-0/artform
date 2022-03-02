@@ -28,6 +28,8 @@ public class NotificationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
+
+
         EditText saveNotifEditText = findViewById(R.id.saveNotifEditText);
         Button saveNotifButton = findViewById(R.id.saveNotifButton);
         ListView testCacheNotificheListView = findViewById(R.id.testCacheNotifListView);
@@ -104,4 +106,6 @@ public class NotificationActivity extends Activity {
             Log.e("Controller", e.getMessage() + e.getLocalizedMessage() + e.getCause());
         }
     }
+
+
 }
