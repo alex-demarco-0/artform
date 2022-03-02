@@ -97,8 +97,6 @@ public class UserProfileActivity extends Activity {
                 startActivity(openSettingsActivity);
             }
         });
-
-
     }
 /*
     @Override
@@ -139,7 +137,6 @@ public class UserProfileActivity extends Activity {
 
         // contatore punteggio
         myPointsTextView.append(String.valueOf(loggedUser.getPoints()));
-
         //GET dei Post dell'utente
         loadUserPosts();
     }
