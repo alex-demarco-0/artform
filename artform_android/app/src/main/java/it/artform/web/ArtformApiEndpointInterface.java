@@ -25,6 +25,9 @@ public interface ArtformApiEndpointInterface {
     @GET("/artform/utente_email/{email}")
     Call<User> checkEmailExists(@Path("email") String email);
 
+    @GET("/artform/utente/topic={topic}/keywords={keywords}")
+    Call<List<User>> getUsersByFilters(@Path("topic") String topic, @Path("keywords") String keywords);
+
     @POST("/artform/utente")
     Call<User> addUser(@Body User user);
 
