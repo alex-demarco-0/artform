@@ -9,51 +9,56 @@ Descrizione: project work, pagina web di registrazione
         <title>Registrazione</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <style type="text/css">
-        #body{
-          font-family:sans-serif, helvetica;
-          background: linear-gradient(#E9CFEC, #7575CF);
-        }
-        #registerDiv{
-              background-color: #fff;
-              width: 40%;
-              margin: auto;
-              border-radius: 10px;
-              padding: 20px;
-              border-left: 5px solid #D291BC;
-              box-shadow: 0px 0px 0px 0px #3f51b5;
-        }
-        button{
-          font-weight: 700;
-          border:none;
-          color: white;
-          text-decoration: none;
-          padding: .8em 1em calc(.8em + 3px);
-          border-radius: 4px;
-          background: #D291BC;
-        }
-        .inputForm{
-          width: auto;
-          height: 25px;
-          border-width:thin;
-          border-radius: 4px;
+        <link rel="stylesheet" href="registrazione.css">
 
-        }
-        </style>
     </head>
-    <body id="body" bgcolor="#E9CFEC">
+    <body id="body" bgcolor="#E9CFEC" onload="onPageLoaded();">
+        <div id="container">
+            <div id="header" align=center>
+                <img src="logoAFtrasparente.png" width="200" height="200" vspace="0" hspace="0"><br>
+                <h1>La piattaforma dove l’arte prende forma</h1><br>
+            </div>
+        </div>
+        <!--div id="main"> TEST Manbir
+            <h2>Registrati</h2>
+            <form id="formRegistrazione" onSumbit="return doSumbit();">
+                <label>Nome</label>
+                <input id="nomeUtente" type="text" name="nomeUtente">
+                <br>
+                <label>Cognome</label>
+                <input id="cognomeUtente" type="text" name="cognomeUtente">
+                <br>
+                <label>Username</label>
+                <input id="usernameUtente" type="text" name="usernameUtente">
+                <br>
+                <label>Email</label>
+                <input id="emailUtente" type="text" name="emailUtente">
+                <br>
+                <label>Numero di telefono</label>
+                <input id="numTelefonoUtente" type="text" name="numTelefonoUtente">
+                <br>
+                <label>Password</label>
+                <input id="passwordUtente" type="text" name="passwordUtente">
+                <br>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </form>
+        </div-->
+
+      <div  id="header">
+      <img src="logoAFtrasparente.png" width="200" height="200" vspace="0" hspace="0"><br>
+      <b><font size='5' color='black'>La piattaforma dove l’arte prende forma </font></b></div><br>
+      <br>
       <div id="registerDiv">
-        <div align=center>
-          <img src="logoAFtrasparente.png" width="200" height="200" vspace="0" hspace="0"><br>
-          <b><font size='5' color='black'> La piattaforma dove l’arte prende forma </font></b></div><br>
-          <br>
-     <form>
-        <p align=center><font color="black" size="4">Nome  <input class="inputForm" type="text" id="nome"></font></p>
-        <p align=center><font color="black" size="4">Cognome  <input class="inputForm" type="text" id="cognome"></font></p>
-        <p align=center><font color="black" size="4">Username  <input class="inputForm" type="text" id="username"></font></p>
-        <p align=center><font color="black" size="4">Email  <input class="inputForm" type="text" id=""email></font></p>
-        <p align=center><font color="black" size="4">Password  <input class="inputForm" type="password" id="pwd"></font></p>
-        <p align=center><font color="black" size="4">Numero di telefono <input class="inputForm" type="text" id="numeroTelefono"></font></p>
+     <form id="formRegistrazione">
+       <h2 style="text-align:center;">Registrati</h2>
+        <p align=center><font color="black" size="4"><label >Nome</label>  <input class="inputForm" type="text" id="nome"></font></p>
+        <p align=center><font color="black" size="4"><label>Cognome</label>  <input class="inputForm" type="text" id="cognome"></font></p>
+        <p align=center><font color="black" size="4"><label>Username</label>  <input class="inputForm" type="text" id="username"></font></p>
+        <p align=center><font color="black" size="4"><label>Email</label>  <input class="inputForm" type="text" id="email" placeholder="Ex. youremail@mail.com"></font></p>
+        <p align=center><font color="black" size="4"><label>Password </label> <input class="inputForm" type="password" id="pwd"  placeholder="Ex. A123@paswod"></font></p>
+        <p align=center><font color="black" size="4"><label>Numero di telefono </label><input class="inputForm" type="text" id="numeroTelefono"></font></p>
+
         <p align=center><button onclick="registrazione()" value="Conferma"> Conferma</button> <button type="reset">Reset</button>
      </form>
         <p align=center>Hai già un account?<a id="login" href="login.html">Accedi</a></p>
