@@ -52,6 +52,7 @@ public interface ArtformRepository {
 	int deleteAllPostsFromSaved(String username);
 	
 	//Notifiche Utente
+	Utente checkUserNotifications(String username1, String username2);
 	List<Utente> findUserActiveNotifications(String username);
 	int activateUserNotifications(String username1, String username2);
 	int deactivateUserNotifications(String username1, String username2);

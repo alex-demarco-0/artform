@@ -177,6 +177,11 @@ public class JdbcArtformRepository implements ArtformRepository {
 	public int deleteAllPostsFromSaved(String username) {
 		return jdbcTemplate.update("DELETE FROM postSalvati WHERE utenteUsername=?", username);
 	}
+	
+	@Override
+	public Utente checkUserNotifications(String username1, String username2) {
+		return jdbcTemplate.queryForObject("SELECT ue.* FROM notificheUtente nu INNER JOIN utente ue ON nu.utenteExtUsername = ue.username WHERE nu.utenteUsername=? AND nu.utenteExtUsername=?", BeanPropertyRowMapper.newInstance(Utente.class), username1, username2);
+	}
 
 	@Override
 	public List<Utente> findUserActiveNotifications(String username) {
