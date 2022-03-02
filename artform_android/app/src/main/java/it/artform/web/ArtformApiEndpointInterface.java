@@ -113,7 +113,7 @@ public interface ArtformApiEndpointInterface {
 
     // User Notifications
     @GET("/artform/utente/{username1}/notifiche_attive")
-    Call<List<User>> checkUserNotifications(@Path("username1") String username1, @Body String username2);
+    Call<User> checkUserNotifications(@Path("username1") String username1, @Body String username2);
 
     @GET("/artform/utente/{username}/notifiche_attive")
     Call<List<User>> getUserActiveNotifications(@Path("username") String username);
