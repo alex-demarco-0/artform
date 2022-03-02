@@ -1,0 +1,42 @@
+#home{
+ position:absolute;
+ left: 125px;
+ align:bottom;
+}
+
+#bottomBar{
+  position:absolute;
+  left:300px;
+  align:bottom;
+}
+
+#buttonAdd{
+  right:230px;
+}
+
+#buttonProfile{
+  right:30px;
+}
+
+#buttonNot{
+  right: 125px;
+}
+
+.bottom{
+  position: absolute;
+  bottom: 0px;
+}
+
+.bottomButtons{
+  position:absolute;
+  align:bottom;
+}
+
+.navbar{
+  position:fixed;
+  bottom:0px;
+  height:40px;
+  width:100%;
+   background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
+  z-index:999999;
+}

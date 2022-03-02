@@ -48,23 +48,16 @@ button{
         left: 125px;
         align:bottom;
       }
-      
+
       #posts{
          width: auto;
-         height: 530px;
-         margin-bottom: 10px;
-         padding: 10px;
-         background-color: rgba(238, 238, 238, 0.7);
-         border: 1px solid #ccc;
-         overflow: scroll;
-        overflow-x: hidden;
+         height:auto;
        }
 
        #body{
          font-family:sans-serif, helvetica;
          background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
          background-attachment: fixed;
-         overflow-y: hidden;
        }
 
        #inputSearch{
