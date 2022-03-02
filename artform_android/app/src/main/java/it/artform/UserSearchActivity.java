@@ -164,6 +164,12 @@ public class UserSearchActivity extends Activity {
                         //dettagli profilo utente
                         artistsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                                //se l'utente selezionato corrisponde al proprio profilo
+                                if(searchedUsers[position].equals(AFGlobal.getLoggedUser())) {
+                                    Intent userProfileIntent = new Intent(UserSearchActivity.this, UserProfileActivity.class);
+                                    startActivity(userProfileIntent);
+                                    return;
+                                }
                                 Intent externalProfileIntent = new Intent(UserSearchActivity.this, ExternalProfileActivity.class);
                                 externalProfileIntent.putExtra("username", searchedUsers[position]);
                                 startActivity(externalProfileIntent);

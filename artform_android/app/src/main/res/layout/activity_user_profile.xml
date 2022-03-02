@@ -74,6 +74,14 @@
             android:layout_below="@+id/userProfileBadgeButton"
             android:layout_marginTop="30dp" />
 
+        <TextView
+            android:id="@+id/myPointsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/badgesReciclerView"
+            android:layout_marginTop="20dp"
+            android:text="My Points: " />
+
     </RelativeLayout>
 
 </RelativeLayout>

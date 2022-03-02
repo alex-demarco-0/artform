@@ -36,12 +36,13 @@ import retrofit2.Response;
 
 public class UserProfileActivity extends Activity {
     ImageView userProfilePicImageView = null;
-    TextView usernameUserProfile = null;
-    TextView tagsUserProfile = null;
-    Button settings = null;
-    Button badgeUserProfile = null;
+    TextView userProfileUsernameTextView = null;
+    TextView userBioTagsTextView = null;
+    Button userProfileSettingsButton = null;
+    //Button userProfileBadgeButton = null;
     GridView userPostsGridView = null;
     RecyclerView badgesReciclerView = null;
+    TextView myPointsTextView = null;
     ArtformApiEndpointInterface apiService = null;
     User loggedUser = null;
     Badge[] userBadges = null;
@@ -53,14 +54,15 @@ public class UserProfileActivity extends Activity {
         setContentView(R.layout.activity_user_profile);
 
         userProfilePicImageView = findViewById(R.id.userProfilePicImageView);
-        usernameUserProfile = findViewById(R.id.userProfileUsernameTextView);
-        tagsUserProfile = findViewById(R.id.userBioTagsTextView);
-        settings = findViewById(R.id.userProfileSettingsButton);
-        badgeUserProfile = findViewById(R.id.userProfileBadgeButton);
+        userProfileUsernameTextView = findViewById(R.id.userProfileUsernameTextView);
+        userBioTagsTextView = findViewById(R.id.userBioTagsTextView);
+        userProfileSettingsButton = findViewById(R.id.userProfileSettingsButton);
+        //userProfileBadgeButton = findViewById(R.id.userProfileBadgeButton);
         userPostsGridView = findViewById(R.id.userPostsGridView);
         LinearLayoutManager badgesLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         //badgesReciclerView = findViewById(R.id.badgesReciclerView);
         //badgesReciclerView.setLayoutManager(badgesLayoutManager);
+        myPointsTextView = findViewById(R.id.myPointsTextView);
 
         AFGlobal app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
@@ -80,15 +82,15 @@ public class UserProfileActivity extends Activity {
                 Toast.makeText(UserProfileActivity.this, "Richiesta GET dell'Utente non effettuata", Toast.LENGTH_LONG).show();
             }
         });
-
-        badgeUserProfile.setOnClickListener(new View.OnClickListener() {
+/*
+        userProfileBadgeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
             }
         });
-
-        settings.setOnClickListener(new View.OnClickListener() {
+*/
+        userProfileSettingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent openSettingsActivity= new Intent(UserProfileActivity.this, SettingsActivity.class);
@@ -98,7 +100,7 @@ public class UserProfileActivity extends Activity {
 
 
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -121,20 +123,22 @@ public class UserProfileActivity extends Activity {
                 //Intent savedPost=new Intent(this, savedPost.class);
                 //startActivity(savedPost);
                 break;
-        }*/
+        }
         return false;
     }
-
+*/
     private void loadUserData() {
         // immagine del profilo
         String profilePicUri = AFGlobal.USER_PROPIC_PATH + AFGlobal.getLoggedUser() + ".jpg";
         Picasso.get().load(profilePicUri).resize(130, 130).centerCrop().into(UserProfileActivity.this.userProfilePicImageView);
         // username
-        usernameUserProfile.setText(loggedUser.getUsername());
+        userProfileUsernameTextView.setText(loggedUser.getUsername());
         // bio
-        tagsUserProfile.setText(loggedUser.getBio());
+        userBioTagsTextView.setText(loggedUser.getBio());
         // lista dei badge
 
+        // contatore punteggio
+        myPointsTextView.append(String.valueOf(loggedUser.getPoints()));
 
         //GET dei Post dell'utente
         loadUserPosts();
