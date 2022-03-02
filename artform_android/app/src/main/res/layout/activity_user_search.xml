@@ -19,8 +19,7 @@
             android:id="@+id/contentSearchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:hint="@string/search" />
+            android:layout_marginTop="5dp" />
 
         <Button
             android:id="@+id/searchArtworksButton"
@@ -56,15 +55,16 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_toEndOf="@+id/searchVideosButton"
-            android:text="@string/users" />
+            android:text="@string/users"
+            android:textColor="@color/white"
+            app:backgroundTint="#9249FA" />
 
         <Spinner
             android:id="@+id/topicSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/searchVideosButton"
-            android:layout_marginTop="10dp"
-            android:tooltipText="Topic"/>
+            android:layout_marginTop="10dp" />
 
         <GridView
             android:id="@+id/artistsGridView"

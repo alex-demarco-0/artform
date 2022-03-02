@@ -34,7 +34,7 @@ public class ImagePostSearchActivity extends Activity {
 
     ArtformApiEndpointInterface apiService = null;
 
-    Topic selectedTopic = null;
+    String selectedTopic = null;
     Post[] searchedPosts = null;
 
     @Override
@@ -44,6 +44,7 @@ public class ImagePostSearchActivity extends Activity {
 
         //widget setup
         contentSearchView = findViewById(R.id.contentSearchView); //search while typing
+        contentSearchView.setQueryHint("Search…");
         searchArtworksButton = findViewById(R.id.searchArtworksButton); //no listener
         searchVideosButton = findViewById(R.id.searchVideosButton); //activity
         searchArtistsButton = findViewById(R.id.searchArtistsButton); //activity
@@ -62,7 +63,7 @@ public class ImagePostSearchActivity extends Activity {
         Bundle searchParams = getIntent().getExtras();
         if(searchParams != null) {
             contentSearchView.setQuery(searchParams.getCharSequence("keywords"), true);
-            Topic topicParam = (Topic) searchParams.get("topic");
+            String topicParam = searchParams.getString("topic");
             if(topicParam != null) {
                 selectedTopic = topicParam;
                 ArrayAdapter topicsAdapter = (ArrayAdapter) topicSpinner.getAdapter();
@@ -78,8 +79,7 @@ public class ImagePostSearchActivity extends Activity {
             }
             @Override
             public boolean onQueryTextChange(String s) {
-                String selectedTopicName = (selectedTopic == null ? "" : selectedTopic.getName());
-                fetchPosts(selectedTopicName, String.valueOf(contentSearchView.getQuery()));
+                fetchPosts((selectedTopic == null ? "" : selectedTopic), String.valueOf(contentSearchView.getQuery()));
                 return true;
             }
         });
@@ -107,7 +107,6 @@ public class ImagePostSearchActivity extends Activity {
                 startActivity(userSearchIntent);
             }
         });
-
     }
 
     private void fetchTopics() {
@@ -116,14 +115,20 @@ public class ImagePostSearchActivity extends Activity {
             @Override
             public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
                 if(response.isSuccessful()) {
-                    Topic[] topics = new Topic[response.body().size()];
-                    for(int i=0; i<topics.length; i++)
-                        topics[i] = response.body().get(i);
-                    topicSpinner.setAdapter(new ArrayAdapter<Topic>(ImagePostSearchActivity.this, android.R.layout.simple_spinner_dropdown_item, topics));
+                    String[] topics = new String[response.body().size() + 1];
+                    topics[0] = "Select topic:";
+                    for(int i=1; i<topics.length; i++)
+                        topics[i] = response.body().get(i-1).getName();
+                    topicSpinner.setAdapter(new ArrayAdapter<String>(ImagePostSearchActivity.this, android.R.layout.simple_spinner_dropdown_item, topics));
                     topicSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                            selectedTopic = (Topic) adapterView.getItemAtPosition(i);
+                            if(adapterView.getItemAtPosition(i).equals("Select topic:"))
+                                selectedTopic = null;
+                            else
+                                selectedTopic = String.valueOf(adapterView.getItemAtPosition(i));
+                            if(!String.valueOf(contentSearchView.getQuery()).equals(""))
+                                fetchPosts((selectedTopic == null ? "" : selectedTopic), String.valueOf(contentSearchView.getQuery()));
                         }
                         @Override
                         public void onNothingSelected(AdapterView<?> adapterView) {
@@ -149,18 +154,17 @@ public class ImagePostSearchActivity extends Activity {
                     searchedPosts = new Post[response.body().size()];
                     for(int i=0; i<searchedPosts.length; i++)
                         searchedPosts[i] = response.body().get(i);
-                    //Caricamento post nella GridView
-                    if(searchedPosts.length > 0) {
+                    if(searchedPosts.length > 0)
                         noResultTextView.setVisibility(View.INVISIBLE);
-                        artworksGridView.setAdapter(new PostGridAdapter(ImagePostSearchActivity.this, searchedPosts));
-                        artworksGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                                openPostDetails(position);
-                            }
-                        });
-                    }
                     else
                         noResultTextView.setVisibility(View.VISIBLE);
+                    //Caricamento post nella GridView
+                    artworksGridView.setAdapter(new PostGridAdapter(ImagePostSearchActivity.this, searchedPosts));
+                    artworksGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                            openPostDetails(position);
+                        }
+                    });
                 }
             }
             @Override

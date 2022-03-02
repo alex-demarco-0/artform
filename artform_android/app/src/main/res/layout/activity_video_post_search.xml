@@ -19,8 +19,7 @@
             android:id="@+id/contentSearchView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:hint="@string/search" />
+            android:layout_marginTop="5dp" />
 
         <Button
             android:id="@+id/searchArtworksButton"
@@ -42,7 +41,9 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/searchArtworksButton"
-            android:text="@string/video_posts" />
+            android:text="@string/video_posts"
+            android:textColor="@color/white"
+            app:backgroundTint="#9249FA" />
 
         <Button
             android:id="@+id/searchArtistsButton"
@@ -63,8 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/searchVideosButton"
-            android:layout_marginTop="10dp"
-            android:tooltipText="Topic"/>
+            android:layout_marginTop="10dp" />
 
         <GridView
             android:id="@+id/videosGridView"

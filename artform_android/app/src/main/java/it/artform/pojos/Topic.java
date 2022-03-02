@@ -2,9 +2,7 @@ package it.artform.pojos;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-
-public class Topic implements Serializable {
+public class Topic {
     @SerializedName("nome")
     private final String name;
 
