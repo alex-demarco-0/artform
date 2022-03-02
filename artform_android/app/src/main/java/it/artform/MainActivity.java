@@ -161,6 +161,7 @@ public class MainActivity extends FragmentActivity {
         });*/
         bnv=(BottomNavigationView) findViewById(R.id.bottomNavigation);
         bnv.setOnItemSelectedListener(navListener);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new HomeFragment()).commit();
     }
 
     private NavigationBarView.OnItemSelectedListener
