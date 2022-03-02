@@ -76,8 +76,8 @@ public class UserDBAdapter {
         return mCursor;
     }
 
-    public void givePoints(String username, int current, int points) {
-        database.rawQuery("UPDATE " + DATABASE_TABLE + " SET " + KEY_POINTS + " = '" + (current + points) + "' WHERE " + KEY_USERNAME + " = " + username, null);
+    public void givePoints(String username, int points) {
+        database.rawQuery("UPDATE " + DATABASE_TABLE + " SET " + KEY_POINTS + " = " + KEY_POINTS + " + " + points + " WHERE " + KEY_USERNAME + " = " + username, null);
     }
 
 }
