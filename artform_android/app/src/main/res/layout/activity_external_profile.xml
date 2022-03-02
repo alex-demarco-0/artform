@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ExternalProfileActivity">
-    <include layout="@layout/toolbar" android:id="@+id/toolbar"/>
+
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar" />
+
     <RelativeLayout
         android:layout_below="@+id/toolbar"
         android:id="@+id/profileLayout"
@@ -18,109 +21,62 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:text="Badge" />
+            android:text="Badges" />
 
         <ImageView
             android:id="@+id/externalProfilePicImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
-            android:layout_marginEnd="158dp"
+            android:layout_marginTop="30dp"
             tools:srcCompat="@tools:sample/avatars" />
 
         <Button
-            android:id="@+id/nofifyMeExternalProfile"
+            android:id="@+id/nofifyMeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:text="@string/notifiche" />
 
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/infoLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/profileLayout"
-        android:gravity="center"
-        android:orientation="vertical">
-
         <TextView
-            android:id="@+id/usernameExternalProfile"
+            android:id="@+id/externalProfileUsernameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_below="@+id/externalProfilePicImageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
             android:text="USERNAME" />
 
         <TextView
-            android:id="@+id/tagsExternalProfile"
+            android:id="@+id/externalUserBioTagsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/externalProfileUsernameTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:text="BIO/TAGS" />
 
         <Button
-            android:id="@+id/contactmeButton"
+            android:id="@+id/contactMeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/externalProfilePicImageView"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/externalProfileUsernameTextView"
             android:text="Contact me" />
 
-    </LinearLayout>
+        <GridView
+            android:id="@+id/userPostsGridView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/externalUserBioTagsTextView"
+            android:layout_marginTop="15dp"
+            android:horizontalSpacing="5dp"
+            android:numColumns="3"
+            android:verticalSpacing="5dp" />
 
-
-    <!--TextView
-        android:id="@+id/usernameExternalProfile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/externalProfileImageView"
-        android:layout_centerInParent="true"
-        android:text="AHH" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameExternalProfile"
-        android:text="BIO/TAGS" />
-
-
-    <TextView
-        android:id="@+id/tagsExternalProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginEnd="179dp"
-        android:layout_marginBottom="398dp"
-        android:text="Bio/Tags" />
-
-    <Button
-        android:id="@+id/badgeButtonExternalProfile"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="330dp"
-        android:layout_marginBottom="657dp"
-        android:hint="Badge" />
-
-    <Button
-        android:id="@+id/nofifyMeExternalProfile"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="26dp"
-        android:layout_marginBottom="658dp"
-        android:hint="Notifica" />
-
-    <Button
-        android:id="@+id/contactmeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="321dp"
-        android:hint="Contact me" / -->
+    </RelativeLayout>
 
 </RelativeLayout>
