@@ -7,13 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -24,7 +19,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-//import it.artform.feed.BadgesListAdapter;
+import it.artform.feed.BadgeListAdapter;
 import it.artform.feed.PostGridAdapter;
 import it.artform.pojos.Badge;
 import it.artform.pojos.Post;
@@ -59,9 +54,9 @@ public class UserProfileActivity extends Activity {
         userProfileSettingsButton = findViewById(R.id.userProfileSettingsButton);
         //userProfileBadgeButton = findViewById(R.id.userProfileBadgeButton);
         userPostsGridView = findViewById(R.id.userPostsGridView);
+        badgesReciclerView = findViewById(R.id.badgesReciclerView);
         LinearLayoutManager badgesLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        //badgesReciclerView = findViewById(R.id.badgesReciclerView);
-        //badgesReciclerView.setLayoutManager(badgesLayoutManager);
+        badgesReciclerView.setLayoutManager(badgesLayoutManager);
         myPointsTextView = findViewById(R.id.myPointsTextView);
 
         AFGlobal app = (AFGlobal) getApplication();
@@ -134,7 +129,7 @@ public class UserProfileActivity extends Activity {
         // bio
         userBioTagsTextView.setText(loggedUser.getBio());
         // lista dei badge
-
+        loadUserBadges();
         // contatore punteggio
         myPointsTextView.append(String.valueOf(loggedUser.getPoints()));
         //GET dei Post dell'utente
@@ -150,13 +145,13 @@ public class UserProfileActivity extends Activity {
                     userBadges = new Badge[response.body().size()];
                     for(int i=0; i<userBadges.length; i++)
                         userBadges[i] = response.body().get(i);
-                    //RecyclerView.Adapter badgesAdapter = new BadgesListAdapter(UserProfileActivity.this, userBadges);
-                    //badgesReciclerView.setAdapter(badgesAdapter);
+                    RecyclerView.Adapter badgesAdapter = new BadgeListAdapter(UserProfileActivity.this, userBadges);
+                    badgesReciclerView.setAdapter(badgesAdapter);
                 }
             }
             @Override
             public void onFailure(Call<List<Badge>> call, Throwable t) {
-                Toast.makeText(UserProfileActivity.this, "Richiesta GET dei Post dell'Utente non effettuata", Toast.LENGTH_LONG).show();
+                Toast.makeText(UserProfileActivity.this, "Richiesta GET dei Badge dell'Utente non effettuata", Toast.LENGTH_LONG).show();
             }
         });
     }
