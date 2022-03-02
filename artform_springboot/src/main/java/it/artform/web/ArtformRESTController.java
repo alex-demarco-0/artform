@@ -149,8 +149,10 @@ public class ArtformRESTController {
 				p.setTopic(modPost.getTopic());
 			if(modPost.getTags() != null && !modPost.getTags().isBlank())
 				p.setTags(modPost.getTags());
-			if(modPost.getLike() > p.getLike())
+			if(modPost.getLike() > p.getLike()) {
 				p.addLike();
+				this.artformRepository.updatePunteggioUtente(p.getUtenteUsername(), 1);
+			}
 			if(this.artformRepository.updatePost(p) == 1)
 				return new ResponseEntity<Post>(p, HttpStatus.OK);
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

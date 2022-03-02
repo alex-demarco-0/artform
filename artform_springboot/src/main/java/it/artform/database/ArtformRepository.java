@@ -13,6 +13,7 @@ public interface ArtformRepository {
 	List<Utente> findUtentiByFilters(String topic, String keywords);
 	int saveUtente(Utente u);
 	int updateUtente(Utente u);
+	int updatePunteggioUtente(String username, int punti);
 	int deleteUtente(String username);
 		
 	//Post
