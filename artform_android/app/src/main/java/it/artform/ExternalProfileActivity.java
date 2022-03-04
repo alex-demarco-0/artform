@@ -198,14 +198,15 @@ public class ExternalProfileActivity extends Activity {
         getUserBadgesCall.enqueue(new Callback<List<Badge>>() {
             @Override
             public void onResponse(Call<List<Badge>> call, Response<List<Badge>> response) {
-                if(response.isSuccessful())
-                    if(response.body().size() > 0) {
+                if(response.isSuccessful()) {
+                    if (response.body().size() > 0) {
                         userBadges = new Badge[response.body().size()];
-                        for(int i=0; i<userBadges.length; i++)
+                        for (int i = 0; i < userBadges.length; i++)
                             userBadges[i] = response.body().get(i);
                         RecyclerView.Adapter badgesAdapter = new BadgeListAdapter(ExternalProfileActivity.this, userBadges);
                         badgesReciclerView.setAdapter(badgesAdapter);
                     }
+                }
                 else
                     Toast.makeText(ExternalProfileActivity.this, "Error while fetching user Badges: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
@@ -222,10 +223,10 @@ public class ExternalProfileActivity extends Activity {
         getUserPostsCall.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                if(response.isSuccessful())
-                    if(response.body().size() > 0) {
+                if(response.isSuccessful()) {
+                    if (response.body().size() > 0) {
                         userPosts = new Post[response.body().size()];
-                        for(int i=0; i<userPosts.length; i++)
+                        for (int i = 0; i < userPosts.length; i++)
                             userPosts[i] = response.body().get(i);
                         //Caricamento dei post dell'utente nella GridView
                         userPostsGridView.setAdapter(new PostGridAdapter(ExternalProfileActivity.this, userPosts));
@@ -235,6 +236,7 @@ public class ExternalProfileActivity extends Activity {
                             }
                         });
                     }
+                }
                 else
                     Toast.makeText(ExternalProfileActivity.this, "Error while fetching user Posts: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
