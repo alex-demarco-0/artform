@@ -6,6 +6,7 @@ import java.util.List;
 import it.artform.pojos.*;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -36,7 +37,7 @@ public interface ArtformApiEndpointInterface {
     Call<User> updateUser(@Path("username") String username, @Part("userObj") RequestBody userObj, @Part MultipartBody.Part resource);
 
     @DELETE("/artform/utente/{username}")
-    String deleteUser(@Path("username") String username);
+    Call<ResponseBody> deleteUser(@Path("username") String username);
 
     // Post
     @GET("/artform/post/{id}")
@@ -56,10 +57,10 @@ public interface ArtformApiEndpointInterface {
     Call<Post> updatePost(@Path("id") int id, @Body Post post);
 
     @DELETE("/artform/post/{id}")
-    String deletePost(@Path("id") int id);
+    Call<ResponseBody> deletePost(@Path("id") int id);
 
     @DELETE("/artform/utente/{username}/posts")
-    String deleteAllUserPosts(@Path("username") String username);
+    Call<ResponseBody> deleteAllUserPosts(@Path("username") String username);
 
     // Notification
     @GET("/artform/utente/{username}/notifiche/{date}")
@@ -106,26 +107,26 @@ public interface ArtformApiEndpointInterface {
     Call<Post> addPostToSaved(@Path("username") String username, @Body int postId);
 
     @DELETE("/artform/utente/{username}/post_salvati/{postId}")
-    String removePostFromSaved(@Path("username") String username, @Path("postId") int postId);
+    Call<ResponseBody> removePostFromSaved(@Path("username") String username, @Path("postId") int postId);
 
     @DELETE("/artform/utente/{username}/post_salvati")
-    String removeAllPostsFromSaved(@Path("username") String username);
+    Call<ResponseBody> removeAllPostsFromSaved(@Path("username") String username);
 
     // User Notifications
-    @GET("/artform/utente/{username1}/notifiche_attive")
-    Call<User> checkUserNotifications(@Path("username1") String username1, @Body String username2);
+    @GET("/artform/utente/{username1}/verifica_notifiche_attive/{username2}")
+    Call<User> checkUserNotifications(@Path("username1") String username1, @Path("username2") String username2);
 
     @GET("/artform/utente/{username}/notifiche_attive")
     Call<List<User>> getUserActiveNotifications(@Path("username") String username);
 
     @POST("/artform/utente/{username1}/notifiche_attive")
-    Call<User> activateUserNotifications(@Path("username1") String username1, @Body String username2);
+    Call<User> activateUserNotifications(@Path("username1") String username1, @Body RequestBody username2);
 
     @DELETE("/artform/utente/{username1}/notifiche_attive/{username2}")
-    String deactivateUserNotifications(@Path("username1") String username1, @Path("username2") String username2);
+    Call<ResponseBody> deactivateUserNotifications(@Path("username1") String username1, @Path("username2") String username2);
 
     @DELETE("/artform/utente/{username}/notifiche_attive")
-    String deactivateAllUserNotifications(@Path("username") String username);
+    Call<ResponseBody> deactivateAllUserNotifications(@Path("username") String username);
 
     // User Badges
     @GET("/artform/utente/{username}/badges")
@@ -142,9 +143,9 @@ public interface ArtformApiEndpointInterface {
     Call<String> userSelectsTopic(@Path("username") String username, @Body String topicName);
 
     @DELETE("/artform/utente/{username}/topics/{topicName}")
-    String userDeselectsTopic(@Path("username") String username, @Path("topicName") String topicName);
+    Call<ResponseBody> userDeselectsTopic(@Path("username") String username, @Path("topicName") String topicName);
 
     @DELETE("/artform/utente/{username}/topics")
-    String userDeselectsAllTopics(@Path("username") String username);
+    Call<ResponseBody> userDeselectsAllTopics(@Path("username") String username);
 
 }

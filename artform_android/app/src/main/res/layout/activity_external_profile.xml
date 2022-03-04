@@ -16,13 +16,6 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <Button
-            android:id="@+id/externalProfileBadgeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:text="Badges" />
-
         <ImageView
             android:id="@+id/externalProfilePicImageView"
             android:layout_width="130dp"
@@ -56,6 +49,13 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:text="BIO/TAGS" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/badgesReciclerView"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="46dp" />
 
         <Button
             android:id="@+id/contactMeButton"

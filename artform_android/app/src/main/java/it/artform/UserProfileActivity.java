@@ -33,7 +33,6 @@ public class UserProfileActivity extends Activity {
     TextView userProfileUsernameTextView = null;
     TextView userBioTagsTextView = null;
     Button userProfileSettingsButton = null;
-    //Button userProfileBadgeButton = null;
     GridView userPostsGridView = null;
     RecyclerView badgesReciclerView = null;
     TextView myPointsTextView = null;
@@ -51,7 +50,6 @@ public class UserProfileActivity extends Activity {
         userProfileUsernameTextView = findViewById(R.id.userProfileUsernameTextView);
         userBioTagsTextView = findViewById(R.id.userBioTagsTextView);
         userProfileSettingsButton = findViewById(R.id.userProfileSettingsButton);
-        //userProfileBadgeButton = findViewById(R.id.userProfileBadgeButton);
         userPostsGridView = findViewById(R.id.userPostsGridView);
         badgesReciclerView = findViewById(R.id.badgesReciclerView);
         LinearLayoutManager badgesLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -70,10 +68,13 @@ public class UserProfileActivity extends Activity {
                     loggedUser = response.body();
                     loadUserData();
                 }
+                else
+                    Toast.makeText(UserProfileActivity.this, "Error while fetching user data: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(UserProfileActivity.this, "Richiesta GET dell'Utente non effettuata", Toast.LENGTH_LONG).show();
+                t.printStackTrace();
+                Toast.makeText(UserProfileActivity.this, "Error while fetching user data: " + t.toString(), Toast.LENGTH_LONG).show();
             }
         });
 /*
@@ -147,10 +148,13 @@ public class UserProfileActivity extends Activity {
                     RecyclerView.Adapter badgesAdapter = new BadgeListAdapter(UserProfileActivity.this, userBadges);
                     badgesReciclerView.setAdapter(badgesAdapter);
                 }
+                else
+                    Toast.makeText(UserProfileActivity.this, "Error while fetching user Badges: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
             @Override
             public void onFailure(Call<List<Badge>> call, Throwable t) {
-                Toast.makeText(UserProfileActivity.this, "Richiesta GET dei Badge dell'Utente non effettuata", Toast.LENGTH_LONG).show();
+                t.printStackTrace();
+                Toast.makeText(UserProfileActivity.this, "Error while fetching user Badges: " + t.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -174,10 +178,13 @@ public class UserProfileActivity extends Activity {
                         });
                     }
                 }
+                else
+                    Toast.makeText(UserProfileActivity.this, "Error while fetching user Posts: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
-                Toast.makeText(UserProfileActivity.this, "Richiesta GET dei Post dell'Utente non effettuata", Toast.LENGTH_LONG).show();
+                t.printStackTrace();
+                Toast.makeText(UserProfileActivity.this, "Error while fetching user Posts: " + t.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
