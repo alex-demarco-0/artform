@@ -151,7 +151,7 @@ public class ExternalProfileActivity extends Activity {
             }
         });
 
-        //notifyButtonSetup();
+        //notifyButtonSetup();  setup iniziale pulsante attiva/disattiva notifiche
         if(activeNotif) {
             nofifyMeButton.setText("Disable notifications");
             nofifyMeButton.setOnClickListener(new disableNotifButtonClickListener());
