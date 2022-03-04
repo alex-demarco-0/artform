@@ -141,13 +141,14 @@ public class UserProfileActivity extends Activity {
         getUserBadgesCall.enqueue(new Callback<List<Badge>>() {
             @Override
             public void onResponse(Call<List<Badge>> call, Response<List<Badge>> response) {
-                if(response.isSuccessful() && response.body().size() > 0) {
-                    userBadges = new Badge[response.body().size()];
-                    for(int i=0; i<userBadges.length; i++)
-                        userBadges[i] = response.body().get(i);
-                    RecyclerView.Adapter badgesAdapter = new BadgeListAdapter(UserProfileActivity.this, userBadges);
-                    badgesReciclerView.setAdapter(badgesAdapter);
-                }
+                if(response.isSuccessful())
+                    if(response.body().size() > 0) {
+                        userBadges = new Badge[response.body().size()];
+                        for(int i=0; i<userBadges.length; i++)
+                            userBadges[i] = response.body().get(i);
+                        RecyclerView.Adapter badgesAdapter = new BadgeListAdapter(UserProfileActivity.this, userBadges);
+                        badgesReciclerView.setAdapter(badgesAdapter);
+                    }
                 else
                     Toast.makeText(UserProfileActivity.this, "Error while fetching user Badges: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
@@ -164,12 +165,12 @@ public class UserProfileActivity extends Activity {
         getUserPostsCall.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                if(response.isSuccessful()) {
-                    userPosts = new Post[response.body().size()];
-                    for(int i=0; i<userPosts.length; i++)
-                        userPosts[i] = response.body().get(i);
-                    //Caricamento dei post dell'utente nella GridView
-                    if(userPosts.length > 0) {
+                if(response.isSuccessful())
+                    if(response.body().size() > 0) {
+                        userPosts = new Post[response.body().size()];
+                        for(int i=0; i<userPosts.length; i++)
+                            userPosts[i] = response.body().get(i);
+                        //Caricamento dei post dell'utente nella GridView
                         userPostsGridView.setAdapter(new PostGridAdapter(UserProfileActivity.this, userPosts));
                         userPostsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
@@ -177,7 +178,6 @@ public class UserProfileActivity extends Activity {
                             }
                         });
                     }
-                }
                 else
                     Toast.makeText(UserProfileActivity.this, "Error while fetching user Posts: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
