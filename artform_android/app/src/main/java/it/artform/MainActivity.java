@@ -171,23 +171,31 @@ public class MainActivity extends FragmentActivity {
             Fragment selectedFragment=null;
             switch(item.getItemId()){
                 case R.id.home_item:
-                    selectedFragment=new HomeFragment();
+                    /*selectedFragment=new HomeFragment();*/
                     break;
                 case R.id.search_item:
-                    selectedFragment=new SearchFragment();
+                    Intent intent1=new Intent(MainActivity.this, UserSearchActivity.class);
+                    startActivity(intent1);
+                    /*selectedFragment=new SearchFragment();*/
                     break;
                 case R.id.add_item:
-                    selectedFragment=new AddFragment();
+                    Intent intent2=new Intent(MainActivity.this, ContentPubActivity.class);
+                    startActivity(intent2);
+                    /*selectedFragment=new AddFragment();*/
                     break;
                 case R.id.notifications_item:
-                    selectedFragment=new NotificationsFragment();
+                    Intent intent3=new Intent(MainActivity.this, NotificationActivity.class);
+                    startActivity(intent3);
+                    /*selectedFragment=new NotificationsFragment();*/
                     break;
                 case R.id.profile_item:
-                    selectedFragment=new ProfileFragment();
+                    Intent intent4=new Intent(MainActivity.this, UserProfileActivity.class);
+                    startActivity(intent4);
+                    /*selectedFragment=new ProfileFragment();*/
                     break;
             }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, selectedFragment).commit();
-            return true;
+            /*getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, selectedFragment).commit();*/
+            return false;
         }
     };
 
