@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -19,9 +21,11 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import it.artform.databases.PostDBAdapter;
 import it.artform.pojos.Post;
+import it.artform.pojos.Topic;
 import it.artform.web.ArtformApiEndpointInterface;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -36,12 +40,11 @@ public class ContentPubActivity extends Activity {
     ArtformApiEndpointInterface apiService = null;
     Post newPost = null;
 
-    EditText titleEditText, topicsEditText, tagsEditText;
+    EditText titleEditText, tagsEditText;
     Button publishButton, cancelButton;
     ImageButton addImageView;
-    ProgressBar loadingProgressBar;
-
-    String username = "alex";
+    Spinner topicSpinner;
+    String username = AFGlobal.getLoggedUser();
 
     File imageFile = null;
 
@@ -49,12 +52,20 @@ public class ContentPubActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_publication);
-        //loadingProgressBar = findViewById(R.id.loadingProgressBar);
 
+        //widget setup
+        addImageView = findViewById(R.id.addImageView);
+        titleEditText = findViewById(R.id.titleEditText);
+        topicSpinner = findViewById(R.id.topicSpinner);
+        tagsEditText = findViewById(R.id.tagsEditText);
+        publishButton = findViewById(R.id.publishButton);
+        cancelButton = findViewById(R.id.cancelButton);
+
+        //web services setup
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
-        addImageView = findViewById(R.id.addImageView);
+        //seleziona immagine
         addImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,9 +86,7 @@ public class ContentPubActivity extends Activity {
 
         });
 
-        titleEditText = findViewById(R.id.titleEditText);
-        topicsEditText = findViewById(R.id.topicsEditText);
-        tagsEditText = findViewById(R.id.tagsEditText);
+
 /*
         if (Build.VERSION.SDK_INT >= 23) {
             int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
@@ -86,16 +95,18 @@ public class ContentPubActivity extends Activity {
             }
         }
 */
+        //GET dei Topic
+        fetchTopics();
 
-        publishButton = findViewById(R.id.publishButton);
+        //pulsante per Pubblicare
         publishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (titleEditText.getText().toString().isEmpty() && topicsEditText.getText().toString().isEmpty() && tagsEditText.getText().toString().isEmpty()) {
+                if (titleEditText.getText().toString().isEmpty() && topicSpinner.getSelectedItem().toString().isEmpty() && tagsEditText.getText().toString().isEmpty()) {
                     Toast.makeText(ContentPubActivity.this, "Insert all Values", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                newPost = new Post(username, String.valueOf(titleEditText.getText()), String.valueOf(topicsEditText.getText()), String.valueOf(tagsEditText.getText()), new Date(), 0, "img");
+                newPost = new Post(username, String.valueOf(titleEditText.getText()), String.valueOf(topicSpinner.getSelectedItem()), String.valueOf(tagsEditText.getText()), new Date(), 0, "img");
 
                 uploadPost(newPost);
                 /*/Toast.makeText(ContentPubActivity.this, topicsEditText.getText().toString(), Toast.LENGTH_SHORT).show();
@@ -110,14 +121,35 @@ public class ContentPubActivity extends Activity {
                 //Toast.makeText(ContentPubActivity.this, "", Toast.LENGTH_SHORT).show();
             }
         });
-
-        cancelButton = findViewById(R.id.cancelButton);
+        //pulsante per reimpostare i campi
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 titleEditText.getText().clear();
-                topicsEditText.getText().clear();
+                topicSpinner.setSelection(0);
                 tagsEditText.getText().clear();
+            }
+        });
+    }
+    // GET Topics
+    private void fetchTopics() {
+        Call<List<Topic>> getTopicsCall = apiService.getAllTopics();
+        getTopicsCall.enqueue(new Callback<List<Topic>>() {
+            @Override
+            public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
+                if(response.isSuccessful()) {
+                    String[] topics = new String[response.body().size()];
+                    for(int i=0; i<topics.length; i++)
+                        topics[i] = response.body().get(i).getName();
+                    ArrayAdapter topicsAdapter = new ArrayAdapter<String>(ContentPubActivity.this, android.R.layout.simple_spinner_dropdown_item, topics);
+                    topicSpinner.setAdapter(topicsAdapter);
+                }
+                else
+                    Toast.makeText(ContentPubActivity.this, "Error while fetching topics: ERROR " + response.code(), Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onFailure(Call<List<Topic>> call, Throwable t) {
+                Toast.makeText(ContentPubActivity.this, "Error while fetching topics: " + t.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -130,7 +162,7 @@ public class ContentPubActivity extends Activity {
         publishPost.enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
                     try {
                         pdba.open();
@@ -141,10 +173,10 @@ public class ContentPubActivity extends Activity {
                     pdba.createPost(newPost);
                     pdba.close();
                     Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
-                }
-                else
+                } else
                     Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la pubblicazione: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
+
             @Override
             public void onFailure(Call<Post> call, Throwable t) {
                 Toast.makeText(ContentPubActivity.this, "Si è verificato un problema  :(  " + t.toString(), Toast.LENGTH_LONG).show();
@@ -187,38 +219,38 @@ public class ContentPubActivity extends Activity {
         return res;
     }
 
-/*
-    // metodo con URI, per POST REQUEST
-    private void uploadPost(Post newPost/*, Uri selectedImageUri) {
-        //File postFile = new File(selectedImageUri.getPath());
-        RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), /*postFile imageFile);
-        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", /*postFile.getName() imageFile.getName(), postResource);
-        String postJsonObject = new Gson().toJson(newPost);
-        RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
-        Call<Post> publishPostCall = apiService.addPost(objectPart, resourcePart);
-        publishPostCall.enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
-                PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
-                try {
-                    pdba.open();
-                } catch (SQLException throwables) {
-                    Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la pubblicazione (errore SQLite)", Toast.LENGTH_LONG).show();
-                    throwables.printStackTrace();
+    /*
+        // metodo con URI, per POST REQUEST
+        private void uploadPost(Post newPost/*, Uri selectedImageUri) {
+            //File postFile = new File(selectedImageUri.getPath());
+            RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), /*postFile imageFile);
+            MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", /*postFile.getName() imageFile.getName(), postResource);
+            String postJsonObject = new Gson().toJson(newPost);
+            RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
+            Call<Post> publishPostCall = apiService.addPost(objectPart, resourcePart);
+            publishPostCall.enqueue(new Callback<Post>() {
+                @Override
+                public void onResponse(Call<Post> call, Response<Post> response) {
+                    PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
+                    try {
+                        pdba.open();
+                    } catch (SQLException throwables) {
+                        Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la pubblicazione (errore SQLite)", Toast.LENGTH_LONG).show();
+                        throwables.printStackTrace();
+                    }
+                    pdba.createPost(newPost);
+                    pdba.close();
+                    Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
                 }
-                pdba.createPost(newPost);
-                pdba.close();
-                Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
-            }
 
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-                Toast.makeText(ContentPubActivity.this, "Si è verificato un problema  :(  " + t.toString(), Toast.LENGTH_LONG).show();
-                t.printStackTrace();
-            }
-        });
-    }
-*/
+                @Override
+                public void onFailure(Call<Post> call, Throwable t) {
+                    Toast.makeText(ContentPubActivity.this, "Si è verificato un problema  :(  " + t.toString(), Toast.LENGTH_LONG).show();
+                    t.printStackTrace();
+                }
+            });
+        }
+    */
     private void uploadPost(Post newPost) {
         //TEST ALEX
         File postFile = new File("/sdcard/Download/cRGLP.jpg");

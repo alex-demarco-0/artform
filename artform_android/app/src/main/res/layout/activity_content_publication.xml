@@ -55,8 +55,8 @@
             android:inputType="text"
             android:minHeight="48dp" />
 
-        <EditText
-            android:id="@+id/topicsEditText"
+        <Spinner
+            android:id="@+id/topicSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter Topics"
