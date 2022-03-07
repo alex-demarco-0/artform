@@ -48,7 +48,7 @@ public class ExternalProfileActivity extends Activity {
     private class disableNotifButtonClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Call<ResponseBody> deactivateUserNotificationsCall = apiService.deactivateUserNotifications(AFGlobal.getLoggedUser(), user.getUsername());
+            Call<ResponseBody> deactivateUserNotificationsCall = apiService.deactivateUserNotifications(username, user.getUsername());
             deactivateUserNotificationsCall.enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -75,7 +75,7 @@ public class ExternalProfileActivity extends Activity {
         @Override
         public void onClick(View view) {
             RequestBody username2 = RequestBody.create(MediaType.parse("text/plain"), user.getUsername());
-            Call<User> activateUserNotificationsCall = apiService.activateUserNotifications(AFGlobal.getLoggedUser(), username2);
+            Call<User> activateUserNotificationsCall = apiService.activateUserNotifications(AFGlobal.getLoggedUser(), username2.toString());
             activateUserNotificationsCall.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
