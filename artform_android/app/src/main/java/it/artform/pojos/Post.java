@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Post implements Serializable {
-    private final int id; // server DB PK
+    private int id; // server DB PK
     @SerializedName("utenteUsername")
     private final String userUsername;
     @SerializedName("titolo")
@@ -21,6 +21,16 @@ public class Post implements Serializable {
 
     public Post(int id, String userUsername, String title, String topic, String tags, Date publicationDate, int like, String type) {
         this.id = id;
+        this.userUsername = userUsername;
+        this.title = title;
+        this.topic = topic;
+        this.tags = tags;
+        this.publicationDate = publicationDate;
+        this.like = like;
+        this.type = type;
+    }
+
+    public Post(String userUsername, String title, String topic, String tags, Date publicationDate, int like, String type) {
         this.userUsername = userUsername;
         this.title = title;
         this.topic = topic;

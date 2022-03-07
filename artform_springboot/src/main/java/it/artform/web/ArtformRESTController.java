@@ -125,7 +125,7 @@ public class ArtformRESTController {
 			return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-
+	
 	@RequestMapping(value="/artform/post", method=RequestMethod.POST)
 	public ResponseEntity<Post> addPost(@RequestParam("resource") MultipartFile postResource, @RequestParam("postObj") Post newPost) {
 		if(this.artformRepository.savePost(newPost) == 1) {
@@ -138,7 +138,7 @@ public class ArtformRESTController {
 		}
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-
+	
 	@RequestMapping(value="/artform/post/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Post> updatePost(@PathVariable int id, @RequestBody Post modPost) {
 		Post p = this.artformRepository.findPost(id);
