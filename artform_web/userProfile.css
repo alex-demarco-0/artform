@@ -13,6 +13,8 @@
   text-align: center;
 }
 #settingsButton{
+   width:35px;
+   height:35px;
    position:absolute;
    right: 20px;
 }
@@ -30,14 +32,19 @@
    background-attachment: fixed;
  }
 
- #settingsButton, #badgesButton{
+ #badgesButton{
    font-weight: 700;
    border:none;
    color: white;
    text-decoration: none;
    padding: .8em 1em calc(.8em + 3px);
    border-radius: 4px;
-   background: #D291BC;
+  }
+
+  #badgesBtn{
+    width:35px;
+    height:35px;
+
   }
 
   .dropbtn {
@@ -47,7 +54,6 @@
     text-decoration: none;
     padding: .8em 1em calc(.8em + 3px);
     border-radius: 4px;
-    background: #D291BC;
   }
 
   /* The container <div> - needed to position the dropdown content */
