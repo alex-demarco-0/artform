@@ -19,6 +19,9 @@
 }
 
 #inputTitle{
+  height:25px;
+  border-width:thin;
+  border-radius: 4px;
   margin: 10px;
   width: 600px;
 }
@@ -26,6 +29,8 @@
 #inputTags{
   margin: 10px;
   width: 600px;
+  border-width:thin;
+  border-radius: 4px;
   height: 200px;
   resize: none;
 }
