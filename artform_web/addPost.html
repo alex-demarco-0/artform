@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AddPost</title>
+    <link rel="stylesheet" href="addPost.css">
+    <script>
+       var loadFile = function(event) {
+       var output = document.getElementById('img');
+       output.src = URL.createObjectURL(event.target.files[0]);
+       output.onload = function() {
+         URL.revokeObjectURL(output.src) // free memory
+       }
+     };
+    </script>
+  </head>
+  <body body id="body" style="background-color:#E9CFEC">
+
+    <div id="addFormDiv">
+        <img id="img" src="#" alt="POST">
+      <form id="addForm">
+        <input id="inputFile" type="file" onchange="loadFile(event)" accept="image/gif, image/jpeg, image/png"> <br>
+        <input id="inputTitle" type="text" placeholder="Titolo..."> <br>
+        <textarea id="inputTags" type="text" placeholder="#tags"></textarea> <br>
+        <button id="button" type="submit">Pubblica</button>
+        <button type="reset">Reset</button>
+      </form>
+    </div>
+
+  </body>
+</html>
