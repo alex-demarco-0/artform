@@ -139,7 +139,7 @@ public class RegisterActivity extends Activity {
         });
     }
 
-    public String checkFields() {
+    private String checkFields() {
         // nome
         if (nameEditText.getText().toString().equals(""))
             return "Inserisci nome";
