@@ -148,5 +148,4 @@ public interface ArtformApiEndpointInterface {
     @DELETE("/artform/utente/{username}/topics")
     Call<ResponseBody> userDeselectsAllTopics(@Path("username") String username);
 
-
 }
