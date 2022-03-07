@@ -13,6 +13,8 @@
   text-align: center;
 }
 #settingsButton{
+   width:35px;
+   height:35px;
    position:absolute;
    right: 20px;
 }
@@ -30,6 +32,7 @@
    background-attachment: fixed;
  }
 
+
  #settingsButton, #badgesButton{
    font-weight: 700;
    border:none;
@@ -37,6 +40,11 @@
    text-decoration: none;
    padding: .8em 1em calc(.8em + 3px);
    border-radius: 4px;
+
+  #badgesBtn{
+    width:35px;
+    height:35px;
+
   }
 
   .dropbtn {
