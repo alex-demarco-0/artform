@@ -76,7 +76,7 @@ public class CommissionActivity extends Activity {
         //setup datepicker
         endDatePickerSetup();
 
-        // bottone per INVIO del form
+        //pulsante per INVIO del form
         sumbitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +90,7 @@ public class CommissionActivity extends Activity {
             }
         });
 
-        // bottone per cancellare i campi inseriti
+        //pulsante per reimpostare i campi
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +103,7 @@ public class CommissionActivity extends Activity {
         });
     }
 
+    // GET dei Topics
     private void fetchTopics() {
         Call<List<Topic>> getTopicsCall = apiService.getAllTopics();
         getTopicsCall.enqueue(new Callback<List<Topic>>() {
@@ -125,6 +126,7 @@ public class CommissionActivity extends Activity {
         });
     }
 
+    // crea DatePicker con calendario per la selezione della data termine
     private void endDatePickerSetup() {
         endDateCalendar = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -144,12 +146,14 @@ public class CommissionActivity extends Activity {
         });
     }
 
+    // aggiorna endDateEditText dopo aver selezionato la data dal DatePicker
     private void updateEndDateLabel(){
         String myFormat = "MM/dd/yy";
         SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.ITALY);
         endDateEditText.setText(dateFormat.format(endDateCalendar.getTime()));
     }
 
+    // controllo campi
     private String checkFields() {
         if (titleEditText.getText().toString().equals(""))
             return "Insert title";
@@ -162,6 +166,7 @@ public class CommissionActivity extends Activity {
         return "";
     }
 
+    // istanzia oggetto nuova commissione
     private Commission createCommission() {
         String title = String.valueOf(titleEditText.getText());
         double price = Double.parseDouble(String.valueOf(offerEditText.getText()));
@@ -180,6 +185,7 @@ public class CommissionActivity extends Activity {
         return new Commission(0, title, price, description, topic, date, endDate, artistUsername, customerUsername, accountAddress);
     }
 
+    // invia nuova commissione al server
     private void sendCommissionRequest() {
         Commission newCommission = createCommission();
         Call<Commission> addCommissionCall = apiService.addCommission(newCommission);
