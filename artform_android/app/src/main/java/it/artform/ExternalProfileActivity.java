@@ -118,7 +118,7 @@ public class ExternalProfileActivity extends Activity {
 
         Bundle userParams = getIntent().getExtras();
         if(userParams != null) {
-            String username = getIntent().getExtras().getString("artist");
+            String username = getIntent().getExtras().getString("username");
             if (username != null) {
                 // carica e imposta i dati del profilo esterno nelle varie View
                 Call<User> getUserCall = apiService.getUserByUsername(username);
@@ -147,7 +147,7 @@ public class ExternalProfileActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent commissionIntent = new Intent(ExternalProfileActivity.this, CommissionActivity.class);
-                commissionIntent.putExtra("user", user.getUsername());
+                commissionIntent.putExtra("artist", user.getUsername());
                 startActivity(commissionIntent);
             }
         });

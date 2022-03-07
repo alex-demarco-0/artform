@@ -14,9 +14,11 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import it.artform.pojos.Commission;
 import it.artform.pojos.Topic;
 import it.artform.web.ArtformApiEndpointInterface;
 import retrofit2.Call;
@@ -25,10 +27,15 @@ import retrofit2.Response;
 
 public class CommissionActivity extends Activity {
     Spinner topicSpinner = null;
+    EditText titleEditText = null;
+    EditText offerEditText = null;
     EditText endDateEditText = null;
     Calendar endDateCalendar = null;
+    EditText messageEditText = null;
 
     ArtformApiEndpointInterface apiService = null;
+
+    String artistUsername = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +44,11 @@ public class CommissionActivity extends Activity {
 
         //widget setup
         TextView commissionTextView = findViewById(R.id.commissionTextView);
-        EditText titleEditText = findViewById(R.id.titleEditText);
-        EditText offerEditText = findViewById(R.id.offerEditText);
+        titleEditText = findViewById(R.id.titleEditText);
+        offerEditText = findViewById(R.id.offerEditText);
         topicSpinner = findViewById(R.id.topicSpinner);
         endDateEditText = findViewById(R.id.endDateEditText);
-        EditText messageEditText = findViewById(R.id.messageEditText);
+        messageEditText = findViewById(R.id.messageEditText);
         Button sumbitButton = findViewById(R.id.sumbitButton);
         Button resetButton = findViewById(R.id.resetButton);
 
@@ -52,10 +59,16 @@ public class CommissionActivity extends Activity {
         //imposta username utente da contattare
         Bundle userParam = getIntent().getExtras();
         if(userParam != null) {
-            String username =userParam.getString("user");
-            if (username != null)
+            String username = userParam.getString("artist");
+            if (username != null) {
                 commissionTextView.append(username);
+                artistUsername = username;
+            }
+            else
+                Toast.makeText(this, "Error fetching artist", Toast.LENGTH_LONG).show();
         }
+        else
+            Toast.makeText(this, "Error fetching artist", Toast.LENGTH_LONG).show();
 
         //GET dei Topic
         fetchTopics();
@@ -67,7 +80,13 @@ public class CommissionActivity extends Activity {
         sumbitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //////////////////////////////////////// send commission request
+                String missingField = checkFields();
+                if (!missingField.equals("")) {
+                    Toast.makeText(CommissionActivity.this, missingField, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                sendCommissionRequest();
+                //finish();
             }
         });
 
@@ -108,7 +127,7 @@ public class CommissionActivity extends Activity {
 
     private void endDatePickerSetup() {
         endDateCalendar = Calendar.getInstance();
-        DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
                 endDateCalendar.set(Calendar.YEAR, year);
@@ -129,6 +148,55 @@ public class CommissionActivity extends Activity {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.ITALY);
         endDateEditText.setText(dateFormat.format(endDateCalendar.getTime()));
+    }
+
+    private String checkFields() {
+        if (titleEditText.getText().toString().equals(""))
+            return "Insert title";
+        if (offerEditText.getText().toString().equals(""))
+            return "Insert offer"; //////
+        if (endDateEditText.getText().toString().equals(""))
+            return "Select end date";
+        if (messageEditText.getText().toString().equals(""))
+            return "Write a message";
+        return "";
+    }
+
+    private Commission createCommission() {
+        String title = String.valueOf(titleEditText.getText());
+        double price = Double.parseDouble(String.valueOf(offerEditText.getText()));
+        String description = String.valueOf(messageEditText.getText());
+        String topic = topicSpinner.getSelectedItem().toString();
+        Date date = new Date();
+        Date endDate = endDateCalendar.getTime();
+        String customerUsername = AFGlobal.getLoggedUser();
+        String accountAddress =
+                customerUsername.substring(0, 2) +
+                artistUsername.substring(0, 2) +
+                String.valueOf(offerEditText.getText()).substring(0, 1) +
+                title.substring(0, 2) +
+                topic.substring(0, 1) +
+                date.toString().substring(2, 4); // fake address
+        return new Commission(0, title, price, description, topic, date, endDate, artistUsername, customerUsername, accountAddress);
+    }
+
+    private void sendCommissionRequest() {
+        Commission newCommission = createCommission();
+        Call<Commission> addCommissionCall = apiService.addCommission(newCommission);
+        addCommissionCall.enqueue(new Callback<Commission>() {
+            @Override
+            public void onResponse(Call<Commission> call, Response<Commission> response) {
+                if(response.isSuccessful())
+                    Toast.makeText(CommissionActivity.this, "Commission request successfully sent to " + artistUsername, Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(CommissionActivity.this, "Error while sending Commission request: ERROR " + response.code(), Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onFailure(Call<Commission> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(CommissionActivity.this, "Error while sending Commission requests: " + t.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 }
