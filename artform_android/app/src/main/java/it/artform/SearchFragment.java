@@ -31,7 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SearchFragment extends Fragment {
-    SearchView contentSearchView = null;
+    /*SearchView contentSearchView = null;
     Button searchArtworksButton = null;
     Button searchVideosButton = null;
     Button searchArtistsButton = null;
@@ -44,7 +44,7 @@ public class SearchFragment extends Fragment {
     String selectedTopic = null;
     String[] searchedUsers = null;
 
-    Activity act=null;
+    Activity act=null; */
 
     @Nullable
     @Override
@@ -52,7 +52,7 @@ public class SearchFragment extends Fragment {
         return inflater.inflate(R.layout.search_fragment, container,false);
     }
 
-    @Override
+    /*@Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         act=(Activity) context;
@@ -207,6 +207,6 @@ public class SearchFragment extends Fragment {
                 t.printStackTrace();
             }
         });
-    }
+    }*/
 
 }

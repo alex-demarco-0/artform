@@ -39,7 +39,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
-    ImageView userProfilePicImageView = null;
+    /*ImageView userProfilePicImageView = null;
     TextView userProfileUsernameTextView = null;
     TextView userBioTagsTextView = null;
     Button userProfileSettingsButton = null;
@@ -57,7 +57,7 @@ public class ProfileFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         act=(Activity) context;
-    }
+    }*/
 
 
     @Override
@@ -65,7 +65,7 @@ public class ProfileFragment extends Fragment {
         return inflater.inflate(R.layout.home_fragment, container, false);
     }
 
-    @Override
+    /*@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -105,14 +105,8 @@ public class ProfileFragment extends Fragment {
 
             }
         });
-*/
-        userProfileSettingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent openSettingsActivity= new Intent(act, SettingsActivity.class);
-                startActivity(openSettingsActivity);
-            }
-        });
+
+
 
 
     }
@@ -143,6 +137,7 @@ public class ProfileFragment extends Fragment {
             return false;
         }
     */
+    /*
     private void loadUserData() {
         // immagine del profilo
         String profilePicUri = AFGlobal.USER_PROPIC_PATH + AFGlobal.getLoggedUser() + ".jpg";
@@ -212,4 +207,5 @@ public class ProfileFragment extends Fragment {
         postListIntent.putExtra("postList", userPosts);
         postListIntent.putExtra("postIndex", pos);
         startActivity(postListIntent);
-    }}
+    }*/
+}
