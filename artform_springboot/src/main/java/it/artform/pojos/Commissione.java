@@ -6,7 +6,9 @@ public class Commissione {
 	private int Id;
 	private String titolo;
 	private double prezzo;
+	private String descrizione;
 	private Date data;
+	private Date dataTermine;
 	private String artistaUsername, clienteUsername;
 	private String indirizzoConto;
 	
@@ -45,6 +47,14 @@ public class Commissione {
 	public void setPrezzo(double prezzo) {
 		this.prezzo = prezzo;
 	}
+	
+	public String getDescrizione() {
+		return descrizione;
+	}
+	
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
+	}
 
 	public Date getData() {
 		return data;
@@ -52,6 +62,14 @@ public class Commissione {
 	
 	public void setData(Date data) {
 		this.data = data;
+	}
+	
+	public Date getDataTermine() {
+		return dataTermine;
+	}
+	
+	public void setDataTermine(Date dataTermine) {
+		this.dataTermine = dataTermine;
 	}
 
 	public String getArtistaUsername() {

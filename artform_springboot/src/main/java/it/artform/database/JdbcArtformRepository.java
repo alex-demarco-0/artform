@@ -153,8 +153,8 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public int saveCommissione(Commissione c) {
-		return jdbcTemplate.update("INSERT INTO commissione (titolo, prezzo, data, artistaUsername, clienteUsername, indirizzoConto) VALUES (?, ?, ?, ?, ?, ?)",
-				new Object[] {c.getTitolo(), c.getPrezzo(), c.getData(), c.getArtistaUsername(), c.getClienteUsername(), c.getIndirizzoConto()});
+		return jdbcTemplate.update("INSERT INTO commissione (titolo, prezzo, descrizione, data, dataTermine, artistaUsername, clienteUsername, indirizzoConto) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+				new Object[] {c.getTitolo(), c.getPrezzo(), c.getDescrizione(), c.getData(), c.getDataTermine(), c.getArtistaUsername(), c.getClienteUsername(), c.getIndirizzoConto()});
 	}
 
 	@Override

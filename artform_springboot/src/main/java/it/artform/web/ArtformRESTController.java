@@ -312,8 +312,8 @@ public class ArtformRESTController {
 	 * Notifiche Utente
 	 */
 	
-	@RequestMapping(value="/artform/utente/{username1}/verifica_notifiche_attive", method=RequestMethod.GET)
-	public ResponseEntity<Utente> checkUserNotifications(@PathVariable String username1, @RequestBody String username2) {
+	@RequestMapping(value="/artform/utente/{username1}/verifica_notifiche_attive/{username2}", method=RequestMethod.GET)
+	public ResponseEntity<Utente> checkUserNotifications(@PathVariable String username1, @PathVariable String username2) {
 		Utente check = this.artformRepository.checkUserNotifications(username1, username2);
 		if(check != null)
 			return new ResponseEntity<Utente>(check, HttpStatus.OK);
