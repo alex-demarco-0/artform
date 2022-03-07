@@ -31,7 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ContentPubActivity extends Activity {
-    private static final int REQUEST_GET_SINGLE_FILE = 0;
+    private static final int REQUEST_GET_SINGLE_FILE = 1;
     AFGlobal app = null;
     ArtformApiEndpointInterface apiService = null;
     Post newPost = null;
@@ -49,7 +49,10 @@ public class ContentPubActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content_publication);
-        loadingProgressBar = findViewById(R.id.loadingProgressBar);
+        //loadingProgressBar = findViewById(R.id.loadingProgressBar);
+
+        app = (AFGlobal) getApplication();
+        apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
         addImageView = findViewById(R.id.addImageView);
         addImageView.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +97,7 @@ public class ContentPubActivity extends Activity {
                 }
                 newPost = new Post(username, String.valueOf(titleEditText.getText()), String.valueOf(topicsEditText.getText()), String.valueOf(tagsEditText.getText()), new Date(), 0, "img");
 
-                uploadPost();
+                uploadPost(newPost);
                 /*/Toast.makeText(ContentPubActivity.this, topicsEditText.getText().toString(), Toast.LENGTH_SHORT).show();
 
                 RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile);
@@ -127,18 +130,21 @@ public class ContentPubActivity extends Activity {
         publishPost.enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
-                PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
-                try {
-                    pdba.open();
-                } catch (SQLException throwables) {
-                    Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la pubblicazione (errore SQLite)", Toast.LENGTH_LONG).show();
-                    throwables.printStackTrace();
+                if(response.isSuccessful()) {
+                    PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
+                    try {
+                        pdba.open();
+                    } catch (SQLException throwables) {
+                        Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la pubblicazione (errore SQLite)", Toast.LENGTH_LONG).show();
+                        throwables.printStackTrace();
+                    }
+                    pdba.createPost(newPost);
+                    pdba.close();
+                    Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
                 }
-                pdba.createPost(newPost);
-                pdba.close();
-                Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la pubblicazione: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
-
             @Override
             public void onFailure(Call<Post> call, Throwable t) {
                 Toast.makeText(ContentPubActivity.this, "Si è verificato un problema  :(  " + t.toString(), Toast.LENGTH_LONG).show();
@@ -157,7 +163,7 @@ public class ContentPubActivity extends Activity {
                     Uri selectedImageUri = data.getData();
                     final String path = getPathFromUri(selectedImageUri);
                     if (path != null) {
-                        File imageFile = new File(path);
+                        imageFile = new File(path);
                         selectedImageUri = Uri.fromFile(imageFile);
                     }
                     // CALL
@@ -181,13 +187,12 @@ public class ContentPubActivity extends Activity {
         return res;
     }
 
-
+/*
     // metodo con URI, per POST REQUEST
-    private void uploadPost(Post newPost, Uri selectedImageUri) {
-
-        File postFile = new File(selectedImageUri.getPath());
-        RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), postFile);
-        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", postFile.getName(), postResource);
+    private void uploadPost(Post newPost/*, Uri selectedImageUri) {
+        //File postFile = new File(selectedImageUri.getPath());
+        RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), /*postFile imageFile);
+        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", /*postFile.getName() imageFile.getName(), postResource);
         String postJsonObject = new Gson().toJson(newPost);
         RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
         Call<Post> publishPostCall = apiService.addPost(objectPart, resourcePart);
@@ -212,13 +217,10 @@ public class ContentPubActivity extends Activity {
                 t.printStackTrace();
             }
         });
-
-
     }
-
+*/
     private void uploadPost(Post newPost) {
         //TEST ALEX
-
         File postFile = new File("/sdcard/Download/cRGLP.jpg");
         RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), postFile);
         MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", postFile.getName(), postResource);
@@ -248,6 +250,7 @@ public class ContentPubActivity extends Activity {
         });
 
     }
+
 }
 
 /* test 1 MANBIr
