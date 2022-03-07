@@ -107,28 +107,7 @@ public class ContentPubActivity extends Activity {
                 //Toast.makeText(ContentPubActivity.this, "", Toast.LENGTH_SHORT).show();
             }
         });
-        /*
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, RESULT_OK);
-          */
-            /*
-        File file = new File("/sdcard/Download/cRGLP.jpg");
 
-        MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
-        Call<Post> call = apiService.addPost(filePart,  );
-        call.enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
-                Toast.makeText(ContentPubActivity.this, "Post aggiunto", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-                Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la richiesta " + t, Toast.LENGTH_LONG).show();
-                t.printStackTrace();
-            }
-        });
-        */
         cancelButton = findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -237,8 +216,70 @@ public class ContentPubActivity extends Activity {
 
     }
 
+    private void uploadPost(Post newPost) {
+        //TEST ALEX
 
-    /*
+        File postFile = new File("/sdcard/Download/cRGLP.jpg");
+        RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), postFile);
+        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", postFile.getName(), postResource);
+        String postJsonObject = new Gson().toJson(newPost);
+        RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
+        Call<Post> publishPostCall = apiService.addPost(objectPart, resourcePart);
+        publishPostCall.enqueue(new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
+                try {
+                    pdba.open();
+                } catch (SQLException throwables) {
+                    Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la pubblicazione (errore SQLite)", Toast.LENGTH_LONG).show();
+                    throwables.printStackTrace();
+                }
+                pdba.createPost(newPost);
+                pdba.close();
+                Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+                Toast.makeText(ContentPubActivity.this, "Si è verificato un problema  :(  " + t.toString(), Toast.LENGTH_LONG).show();
+                t.printStackTrace();
+            }
+        });
+
+    }
+}
+
+/* test 1 MANBIr
+    private void uploadPost(Post post) {
+        loadingProgressBar.setVisibility(View.VISIBLE);
+
+        app = (AFGlobal) getApplication();
+        apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
+
+
+
+      CALL        NON FUNGE  02/03/2022
+        Call<Post> postCall = apiService.addPost(username, img);
+        postCall.enqueue(new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                Toast.makeText(ContentPubActivity.this, "Post aggiunto", Toast.LENGTH_SHORT).show();
+                loadingProgressBar.setVisibility(View.GONE);
+                Post responseAPi = response.body();
+
+                //Toast.makeText(ContentPubActivity.this, "Titolo" + responseAPi.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+                Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la richiesta " + t, Toast.LENGTH_LONG).show();
+                t.printStackTrace();
+            }
+        });
+    }
+                    */
+/*
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
@@ -271,25 +312,19 @@ public class ContentPubActivity extends Activity {
             }
         }
     */
-    /*
-    private void uploadPost(Post post) {
-        loadingProgressBar.setVisibility(View.VISIBLE);
+ /*             INTENT CREATO NEL ONCREATE
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(intent, RESULT_OK);
+          */
+            /*
+        File file = new File("/sdcard/Download/cRGLP.jpg");
 
-        app = (AFGlobal) getApplication();
-        apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
-
-
-
-      CALL        NON FUNGE  02/03/2022
-        Call<Post> postCall = apiService.addPost(username, img);
-        postCall.enqueue(new Callback<Post>() {
+        MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
+        Call<Post> call = apiService.addPost(filePart,  );
+        call.enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
                 Toast.makeText(ContentPubActivity.this, "Post aggiunto", Toast.LENGTH_SHORT).show();
-                loadingProgressBar.setVisibility(View.GONE);
-                Post responseAPi = response.body();
-
-                //Toast.makeText(ContentPubActivity.this, "Titolo" + responseAPi.getTitle(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -298,52 +333,4 @@ public class ContentPubActivity extends Activity {
                 t.printStackTrace();
             }
         });
-    }
-                    */
-    private void uploadPost(Post newPost) {
-        //TEST ALEX
-
-
-        File postFile = new File("/sdcard/Download/cRGLP.jpg");
-        RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), postFile);
-        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", postFile.getName(), postResource);
-        String postJsonObject = new Gson().toJson(newPost);
-        RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
-        Call<Post> publishPostCall = apiService.addPost(objectPart, resourcePart);
-        publishPostCall.enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
-                PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
-                try {
-                    pdba.open();
-                } catch (SQLException throwables) {
-                    Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la pubblicazione (errore SQLite)", Toast.LENGTH_LONG).show();
-                    throwables.printStackTrace();
-                }
-                pdba.createPost(newPost);
-                pdba.close();
-                Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-                Toast.makeText(ContentPubActivity.this, "Si è verificato un problema  :(  " + t.toString(), Toast.LENGTH_LONG).show();
-                t.printStackTrace();
-            }
-        });
-
-    }
-         /*
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && data != null){
-            Uri selectedImage = data.getData();
-            addImageView.setVisibility(View.GONE);
-            previewImageView = findViewById(R.id.previewImageView);
-            previewImageView.setImageURI(selectedImage);
-        }
-    }
-
-       */
-}
+        */
