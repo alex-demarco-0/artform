@@ -255,5 +255,4 @@ public class ExternalProfileActivity extends Activity {
         postListIntent.putExtra("postIndex", pos);
         startActivity(postListIntent);
     }
-
 }
