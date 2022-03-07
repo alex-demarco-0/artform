@@ -14,7 +14,14 @@
        };
 
        function pubblica(){
+         var titolo=document.getElementById("inputTitle").value;
+         var post=document.getElementById("inputFile").value;
 
+         if(titolo==""){
+           window.alert("Inserisci un titolo");
+         } else if (post==""){
+           window.alert("Seleziona un file")
+         }else window.alert("Pubblicazione avvenuta con successo!")
        }
 
     </script>

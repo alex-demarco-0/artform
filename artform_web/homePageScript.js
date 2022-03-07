@@ -1,17 +1,17 @@
 function login() {
-    window.location ='loginhtml.html';
+    window.location ="loginhtml.html";
 }
 
 function userProfile(){
-    window.location='userProfile.html';
+    window.location="userProfile.html";
 }
 function notifiche(){
-    window.location='notifiche.html';
+    window.location="notifiche.html";
 }
 function homepage(){
-    window.location='homePage.html';
+    window.location="homePage.html";
 }
 
 function search(){
-  window.location='ricerca.html';
+  window.location="ricerca.html";
 }
