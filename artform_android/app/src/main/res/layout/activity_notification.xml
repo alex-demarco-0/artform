@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".NotificationActivity">
 
     <include
@@ -14,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar">
-
+        <!-- TEST
         <ListView
             android:id="@+id/testCacheNotifListView"
             android:layout_width="300dp"
@@ -26,7 +25,6 @@
             android:layout_marginTop="55dp"
             android:layout_marginEnd="1dp" />
 
-        <!-- TEST -->
         <EditText
             android:id="@+id/saveNotifEditText"
             android:layout_width="wrap_content"
@@ -38,7 +36,6 @@
             android:ems="10"
             android:text="Name" />
 
-        <!-- TEST -->
         <Button
             android:id="@+id/saveNotifButton"
             android:layout_width="wrap_content"
@@ -48,6 +45,16 @@
             android:layout_marginTop="0dp"
             android:layout_toEndOf="@+id/saveNotifEditText"
             android:text="Button" />
+-->
+        <ListView
+            android:id="@+id/notificationsListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true" />
 
     </RelativeLayout>
+
 </RelativeLayout>

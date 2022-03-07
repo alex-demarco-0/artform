@@ -20,20 +20,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationActivity extends Activity {
-
-    File notifFile = null;
+    //File notifFile = null;
+    ListView notificationsListView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-
-
-        EditText saveNotifEditText = findViewById(R.id.saveNotifEditText);
-        Button saveNotifButton = findViewById(R.id.saveNotifButton);
-        ListView testCacheNotificheListView = findViewById(R.id.testCacheNotifListView);
-
+        //EditText saveNotifEditText = findViewById(R.id.saveNotifEditText);
+        //Button saveNotifButton = findViewById(R.id.saveNotifButton);
+        //ListView testCacheNotificheListView = findViewById(R.id.testCacheNotifListView);
+/*
         saveNotifButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,10 +43,12 @@ public class NotificationActivity extends Activity {
                 }
             }
         });
-
-        cacheNotifications();
+        //cacheNotifications();
+ */
+        notificationsListView = findViewById(R.id.notificationsListView);
     }
 
+/*
     // TEST
     public void cacheNotifications() {
         boolean canReadStoreExt = false;
@@ -72,7 +72,7 @@ public class NotificationActivity extends Activity {
             notifFile = dir;
         }
     }
-
+/*
     private List<String> loadFile(String filename) { //restituire lista di String da far caricare ad ArrayAdapter e alla ListView
         String line = null;
         List<String> res = null;
@@ -88,7 +88,7 @@ public class NotificationActivity extends Activity {
                 //Toast.makeText(getApplicationContext(),"File Data == " + res,Toast.LENGTH_SHORT).show();
             }
             else {
-                /* Do something*/
+                // Do something
                 Toast.makeText(getApplicationContext(), "No cached notifications", Toast.LENGTH_SHORT).show();
             }
         } catch(Exception e) {
@@ -96,7 +96,7 @@ public class NotificationActivity extends Activity {
         }
         return res;
     }
-
+/*
     private void saveFile(String filename, String data) {
         try {
             FileOutputStream fos = openFileOutput(filename, this.MODE_PRIVATE|this.MODE_APPEND);
@@ -106,6 +106,5 @@ public class NotificationActivity extends Activity {
             Log.e("Controller", e.getMessage() + e.getLocalizedMessage() + e.getCause());
         }
     }
-
-
+*/
 }
