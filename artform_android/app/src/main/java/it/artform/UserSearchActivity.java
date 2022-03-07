@@ -140,7 +140,7 @@ public class UserSearchActivity extends Activity {
                     });
                 }
                 else
-                    Toast.makeText(UserSearchActivity.this, "Error while fetching topics", Toast.LENGTH_LONG).show();
+                    Toast.makeText(UserSearchActivity.this, "Error while fetching topics: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
             @Override
             public void onFailure(Call<List<Topic>> call, Throwable t) {
