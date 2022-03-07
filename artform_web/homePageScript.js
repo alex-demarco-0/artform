@@ -11,3 +11,7 @@ function notifiche(){
 function homepage(){
     window.location='homePage.html';
 }
+
+function search(){
+  window.location='search.html';
+}
