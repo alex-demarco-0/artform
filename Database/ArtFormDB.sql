@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `badge` (
   PRIMARY KEY (`nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.badge: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.badge: ~3 rows (circa)
 /*!40000 ALTER TABLE `badge` DISABLE KEYS */;
 INSERT INTO `badge` (`nome`, `descrizione`, `punteggio`) VALUES
 	('Easy', 'gg', 8),
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `badgeUtente` (
   CONSTRAINT `FK_badgeUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.badgeUtente: ~0 rows (circa)
+-- Dump dei dati della tabella ArtForm.badgeUtente: ~3 rows (circa)
 /*!40000 ALTER TABLE `badgeUtente` DISABLE KEYS */;
 INSERT INTO `badgeUtente` (`utenteUsername`, `badgeNome`) VALUES
 	('alex', 'Easy'),
@@ -56,7 +56,9 @@ CREATE TABLE IF NOT EXISTS `commissione` (
   `Id` int NOT NULL AUTO_INCREMENT,
   `titolo` varchar(100) NOT NULL,
   `prezzo` double NOT NULL DEFAULT '0',
+  `descrizione` varchar(200) NOT NULL DEFAULT '',
   `data` timestamp NOT NULL,
+  `dataTermine` timestamp NOT NULL,
   `artistaUsername` varchar(50) NOT NULL,
   `clienteUsername` varchar(50) NOT NULL,
   `indirizzoConto` varchar(50) NOT NULL DEFAULT '',
@@ -67,12 +69,12 @@ CREATE TABLE IF NOT EXISTS `commissione` (
   CONSTRAINT `FK_commissione_utente_2` FOREIGN KEY (`clienteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.commissione: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.commissione: ~3 rows (circa)
 /*!40000 ALTER TABLE `commissione` DISABLE KEYS */;
-INSERT INTO `commissione` (`Id`, `titolo`, `prezzo`, `data`, `artistaUsername`, `clienteUsername`, `indirizzoConto`) VALUES
-	(11, 'richiesta disegno velociraptor 3D', 17, '2021-12-13 15:32:51', 'arianna', 'dv8d', 'IT67X'),
-	(12, 'richiesta disegno paesaggio', 20, '2021-12-14 15:27:20', 'dv8d', 'arianna', 'AA9B7'),
-	(13, 'test', 200000, '2022-11-14 15:27:20', 'alex', 'arianna', 'AC9B7');
+INSERT INTO `commissione` (`Id`, `titolo`, `prezzo`, `descrizione`, `data`, `dataTermine`, `artistaUsername`, `clienteUsername`, `indirizzoConto`) VALUES
+	(11, 'richiesta disegno velociraptor 3D', 17, 'potresti disegnarmi un bell\'esemplare di velociraptor in 3D?', '2021-12-13 15:32:51', '2022-06-04 00:00:00', 'arianna', 'dv8d', 'IT67X'),
+	(12, 'richiesta disegno paesaggio', 20, 'messaggio', '2021-12-14 15:27:20', '2029-12-12 00:00:00', 'dv8d', 'arianna', 'AA9B7'),
+	(13, 'test', 200000, 'testt', '2022-11-14 15:27:20', '2009-01-10 00:00:00', 'alex', 'arianna', 'AC9B7');
 /*!40000 ALTER TABLE `commissione` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.notifica
@@ -87,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `notifica` (
   CONSTRAINT `FK_notifica_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.notifica: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.notifica: ~4 rows (circa)
 /*!40000 ALTER TABLE `notifica` DISABLE KEYS */;
 INSERT INTO `notifica` (`data`, `categoria`, `descrizione`, `collegamento`, `utenteUsername`) VALUES
 	('2021-11-10 13:23:18', 4, 'Hai ottenuto 210 punti!', 'http://www.cacca.it/', 'arianna'),
@@ -131,18 +133,18 @@ CREATE TABLE IF NOT EXISTS `post` (
   CONSTRAINT `FK_post_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.post: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.post: ~10 rows (circa)
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
 INSERT INTO `post` (`Id`, `utenteUsername`, `titolo`, `topic`, `tags`, `dataPubblicazione`, `like`, `tipologia`) VALUES
 	(1, 'arianna', 'Velociraptor', '3D', '#dinosaur #animals #cute #3d', '2021-12-09 17:25:11', 2, 'img'),
 	(2, 'arianna', 'Paesaggio commissione', 'Tradizionale', '#paesaggio #landscape #nature', '2021-12-14 15:28:09', 0, 'img'),
 	(4, 'alex', 'Pulce', 'Animali', '#prurito', '2022-02-23 09:45:27', 7, 'img'),
 	(5, 'alex', 'Arch', 'Sci-Fi', '#top', '2022-02-24 14:07:09', 103, 'img'),
-	(6, 'alex', 'Cutie', 'Animali', '#:3', '2022-02-24 14:07:58', 4, 'img'),
-	(7, 'alex', 'Chads', 'Animazione', '#strongmans', '2022-02-24 14:09:00', 1, 'img'),
+	(6, 'alex', 'Cutie', 'Animali', '#:3', '2022-02-24 14:07:58', 5, 'img'),
+	(7, 'alex', 'Chads', 'Animazione', '#strongmans', '2022-02-24 14:09:00', 2, 'img'),
 	(14, 'alex', 's', 'Animazione', '#', '2022-03-24 14:09:00', 0, 'img'),
-	(15, 'alex', 'syyyy', 'Animazione', '#yyyyyy', '2022-04-24 15:09:00', 3, 'img'),
-	(16, 'alex', 'syyyy', 'Animazione', '#yyyyyy', '2022-05-24 15:09:00', 3, 'img'),
+	(15, 'alex', 'syyyy', 'Animazione', '#yyyyyy', '2022-04-24 15:09:00', 5, 'img'),
+	(16, 'alex', 'syyyy', 'Animazione', '#yyyyyy', '2022-05-24 15:09:00', 4, 'img'),
 	(17, 'alex', 'syyyy', 'Animazione', '#yyyyyy', '2022-06-24 15:09:00', 3, 'img');
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
@@ -156,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `postSalvati` (
   CONSTRAINT `FK_postSalvati_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.postSalvati: ~3 rows (circa)
+-- Dump dei dati della tabella ArtForm.postSalvati: ~4 rows (circa)
 /*!40000 ALTER TABLE `postSalvati` DISABLE KEYS */;
 INSERT INTO `postSalvati` (`utenteUsername`, `postID`) VALUES
 	('dv8d', 1),
@@ -203,7 +205,7 @@ CREATE TABLE IF NOT EXISTS `topicUtente` (
   CONSTRAINT `FK_topicUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.topicUtente: ~5 rows (circa)
+-- Dump dei dati della tabella ArtForm.topicUtente: ~6 rows (circa)
 /*!40000 ALTER TABLE `topicUtente` DISABLE KEYS */;
 INSERT INTO `topicUtente` (`utenteUsername`, `topicNome`) VALUES
 	('pollastro', '3D'),
@@ -228,11 +230,11 @@ CREATE TABLE IF NOT EXISTS `utente` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.utente: ~9 rows (circa)
+-- Dump dei dati della tabella ArtForm.utente: ~10 rows (circa)
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
 INSERT INTO `utente` (`nome`, `cognome`, `username`, `email`, `numeroTelefono`, `password`, `bio`, `punteggio`) VALUES
 	('ADMIN', 'ADMIN', 'admin', 'admin@admin.com', '000', 'admin', NULL, 999),
-	('Alessandro', 'De Marco', 'alex', 'a.demarco@itsrizzoli.it', '3384148744', 'password', 'alien', 0),
+	('Alessandro', 'De Marco', 'alex', 'a.demarco@itsrizzoli.it', '3384148744', 'password', 'alien', 2),
 	('Manbir', 'Aceveda', 'arianna', 'ift@k.it', '338', 'password', 'hey #you', 1),
 	('Zante', 'Aceveda', 'ariannolo', 'i@k.it', NULL, 'pwd', NULL, 0),
 	('Hylo', 'hghgh', 'arinolo', 'aaaa@ggg.it', '', 'hy', NULL, 0),
