@@ -4,24 +4,39 @@
     <title>AddPost</title>
     <link rel="stylesheet" href="addPost.css">
     <script>
+
        var loadFile = function(event) {
-       var output = document.getElementById('img');
-       output.src = URL.createObjectURL(event.target.files[0]);
-       output.onload = function() {
-         URL.revokeObjectURL(output.src) // free memory
+         var output = document.getElementById('img');
+         output.src = URL.createObjectURL(event.target.files[0]);
+         output.onload = function() {
+           URL.revokeObjectURL(output.src);
+         }
+       };
+
+       function pubblica(){
+
        }
-     };
+
     </script>
   </head>
   <body body id="body" style="background-color:#E9CFEC">
 
+ <nav>
+ <a href="#"><img id="logo" alt="logo" src="logoAFtrasparente.png" width="240"></a>
+ <ul>
+ <a href="homePage.html"><li>Home</li></a>
+ <a href="userProfile.html"><li>Profile</li></a>
+ </ul>
+ </nav>
+
     <div id="addFormDiv">
-        <img id="img" src="#" alt="POST">
+       <h2 style="text-align:center;">Aggiungi post</h2>
+        <img id="img" src="#" alt="POST" width="auto" height="auto">
       <form id="addForm">
         <input id="inputFile" type="file" onchange="loadFile(event)" accept="image/gif, image/jpeg, image/png"> <br>
         <input id="inputTitle" type="text" placeholder="Titolo..."> <br>
         <textarea id="inputTags" type="text" placeholder="#tags"></textarea> <br>
-        <button id="button" type="submit">Pubblica</button>
+        <button id="button" type="submit" onclick="pubblica()" >Pubblica</button>
         <button type="reset">Reset</button>
       </form>
     </div>
