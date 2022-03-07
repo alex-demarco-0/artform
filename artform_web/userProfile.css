@@ -32,15 +32,6 @@
    background-attachment: fixed;
  }
 
- #badgesButton{
-   font-weight: 700;
-   border:none;
-   color: white;
-   text-decoration: none;
-   padding: .8em 1em calc(.8em + 3px);
-   border-radius: 4px;
-  }
-
   #badgesBtn{
     width:35px;
     height:35px;
