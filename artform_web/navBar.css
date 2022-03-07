@@ -37,6 +37,6 @@
   bottom:0px;
   height:40px;
   width:100%;
-   background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
+  background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
   z-index:999999;
 }
