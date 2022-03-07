@@ -86,7 +86,7 @@ public class CommissionActivity extends Activity {
                     return;
                 }
                 sendCommissionRequest();
-                //finish();
+                finish();
             }
         });
 
