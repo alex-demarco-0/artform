@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class ArtformDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "artform.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     //private static final String DATABASE_CREATE = CREATE_USER + CREATE_POST + CREATE_NOTIFICATION;
 
@@ -59,7 +59,9 @@ public class ArtformDBHelper extends SQLiteOpenHelper {
             PostDBAdapter.KEY_EXTERNAL_ID + " integer UNIQUE NOT NULL, " +
             CommissionDBAdapter.KEY_TITLE + " varchar(100) NOT NULL, " +
             CommissionDBAdapter.KEY_PRICE + " double NOT NULL, " +
+            CommissionDBAdapter.KEY_DESCRIPTION + " varchar(200) NOT NULL, " +
             CommissionDBAdapter.KEY_DATE + " timestamp NOT NULL, " +
+            CommissionDBAdapter.KEY_ENDDATE + " timestamp NOT NULL, " +
             CommissionDBAdapter.KEY_ARTIST + " varchar(50) NOT NULL, " +
             CommissionDBAdapter.KEY_CUSTOMER + " varchar(50) NOT NULL, " +
             CommissionDBAdapter.KEY_ACCOUNT_ADDRESS + " varchar(50) NOT NULL, " +
