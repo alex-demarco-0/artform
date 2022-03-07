@@ -4,9 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-configuration android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-configuration android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-configuration android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <uses-configuration android:name="android.permission.CAMERA" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -28,15 +27,14 @@
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".UserProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PostListActivity"
             android:exported="false" />
         <activity
             android:name=".NotificationActivity"
@@ -46,15 +44,11 @@
             android:exported="false" />
         <activity
             android:name=".ContentPubActivity"
-            android:exported="false" />
+            android:exported="false"></activity>
         <activity
             android:name=".ImagePostSearchActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".VideoPostSearchActivity"
@@ -64,10 +58,24 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".TopicSelectActivity"
+            android:exported="false">
+
+        </activity>
         <activity android:name=".HomeFragment" />
     </application>
 
