@@ -54,7 +54,6 @@ public class UserSearchActivity extends Activity {
 
         //web services setup
         AFGlobal app = (AFGlobal) getApplication();
-        /*                                               TEST     */ AFGlobal.setLoggedUser("alex");
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
         //GET dei Topic
