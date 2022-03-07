@@ -3,6 +3,7 @@ package it.artform;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,6 @@ public class SettingsActivity extends Activity {
 
         setContentView(R.layout.activity_settings);
         //ListView dei settings
-        //
         settingsListView = findViewById(R.id.settingsListView);
         // inizializzazione
         ArrayList<String> arrayList = new ArrayList<>();
@@ -37,7 +37,7 @@ public class SettingsActivity extends Activity {
         arrayList.add("Sicurezza");
         arrayList.add("Assistenza");
         arrayList.add("Informazioni");
-        arrayList.add("logout");
+        arrayList.add("Logout");
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
         settingsListView.setAdapter(arrayAdapter);
@@ -46,6 +46,19 @@ public class SettingsActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+
+                switch (i){
+                    case 0:
+
+                        break;
+                    case 1:
+                        Intent accountIntent = new Intent(SettingsActivity.this, SettingsAccount.class);
+                        startActivity(accountIntent);
+                        break;
+                    case 6:
+                        break;
+                }
+
                 // logout
                 if (i == 6) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(SettingsActivity.this);
@@ -53,7 +66,7 @@ public class SettingsActivity extends Activity {
                             setMessage("You sure, that you want to logout?");
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-                            Toast.makeText(SettingsActivity.this, "AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SettingsActivity.this, "AHHHHHHHh", Toast.LENGTH_LONG).show();
                         }
                     });
                     builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
