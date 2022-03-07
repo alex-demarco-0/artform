@@ -14,7 +14,14 @@
        };
 
        function pubblica(){
+         var titolo=document.getElementById("inputTitle").value;
+         var post=document.getElementById("inputFile").value;
 
+         if(titolo==""){
+           window.alert("Inserisci un titolo");
+         } else if (post==""){
+           window.alert("Seleziona un file")
+         }else window.alert("Pubblicazione avvenuta con successo!")
        }
 
     </script>
@@ -29,9 +36,13 @@
  </ul>
  </nav>
 
-    <div id="addFormDiv">
-       <h2 style="text-align:center;">Aggiungi post</h2>
+<h2 style="text-align:center;">Aggiungi post</h2>
+
+      <div id="imgDiv">
         <img id="img" src="#" alt="POST" width="auto" height="auto">
+      </div>
+
+      <div id="addFormDiv">
       <form id="addForm">
         <input id="inputFile" type="file" onchange="loadFile(event)" accept="image/gif, image/jpeg, image/png"> <br>
         <input id="inputTitle" type="text" placeholder="Titolo..."> <br>

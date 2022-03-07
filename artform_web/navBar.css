@@ -33,10 +33,13 @@
 }
 
 .navbar{
+  background-attachment: fixed;
   position:fixed;
   bottom:0px;
   height:40px;
   width:100%;
-  background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
+  background: #E6E6E6;
+  left: 0px;
+  right: 0px;
   z-index:999999;
 }
