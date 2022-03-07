@@ -154,7 +154,7 @@ public class CommissionActivity extends Activity {
         if (titleEditText.getText().toString().equals(""))
             return "Insert title";
         if (offerEditText.getText().toString().equals(""))
-            return "Insert offer"; //////
+            return "Insert offer";
         if (endDateEditText.getText().toString().equals(""))
             return "Select end date";
         if (messageEditText.getText().toString().equals(""))
