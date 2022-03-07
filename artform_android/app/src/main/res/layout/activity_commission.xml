@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,11 +17,21 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/titleTextView"
+            android:id="@+id/commissionTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:text="Request an artwork on commission from _username_"
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/commissionTextView"
+            android:layout_marginTop="25dp"
             android:text="Title:  "
             android:textSize="19sp" />
 
@@ -30,6 +39,8 @@
             android:id="@+id/titleEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/commissionTextView"
+            android:layout_marginTop="15dp"
             android:layout_toEndOf="@+id/titleTextView" />
 
         <TextView
@@ -97,10 +108,12 @@
             android:inputType="date" />
 
         <EditText
-            android:id="@+id/detailEditText"
+            android:id="@+id/messageEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_below="@+id/endDateEditText"
             android:gravity="top|left"
             android:hint="Enter message..."
             android:inputType="textMultiLine"
@@ -108,7 +121,6 @@
             android:maxLines="10"
             android:minLines="6"
             android:scrollbars="vertical" />
-
 
     </RelativeLayout>
 

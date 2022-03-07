@@ -1,11 +1,7 @@
 package it.artform;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,10 +10,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.widget.Toolbar;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,23 +30,16 @@ public class CommissionActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_commission);
 
-
-
-// istanziamento widget UI
-        EditText nameEditText = findViewById(R.id.nameEditText);
-        EditText surnameEditText = findViewById(R.id.surnameEditText);
-        EditText emailEditText = findViewById(R.id.emailEditText);
-        EditText detailEditText = findViewById(R.id.detailEditText);
-        //Spinner dateSpinner = findViewById(R.id.dateSpinner);
-
-
-        // preparazione richiesta GET
-        // Manbir... test
+        // istanziamento widget UI
+        TextView commissionTextView = findViewById(R.id.commissionTextView);
+        EditText titleEditText = findViewById(R.id.titleEditText);
+        EditText offerEditText = findViewById(R.id.offerEditText);
         Spinner topicSpinner = findViewById(R.id.topicSpinner);
+        EditText endDateEditText = findViewById(R.id.endDateEditText);
+        EditText messageEditText = findViewById(R.id.messageEditText);
 
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
-
 
         Call<List<Topic>> call = apiService.getAllTopics();
         call.enqueue(new Callback<List<Topic>>() {
@@ -88,23 +73,19 @@ public class CommissionActivity extends Activity {
             }
         });
 
-
         //Spinner che prende in input i topics dal database
-
 
         // bottone per cancellare i campi inseriti
         Button resetButton = findViewById(R.id.resetButton);
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nameEditText.getText().clear();
-                surnameEditText.getText().clear();
-                emailEditText.getText().clear();
-                detailEditText.getText().clear();
+                titleEditText.getText().clear();
+                offerEditText.getText().clear();
+                endDateEditText.getText().clear();
+                messageEditText.getText().clear();
             }
         });
-
-
     }
 
 }
