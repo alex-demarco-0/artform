@@ -77,6 +77,7 @@ public class CommissionActivity extends Activity {
             public void onClick(View view) {
                 titleEditText.getText().clear();
                 offerEditText.getText().clear();
+                topicSpinner.setSelection(0);
                 endDateEditText.getText().clear();
                 messageEditText.getText().clear();
             }
