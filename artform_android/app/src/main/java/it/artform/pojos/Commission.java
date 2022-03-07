@@ -13,6 +13,7 @@ public class Commission {
     private final double price;
     @SerializedName("descrizione")
     private final String description;
+    private final String topic;
     @SerializedName("data")
     private final Date date;
     @SerializedName("dataTermine")
@@ -24,11 +25,12 @@ public class Commission {
     @SerializedName("indirizzoConto")
     private final String accountAddress;
 
-    public Commission(int id, String title, double price, String description, Date date, Date endDate, String artistUsername, String customerUsername, String accountAddress) {
+    public Commission(int id, String title, double price, String description, String topic, Date date, Date endDate, String artistUsername, String customerUsername, String accountAddress) {
         this.id = id;
         this.title = title;
         this.price = price;
         this.description = description;
+        this.topic = topic;
         this.date = date;
         this.endDate = endDate;
         this.artistUsername = artistUsername;
@@ -50,6 +52,10 @@ public class Commission {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getTopic() {
+        return this.topic;
     }
 
     public Date getDate() {

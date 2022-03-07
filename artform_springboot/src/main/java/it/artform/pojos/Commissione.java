@@ -7,6 +7,7 @@ public class Commissione {
 	private String titolo;
 	private double prezzo;
 	private String descrizione;
+	private String topic;
 	private Date data;
 	private Date dataTermine;
 	private String artistaUsername, clienteUsername;
@@ -54,6 +55,14 @@ public class Commissione {
 	
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
+	}
+	
+	public String getTopic() {
+		return topic;
+	}
+	
+	public void setTopic(String topic) {
+		this.topic = topic;
 	}
 
 	public Date getData() {
