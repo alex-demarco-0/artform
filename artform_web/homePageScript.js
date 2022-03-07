@@ -13,5 +13,5 @@ function homepage(){
 }
 
 function search(){
-  window.location='search.html';
+  window.location='ricerca.html';
 }
