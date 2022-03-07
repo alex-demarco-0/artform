@@ -147,6 +147,7 @@ public class ExternalProfileActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent commissionIntent = new Intent(ExternalProfileActivity.this, CommissionActivity.class);
+                commissionIntent.putExtra("user", user.getUsername());
                 startActivity(commissionIntent);
             }
         });
