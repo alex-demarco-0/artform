@@ -15,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -28,7 +27,6 @@ import java.io.File;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -152,6 +150,59 @@ public class ContentPubActivity extends Activity {
         });
     }
 
+    /////////////// TEST ALEX
+    private void uploadPost() {
+        //
+        File postFile = new File("/sdcard/Download/cRGLP.jpg"); //test image
+        //
+        RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), postFile);
+        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", postFile.getName(), postResource);
+        String postJsonObject = formatPostObject();
+        RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
+        Call<Post> publishPostCall = apiService.addPost(objectPart, resourcePart);
+        publishPostCall.enqueue(new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                if(response.isSuccessful()) {
+                    /*
+                    PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
+                    try {
+                        pdba.open();
+                    } catch (SQLException throwables) {
+                        Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la pubblicazione (errore SQLite)", Toast.LENGTH_LONG).show();
+                        throwables.printStackTrace();
+                    }
+                    pdba.createPost(newPost);
+                    pdba.close();
+                    */
+                    Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                else
+                    Toast.makeText(ContentPubActivity.this, "Si è verificato un problema: ERROR " + response.code(), Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+                Toast.makeText(ContentPubActivity.this, "Si è verificato un problema :( " + t.toString(), Toast.LENGTH_LONG).show();
+                t.printStackTrace();
+            }
+        });
+    }
+
+    private String formatPostObject() {
+        String postJsonObject = new Gson().toJson(newPost);
+        SimpleDateFormat oldFormat = new SimpleDateFormat("MMM d, yyyy h:mm:ss aaa");
+        SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+        String creationDateIndex = postJsonObject.substring(postJsonObject.indexOf("dataPubblicazione") + 20, postJsonObject.indexOf("tags") - 3);
+        try {
+            String newCreationDate = newFormat.format(oldFormat.parse(creationDateIndex));
+            postJsonObject = postJsonObject.replace(creationDateIndex, newCreationDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return postJsonObject;
+    }
+
     // intent 2
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -217,59 +268,6 @@ public class ContentPubActivity extends Activity {
         });
     }
     */
-    /////////////// TEST ALEX
-    private void uploadPost() {
-        //
-        File postFile = new File("/sdcard/Download/cRGLP.jpg"); //test image
-        //
-        RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), postFile);
-        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", postFile.getName(), postResource);
-        String postJsonObject = formatPostObject();
-        RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
-        Call<Post> publishPostCall = apiService.addPost(objectPart, resourcePart);
-        publishPostCall.enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
-                if(response.isSuccessful()) {
-                    /*
-                    PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
-                    try {
-                        pdba.open();
-                    } catch (SQLException throwables) {
-                        Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la pubblicazione (errore SQLite)", Toast.LENGTH_LONG).show();
-                        throwables.printStackTrace();
-                    }
-                    pdba.createPost(newPost);
-                    pdba.close();
-                    */
-                    Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
-                    finish();
-                }
-                else
-                    Toast.makeText(ContentPubActivity.this, "Si è verificato un problema: ERROR " + response.code(), Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-                Toast.makeText(ContentPubActivity.this, "Si è verificato un problema :( " + t.toString(), Toast.LENGTH_LONG).show();
-                t.printStackTrace();
-            }
-        });
-    }
-
-    private String formatPostObject() {
-        String postJsonObject = new Gson().toJson(newPost);
-        SimpleDateFormat oldFormat = new SimpleDateFormat("MMM d, yyyy h:mm:ss aaa");
-        SimpleDateFormat newFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-        String creationDateIndex = postJsonObject.substring(postJsonObject.indexOf("dataPubblicazione") + 20, postJsonObject.indexOf("tags") - 3);
-        try {
-            String newCreationDate = newFormat.format(oldFormat.parse(creationDateIndex));
-            postJsonObject = postJsonObject.replace(creationDateIndex, newCreationDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return postJsonObject;
-    }
-
 }
 
 /* test 1 MANBIr
