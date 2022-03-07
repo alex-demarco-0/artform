@@ -118,7 +118,7 @@ public class ExternalProfileActivity extends Activity {
 
         Bundle userParams = getIntent().getExtras();
         if(userParams != null) {
-            String username = getIntent().getExtras().getString("username");
+            String username = getIntent().getExtras().getString("artist");
             if (username != null) {
                 // carica e imposta i dati del profilo esterno nelle varie View
                 Call<User> getUserCall = apiService.getUserByUsername(username);
