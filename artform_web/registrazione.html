@@ -10,7 +10,24 @@ Descrizione: project work, pagina web di registrazione
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="registrazione.css">
-      
+
+        <script type="text/javascript" language="javascript">
+
+          function registrazione(){
+            var nome=document.getElementById("nome").value;
+            var cognome=document.getElementById("cognome").value;
+            var username=document.getElementById("username").value;
+            var email=document.getElementById("email").value;
+            var password=document.getElementById("pwd").value;
+            var telefono=document.getElementById("numeroTelefono").value;
+            var registrati=document.getElementById("inputBtn").value;
+
+            if(nome==""||cognome==""||username==""||email==""||password==""||telefono==""){
+              window.alert("Uno o più campi non sono validi");
+            }else window.location="tags.html";
+          }
+
+        </script>
 
         </style>
     </head>
@@ -25,12 +42,12 @@ Descrizione: project work, pagina web di registrazione
         <p align=center><font color="black" size="4"><label >Nome</label>  <input class="inputForm" type="text" id="nome"></font></p>
         <p align=center><font color="black" size="4"><label>Cognome</label>  <input class="inputForm" type="text" id="cognome"></font></p>
         <p align=center><font color="black" size="4"><label>Username</label>  <input class="inputForm" type="text" id="username"></font></p>
-        <p align=center><font color="black" size="4"><label>Email</label>  <input class="inputForm" type="text" id="email" placeholder="Ex. youremail@mail.com"></font></p>
+        <p align=center><font color="black" size="4"><label>Email</label>  <input class="inputForm" type="email" id="email" placeholder="Ex. youremail@mail.com"></font></p>
         <p align=center><font color="black" size="4"><label>Password </label> <input class="inputForm" type="password" id="pwd"  placeholder="Ex. A123@paswod"></font></p>
         <p align=center><font color="black" size="4"><label>Conferma Password</label> <input class="inputForm" type="password" id="Cpwd"></font></p>
         <p align=center><font color="black" size="4"><label>Numero di telefono </label><input class="inputForm" type="text" id="numeroTelefono"></font></p>
 
-        <p align=center><button onclick="registrazione()" value="Conferma"> Conferma</button> <button type="reset">Reset</button>
+        <p align=center><input id="inputBtn" type="button" onclick="registrazione()" value="Conferma"> <button type="reset">Reset</button>
      </form>
         <p align=center>Hai già un account?<a id="login" href="login.html">Accedi</a></p>
     </div>

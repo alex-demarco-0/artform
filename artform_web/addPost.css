@@ -10,6 +10,10 @@
   text-align:center;
 }
 
+#addForm{
+  bottom: 1px;
+}
+
 #inputFile{
   padding: 10px;
 }
@@ -26,9 +30,15 @@
   resize: none;
 }
 
+#imgDiv{
+  display: block;
+  margin:0 auto;
+}
 #img{
   max-height: 500px;
   max-width: 600px;
+  display: block;
+  margin:0 auto;
 }
 
 button{
