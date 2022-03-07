@@ -1,0 +1,36 @@
+#body{
+  font-family:sans-serif, helvetica;
+  background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
+  background-attachment: fixed;
+}
+
+#addFormDiv{
+  margin-top: 5%;
+  text-align:center;
+}
+
+#inputFile{
+  padding: 10px;
+}
+
+#inputTitle{
+  margin: 10px;
+  width: 600px;
+}
+
+#inputTags{
+  margin: 10px;
+  width: 600px;
+  height: 200px;
+  resize: none;
+}
+
+button{
+  font-weight: 700;
+  border:none;
+  color: white;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 4px;
+  background: #D291BC;
+      }
