@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `badge` (
   PRIMARY KEY (`nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.badge: ~3 rows (circa)
+-- Dump dei dati della tabella ArtForm.badge: ~2 rows (circa)
 /*!40000 ALTER TABLE `badge` DISABLE KEYS */;
 INSERT INTO `badge` (`nome`, `descrizione`, `punteggio`) VALUES
 	('Easy', 'gg', 8),
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `badgeUtente` (
   CONSTRAINT `FK_badgeUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.badgeUtente: ~3 rows (circa)
+-- Dump dei dati della tabella ArtForm.badgeUtente: ~0 rows (circa)
 /*!40000 ALTER TABLE `badgeUtente` DISABLE KEYS */;
 INSERT INTO `badgeUtente` (`utenteUsername`, `badgeNome`) VALUES
 	('alex', 'Easy'),
@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS `commissione` (
   `titolo` varchar(100) NOT NULL,
   `prezzo` double NOT NULL DEFAULT '0',
   `descrizione` varchar(200) NOT NULL DEFAULT '',
+  `topic` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `data` timestamp NOT NULL,
   `dataTermine` timestamp NOT NULL,
   `artistaUsername` varchar(50) NOT NULL,
@@ -65,16 +66,18 @@ CREATE TABLE IF NOT EXISTS `commissione` (
   PRIMARY KEY (`Id`),
   KEY `FK_commissione_utente` (`artistaUsername`) USING BTREE,
   KEY `FK_commissione_utente_2` (`clienteUsername`),
+  KEY `FK_commissione_artform.topic` (`topic`),
+  CONSTRAINT `FK_commissione_artform.topic` FOREIGN KEY (`topic`) REFERENCES `topic` (`nome`),
   CONSTRAINT `FK_commissione_utente` FOREIGN KEY (`artistaUsername`) REFERENCES `utente` (`username`),
   CONSTRAINT `FK_commissione_utente_2` FOREIGN KEY (`clienteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Dump dei dati della tabella ArtForm.commissione: ~3 rows (circa)
 /*!40000 ALTER TABLE `commissione` DISABLE KEYS */;
-INSERT INTO `commissione` (`Id`, `titolo`, `prezzo`, `descrizione`, `data`, `dataTermine`, `artistaUsername`, `clienteUsername`, `indirizzoConto`) VALUES
-	(11, 'richiesta disegno velociraptor 3D', 17, 'potresti disegnarmi un bell\'esemplare di velociraptor in 3D?', '2021-12-13 15:32:51', '2022-06-04 00:00:00', 'arianna', 'dv8d', 'IT67X'),
-	(12, 'richiesta disegno paesaggio', 20, 'messaggio', '2021-12-14 15:27:20', '2029-12-12 00:00:00', 'dv8d', 'arianna', 'AA9B7'),
-	(13, 'test', 200000, 'testt', '2022-11-14 15:27:20', '2009-01-10 00:00:00', 'alex', 'arianna', 'AC9B7');
+INSERT INTO `commissione` (`Id`, `titolo`, `prezzo`, `descrizione`, `topic`, `data`, `dataTermine`, `artistaUsername`, `clienteUsername`, `indirizzoConto`) VALUES
+	(11, 'richiesta disegno velociraptor 3D', 17, 'potresti disegnarmi un bell\'esemplare di velociraptor in 3D?', '3D', '2021-12-13 15:32:51', '2022-06-04 00:00:00', 'arianna', 'dv8d', 'IT67X'),
+	(12, 'richiesta disegno paesaggio', 20, 'messaggio', 'Wallpaper', '2021-12-14 15:27:20', '2029-12-12 00:00:00', 'dv8d', 'arianna', 'AA9B7'),
+	(13, 'test', 200000, 'testt', 'Sci-Fi', '2022-11-14 15:27:20', '2009-01-10 00:00:00', 'alex', 'arianna', 'AC9B7');
 /*!40000 ALTER TABLE `commissione` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.notifica
@@ -89,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `notifica` (
   CONSTRAINT `FK_notifica_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.notifica: ~4 rows (circa)
+-- Dump dei dati della tabella ArtForm.notifica: ~2 rows (circa)
 /*!40000 ALTER TABLE `notifica` DISABLE KEYS */;
 INSERT INTO `notifica` (`data`, `categoria`, `descrizione`, `collegamento`, `utenteUsername`) VALUES
 	('2021-11-10 13:23:18', 4, 'Hai ottenuto 210 punti!', 'http://www.cacca.it/', 'arianna'),
@@ -158,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `postSalvati` (
   CONSTRAINT `FK_postSalvati_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.postSalvati: ~4 rows (circa)
+-- Dump dei dati della tabella ArtForm.postSalvati: ~3 rows (circa)
 /*!40000 ALTER TABLE `postSalvati` DISABLE KEYS */;
 INSERT INTO `postSalvati` (`utenteUsername`, `postID`) VALUES
 	('dv8d', 1),
@@ -205,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `topicUtente` (
   CONSTRAINT `FK_topicUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.topicUtente: ~6 rows (circa)
+-- Dump dei dati della tabella ArtForm.topicUtente: ~5 rows (circa)
 /*!40000 ALTER TABLE `topicUtente` DISABLE KEYS */;
 INSERT INTO `topicUtente` (`utenteUsername`, `topicNome`) VALUES
 	('pollastro', '3D'),
