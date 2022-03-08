@@ -57,8 +57,10 @@ public class ArtformRESTController {
 	
 	@RequestMapping(value="/artform/utente", method=RequestMethod.POST)
 	public ResponseEntity<Utente> addUtente(@RequestBody Utente newUtente) {
-		if(this.artformRepository.saveUtente(newUtente) == 1)
+		if(this.artformRepository.saveUtente(newUtente) == 1) {
+			this.userObtainsBadge(newUtente.getUsername(), "Welcome on ArtForm!");
 			return new ResponseEntity<Utente>(newUtente, HttpStatus.CREATED);
+		}
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
@@ -134,6 +136,7 @@ public class ArtformRESTController {
 				resourcesStorageService.storeImagePost(postResource, createdPost);
 			else
 				resourcesStorageService.storeVideoPost(postResource, createdPost);
+			//se è il primo post dell'utente dai badge e notifica ...
 			List<String> usersToNotify = this.artformRepository.findAllUsersWhoActivatedNotificationsOnUser(newPost.getUtenteUsername());
 			for(String user: usersToNotify) {
 				Notifica n = new Notifica();
@@ -404,8 +407,16 @@ public class ArtformRESTController {
 	
 	@RequestMapping(value="/artform/utente/{username}/badges", method=RequestMethod.POST)
 	public ResponseEntity<Badge> userObtainsBadge(@PathVariable String username, @RequestBody String nome) {
-		if(this.artformRepository.giveBadgeToUser(username, nome) == 1)
+		if(this.artformRepository.giveBadgeToUser(username, nome) == 1) {
+			Notifica n = new Notifica();
+			n.setData(new Date());
+			n.setCategoria(5);
+			n.setDescrizione("Congrats! You obtained a new Badge: " + nome);
+			n.setCollegamento("badge");
+			n.setUtenteUsername(username);
+			this.artformRepository.saveNotifica(n);
 			return new ResponseEntity<Badge>(this.artformRepository.findBadge(nome), HttpStatus.CREATED);
+		}
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
