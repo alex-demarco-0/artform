@@ -84,7 +84,7 @@ public class NotificationActivity extends Activity {
     }
 
     private void fetchNotifications() {
-        Call<List<Notification>> getAllUserNotificationsCall = apiService.getAllUserNotifications(/*AFGlobal.getLoggedUser()*/"arianna");
+        Call<List<Notification>> getAllUserNotificationsCall = apiService.getAllUserNotifications(AFGlobal.getLoggedUser());
         getAllUserNotificationsCall.enqueue(new Callback<List<Notification>>() {
             @Override
             public void onResponse(Call<List<Notification>> call, Response<List<Notification>> response) {
