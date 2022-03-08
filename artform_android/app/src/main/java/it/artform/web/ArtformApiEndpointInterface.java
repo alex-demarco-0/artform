@@ -66,8 +66,8 @@ public interface ArtformApiEndpointInterface {
     @GET("/artform/utente/{username}/notifiche/{date}")
     Call<Notification> getNotification(@Path("username") String username, @Path("date") Date date);
 
-    @GET("/artform/utente/{username}/nuove_notifiche/{date}")
-    Call<Integer> checkUnreadNotifications(@Path("username") String username, @Path("date") Date date);
+    @POST("/artform/utente/{username}/nuove_notifiche/")
+    Call<Integer> checkUnreadNotifications(@Path("username") String username, @Body Date date);
 
     @GET("/artform/utente/{username}/notifiche")
     Call<List<Notification>> getAllUserNotifications(@Path("username") String username);

@@ -111,7 +111,7 @@ public class JdbcArtformRepository implements ArtformRepository {
 	
 	@Override
 	public int findNotificationAmountAfterDate(String username, Date startDate) {
-		return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM notifica WHERE utenteUsername=? AND 'data'>?", Integer.class, username, startDate);
+		return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM notifica WHERE utenteUsername=? AND 'data' > '" + startDate + "'", Integer.class, username);
 	}
 
 	@Override
