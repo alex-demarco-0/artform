@@ -108,6 +108,11 @@ public class JdbcArtformRepository implements ArtformRepository {
 	public List<Notifica> findNotificheByUtente(String username) {
 		return jdbcTemplate.query("SELECT * from notifica WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(Notifica.class), username);
 	}
+	
+	@Override
+	public int findNotificationAmountAfterDate(String username, Date startDate) {
+		return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM notifica WHERE utenteUsername=? AND 'data'>?", Integer.class, username, startDate);
+	}
 
 	@Override
 	public int saveNotifica(Notifica n) {

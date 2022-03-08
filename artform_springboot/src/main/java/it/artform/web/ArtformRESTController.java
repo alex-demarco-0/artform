@@ -186,6 +186,11 @@ public class ArtformRESTController {
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
+	@RequestMapping(value="/artform/utente/{username}/nuove_notifiche/{data}", method=RequestMethod.GET)
+	public int getUnreadNotificheNumber(@PathVariable String username, Date startDate) {
+		return this.artformRepository.findNotificationAmountAfterDate(username, startDate);
+	}
+	
 	@RequestMapping(value="/artform/utente/{username}/notifiche", method=RequestMethod.GET)
 	public ResponseEntity<List<Notifica>> getNotificheUtente(@PathVariable String username) {
 		List<Notifica> notifications = this.artformRepository.findNotificheByUtente(username);

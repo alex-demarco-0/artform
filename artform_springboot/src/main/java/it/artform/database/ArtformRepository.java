@@ -29,6 +29,7 @@ public interface ArtformRepository {
 	//Notifica
 	Notifica findNotifica(String username, Date data);
 	List<Notifica> findNotificheByUtente(String username);
+	int findNotificationAmountAfterDate(String username, Date startDate);
 	int saveNotifica(Notifica n);
 
 	//Badge
