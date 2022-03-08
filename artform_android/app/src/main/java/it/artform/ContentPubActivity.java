@@ -105,6 +105,7 @@ public class ContentPubActivity extends Activity {
                 }
                 newPost = new Post(AFGlobal.getLoggedUser(), String.valueOf(titleEditText.getText()), String.valueOf(topicSpinner.getSelectedItem()), String.valueOf(tagsEditText.getText()), new Date(), 0, "img");
                 uploadPost();
+                finish();
             }
         });
 
@@ -115,6 +116,8 @@ public class ContentPubActivity extends Activity {
                 titleEditText.getText().clear();
                 topicSpinner.setSelection(0);
                 tagsEditText.getText().clear();
+                addImageView.setImageResource(R.drawable.ic_add);
+                imageFile = null;
             }
         });
     }
@@ -208,7 +211,7 @@ public class ContentPubActivity extends Activity {
                         imageFile = new File(selectedImagePath);
                         selectedImageUri = Uri.fromFile(imageFile);
                     }
-                    Toast.makeText(ContentPubActivity.this, selectedImagePath.toString(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ContentPubActivity.this, selectedImagePath.toString(), Toast.LENGTH_SHORT).show();
                     addImageView.setImageURI(selectedImageUri);
                 }
             }

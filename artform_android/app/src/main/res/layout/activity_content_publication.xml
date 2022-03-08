@@ -23,7 +23,7 @@
             android:contentDescription=""
             android:focusable="true"
             android:padding="16dp"
-            android:src="@android:drawable/ic_input_add" />
+            android:src="@drawable/ic_add" />
 
         <ImageView
             android:id="@+id/previewImageView"
