@@ -25,7 +25,7 @@
             android:padding="16dp"
             android:src="@drawable/ic_add" />
 
-        <ImageView
+        <!--ImageView - INUTILIZZATO ?
             android:id="@+id/previewImageView"
             android:layout_width="wrap_content"
             android:layout_height="350dp"
@@ -35,7 +35,7 @@
             android:layout_alignBottom="@+id/addImageView"
             android:adjustViewBounds="true"
             android:padding="16dp"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter" /-->
     </RelativeLayout>
 
 
