@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AFGlobal extends Application {
     static AFGlobal AFGlobalInstance = null;
-    public static final String BASE_URL = "http://172.23.224.1:8080/"; //varia in base alla macchina e alla rete
+    public static final String BASE_URL = "http://172.22.144.1:8080/"; //varia in base alla macchina e alla rete
     public static final String USER_PROPIC_PATH = BASE_URL + "media/userProfilePics/";
     public static final String POST_IMAGE_PATH = BASE_URL + "media/imagePosts/";
     public static final String POST_VIDEO_PATH = BASE_URL + "media/videoPosts/";

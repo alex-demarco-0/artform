@@ -34,7 +34,12 @@
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />
-        <activity android:name=".SettingsAccountActivity" android:exported="false"/>
+        <activity
+            android:name=".SettingsAccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SavedPostActivity"
+            android:exported="false" />
         <activity
             android:name=".UserProfileActivity"
             android:exported="false" />
@@ -46,7 +51,7 @@
             android:exported="false" />
         <activity
             android:name=".ContentPubActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ImagePostSearchActivity"
             android:exported="false">
@@ -79,7 +84,9 @@
             android:exported="false">
 
         </activity>
-        <activity android:name=".HomeFragment" android:exported="false"
+        <activity
+            android:name=".HomeFragment"
+            android:exported="false"
             tools:ignore="Instantiatable" />
     </application>
 
