@@ -57,7 +57,6 @@ public class NotificationArrayAdapter extends ArrayAdapter<Notification> {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        //vh.dateTextView.setText(n.getDate().toString());
         //OnClickListener ?
         return convertView;
     }
