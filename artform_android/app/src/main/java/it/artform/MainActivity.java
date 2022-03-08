@@ -14,16 +14,20 @@ import androidx.fragment.app.FragmentActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.Date;
+
 import it.artform.databases.PostDBAdapter;
 
 public class MainActivity extends FragmentActivity {
-    PostDBAdapter pdba = null;
-    Button externalProfileButton = null;
+    //PostDBAdapter pdba = null;
+    //Button externalProfileButton = null;
     ListView datiRegistrazioneListView = null;
-    Button notification=null;
-    Button addPost=null;
-    Button search=null;
-    BottomNavigationView bnv=null;
+    //Button notification = null;
+    //Button addPost = null;
+    //Button search = null;
+    BottomNavigationView bottomNavigationView = null;
+
+    Date lastReadNotifications = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +37,6 @@ public class MainActivity extends FragmentActivity {
         // TEST - dati registrazione
         datiRegistrazioneListView = findViewById(R.id.datiRegistrazioneListView);
         Bundle datiRegistrazione = getIntent().getExtras();
-
         if(datiRegistrazione != null) {
             String[] listaDatiRegistrazione = new String[datiRegistrazione.size()];
             int i = 0;
@@ -42,9 +45,10 @@ public class MainActivity extends FragmentActivity {
                     listaDatiRegistrazione[i] = datiRegistrazione.get(key).toString();
                 i++;
             }
-            ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listaDatiRegistrazione);
-            datiRegistrazioneListView.setAdapter(aa);
+            ArrayAdapter datiRegistrazioneAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listaDatiRegistrazione);
+            datiRegistrazioneListView.setAdapter(datiRegistrazioneAdapter);
         }
+        //
 
         // TEST ADM- pulsante home
         /*Button homeButton = findViewById(R.id.homeButton);
@@ -141,38 +145,38 @@ public class MainActivity extends FragmentActivity {
                 startActivity(intent);
             }
         });*/
-        bnv=(BottomNavigationView) findViewById(R.id.bottomNavigation);
-        bnv.setOnItemSelectedListener(navListener);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new HomeFragment()).commit();
     }
 
-    private NavigationBarView.OnItemSelectedListener
-    navListener=new NavigationBarView.OnItemSelectedListener(){
+    private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment=null;
-            switch(item.getItemId()){
+            Fragment selectedFragment = null;
+            switch(item.getItemId()) {
                 case R.id.home_item:
                     /*selectedFragment=new HomeFragment();*/
                     break;
                 case R.id.search_item:
-                    Intent intent1=new Intent(MainActivity.this, UserSearchActivity.class);
-                    startActivity(intent1);
+                    Intent searchIntent = new Intent(MainActivity.this, UserSearchActivity.class);
+                    startActivity(searchIntent);
                     /*selectedFragment=new SearchFragment();*/
                     break;
                 case R.id.add_item:
-                    Intent intent2=new Intent(MainActivity.this, ContentPubActivity.class);
-                    startActivity(intent2);
+                    Intent publishIntent = new Intent(MainActivity.this, ContentPubActivity.class);
+                    startActivity(publishIntent);
                     /*selectedFragment=new AddFragment();*/
                     break;
                 case R.id.notifications_item:
-                    Intent intent3=new Intent(MainActivity.this, NotificationActivity.class);
-                    startActivity(intent3);
+                    Intent notificationsIntent = new Intent(MainActivity.this, NotificationActivity.class);
+                    startActivity(notificationsIntent);
+                    lastReadNotifications = new Date();
                     /*selectedFragment=new NotificationsFragment();*/
                     break;
                 case R.id.profile_item:
-                    Intent intent4=new Intent(MainActivity.this, UserProfileActivity.class);
-                    startActivity(intent4);
+                    Intent userProfileIntent = new Intent(MainActivity.this, UserProfileActivity.class);
+                    startActivity(userProfileIntent);
                     /*selectedFragment=new ProfileFragment();*/
                     break;
             }
@@ -182,9 +186,19 @@ public class MainActivity extends FragmentActivity {
     };
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        checkNotifications();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         //pdba.close();
+    }
+
+    private void checkNotifications() {
+
     }
 
 }

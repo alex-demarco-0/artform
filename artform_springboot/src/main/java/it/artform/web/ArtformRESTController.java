@@ -134,6 +134,18 @@ public class ArtformRESTController {
 				resourcesStorageService.storeImagePost(postResource, createdPost);
 			else
 				resourcesStorageService.storeVideoPost(postResource, createdPost);
+			List<String> usersToNotify = this.artformRepository.findAllUsersWhoActivatedNotificationsOnUser(newPost.getUtenteUsername());
+			for(String user: usersToNotify) {
+				Notifica n = new Notifica();
+				n.setData(new Date());
+				n.setCategoria(1);
+				String description = newPost.getUtenteUsername() + " published a new " +
+									(newPost.getTipologia().equals("img") ? "artwork" : "video");
+				n.setDescrizione(description);
+				n.setCollegamento(String.valueOf(createdPost.getId()));
+				n.setUtenteUsername(user);
+				this.artformRepository.saveNotifica(n);
+			}
 			return new ResponseEntity<Post>(createdPost, HttpStatus.CREATED);
 		}
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -152,6 +164,14 @@ public class ArtformRESTController {
 			if(modPost.getLike() > p.getLike()) {
 				p.addLike();
 				this.artformRepository.updatePunteggioUtente(p.getUtenteUsername(), 1);
+				Notifica n = new Notifica();
+				n.setData(new Date());
+				n.setCategoria(2);
+				String descrizione = "Someone liked your post!";
+				n.setDescrizione(descrizione);
+				String collegamento = String.valueOf(id);
+				n.setCollegamento(collegamento);
+				n.setUtenteUsername(p.getUtenteUsername());
 			}
 			if(this.artformRepository.updatePost(p) == 1)
 				return new ResponseEntity<Post>(p, HttpStatus.OK);
@@ -275,8 +295,18 @@ public class ArtformRESTController {
 	
 	@RequestMapping(value="/artform/commissione", method=RequestMethod.POST)
 	public ResponseEntity<Commissione> addCommissione(@RequestBody Commissione newCommissione) {
-		if(this.artformRepository.saveCommissione(newCommissione) == 1)
+		if(this.artformRepository.saveCommissione(newCommissione) == 1) {
+			Notifica n = new Notifica();
+			n.setData(new Date());
+			n.setCategoria(3);
+			String descrizione = "User " + newCommissione.getClienteUsername() + " sent you a commission request";
+			n.setDescrizione(descrizione);
+			String collegamento = String.valueOf(newCommissione.getId());
+			n.setCollegamento(collegamento);
+			n.setUtenteUsername(newCommissione.getArtistaUsername());
+			this.artformRepository.saveNotifica(n);
 			return new ResponseEntity<Commissione>(newCommissione, HttpStatus.CREATED);
+		}
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	

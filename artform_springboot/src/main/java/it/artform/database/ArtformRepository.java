@@ -55,6 +55,7 @@ public interface ArtformRepository {
 	//Notifiche Utente
 	Utente checkUserNotifications(String username1, String username2);
 	List<Utente> findUserActiveNotifications(String username);
+	List<String> findAllUsersWhoActivatedNotificationsOnUser(String username);
 	int activateUserNotifications(String username1, String username2);
 	int deactivateUserNotifications(String username1, String username2);
 	int deactivateAllUserNotifications(String username);

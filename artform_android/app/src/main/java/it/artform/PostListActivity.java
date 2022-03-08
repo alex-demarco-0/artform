@@ -17,6 +17,7 @@ public class PostListActivity extends Activity {
         ListView postListView = findViewById(R.id.postListView);
         Bundle bundle = getIntent().getExtras();
         postListView.setAdapter(new PostArrayAdapter(this, R.layout.row_post_list, (Post[]) bundle.getSerializable("postList")));
-        postListView.setSelection((Integer) bundle.get("postIndex"));
+        if(bundle.get("postIndex") != null)
+            postListView.setSelection((Integer) bundle.get("postIndex"));
     }
 }
