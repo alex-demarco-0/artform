@@ -77,15 +77,6 @@ public class ContentPubActivity extends Activity {
         addImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // INTENT 1
-                /*
-                Intent pickMediaIntent = new Intent(
-                        Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                pickMediaIntent.setType("image/*");
-                startActivityForResult(pickMediaIntent, 1);
-                loadingProgressBar.setVisibility(View.VISIBLE);
-               */
-                // intent 2
                 Intent pickImageIntent = new Intent(Intent.ACTION_GET_CONTENT);
                 pickImageIntent.addCategory(Intent.CATEGORY_OPENABLE);
                 pickImageIntent.setType("image/*");
@@ -153,9 +144,7 @@ public class ContentPubActivity extends Activity {
 
     /////////////// TEST ALEX
     private void uploadPost() {
-        //
         //File postFile = new File("/sdcard/Download/cRGLP.jpg"); //test image
-        //
         RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile);
         MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", imageFile.getName(), postResource);
         String postJsonObject = formatPostObject();
