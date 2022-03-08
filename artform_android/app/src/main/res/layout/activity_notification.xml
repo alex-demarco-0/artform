@@ -9,10 +9,31 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar" />
 
+    <TextView
+        android:id="@+id/notificationsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:text="Your Notifications"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:padding="5dp"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/notificationsTextView">
+
+
+        <ListView
+            android:id="@+id/notificationsListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true" />
+
         <!-- TEST
         <ListView
             android:id="@+id/testCacheNotifListView"
@@ -46,15 +67,6 @@
             android:layout_toEndOf="@+id/saveNotifEditText"
             android:text="Button" />
 -->
-        <ListView
-            android:id="@+id/notificationsListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true" />
-
     </RelativeLayout>
 
 </RelativeLayout>

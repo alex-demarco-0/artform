@@ -49,7 +49,7 @@ public class NotificationActivity extends Activity {
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
-        // TEST
+        /* TEST
         Call<Integer> checkUnreadNotificationsCall = apiService.checkUnreadNotifications("arianna", new Date());
         checkUnreadNotificationsCall.enqueue(new Callback<Integer>() {
             @Override
@@ -67,12 +67,12 @@ public class NotificationActivity extends Activity {
                 Toast.makeText(NotificationActivity.this, "EXC " + t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
-        //
+        */
         fetchNotifications();
     }
 
     private void fetchNotifications() {
-        Call<List<Notification>> getAllUserNotificationsCall = apiService.getAllUserNotifications(/*AFGlobal.getLoggedUser()*/"arianna");
+        Call<List<Notification>> getAllUserNotificationsCall = apiService.getAllUserNotifications(AFGlobal.getLoggedUser());
         getAllUserNotificationsCall.enqueue(new Callback<List<Notification>>() {
             @Override
             public void onResponse(Call<List<Notification>> call, Response<List<Notification>> response) {
