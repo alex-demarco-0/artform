@@ -154,6 +154,7 @@ public class ArtformRESTController {
 	@RequestMapping(value="/artform/post/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Post> updatePost(@PathVariable int id, @RequestBody Post modPost) {
 		Post p = this.artformRepository.findPost(id);
+		boolean liked = false;
 		if(p != null) {
 			if(modPost.getTitolo() != null && !modPost.getTitolo().isBlank())
 				p.setTitolo(modPost.getTitolo());
@@ -163,18 +164,23 @@ public class ArtformRESTController {
 				p.setTags(modPost.getTags());
 			if(modPost.getLike() > p.getLike()) {
 				p.addLike();
-				this.artformRepository.updatePunteggioUtente(p.getUtenteUsername(), 1);
-				Notifica n = new Notifica();
-				n.setData(new Date());
-				n.setCategoria(2);
-				String descrizione = "Someone liked your post!";
-				n.setDescrizione(descrizione);
-				String collegamento = String.valueOf(id);
-				n.setCollegamento(collegamento);
-				n.setUtenteUsername(p.getUtenteUsername());
+				liked = true;
 			}
-			if(this.artformRepository.updatePost(p) == 1)
+			if(this.artformRepository.updatePost(p) == 1) {
+				if(liked) {
+					this.artformRepository.updatePunteggioUtente(p.getUtenteUsername(), 1);
+					Notifica n = new Notifica();
+					n.setData(new Date());
+					n.setCategoria(2);
+					String descrizione = "Someone liked your post!";
+					n.setDescrizione(descrizione);
+					String collegamento = String.valueOf(id);
+					n.setCollegamento(collegamento);
+					n.setUtenteUsername(p.getUtenteUsername());
+					this.artformRepository.saveNotifica(n);
+				}
 				return new ResponseEntity<Post>(p, HttpStatus.OK);
+			}
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);

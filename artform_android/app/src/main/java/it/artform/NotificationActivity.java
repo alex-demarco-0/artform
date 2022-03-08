@@ -113,7 +113,7 @@ public class NotificationActivity extends Activity {
         switch(notification.getCategory()) {
             case 1:
             case 2:
-                Call<Post> getPostCall = apiService.getPost(Integer.parseInt(notification.getDescription()));
+                Call<Post> getPostCall = apiService.getPost(Integer.parseInt(notification.getLink()));
                 getPostCall.enqueue(new Callback<Post>() {
                     @Override
                     public void onResponse(Call<Post> call, Response<Post> response) {
@@ -136,7 +136,7 @@ public class NotificationActivity extends Activity {
             case 3:
                 // WIP
                 Intent commissionRequestIntent = new Intent(NotificationActivity.this, CommissionRequestActivity.class);
-                commissionRequestIntent.putExtra("commissionId", Integer.parseInt(notification.getDescription()));
+                commissionRequestIntent.putExtra("commissionId", Integer.parseInt(notification.getLink()));
                 startActivity(commissionRequestIntent);
                 break;
             case 4:
