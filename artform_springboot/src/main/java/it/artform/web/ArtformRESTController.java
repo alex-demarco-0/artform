@@ -157,7 +157,7 @@ public class ArtformRESTController {
 				n.setCategoria(2);
 				String descrizione = "Someone liked your post!";
 				n.setDescrizione(descrizione);
-				String collegamento = "";
+				String collegamento = String.valueOf(id);
 				n.setCollegamento(collegamento);
 				n.setUtenteUsername(p.getUtenteUsername());
 			}
@@ -289,7 +289,7 @@ public class ArtformRESTController {
 			n.setCategoria(3);
 			String descrizione = "User " + newCommissione.getClienteUsername() + " sent you a commission request";
 			n.setDescrizione(descrizione);
-			String collegamento = "";
+			String collegamento = String.valueOf(newCommissione.getId());
 			n.setCollegamento(collegamento);
 			n.setUtenteUsername(newCommissione.getArtistaUsername());
 			this.artformRepository.saveNotifica(n);
