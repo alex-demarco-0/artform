@@ -134,6 +134,18 @@ public class ArtformRESTController {
 				resourcesStorageService.storeImagePost(postResource, createdPost);
 			else
 				resourcesStorageService.storeVideoPost(postResource, createdPost);
+			List<String> usersToNotify = this.artformRepository.findAllUsersWhoActivatedNotificationsOnUser(newPost.getUtenteUsername());
+			for(String user: usersToNotify) {
+				Notifica n = new Notifica();
+				n.setData(new Date());
+				n.setCategoria(1);
+				String description = newPost.getUtenteUsername() + " published a new " +
+									(newPost.getTipologia().equals("img") ? "artwork" : "video");
+				n.setDescrizione(description);
+				n.setCollegamento(String.valueOf(createdPost.getId()));
+				n.setUtenteUsername(user);
+				this.artformRepository.saveNotifica(n);
+			}
 			return new ResponseEntity<Post>(createdPost, HttpStatus.CREATED);
 		}
 		return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
