@@ -43,6 +43,7 @@ public class SettingsActivity extends Activity {
                 switch (i){
                     case 0: // post salvati
                         Intent savedPostIntent = new Intent(SettingsActivity.this, SavedPostActivity.class);
+                        startActivity(savedPostIntent);
                         break;
                     case 1: // Account -- cambio username, numero di telefono, passeword - gestione notifiche e varie impostazioni -- password dimenitcata
                         Intent accountIntent = new Intent(SettingsActivity.this, SettingsAccountActivity.class);
