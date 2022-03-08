@@ -12,12 +12,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -108,19 +112,19 @@ public class SettingsAccountActivity extends Activity {
     }
 
     // richiesta PUT
-    private void updateUser() {
-
-    /*
-        RequestBody userObj = null;
-        MultipartBody.Part resource = null;
-
-        Call<User> updateUser = apiService.updateUser(user.getUsername(), userObj, resource);
+    private void updateUser(){
+        // modifiche utente
+        String userJsonObject = new Gson().toJson(modUser);
+        RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), userJsonObject);
+        // immagine
+        RequestBody postResource = RequestBody.create(MediaType.parse("multipart/from-data"), imageFile);
+        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", imageFile.getName(), postResource);
+        // call
+        Call<User> updateUser = apiService.updateUser(user.getUsername(), objectPart, resourcePart);
         updateUser.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()){
-
-
                     Toast.makeText(SettingsAccountActivity.this, "Utente modificato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
                     finish();
                 }else
@@ -133,9 +137,8 @@ public class SettingsAccountActivity extends Activity {
                 t.printStackTrace();
             }
         });
-        */
-
     }
+
 
     //inserimento automatico dei dati.
     private void loadUserData() {
