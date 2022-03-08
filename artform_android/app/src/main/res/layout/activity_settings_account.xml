@@ -9,43 +9,45 @@
         layout="@layout/toolbar" />
 
 
+    <ImageView
+        android:id="@+id/userProfilePicImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:clickable="true"
+        android:focusable="true" />
+
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="10dp"
-        android:textSize="26sp" />
+        android:layout_below="@+id/userProfilePicImageView" />
 
     <TextView
         android:id="@+id/surnameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/nameTextView"
-        android:textSize="26sp" />
+        android:layout_below="@+id/nameTextView" />
 
     <EditText
         android:id="@+id/usernameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/surnameTextView"
-        android:inputType="text"
-        android:textSize="26sp"/>
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/emailTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/usernameEditText"
-        android:textSize="26sp" />
+        android:layout_below="@+id/usernameEditText" />
 
     <EditText
         android:id="@+id/phoneEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/emailTextView"
-        android:inputType="number"
-        android:textSize="26sp"/>
+        android:inputType="number" />
 
     <EditText
 
@@ -53,16 +55,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/phoneEditText"
-        android:inputType="textVisiblePassword"
-        android:textSize="26sp"/>
+        android:inputType="textVisiblePassword" />
 
     <EditText
         android:id="@+id/bioEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/passwordEditText"
-        android:inputType="text"
-        android:textSize="26sp"/>
+        android:inputType="text" />
 
     <Button
         android:id="@+id/confirmButton"
