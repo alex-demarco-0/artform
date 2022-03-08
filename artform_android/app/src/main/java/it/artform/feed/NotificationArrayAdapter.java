@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import it.artform.AFGlobal;
 import it.artform.R;
 import it.artform.pojos.Notification;
@@ -17,6 +20,8 @@ public class NotificationArrayAdapter extends ArrayAdapter<Notification> {
     private int res = 0;
     private Notification[] notificationList = null;
     ArtformApiEndpointInterface apiService = null;
+    SimpleDateFormat oldFormat = null;
+    SimpleDateFormat newFormat = null;
 
     static class ViewHolder {
         TextView descriptionTextView;
@@ -29,6 +34,9 @@ public class NotificationArrayAdapter extends ArrayAdapter<Notification> {
         res = resource;
         notificationList = objects;
         apiService = AFGlobal.getInstance().getRetrofit().create(ArtformApiEndpointInterface.class);
+        //oldFormat = new SimpleDateFormat("MMM d, yyyy h:mm:ss aaa");
+        oldFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
+        newFormat = new SimpleDateFormat("MMM d yyyy HH:mm");
     }
 
     @Override
@@ -44,7 +52,12 @@ public class NotificationArrayAdapter extends ArrayAdapter<Notification> {
         NotificationArrayAdapter.ViewHolder vh = (NotificationArrayAdapter.ViewHolder) convertView.getTag();
         Notification n = notificationList[position];
         vh.descriptionTextView.setText(String.valueOf(n.getDescription()));
-        vh.dateTextView.setText(n.getDate().toString());
+        try {
+            vh.dateTextView.setText(newFormat.format(oldFormat.parse(n.getDate().toString())));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        //vh.dateTextView.setText(n.getDate().toString());
         //OnClickListener ?
         return convertView;
     }
