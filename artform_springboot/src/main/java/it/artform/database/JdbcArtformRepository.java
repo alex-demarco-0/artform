@@ -192,6 +192,11 @@ public class JdbcArtformRepository implements ArtformRepository {
 	public List<Utente> findUserActiveNotifications(String username) {
 		return jdbcTemplate.query("SELECT ue.* FROM notificheUtente nu INNER JOIN utente ue ON nu.utenteExtUsername = ue.username WHERE nu.utenteUsername=?", BeanPropertyRowMapper.newInstance(Utente.class), username);
 	}
+	
+	@Override
+	public List<String> findAllUsersWhoActivatedNotificationsOnUser(String username) {
+		return jdbcTemplate.queryForList("SELECT utenteUsername FROM notificheUtente WHERE utenteExtUsername=?", String.class, username);
+	}
 
 	@Override
 	public int activateUserNotifications(String username1, String username2) {
