@@ -17,11 +17,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import it.artform.feed.NotificationArrayAdapter;
+import it.artform.pojos.Notification;
+import it.artform.web.ArtformApiEndpointInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NotificationActivity extends Activity {
     //File notifFile = null;
     ListView notificationsListView = null;
+
+    AFGlobal app = null;
+    ArtformApiEndpointInterface apiService = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +57,53 @@ public class NotificationActivity extends Activity {
         //cacheNotifications();
  */
         notificationsListView = findViewById(R.id.notificationsListView);
+
+        app = (AFGlobal) getApplication();
+        apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
+
+        // TEST
+        Call<Integer> checkUnreadNotificationsCall = apiService.checkUnreadNotifications("arianna", new Date());
+        checkUnreadNotificationsCall.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful()) {
+
+                    Toast.makeText(NotificationActivity.this, "unread: " + response.body(), Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(NotificationActivity.this, "ERROR " + response.code(), Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(NotificationActivity.this, "EXC " + t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        //
+        fetchNotifications();
+    }
+
+    private void fetchNotifications() {
+        Call<List<Notification>> getAllUserNotificationsCall = apiService.getAllUserNotifications(/*AFGlobal.getLoggedUser()*/"arianna");
+        getAllUserNotificationsCall.enqueue(new Callback<List<Notification>>() {
+            @Override
+            public void onResponse(Call<List<Notification>> call, Response<List<Notification>> response) {
+                if(response.isSuccessful())
+                    if (response.body().size() > 0) {
+                        Notification[] userNotifications = new Notification[response.body().size()];
+                        for (int i = 0; i < userNotifications.length; i++)
+                            userNotifications[i] = response.body().get(i);
+                        notificationsListView.setAdapter(new NotificationArrayAdapter(NotificationActivity.this, R.layout.row_notification_list, userNotifications));
+                    }
+                else
+                    Toast.makeText(NotificationActivity.this, "Error while retrieving notifications: ERROR " + response.code(), Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(Call<List<Notification>> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(NotificationActivity.this, "Error while retrieving notifications: " + t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 /*
