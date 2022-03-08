@@ -34,7 +34,6 @@ public class NotificationArrayAdapter extends ArrayAdapter<Notification> {
         res = resource;
         notificationList = objects;
         apiService = AFGlobal.getInstance().getRetrofit().create(ArtformApiEndpointInterface.class);
-        //oldFormat = new SimpleDateFormat("MMM d, yyyy h:mm:ss aaa");
         oldFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss z yyyy");
         newFormat = new SimpleDateFormat("MMM d yyyy HH:mm");
     }
