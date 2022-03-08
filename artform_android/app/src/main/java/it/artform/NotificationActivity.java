@@ -12,11 +12,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import it.artform.feed.NotificationArrayAdapter;
 import it.artform.pojos.Notification;
+import it.artform.pojos.Post;
 import it.artform.web.ArtformApiEndpointInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -109,10 +111,38 @@ public class NotificationActivity extends Activity {
 
     private void openNotification(Notification notification) {
         switch(notification.getCategory()) {
+            case 1:
+            case 2:
+                Call<Post> getPostCall = apiService.getPost(Integer.parseInt(notification.getDescription()));
+                getPostCall.enqueue(new Callback<Post>() {
+                    @Override
+                    public void onResponse(Call<Post> call, Response<Post> response) {
+                        if(response.isSuccessful()) {
+                            Intent postDetailsIntent = new Intent(NotificationActivity.this, PostListActivity.class);
+                            Post[] post = {response.body()};
+                            postDetailsIntent.putExtra("postList", post);
+                            startActivity(postDetailsIntent);
+                        }
+                        else
+                            Toast.makeText(NotificationActivity.this, "Error while opening notification details: ERROR " + response.code(), Toast.LENGTH_SHORT).show();
+                    }
+                    @Override
+                    public void onFailure(Call<Post> call, Throwable t) {
+                        t.printStackTrace();
+                        Toast.makeText(NotificationActivity.this, "Error while opening notification details: " + t.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                break;
             case 3:
+                // WIP
                 Intent commissionRequestIntent = new Intent(NotificationActivity.this, CommissionRequestActivity.class);
                 commissionRequestIntent.putExtra("commissionId", Integer.parseInt(notification.getDescription()));
                 startActivity(commissionRequestIntent);
+                break;
+            case 4:
+            case 5:
+                Intent userProfileIntent = new Intent(NotificationActivity.this, UserProfileActivity.class);
+                startActivity(userProfileIntent);
                 break;
             default:
                 Toast.makeText(NotificationActivity.this, "Invalid notification", Toast.LENGTH_SHORT).show();
