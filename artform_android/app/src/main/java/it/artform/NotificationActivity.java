@@ -1,10 +1,12 @@
 package it.artform;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -91,9 +93,15 @@ public class NotificationActivity extends Activity {
                 if(response.isSuccessful())
                     if (response.body().size() > 0) {
                         Notification[] userNotifications = new Notification[response.body().size()];
-                        for (int i = 0; i < userNotifications.length; i++)
+                        for (int i = userNotifications.length - 1; i >= 0; i--)
                             userNotifications[i] = response.body().get(i);
                         notificationsListView.setAdapter(new NotificationArrayAdapter(NotificationActivity.this, R.layout.row_notification_list, userNotifications));
+                        notificationsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                openNotification(userNotifications[i]);
+                            }
+                        });
                     }
                 else
                     Toast.makeText(NotificationActivity.this, "Error while retrieving notifications: ERROR " + response.code(), Toast.LENGTH_SHORT).show();
@@ -104,6 +112,18 @@ public class NotificationActivity extends Activity {
                 Toast.makeText(NotificationActivity.this, "Error while retrieving notifications: " + t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void openNotification(Notification notification) {
+        switch(notification.getCategory()) {
+            case 3:
+                Intent commissionRequestIntent = new Intent(NotificationActivity.this, CommissionRequestActivity.class);
+                commissionRequestIntent.putExtra("commissionId", Integer.parseInt(notification.getDescription()));
+                startActivity(commissionRequestIntent);
+                break;
+            default:
+                Toast.makeText(NotificationActivity.this, "Invalid notification", Toast.LENGTH_SHORT).show();
+        }
     }
 
 /*
