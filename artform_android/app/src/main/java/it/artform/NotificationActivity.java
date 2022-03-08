@@ -57,26 +57,6 @@ public class NotificationActivity extends Activity {
 
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
-
-        /* TEST
-        Call<Integer> checkUnreadNotificationsCall = apiService.checkUnreadNotifications("arianna", new Date());
-        checkUnreadNotificationsCall.enqueue(new Callback<Integer>() {
-            @Override
-            public void onResponse(Call<Integer> call, Response<Integer> response) {
-                if(response.isSuccessful()) {
-
-                    Toast.makeText(NotificationActivity.this, "unread: " + response.body(), Toast.LENGTH_SHORT).show();
-                }
-                else
-                    Toast.makeText(NotificationActivity.this, "ERROR " + response.code(), Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onFailure(Call<Integer> call, Throwable t) {
-                t.printStackTrace();
-                Toast.makeText(NotificationActivity.this, "EXC " + t.toString(), Toast.LENGTH_SHORT).show();
-            }
-        });
-        */
         fetchNotifications();
     }
 
