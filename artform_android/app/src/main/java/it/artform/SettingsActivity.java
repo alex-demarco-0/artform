@@ -42,8 +42,9 @@ public class SettingsActivity extends Activity {
                 // MIGLIORATO CON FRAGMENT.
                 switch (i){
                     case 0: // post salvati
+                        Intent savedPostIntent = new Intent(SettingsActivity.this, SavedPostActivity.class);
                         break;
-                    case 1: // Account -- cambio username, numero di telefono, passeword - gestione notifiche e varie impostazioni
+                    case 1: // Account -- cambio username, numero di telefono, passeword - gestione notifiche e varie impostazioni -- password dimenitcata
                         Intent accountIntent = new Intent(SettingsActivity.this, SettingsAccountActivity.class);
                         startActivity(accountIntent);
                         break;

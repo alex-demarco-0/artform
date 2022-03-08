@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import it.artform.R;
-import it.artform.databases.PostDBAdapter;
 
 public class PostCursorAdapter extends CursorAdapter {
 

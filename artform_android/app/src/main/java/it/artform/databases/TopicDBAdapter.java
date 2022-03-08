@@ -6,8 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class TopicDBAdapter {
     private Context context;

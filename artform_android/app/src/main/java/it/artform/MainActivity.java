@@ -1,38 +1,20 @@
 package it.artform;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.sql.SQLException;
-import java.util.Date;
-
-import it.artform.databases.PostCursorAdapter;
 import it.artform.databases.PostDBAdapter;
-import it.artform.databases.UserDBAdapter;
-import it.artform.pojos.Post;
-import it.artform.feed.PostArrayAdapter;
-import it.artform.pojos.User;
-import it.artform.web.ArtformApiEndpointInterface;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 
 public class MainActivity extends FragmentActivity {
     PostDBAdapter pdba = null;
