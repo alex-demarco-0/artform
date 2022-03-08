@@ -76,8 +76,6 @@ public class SettingsActivity extends Activity {
         Intent intent = new Intent(Intent.ACTION_SEND);
         String[] emails_in_to={"to@email.com"};
         intent.putExtra(Intent.EXTRA_EMAIL, emails_in_to );
-        intent.putExtra(Intent.EXTRA_SUBJECT,"Your Email's subject");
-        intent.putExtra(Intent.EXTRA_TEXT, "Your Email's predefined Body");
         intent.putExtra(Intent.EXTRA_CC,"mailcc@gmail.com");
         intent.setType("text/html");
         intent.setPackage("com.google.android.gm");
