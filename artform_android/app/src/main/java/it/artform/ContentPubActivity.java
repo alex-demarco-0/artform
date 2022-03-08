@@ -2,6 +2,7 @@ package it.artform;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -42,7 +43,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ContentPubActivity extends Activity {
-    private static final int REQUEST_GET_SINGLE_FILE = 0;
+    private static final int REQUEST_GET_SINGLE_FILE = 1;
 
     EditText titleEditText, tagsEditText;
     Button publishButton, cancelButton;
@@ -92,14 +93,14 @@ public class ContentPubActivity extends Activity {
             }
 
         });
-
+/*
         //permission dialog
         if (Build.VERSION.SDK_INT >= 23) {
             int permissionCheck = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE);
             if (permissionCheck != PackageManager.PERMISSION_GRANTED)
                 ActivityCompat.requestPermissions(ContentPubActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
         }
-
+*/
         //GET dei Topic
         fetchTopics();
 
@@ -153,10 +154,10 @@ public class ContentPubActivity extends Activity {
     /////////////// TEST ALEX
     private void uploadPost() {
         //
-        File postFile = new File("/sdcard/Download/cRGLP.jpg"); //test image
+        //File postFile = new File("/sdcard/Download/cRGLP.jpg"); //test image
         //
-        RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), postFile);
-        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", postFile.getName(), postResource);
+        RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile);
+        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", imageFile.getName(), postResource);
         String postJsonObject = formatPostObject();
         RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
         Call<Post> publishPostCall = apiService.addPost(objectPart, resourcePart);
@@ -203,7 +204,7 @@ public class ContentPubActivity extends Activity {
         return postJsonObject;
     }
 
-    // intent 2
+    // pick file
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -211,20 +212,44 @@ public class ContentPubActivity extends Activity {
             if (resultCode == RESULT_OK) {
                 if (requestCode == REQUEST_GET_SINGLE_FILE) {
                     Uri selectedImageUri = data.getData();
-                    final String path = getPathFromUri(selectedImageUri);
-                    if (path != null) {
-                        imageFile = new File(path);
+                    //final String selectedImagePath = getPath(this, selectedImageUri);
+                    String selectedImagePath = selectedImageUri.getPath();
+                    selectedImagePath = selectedImagePath.substring(selectedImagePath.indexOf(':')+1, selectedImagePath.length());
+                    if (selectedImagePath != null) {
+                        imageFile = new File(selectedImagePath);
                         selectedImageUri = Uri.fromFile(imageFile);
                     }
-                    // CALL
-                    Toast.makeText(ContentPubActivity.this, selectedImageUri.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ContentPubActivity.this, selectedImagePath.toString(), Toast.LENGTH_SHORT).show();
+                    addImageView.setImageURI(selectedImageUri);
                 }
             }
         } catch (Exception e) {
             Log.e("ContentPubActivity", "File select ERROR", e);
         }
     }
+/*
+    public String getPath(Context context, Uri uri) {
+        if ("content".equalsIgnoreCase(uri.getScheme())) {
+            String[] projection = {"_data"};
+            Cursor cursor;
 
+            try {
+                cursor = context.getContentResolver().query(uri, projection, null, null, null);
+                assert cursor != null;
+                int column_index = cursor.getColumnIndexOrThrow("_data");
+                if (cursor.moveToFirst()) {
+                    return cursor.getString(column_index);
+                }
+                cursor.close();
+            } catch (Exception e) {
+                // Eat it
+            }
+        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            return uri.getPath();
+        }
+        return null;
+    }
+/*
     public String getPathFromUri(Uri contentUri) {
         String res = null;
         String[] proj = {MediaStore.Images.Media.DATA};
@@ -236,7 +261,7 @@ public class ContentPubActivity extends Activity {
         cursor.close();
         return res;
     }
-
+*/
     /*
     // metodo con URI, per POST REQUEST
     private void uploadPost(Post newPost/*, Uri selectedImageUri) {
