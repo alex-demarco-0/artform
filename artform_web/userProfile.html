@@ -31,7 +31,11 @@
   <body id="body" onload="onPageLoaded();" style="background-color:#E9CFEC;">
     <!-- <button id="badgesButton" name="badges" >Badges</button> -->
     <div class="dropdown">
+
            <input class="dropbtn" type="image"src="https://cdn4.iconfinder.com/data/icons/e-commerce-23/1000/top-sales-512.png" width="50" height="50" value="entra" onclick="ricerca()" name="button" />
+
+      <input id="badgesBtn" type="image" src="trophy.png" class="dropbtn">
+
       <div class="dropdown-content">
         <table>
           <tr>
@@ -54,7 +58,11 @@
       </div>
     </div>
 
+
     <input id="settingsButton" type="image" onclick="setting()" src="https://cdn1.iconfinder.com/data/icons/carbon-design-system-vol-7/32/settings-1024.png" width="35" height="35" value="entra" onclick="setting()" name="button" />
+
+    <input type="image" id="settingsButton" src="settings.png" onClick="return goToSettings();" name="settings">
+
     <div class="propic">
     <img id="propic" src="https://static.thenounproject.com/png/576092-200.png">
     </div>
@@ -92,7 +100,7 @@
           <div id="bottomBar">
                 <input id="inputSearch" type="text" name="search" placeholder="Cerca..." value="" style="width: 850px; height:25px; border-width:thin; border-radius: 4px;">
         <a href="ricerca.html">
-              <input id="searchButton" type="image" onclick="search()" src="https://th.bing.com/th/id/R.636cf5c7676741297ea0e5c8681bbcd1?rik=euO0HZA311ueqA&pid=ImgRaw&r=0" width="25" height="25" value="entra" name="button" />
+                <input id="searchButton" type="image" onclick="search()" src="searchButton.png" width="25" height="25" value="entra" name="button" />
           </div></a>
         <a href="addPost.html"><div class="bottomButtons" id="buttonAdd">
             <input  type="image"  src="https://th.bing.com/th/id/R.f1449d6cd597026baaf91b3aa3b1195a?rik=7HOTtIWj3MsBXQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_28512.png&ehk=BZZzx%2f%2fuGxR06kF23%2ftYuXpVV%2f1ZI6U%2bsf77iWkvZ14%3d&risl=&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="addPost()" name="button" />
