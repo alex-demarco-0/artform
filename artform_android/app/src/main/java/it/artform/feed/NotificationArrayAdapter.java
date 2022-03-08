@@ -57,7 +57,6 @@ public class NotificationArrayAdapter extends ArrayAdapter<Notification> {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        //OnClickListener ?
         return convertView;
     }
 
