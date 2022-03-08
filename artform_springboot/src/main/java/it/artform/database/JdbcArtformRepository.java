@@ -106,7 +106,7 @@ public class JdbcArtformRepository implements ArtformRepository {
 
 	@Override
 	public List<Notifica> findNotificheByUtente(String username) {
-		return jdbcTemplate.query("SELECT * from notifica WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(Notifica.class), username);
+		return jdbcTemplate.query("SELECT * from notifica WHERE utenteUsername=? ORDER BY 'data' DESC", BeanPropertyRowMapper.newInstance(Notifica.class), username);
 	}
 	
 	@Override
