@@ -97,7 +97,7 @@ public class RegisterActivity extends Activity {
 
                             Toast.makeText(RegisterActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show();
 
-                            Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                            Intent mainIntent = new Intent(RegisterActivity.this, TopicUserActivity.class);
                             // TEST - passaggio parametri alla MainActivity (una volta superato il controllo dei campi)
                             mainIntent.putExtra("nome", "nome: " + nameEditText.getText());
                             mainIntent.putExtra("cognome", "cognome: " + surnameEditText.getText());
