@@ -19,11 +19,14 @@ Descrizione: project work, pagina web di registrazione
             var username=document.getElementById("username").value;
             var email=document.getElementById("email").value;
             var password=document.getElementById("pwd").value;
+            var confermaPassword=document.getElementById("Cpwd").value;
             var telefono=document.getElementById("numeroTelefono").value;
             var registrati=document.getElementById("inputBtn").value;
 
             if(nome==""||cognome==""||username==""||email==""||password==""||telefono==""){
               window.alert("Uno o più campi non sono validi");
+            }else if(confermaPassword!=password){
+              window.alert("Password non identici");   
             }else window.location="tags.html";
           }
 
