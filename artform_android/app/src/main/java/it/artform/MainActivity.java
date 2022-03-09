@@ -157,6 +157,8 @@ public class MainActivity extends FragmentActivity {
         bottomNavigationView.setOnItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new HomeFragment()).commit();
         //notificationsItem = findViewById(R.id.notifications_item);
+
+        lastReadNotifications = new Date();
     }
 
     private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
@@ -179,8 +181,8 @@ public class MainActivity extends FragmentActivity {
                     break;
                 case R.id.notifications_item:
                     Intent notificationsIntent = new Intent(MainActivity.this, NotificationActivity.class);
-                    startActivity(notificationsIntent);
                     lastReadNotifications = new Date();
+                    startActivity(notificationsIntent);
                     /*selectedFragment=new NotificationsFragment();*/
                     break;
                 case R.id.profile_item:
