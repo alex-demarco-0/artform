@@ -3,9 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SavedPostActivity">
-
+    tools:context=".SavedPostActivity"
+    android:orientation="vertical">
+    <include layout="@layout/toolbar" />
+    <TextView
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:textSize="26sp" android:text="Saved Post" />
     <GridView
+        android:padding="16dp"
         android:id="@+id/userSavedPostGridView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
