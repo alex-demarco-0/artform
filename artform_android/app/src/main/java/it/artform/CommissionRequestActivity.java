@@ -45,20 +45,12 @@ public class CommissionRequestActivity extends Activity {
         Button refuseButton = findViewById(R.id.refuseButton);
 
         //web services setup
-        AFGlobal app = (AFGlobal) getApplication();
-        ArtformApiEndpointInterface apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
+        app = (AFGlobal) getApplication();
+        apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
         Bundle commissionParam = getIntent().getExtras();
         if(commissionParam != null)
             fetchComission(commissionParam.getInt("commissionId"));
-
-        if(commission == null) return;
-
-        requestTextView.setText(commission.getCustomer() +  "requested you a commission:");
-        titleTopicTextView.setText(commission.getTitle() + " (" + commission.getTopic() + ")");
-        messageTextView.setText(commission.getDescription());
-        offerTextView.setText("Offer: " + commission.getPrice() + "$");
-        endDateTextView.setText(commission.getEndDate().toString());
 
         acceptButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,8 +72,14 @@ public class CommissionRequestActivity extends Activity {
         getCommissionCall.enqueue(new Callback<Commission>() {
             @Override
             public void onResponse(Call<Commission> call, Response<Commission> response) {
-                if(response.isSuccessful())
+                if(response.isSuccessful()) {
                     commission = response.body();
+                    requestTextView.setText(commission.getCustomer() +  " requested you a commission:");
+                    titleTopicTextView.setText(commission.getTitle() + " (" + commission.getTopic() + ")");
+                    messageTextView.setText(commission.getDescription());
+                    offerTextView.setText("Offer: " + commission.getPrice() + "$");
+                    endDateTextView.setText("End date: " + commission.getEndDate().toString());
+                }
                 else
                     Toast.makeText(CommissionRequestActivity.this, "Error while fetching commission: ERROR " + response.code(), Toast.LENGTH_SHORT).show();
             }
