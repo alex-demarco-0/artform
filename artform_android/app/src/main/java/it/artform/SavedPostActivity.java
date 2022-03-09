@@ -33,6 +33,7 @@ public class SavedPostActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_saved_post);
         // widget setup
         userSavedPostGridView = findViewById(R.id.userSavedPostGridView);
         // web services setup
@@ -63,7 +64,8 @@ public class SavedPostActivity extends Activity {
 
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
-
+                t.printStackTrace();
+                Toast.makeText(SavedPostActivity.this, "Error while fetching user Posts: " + t.toString(), Toast.LENGTH_LONG).show();
             }
         });
 
