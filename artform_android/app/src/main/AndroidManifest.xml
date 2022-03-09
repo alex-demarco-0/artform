@@ -32,6 +32,10 @@
 
         </activity>
         <activity
+            android:name=".TopicUserActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
