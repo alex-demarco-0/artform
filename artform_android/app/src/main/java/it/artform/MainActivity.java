@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,10 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.util.Date;
 
 import it.artform.databases.PostDBAdapter;
+import it.artform.web.ArtformApiEndpointInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends FragmentActivity {
     //PostDBAdapter pdba = null;
@@ -26,7 +31,10 @@ public class MainActivity extends FragmentActivity {
     //Button addPost = null;
     //Button search = null;
     BottomNavigationView bottomNavigationView = null;
+    MenuItem notificationsItem = null;
 
+    AFGlobal app = null;
+    ArtformApiEndpointInterface apiService = null;
     Date lastReadNotifications = null;
 
     @Override
@@ -148,6 +156,7 @@ public class MainActivity extends FragmentActivity {
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new HomeFragment()).commit();
+        notificationsItem = findViewById(R.id.notifications_item);
     }
 
     private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
@@ -197,8 +206,28 @@ public class MainActivity extends FragmentActivity {
         //pdba.close();
     }
 
+    // controllo notifiche non lette
     private void checkNotifications() {
-
+        // TEST
+        app = (AFGlobal) getApplication();
+        apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
+        Call<Integer> checkUnreadNotificationsCall = apiService.checkUnreadNotifications(AFGlobal.getLoggedUser(), lastReadNotifications);
+        checkUnreadNotificationsCall.enqueue(new Callback<Integer>() {
+            @Override
+            public void onResponse(Call<Integer> call, Response<Integer> response) {
+                if(response.isSuccessful()) {
+                    //notificationsItem.set     impostare contatore badge nuove notifiche
+                    Toast.makeText(MainActivity.this, "unread notifications: " + response.body(), Toast.LENGTH_SHORT).show();
+                }
+                else
+                    Toast.makeText(MainActivity.this, "ERROR " + response.code(), Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(Call<Integer> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(MainActivity.this, "EXC " + t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
