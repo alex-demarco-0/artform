@@ -156,7 +156,7 @@ public class MainActivity extends FragmentActivity {
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(navListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new HomeFragment()).commit();
-        notificationsItem = findViewById(R.id.notifications_item);
+        //notificationsItem = findViewById(R.id.notifications_item);
     }
 
     private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
