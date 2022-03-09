@@ -117,6 +117,10 @@ public class NotificationActivity extends Activity {
                 // WIP
                 Intent commissionRequestIntent = new Intent(NotificationActivity.this, CommissionRequestActivity.class);
                 commissionRequestIntent.putExtra("commissionId", Integer.parseInt(notification.getLink()));
+                if(notification.getDescription().contains("accepted"))
+                    commissionRequestIntent.putExtra("status", "accepted");
+                else if(notification.getDescription().contains("refused"))
+                    commissionRequestIntent.putExtra("status", "refused");
                 startActivity(commissionRequestIntent);
                 break;
             case 4:

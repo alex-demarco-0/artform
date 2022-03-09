@@ -14,10 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
+        android:padding="5dp"
         android:text="Your Notifications"
         android:textSize="20sp"
-        android:textStyle="bold"
-        android:padding="5dp"/>
+        android:textStyle="bold" />
 
     <RelativeLayout
         android:layout_width="match_parent"
