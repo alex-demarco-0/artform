@@ -13,6 +13,7 @@ import it.artform.TopicView;
 public class TopicGridAdapter extends BaseAdapter {
 
     private Activity activity;
+    private int resource;
     private String[] topicStrig;
     public  List selectedPositions;
 
@@ -21,7 +22,12 @@ public class TopicGridAdapter extends BaseAdapter {
         this.topicStrig = topicStrig;
         selectedPositions = new ArrayList<>();
     }
-
+    public TopicGridAdapter(Activity activity,int resource, String[] topicStrig) {
+        this.activity = activity;
+        this.resource = resource;
+        this.topicStrig = topicStrig;
+        selectedPositions = new ArrayList<>();
+    }
     @Override
     public int getCount() {
         return topicStrig.length;
