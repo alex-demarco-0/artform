@@ -72,7 +72,7 @@ public interface ArtformApiEndpointInterface {
     @GET("/artform/utente/{username}/notifiche")
     Call<List<Notification>> getAllUserNotifications(@Path("username") String username);
 
-    @POST("/artform/utente/{username}/notifiche")
+    @POST("/artform/utente/notifiche")
     Call<Notification> addNotification(@Body Notification notification);
 
     // Badge
