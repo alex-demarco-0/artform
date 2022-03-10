@@ -12,7 +12,7 @@
         <include layout="@layout/toolbar" />
 
         <GridView
-            android:id="@+id/topicGridView"
+            android:id="@+id/topicsGridView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:horizontalSpacing="5dp"

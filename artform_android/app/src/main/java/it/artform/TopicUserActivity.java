@@ -23,7 +23,7 @@ public class TopicUserActivity extends Activity {
     AFGlobal app = null;
 
     // decleration widget
-    GridView topicGridView = null;
+    GridView topicsGridView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class TopicUserActivity extends Activity {
         setContentView(R.layout.activity_topic_user);
 
         // widget setup
-        topicGridView = findViewById(R.id.topicGridView);
+        topicsGridView = findViewById(R.id.topicsGridView);
 
         // web service setup
         app = (AFGlobal) getApplication();
@@ -52,8 +52,8 @@ public class TopicUserActivity extends Activity {
                     String[] topics = new String[response.body().size()];
                     for (int i = 0; i < topics.length; i++)
                         topics[i] = response.body().get(i).getName();
-                    topicGridView.setAdapter(new TopicGridAdapter(TopicUserActivity.this, R.layout.row_grid_item, topics));
-                    topicGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    topicsGridView.setAdapter(new TopicGridAdapter(TopicUserActivity.this, R.layout.row_grid_item, topics));
+                    topicsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                             selectTopic(position);
