@@ -1,53 +1,70 @@
 package it.artform.feed;
 
-import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckedTextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import it.artform.TopicView;
+import it.artform.R;
 
 public class TopicGridAdapter extends BaseAdapter {
 
-    private Activity activity;
-    private int resource;
-    private String[] topicStrig;
-    public  List selectedPositions;
+    private Context context;
+    private int resource = 0;
+    private String[] topics = null;
 
-    public TopicGridAdapter(Activity activity, String[] topicStrig) {
-        this.activity = activity;
-        this.topicStrig = topicStrig;
-        selectedPositions = new ArrayList<>();
+    static class ViewHolder {
+        CheckedTextView topicTextView;
+        //ImageView topicImageView; ??
     }
-    public TopicGridAdapter(Activity activity,int resource, String[] topicStrig) {
-        this.activity = activity;
+
+    public TopicGridAdapter(Context context, String[] topics) {
+        this.context = context;
+        this.topics = topics;
+    }
+
+    public TopicGridAdapter(Context context, int resource, String[] topics) {
+        this.context = context;
         this.resource = resource;
-        this.topicStrig = topicStrig;
-        selectedPositions = new ArrayList<>();
+        this.topics = topics;
     }
     @Override
     public int getCount() {
-        return topicStrig.length;
+        return topics.length;
     }
 
     @Override
     public Object getItem(int i) {
-        return topicStrig[i];
+        return topics[i];
     }
 
     @Override
     public long getItemId(int i) {
         return i;
     }
-
+/*
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        TopicView topicView = (view == null) ? new TopicView(activity) : (TopicView) view;
-        topicView.display(topicStrig[i], selectedPositions.contains(i));
+    public View getView(int pos, View view, ViewGroup viewGroup) {
+        TopicView topicView = (view == null) ? new TopicView(context) : (TopicView) view;
+        topicView.display(topics[pos], selectedPositions.contains(pos));
         return topicView;
+    }
+*/
+    @Override
+    public View getView(int pos, View convertView, ViewGroup parent) {
+        if(convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(resource, parent, false);
+            ViewHolder vh = new ViewHolder();
+            vh.topicTextView = convertView.findViewById(R.id.topicCheckedTextView);
+            convertView.setTag(vh);
+        }
+        UserGridAdapter.ViewHolder vh = (UserGridAdapter.ViewHolder) convertView.getTag();
+        String topicName = topics[pos];
+        vh.usernameTextView.setText(topicName);
+        return convertView;
     }
     /*
     private Context ctx;

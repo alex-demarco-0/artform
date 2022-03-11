@@ -11,7 +11,7 @@ public class TopicView extends FrameLayout {
     TextView textView;
     public TopicView(@NonNull Context context) {
         super(context);
-        LayoutInflater.from(context).inflate(R.layout.row_grid_item, this);
+        LayoutInflater.from(context).inflate(R.layout.item_topic_grid, this);
         textView = (TextView) getRootView().findViewById(R.id.topicGridName);
     }
 
