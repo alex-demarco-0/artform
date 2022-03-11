@@ -18,11 +18,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TopicUserActivity extends Activity {
-    // decleration web service
-    ArtformApiEndpointInterface apiService = null;
+    // web services declaration
     AFGlobal app = null;
+    ArtformApiEndpointInterface apiService = null;
 
-    // decleration widget
+    // widgets declaration
     GridView topicsGridView = null;
 
     @Override
@@ -33,17 +33,20 @@ public class TopicUserActivity extends Activity {
         // widget setup
         topicsGridView = findViewById(R.id.topicsGridView);
 
-        // web service setup
+        //ricevere parametro User da RegisterActivity
+
+        // web services setup
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
-        // GET topic
-        fetchTopic();
+        // GET Topics
+        fetchTopics();
 
-
+        //pulsante effettua registrazione
+        //e commit dei topic selezionati
     }
 
-    private void fetchTopic() {
+    private void fetchTopics() {
         Call<List<Topic>> getTopicCall = apiService.getAllTopics();
         getTopicCall.enqueue(new Callback<List<Topic>>() {
             @Override
@@ -56,7 +59,12 @@ public class TopicUserActivity extends Activity {
                     topicsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                            selectTopic(position);
+                            //if not selected
+                            selectTopic(position); //inserendo in una lista (di Call) la coda di Topic da aggiungere
+                                                  //evidenziare
+                            //if already selected
+                            //deselectTopic() //togliendo dalla lista
+                                             //togliere evidenziazione
                         }
                     });
                 } else
@@ -71,6 +79,9 @@ public class TopicUserActivity extends Activity {
     }
 
     private void selectTopic(int position) {
+        // TEST
         Toast.makeText(this, "Hai Premuto " + position, Toast.LENGTH_SHORT).show();
+        //
+        // Call<String> userSelectsTopic
     }
 }
