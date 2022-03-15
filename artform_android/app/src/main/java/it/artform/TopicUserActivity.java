@@ -163,7 +163,21 @@ public class TopicUserActivity extends Activity { //magari rinominare in TopicSe
     }
 
     private void sendTopicSelection() {
-
+        for(String topic: topicSelection) {
+            Call<String> userSelectsTopicCall = apiService.userSelectsTopic(newUser.getUsername(), topic);
+            userSelectsTopicCall.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    if(!response.isSuccessful())
+                        Toast.makeText(TopicUserActivity.this, "Error while selecting Topic " + topic + " for User " + newUser.getUsername() + ": ERROR " + response.code(), Toast.LENGTH_LONG).show();
+                }
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    t.printStackTrace();
+                    Toast.makeText(TopicUserActivity.this, "Error while selecting Topic " + topic + " for User " + newUser.getUsername() + ": " + t.toString(), Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 
 }
