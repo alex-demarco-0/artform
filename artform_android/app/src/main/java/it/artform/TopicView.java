@@ -1,4 +1,4 @@
-package it.artform;
+/*package it.artform;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -23,4 +23,4 @@ public class TopicView extends FrameLayout {
     private void display(boolean isSelected) {
     }
 
-}
+}*/

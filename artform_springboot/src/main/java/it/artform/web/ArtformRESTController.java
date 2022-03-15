@@ -65,7 +65,7 @@ public class ArtformRESTController {
 	}
 
 	@RequestMapping(value="/artform/utente/{username}", method=RequestMethod.PUT)
-	public ResponseEntity<Utente> updateUtente(@PathVariable String username, @RequestParam("resource") MultipartFile profilePicResource, @RequestParam("userObj") Utente modUtente) {
+	public ResponseEntity<Utente> updateUtente(@PathVariable String username, @RequestParam("userObj") Utente modUtente, @RequestParam("resource") MultipartFile profilePicResource) {
 		Utente u = this.artformRepository.findUtente(username);
 		if(u != null) {
 			if(modUtente.getNome() != null && !modUtente.getNome().isBlank())

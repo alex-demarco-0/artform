@@ -78,47 +78,10 @@ public class RegisterActivity extends Activity {
                         String.valueOf(usernameEditText.getText()), String.valueOf(emailEditText.getText()),
                         String.valueOf(phoneEditText.getText()), String.valueOf(passwordEditText.getText()), "", 0);
 
-                // richiesta POST sul Database server
-                Call<User> postUserCall = apiService.addUser(newUser);
-                postUserCall.enqueue(new Callback<User>() {
-                    @Override
-                    public void onResponse(Call<User> call, Response<User> response) {
-                        if (response.isSuccessful()) {
-                            //post sul db locale
-                            UserDBAdapter udba = new UserDBAdapter(RegisterActivity.this);
-                            try {
-                                udba.open();
-                            } catch (SQLException throwables) {
-                                Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione (errore SQLite)", Toast.LENGTH_LONG).show();
-                                throwables.printStackTrace();
-                            }
-                            udba.createUser(newUser);
-                            udba.close();
-
-                            Toast.makeText(RegisterActivity.this, "Registrazione effettuata con successo!", Toast.LENGTH_LONG).show();
-
-                            Intent mainIntent = new Intent(RegisterActivity.this, TopicUserActivity.class);
-                            // TEST - passaggio parametri alla MainActivity (una volta superato il controllo dei campi)
-                            mainIntent.putExtra("nome", "nome: " + nameEditText.getText());
-                            mainIntent.putExtra("cognome", "cognome: " + surnameEditText.getText());
-                            mainIntent.putExtra("email", "email: " + emailEditText.getText());
-                            mainIntent.putExtra("username", "username: " + usernameEditText.getText());
-                            if (!phoneEditText.getText().toString().equals(""))
-                                mainIntent.putExtra("telefono", "telefono: " + phoneEditText.getText());
-                            mainIntent.putExtra("password", "password: " + passwordEditText.getText());
-                            //
-                            AFGlobal.setLoggedUser(String.valueOf(usernameEditText.getText()));
-                            startActivity(mainIntent);
-                            //finish();
-                        } else
-                            Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione: ERROR " + response.code(), Toast.LENGTH_LONG).show();
-                    }
-                    @Override
-                    public void onFailure(Call<User> call, Throwable t) {
-                        Toast.makeText(RegisterActivity.this, "Si è verificato un problema durante la registrazione: " + t.toString(), Toast.LENGTH_LONG).show();
-                        t.printStackTrace();
-                    }
-                });
+                // passaggio parametro newUser a TopicUserActivity
+                Intent topicUserIntent = new Intent(RegisterActivity.this, TopicUserActivity.class);
+                topicUserIntent.putExtra("newUser", newUser);
+                startActivity(topicUserIntent);
             }
         });
 
