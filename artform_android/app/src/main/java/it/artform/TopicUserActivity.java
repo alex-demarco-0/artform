@@ -120,12 +120,12 @@ public class TopicUserActivity extends Activity { //magari rinominare in TopicSe
 */
     private void registerUser() {
         // richiesta POST sul Database server
-        Call<User> postUserCall = apiService.addUser(newUser);
-        postUserCall.enqueue(new Callback<User>() {
+        Call<User> addUserCall = apiService.addUser(newUser);
+        addUserCall.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
-                    //post sul db locale
+                    //insert sul db locale
                     UserDBAdapter udba = new UserDBAdapter(TopicUserActivity.this);
                     try {
                         udba.open();

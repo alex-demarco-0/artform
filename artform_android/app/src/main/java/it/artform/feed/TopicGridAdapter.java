@@ -79,9 +79,9 @@ public class TopicGridAdapter extends BaseAdapter {
             });
             convertView.setTag(vh);
         }
-        UserGridAdapter.ViewHolder vh = (UserGridAdapter.ViewHolder) convertView.getTag();
+        ViewHolder vh = (ViewHolder) convertView.getTag();
         String topicName = topics[pos];
-        vh.usernameTextView.setText(topicName);
+        vh.topicTextView.setText(topicName);
         return convertView;
     }
     /*
