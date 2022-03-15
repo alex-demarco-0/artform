@@ -22,6 +22,7 @@ import it.artform.web.ArtformApiEndpointInterface;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +38,7 @@ public class SettingsAccountActivity extends Activity {
     // decleration widget
     TextView nameTextView, surnameTextView, emailTextView;
     EditText usernameEditText, phoneEditText, passwordEditText, bioEditText;
-    Button confirmButton;
+    Button confirmButton, deleteButton;
     ImageView userProfilePicImageView;
     // decleration variable
     User user = null;
@@ -59,6 +60,7 @@ public class SettingsAccountActivity extends Activity {
         passwordEditText = findViewById(R.id.passwordEditText);
         bioEditText = findViewById(R.id.bioEditText);
         confirmButton = findViewById(R.id.confirmButton);
+        deleteButton = findViewById(R.id.deleteButton);
 
         // web services setup
         AFGlobal app = (AFGlobal) getApplication();
