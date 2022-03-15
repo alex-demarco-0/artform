@@ -33,8 +33,7 @@
         </activity>
         <activity
             android:name=".TopicUserActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />
@@ -92,6 +91,7 @@
             android:name=".HomeFragment"
             android:exported="false"
             tools:ignore="Instantiatable" />
+        <activity android:name=".PostListActivity" android:exported="false" />
     </application>
 
 </manifest>

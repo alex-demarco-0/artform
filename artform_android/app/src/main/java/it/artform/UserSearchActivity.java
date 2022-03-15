@@ -160,7 +160,7 @@ public class UserSearchActivity extends Activity {
                     //Caricamento utenti nella GridView
                     if(searchedUsers.length > 0) {
                         noResultTextView.setVisibility(View.INVISIBLE);
-                        artistsGridView.setAdapter(new UserGridAdapter(UserSearchActivity.this, R.layout.row_user_grid, searchedUsers));
+                        artistsGridView.setAdapter(new UserGridAdapter(UserSearchActivity.this, R.layout.item_user_grid, searchedUsers));
                         //dettagli profilo utente
                         artistsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {

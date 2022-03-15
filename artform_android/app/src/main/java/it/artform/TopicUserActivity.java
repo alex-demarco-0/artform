@@ -55,7 +55,7 @@ public class TopicUserActivity extends Activity {
                     String[] topics = new String[response.body().size()];
                     for (int i = 0; i < topics.length; i++)
                         topics[i] = response.body().get(i).getName();
-                    topicsGridView.setAdapter(new TopicGridAdapter(TopicUserActivity.this, R.layout.row_grid_item, topics));
+                    topicsGridView.setAdapter(new TopicGridAdapter(TopicUserActivity.this, R.layout.item_topic_grid, topics));
                     topicsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
