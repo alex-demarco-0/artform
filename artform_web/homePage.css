@@ -18,14 +18,11 @@ button{
         align:bottom;
       }
 
-      #searchImg{
-
-      }
-
       .bottom{
         position: absolute;
         bottom: 0px;
       }
+
       .bottomButtons{
         position:absolute;
         align:bottom;
@@ -58,7 +55,6 @@ button{
          font-family:sans-serif, helvetica;
          background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
          background-attachment: fixed;
-
        }
 
        #inputSearch{
