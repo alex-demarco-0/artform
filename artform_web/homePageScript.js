@@ -8,6 +8,7 @@ function userProfile(){
 function notifiche(){
     window.location="notifiche.html";
 }
+
 function homepage(){
     window.location="homePage.html";
 }
