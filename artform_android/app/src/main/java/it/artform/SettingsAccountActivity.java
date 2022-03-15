@@ -109,6 +109,32 @@ public class SettingsAccountActivity extends Activity {
                 finish();
             }
         });
+
+        // bottone per eliminare account
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteUser();
+            }
+        });
+    }
+    // non funziona per le chiavi esterne
+    private void deleteUser() {
+        Call<ResponseBody> deleteUser = apiService.deleteUser(user.getUsername());
+        deleteUser.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful())
+                    Toast.makeText(SettingsAccountActivity.this, "User: " + user.getName() + " DELETED", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(SettingsAccountActivity.this, "Errore while deleting user: ERROR" + response.code(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(SettingsAccountActivity.this, "Error while deleting User: ERROR" + t, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     // richiesta PUT

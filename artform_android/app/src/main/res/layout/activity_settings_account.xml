@@ -70,4 +70,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/bioEditText"
         android:text="Sumbit" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/deleteButton"
+        android:text="Delete your account"
+        android:textColor="@color/grigio"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/rosso"
+        android:text="DELETE" />
 </RelativeLayout>
