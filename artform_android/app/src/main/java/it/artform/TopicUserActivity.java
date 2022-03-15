@@ -78,6 +78,9 @@ public class TopicUserActivity extends Activity { //magari rinominare in TopicSe
                 topicSelection.add(topic); //inserendo in una lista la coda di Topic da aggiungere
             else
                 topicSelection.remove(topic);
+            //TEST
+            Toast.makeText(TopicUserActivity.this, topicSelection.toString(), Toast.LENGTH_SHORT).show();
+            //
             //evidenziare
             //if already selected
             //deselectTopic() //togliendo dalla lista
@@ -95,7 +98,19 @@ public class TopicUserActivity extends Activity { //magari rinominare in TopicSe
                     for (int i = 0; i < topics.length; i++)
                         topics[i] = response.body().get(i).getName();
                     topicsGridView.setAdapter(new TopicGridAdapter(TopicUserActivity.this, R.layout.item_topic_grid, topics));
-                    topicsGridView.setOnItemClickListener(new TopicClickListener());
+                    topicsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            String topic = topics[i];
+                            if(!topicSelection.contains(topic))
+                                topicSelection.add(topic); //inserendo in una lista la coda di Topic da aggiungere
+                            else
+                                topicSelection.remove(topic);
+                            //TEST
+                            Toast.makeText(TopicUserActivity.this, topicSelection.toString(), Toast.LENGTH_SHORT).show();
+                            //
+                        }
+                    });
                 } else
                     Toast.makeText(TopicUserActivity.this, "Error while fetching topics: ERROR" + response.code(), Toast.LENGTH_SHORT).show();
             }
