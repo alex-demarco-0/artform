@@ -1,0 +1,40 @@
+#posts{
+  padding-top: 60px;
+   width: auto;
+   height: auto;
+ }
+
+ #body{
+   font-family:sans-serif, helvetica;
+   color: #000018;
+   background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
+   background-attachment: fixed;
+ }
+
+button{
+font-weight: 700;
+border:none;
+color: white;
+text-decoration: none;
+padding: .8em 1em calc(.8em + 3px);
+border-radius: 4px;
+background: #D291BC;
+}
+
+.searchBtn{
+  position:absolute;
+  align:top;
+  left: 40%
+}
+
+#imgBtn{
+  left: 35%
+}
+
+#videoBtn{
+  right: 50%
+}
+
+#artistsBtn{
+  right: 40%;
+}

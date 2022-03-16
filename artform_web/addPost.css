@@ -5,23 +5,46 @@
   background-attachment: fixed;
 }
 
-#formDiv{
-  width: 40%;
-  margin: 80px auto;
-  border-radius: 10px;
-  padding: 30px;
+#addFormDiv{
+  margin-top: 3%;
+  margin-bottom: 5%;
+  text-align:center;
 }
 
-.inputChangePassword{
-  width: auto;
-  height: 25px;
+#addForm{
+  bottom: 1px;
+}
+
+#inputFile{
+  padding: 10px;
+}
+
+#inputTitle{
+  height:25px;
   border-width:thin;
   border-radius: 4px;
-  margin: 10px
+  margin: 10px;
+  width: 600px;
 }
 
-#buttonDiv{
-  margin-top: 10px;
+#inputTags{
+  margin: 10px;
+  width: 600px;
+  border-width:thin;
+  border-radius: 4px;
+  height: 200px;
+  resize: none;
+}
+
+#imgDiv{
+  display: block;
+  margin:0 auto;
+}
+#img{
+  max-height: 500px;
+  max-width: 600px;
+  display: block;
+  margin:0 auto;
 }
 
 button{
