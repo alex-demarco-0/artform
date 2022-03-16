@@ -1,0 +1,13 @@
+#badgesDiv{
+  width: 40%;
+  margin: 80px auto;
+  border-radius: 10px;
+  padding: 30px;
+  border-left: 5px;
+}
+  #body{
+  font-family:sans-serif, helvetica;
+  color: #000018;
+  background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
+  background-attachment: fixed;
+}
