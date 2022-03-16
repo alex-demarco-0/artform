@@ -38,7 +38,7 @@ public class SettingsAccountActivity extends Activity {
     // decleration widget
     TextView nameTextView, surnameTextView, emailTextView;
     EditText usernameEditText, phoneEditText, passwordEditText, bioEditText;
-    Button confirmButton, deleteButton;
+    Button confirmButton;
     ImageView userProfilePicImageView;
     // decleration variable
     User user = null;
@@ -60,7 +60,7 @@ public class SettingsAccountActivity extends Activity {
         passwordEditText = findViewById(R.id.passwordEditText);
         bioEditText = findViewById(R.id.bioEditText);
         confirmButton = findViewById(R.id.confirmButton);
-        deleteButton = findViewById(R.id.deleteButton);
+
 
         // web services setup
         AFGlobal app = (AFGlobal) getApplication();
@@ -112,7 +112,8 @@ public class SettingsAccountActivity extends Activity {
             }
         });
 
-        // bottone per eliminare account
+        //bottone per eliminare account
+        Button deleteButton = findViewById(R.id.deleteButton);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +121,7 @@ public class SettingsAccountActivity extends Activity {
             }
         });
     }
+
     // non funziona per le chiavi esterne
     private void deleteUser() {
         Call<ResponseBody> deleteUser = apiService.deleteUser(user.getUsername());
@@ -140,7 +142,7 @@ public class SettingsAccountActivity extends Activity {
     }
 
     // richiesta PUT
-    private void updateUser(){
+    private void updateUser() {
         // modifiche utente
         String userJsonObject = new Gson().toJson(modUser);
         RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), userJsonObject);
@@ -152,10 +154,10 @@ public class SettingsAccountActivity extends Activity {
         updateUser.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     Toast.makeText(SettingsAccountActivity.this, "Utente modificato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
                     finish();
-                }else
+                } else
                     Toast.makeText(SettingsAccountActivity.this, "Si è verificato un problema: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
 
