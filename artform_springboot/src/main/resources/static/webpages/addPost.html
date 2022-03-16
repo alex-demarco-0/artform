@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AddPost</title>
+    <link rel="stylesheet" href="addPost.css">
+    <script>
+
+       var loadFile = function(event) {
+         var output = document.getElementById('img');
+         output.src = URL.createObjectURL(event.target.files[0]);
+         output.onload = function() {
+           URL.revokeObjectURL(output.src);
+         }
+       };
+
+       function pubblica(){
+         var titolo=document.getElementById("inputTitle").value;
+         var post=document.getElementById("inputFile").value;
+
+         if(titolo==""){
+           window.alert("Inserisci un titolo");
+         } else if (post==""){
+           window.alert("Seleziona un file")
+         }else window.alert("Pubblicazione avvenuta con successo!")
+       }
+
+    </script>
+  </head>
+  <body body id="body" style="background-color:#E9CFEC">
+
+ <nav>
+ <a href="#"><img id="logo" alt="logo" src="logoAFtrasparente.png" width="240"></a>
+ <ul>
+ <a href="homePage.html"><li>Home</li></a>
+ <a href="userProfile.html"><li>Profilo</li></a>
+ </ul>
+ </nav>
+
+<h2 style="text-align:center;">Aggiungi post</h2>
+
+      <div id="imgDiv">
+        <img id="img" src="#" alt="POST" width="auto" height="auto">
+      </div>
+
+      <div id="addFormDiv">
+      <form id="addForm">
+        <input id="inputFile" type="file" onchange="loadFile(event)" accept="image/gif, image/jpeg, image/png"> <br>
+        <input id="inputTitle" type="text" placeholder="Titolo..."> <br>
+        <textarea id="inputTags" type="text" placeholder="#tags"></textarea> <br>
+        <button id="button" type="submit" onclick="pubblica()" >Pubblica</button>
+        <button type="reset">Reset</button>
+      </form>
+    </div>
+
+  </body>
+</html>
