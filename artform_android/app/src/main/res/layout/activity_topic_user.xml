@@ -1,32 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:isScrollContainer="true"
-    android:fillViewport="true" >
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar" />
+
+    <ScrollView
+        android:id="@+id/topicsScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include layout="@layout/toolbar" />
+        android:layout_above="@+id/registerButton"
+        android:layout_below="@+id/toolbar"
+        android:fillViewport="true">
 
         <GridView
             android:id="@+id/topicsGridView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:horizontalSpacing="5dp"
             android:numColumns="3"
             android:padding="16dp"
             android:verticalSpacing="5dp" />
 
-        <Button
-            android:id="@+id/registerButton"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Enter the ARTWORLD!!" />
+    </ScrollView>
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="4dp"
+        android:text="Enter the ARTWORLD!!" />
 
-</ScrollView>
+</RelativeLayout>
