@@ -3,104 +3,8 @@
 <html>
   <head>
     <title>UserProfile ArtForm</title>
-    <style type="text/css">
-        .propic {
-          text-align: center;
-          margin: 20px 0;
-          padding: 20px;
-          }
-          #propic{
-            width: 128px;
-            height: 128px;
-            -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            border-radius: 100%
-          }
-        .infos {
-          text-align: center;
-          margin: 20px 0;
-        }
-        #settingsButton{
-           position:absolute;
-           right: 20px;
-        }
-        #badgesButton{
-          position:absolute;
-          left: 20px;
-        }
-        #posts{
-           width: auto;
-           height: 500px;
-           margin-top:20px;
-           padding: 10px;
-           background: #eee;
-           border: 1px solid #ccc;
-           overflow: scroll;
-         }
-         #body{
-           font-family:sans-serif, helvetica;
-         }
-
-         #settingsButton, #badgesButton{
-           font-weight: 700;
-           border:none;
-           color: white;
-           text-decoration: none;
-           padding: .8em 1em calc(.8em + 3px);
-           border-radius: 4px;
-           background: #D291BC;
-          }
-
-          .dropbtn {
-            font-weight: 700;
-            border:none;
-            color: white;
-            text-decoration: none;
-            padding: .8em 1em calc(.8em + 3px);
-            border-radius: 4px;
-            background: #D291BC;
-          }
-
-          /* The container <div> - needed to position the dropdown content */
-          .dropdown {
-            position: relative;
-            display: inline-block;
-          }
-
-          /* Dropdown Content (Hidden by Default) */
-          .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            z-index: 1;
-          }
-
-          /* Links inside the dropdown */
-          .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-          }
-
-          /* Change color of dropdown links on hover */
-          .dropdown-content a:hover {background-color: #f1f1f1}
-
-          /* Show the dropdown menu on hover */
-          .dropdown:hover .dropdown-content {
-            display: block;
-          }
-
-          /* Change the background color of the dropdown button when the dropdown content is shown */
-          .dropdown:hover .dropbtn {
-            background-color: #D291BC;
-          }
-
-          img{
-            margin:2px;
-            border-radius: 8px;
-          }
+    <link rel="stylesheet" href="userProfile.css">
+    <link rel="stylesheet" href="navBar.css">
     </style>
 
     <script type="text/javascript" language="javascript">
@@ -127,7 +31,7 @@
   <body id="body" onload="onPageLoaded();" style="background-color:#E9CFEC;">
     <!-- <button id="badgesButton" name="badges" >Badges</button> -->
     <div class="dropdown">
-      <button class="dropbtn">Dropdown</button>
+      <input id="badgesBtn" type="image" src="trophy.png" class="dropbtn">
       <div class="dropdown-content">
         <table>
           <tr>
@@ -146,17 +50,17 @@
            <td>*bagde*</td>
           </tr>
         </table>
-        <a href="badges.html">More badges</a>
+        <a href="badges.html">Tutti i badges</a>
       </div>
     </div>
 
-    <button id="settingsButton" onClick="return goToSettings();" name="settings">Settings</button>
+    <input type="image" id="settingsButton" src="settings.png" onClick="return goToSettings();" name="settings">
     <div class="propic">
     <img id="propic" src="https://static.thenounproject.com/png/576092-200.png">
     </div>
     <div class="infos">
       <h2 id="userUsername">*USERNAME*</h2>
-      <p id="userBio">*bio*</p>
+      <p id="userBio">*biografia*</p>
       <p id="userTags">*tags*</p>
     </div>
     <div id="posts">
@@ -178,6 +82,28 @@
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+    </div>
+
+    <div class="navbar">
+        <a href="homePage.html" class=""> <div id="home">
+        <input  type="image" id ="homepage" src="https://cdn.onlinewebfonts.com/svg/img_169167.png" width="35" height="35"  value="entra" onclick="homepage()" name="button" align="bottom" />
+        </div></a>
+        <div id="bottom">
+          <div id="bottomBar">
+                <input id="inputSearch" type="text" name="search" placeholder="Cerca..." value="" style="width: 850px; height:25px; border-width:thin; border-radius: 4px;">
+        <a href="ricerca.html">
+                <input id="searchButton" type="image" onclick="search()" src="searchButton.png" width="25" height="25" value="entra" name="button" />
+          </div></a>
+        <a href="addPost.html"><div class="bottomButtons" id="buttonAdd">
+            <input  type="image"  src="https://th.bing.com/th/id/R.f1449d6cd597026baaf91b3aa3b1195a?rik=7HOTtIWj3MsBXQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_28512.png&ehk=BZZzx%2f%2fuGxR06kF23%2ftYuXpVV%2f1ZI6U%2bsf77iWkvZ14%3d&risl=&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="addPost()" name="button" />
+        </div></a>
+        <a href="notifiche.html"><div  class="bottomButtons" id="buttonNot">
+        <input  type="image"  src="https://th.bing.com/th/id/R.523dcbf2a937f04c0366b2369e859fe4?rik=JudVjtZ3la4v2g&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="notifiche()" name="button" />
+        </div></a>
+        <a href="userProfile.html" class="acti"><div  class="bottomButtons" id="buttonProfile">
+        <input  type="image"  src="https://th.bing.com/th/id/R.1c0973cfbfd25178d72b0b0a93206625?rik=z8y8Ftm1919VOw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_299586.png&ehk=LBhfOw4KDHaDyrvk21Bac0nzxkAym5hWC8dHAAZ58oo%3d&risl=&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="userProfile()" name="button" />
+        </div>
+        </div></a>
     </div>
   </body>
 </html>

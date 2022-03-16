@@ -2,22 +2,41 @@
 <html>
   <head>
       <title>AllBadges ArtForm</title>
-      <style type="text/css">
-      #body{
-        font-family:sans-serif, helvetica;
-      }
-      </style>
+        <link rel="stylesheet" href="badges.css">
+        <link rel="stylesheet" href="navBar.css">
   </head>
   <body id="body" bgcolor="#E9CFEC">
       <div align=center>
-          <font size='5' color='black'>Badges </font>
-          <img src="https://th.bing.com/th/id/R.523dcbf2a937f04c0366b2369e859fe4?rik=JudVjtZ3la4v2g&pid=ImgRaw&r=0" width="20" height="20" vspace="-10" hspace="-10">
-          <br>
-          <br>
-          <br>
-          <br>
-          <div>
-             *AllBadges*
+        <br>
+        <br>
+        <br>
+        <br>
+          <font size='5' color='#000018'>Badges </font>
+          <img src="trophy.png" width="35" height="30" vspace="-10" hspace="-10">
+          <div id="badgesDiv">
+             *TuttiIBadges*
+          </div>
+
+          <div class="navbar">
+              <a href="homePage.html" class=""> <div id="home">
+              <input  type="image" id ="homepage" src="https://cdn.onlinewebfonts.com/svg/img_169167.png" width="35" height="35"  value="entra" onclick="homepage()" name="button" align="bottom" />
+              </div></a>
+              <div id="bottom">
+                <div id="bottomBar">
+                      <input id="inputSearch" type="text" name="search" placeholder="Cerca..." value="" style="width: 850px; height:25px; border-width:thin; border-radius: 4px;">
+              <a href="ricerca.html">
+                      <input id="searchButton" type="image" onclick="search()" src="searchButton.png" width="25" height="25" value="entra" name="button" />
+                </div></a>
+              <a href="addPost.html"><div class="bottomButtons" id="buttonAdd">
+                  <input  type="image"  src="https://th.bing.com/th/id/R.f1449d6cd597026baaf91b3aa3b1195a?rik=7HOTtIWj3MsBXQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_28512.png&ehk=BZZzx%2f%2fuGxR06kF23%2ftYuXpVV%2f1ZI6U%2bsf77iWkvZ14%3d&risl=&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="addPost()" name="button" />
+              </div></a>
+              <a href="notifiche.html"><div  class="bottomButtons" id="buttonNot">
+              <input  type="image"  src="https://th.bing.com/th/id/R.523dcbf2a937f04c0366b2369e859fe4?rik=JudVjtZ3la4v2g&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="notifiche()" name="button" />
+              </div></a>
+              <a href="userProfile.html" class="acti"><div  class="bottomButtons" id="buttonProfile">
+              <input  type="image"  src="https://th.bing.com/th/id/R.1c0973cfbfd25178d72b0b0a93206625?rik=z8y8Ftm1919VOw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_299586.png&ehk=LBhfOw4KDHaDyrvk21Bac0nzxkAym5hWC8dHAAZ58oo%3d&risl=&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="userProfile()" name="button" />
+              </div>
+              </div></a>
           </div>
     </body>
 </html>
