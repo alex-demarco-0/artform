@@ -71,7 +71,13 @@ public class JdbcArtformRepository implements ArtformRepository {
 			return jdbcTemplate.query("SELECT * from post WHERE topic=? AND tipologia=? AND (titolo LIKE '%" + keywords + "%' OR tags LIKE '%" + keywords + "%')", BeanPropertyRowMapper.newInstance(Post.class), topic, type);
 		return jdbcTemplate.query("SELECT * from post WHERE tipologia=? AND titolo LIKE '%" + keywords + "%' OR tags LIKE '%" + keywords + "%'", BeanPropertyRowMapper.newInstance(Post.class), type);
 	}
+	// HERE
 	
+	@Override
+	public List<Post> findPostrsByTopics(String topic) {
+		return jdbcTemplate.query("SELECT * from post WHERE topic=?", BeanPropertyRowMapper.newInstance(Post.class), topic);
+	}
+	// THERE
 	@Override
 	public List<Post> findPostsByUtente(String username) {
 		return jdbcTemplate.query("SELECT * from post WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(Post.class), username);
@@ -245,5 +251,4 @@ public class JdbcArtformRepository implements ArtformRepository {
 	public int removeAllTopicsFromUserSelection(String username) {
 		return jdbcTemplate.update("DELETE FROM topicUtente WHERE utenteUsername=?", username);
 	}
-
 }
