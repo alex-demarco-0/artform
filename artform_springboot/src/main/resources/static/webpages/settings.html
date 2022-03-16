@@ -9,7 +9,7 @@ Descrizione: project work, pagina web delle impostazioni
         <title>Impostazioni</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <link rel="stylesheet" href="securitySettings.css">
+          <link rel="stylesheet" href="settings.css">
           <script type="text/javascript" language="javascript">
             function logout(){
               window.location="login.html";
@@ -20,20 +20,33 @@ Descrizione: project work, pagina web delle impostazioni
             function profileSettings(){
               window.location="profileSettings.html"
             }
+            function postSaved(){
+              window.location="savedPost.html"
+            }
         </script>
     </head>
     <body id="body" bgcolor="#E9CFEC">
+
+
+            <nav>
+            <a href="#"><img id="logo" alt="logo" src="logoAFtrasparente.png" width="240"></a>
+            <ul>
+            <a href="homePage.html"><li>Home</li></a>
+            <a href="userProfile.html"><li>Profilo</li></a>
+            </ul>
+            </nav>
+
         <div align=center>
           <br>
           <br>
           <br>
           <br>
-            <font size='5' color='black'> Settings </font>
+            <font size='5' color='black'> Impostazioni generali </font>
             <img src="https://cdn1.iconfinder.com/data/icons/carbon-design-system-vol-7/32/settings-1024.png" width="20" height="20" vspace="-10" hspace="-10">
         <div id="settingsDiv"><br>
-             <p align=center><button onclick="profileSettings()" value="Profile Settings">Profile settings</button>
-             <p align=center><button onclick="postSaved()" value="Post Saved">Saved posts</button>
-             <p align=center><button onclick="security()" value="Security">Security settings</button>
+             <p align=center><button onclick="profileSettings()" value="Profile Settings">Impostazioni profilo</button>
+             <p align=center><button onclick="postSaved()" value="Post Saved">Post salvati</button>
+             <p align=center><button onclick="security()" value="Security">Impostazioni sicurezza</button>
              <p align=center><button onclick="logout()" value="Logout">Logout</button>
         </div>
     </body>

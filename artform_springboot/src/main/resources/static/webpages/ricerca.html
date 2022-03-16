@@ -1,27 +1,131 @@
 <!DOCTYPE html>
 <!--
-Gruppo: Dituri Arianna, De Marco Alessandro, Singh Manbir, *Aceveda Kron Kendrix :)
+Gruppo: Dituri Arianna, De Marco Alessandro, Singh Manbir, Aceveda Kron Kendrix
 Data inizio: 03/11/2021
 Data ultima modifica: 03/11/2021
 Descrizione: pagina di ricerca
 -->
-<ul id="ricercaAvanzata">
-<form
-<p align="left"><b><font size="11" color="6600CC"> ArtForm </font></b><br>
-        </p>
+<html>
 
-	<li><a title="ArtForm Image">Image</a></li>
-	<li><a title="ArtForm Video">Video</a></li>
-	<li><a title="ArtForm Artist">Artist</a></li>
+    <head>
+        <title>Ricerca</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="ricerca.css">
+        <link rel="stylesheet" href="navBar.css">
+    </head>
+    <body id="body" bgcolor="#E9CFEC">
+        <img src="logoAFtrasparente.png" width="150" height="150" vspace="0" hspace="0">
+        <ul id="ricercaAvanzata">
+            <form>
+                <li><a title="ArtForm Image">Image</a></li>
+                <li><a title="ArtForm Video">Video</a></li>
+                <li><a title="ArtForm Artist">Artist</a></li>
+        </ul>
+            </form>
+            <div class="navbar">
+                <a href="homePage.html" class="active"> <div id="home">
+                        <input  type="image" id ="homepage" src="https://cdn.onlinewebfonts.com/svg/img_169167.png" width="35" height="35"  value="entra" onclick="homepage()" name="button" align="bottom" />
+                    </div></a>
+                <div id="bottom">
+                    <div id="bottomBar">
+                        <input type="text" name="search" placeholder="Cerca..." value="" style="width: 850px; height:25px; border-width:thin; border-radius: 4px;">
+                        <a href="">
+                            <input type="image" onclick="search()" src="https://th.bing.com/th/id/R.636cf5c7676741297ea0e5c8681bbcd1?rik=euO0HZA311ueqA&pid=ImgRaw&r=0" width="25" height="25" value="entra" onclick="addPost()" name="button" />
+                    </div></a>
+                    <a href=""><div class="bottomButtons" id="buttonAdd">
+                            <input  type="image"  src="https://th.bing.com/th/id/R.f1449d6cd597026baaf91b3aa3b1195a?rik=7HOTtIWj3MsBXQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_28512.png&ehk=BZZzx%2f%2fuGxR06kF23%2ftYuXpVV%2f1ZI6U%2bsf77iWkvZ14%3d&risl=&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="addPost()" name="button" />
+                        </div></a>
+                    <a href="notifiche.html"><div  class="bottomButtons" id="buttonNot">
+                            <input  type="image"  src="https://th.bing.com/th/id/R.523dcbf2a937f04c0366b2369e859fe4?rik=JudVjtZ3la4v2g&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="notifiche()" name="button" />
+                        </div></a>
+                    <a href="userProfile.html"><div  class="bottomButtons" id="buttonProfile">
+                            <input  type="image"  src="https://th.bing.com/th/id/R.1c0973cfbfd25178d72b0b0a93206625?rik=z8y8Ftm1919VOw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_299586.png&ehk=LBhfOw4KDHaDyrvk21Bac0nzxkAym5hWC8dHAAZ58oo%3d&risl=&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="userProfile()" name="button" />
+                        </div>
+                </div></a>
+            </div>
+        </section>
+    </body>
+    <script src="ricerca.js"></script>
 
-</ul>
+  <head>
+    <title>Ricerca</title>
+    <script type="text/javascript" language="javascript">
+    function addPost(){
+      window.location="addPost.html"
+    }
+    function userProfile(){
+        window.location="userProfile.html";
+    }
+    function notifiche(){
+        window.location="notifiche.html";
+    }
 
+    function homepage(){
+        window.location="homePage.html";
+    }
 
-<section id="search-2" class="widget widget_search"><form role="search" method="get" class="search-form" action="">
-    <label>
-        <input type="search" class="search-field form-control" placeholder="Search …" value="" name="s" title="Search for:">
-    </label>
-    <input type="submit" class="search-submit btn btn-default" value="Search">
-</form>
-</form>
-</section>
+    function search(){
+      window.location="ricerca.html";
+    }
+
+    </script>
+    <link rel="stylesheet" href="navBar.css">
+    <link rel="stylesheet" href="ricerca.css">
+  </head>
+  <body id="body" style="background-color:#E9CFEC">
+    <ul id="ricercaAvanzata">
+    <form
+    <img src="logoAFtrasparente.png" width="150" height="150" vspace="0" hspace="0">
+    </p>
+     <div class="searchBtn">
+    	<button id="imgBtn"><a title="ArtForm Image">Immagini</a></button>
+    	<button id="videoBtn"><a title="ArtForm Video">Video</a></button>
+    	<button id="artistsBtn"><a title="ArtForm Artist">Artisti</a></button>
+    </div>
+
+    <div id="posts">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+    </div>
+
+    <div class="navbar">
+      <a href="homePage.html"> <div id="home">
+      <input  type="image" id ="homepage" src="https://cdn.onlinewebfonts.com/svg/img_169167.png" width="35" height="35"  value="entra" onclick="homepage()" name="button" align="bottom" />
+      </div></a>
+        <div id="bottom">
+          <div id="bottomBar">
+                <input id="inputSearch" type="text" name="search" placeholder="Cerca..." value="" style="width: 850px; height:25px; border-width:thin; border-radius: 4px;">
+        <a href="ricerca.html" class="active">
+              <input id="searchButton" type="image" onclick="search()" src="searchButton.png" width="25" height="25" value="entra" name="button" />
+          </div></a>
+        <a href=""><div class="bottomButtons" id="buttonAdd">
+            <input  type="image"  src="https://th.bing.com/th/id/R.f1449d6cd597026baaf91b3aa3b1195a?rik=7HOTtIWj3MsBXQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_28512.png&ehk=BZZzx%2f%2fuGxR06kF23%2ftYuXpVV%2f1ZI6U%2bsf77iWkvZ14%3d&risl=&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="addPost()" name="button" />
+        </div></a>
+        <a href="notifiche.html"><div  class="bottomButtons" id="buttonNot">
+        <input  type="image"  src="https://th.bing.com/th/id/R.523dcbf2a937f04c0366b2369e859fe4?rik=JudVjtZ3la4v2g&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="notifiche()" name="button" />
+        </div></a>
+        <a href="userProfile.html"><div  class="bottomButtons" id="buttonProfile">
+        <input  type="image"  src="https://th.bing.com/th/id/R.1c0973cfbfd25178d72b0b0a93206625?rik=z8y8Ftm1919VOw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_299586.png&ehk=LBhfOw4KDHaDyrvk21Bac0nzxkAym5hWC8dHAAZ58oo%3d&risl=&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="userProfile()" name="button" />
+        </div>
+        </div></a>
+    </div>
+  </body>
+
+</html>

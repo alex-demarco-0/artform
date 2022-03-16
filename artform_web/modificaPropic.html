@@ -2,7 +2,49 @@
 <html>
   <head>
     <link rel="stylesheet" href="modificaPropic.css">
+    <script>
+
+       var loadFile = function(event) {
+         var output = document.getElementById('img');
+         output.src = URL.createObjectURL(event.target.files[0]);
+         output.onload = function() {
+           URL.revokeObjectURL(output.src);
+         }
+       };
+ </script>
+
   </head>
   <body body id="body" bgcolor="#E9CFEC">
+
+    <nav>
+      <a href="#"><img id="logo" alt="logo" src="logoAFtrasparente.png" width="240"></a>
+    <ul>
+    <a href="profileSettings.html"><li>Impostazioni profilo</li></a>
+    <a href="savedPost.html"><li>Post salvati</li></a>
+    <a href="securitySettings.html"><li>Impostazioni sicurezza</li></a>
+    <a href="settings.html"><li>Impostazioni generali</li></a>
+    </ul>
+    </nav>
+
+    <div align=center>
+      <br>
+      <br>
+      <br>
+      <br>
+        <font size='5' color='black'>Modifica immagine del profilo</font>
+
+    <div id="formDiv">
+      <div id="imgDiv">
+        <img id="img" src="#" alt="PROPIC" width="auto" height="auto">
+      </div>
+    <form>
+      <input id="inputFile" type="file" onchange="loadFile(event)" accept="image/gif, image/jpeg, image/png"> <br>
+      <div id="buttonDiv">
+      <button type="submit">Conferma</button>
+      <button type="reset">Reset</button>
+      </div>
+    </form>
+  </div>
+
   </body>
 </html>
