@@ -1,0 +1,49 @@
+#home{
+ position:absolute;
+ left: 125px;
+ align:bottom;
+}
+
+#bottomBar{
+  position:absolute;
+  left:300px;
+  align:bottom;
+}
+
+#searchButton{
+}
+
+#buttonAdd{
+  right:230px;
+}
+
+#buttonProfile{
+  right:30px;
+}
+
+#buttonNot{
+  right: 125px;
+}
+
+.bottom{
+  position: absolute;
+  bottom: 0px;
+}
+
+.bottomButtons{
+  position:absolute;
+  align:bottom;
+}
+
+.navbar{
+  background-attachment: fixed;
+  position:fixed;
+  bottom:0px;
+  height:40px;
+  width:100%;
+  color: #000018;
+  background: #E6E6E6;
+  left: 0px;
+  right: 0px;
+  z-index:999999;
+}

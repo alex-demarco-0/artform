@@ -1,5 +1,6 @@
 #body{
   font-family:sans-serif, helvetica;
+  color: #000018;
   background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
   background-attachment: fixed;
 }
@@ -11,7 +12,7 @@
   padding: 30px;
 }
 
-.inputChangeUsername{
+#inputFile{
   width: auto;
   height: 25px;
   border-width:thin;
@@ -21,6 +22,17 @@
 
 #buttonDiv{
   margin-top: 10px;
+}
+
+#imgDiv{
+  display: block;
+  margin:0 auto;
+}
+#img{
+  max-height: 500px;
+  max-width: 600px;
+  display: block;
+  margin:0 auto;
 }
 
 button{

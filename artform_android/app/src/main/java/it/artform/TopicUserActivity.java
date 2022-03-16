@@ -34,7 +34,7 @@ public class TopicUserActivity extends Activity { //magari rinominare in TopicSe
     // User pending registration
     User newUser = null;
     String[] topics = null;
-    List<String> topicSelection = null;
+    static List<String> topicSelection = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class TopicUserActivity extends Activity { //magari rinominare in TopicSe
             }
         });
     }
-
+/*
     private class TopicClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
@@ -87,6 +87,14 @@ public class TopicUserActivity extends Activity { //magari rinominare in TopicSe
             //togliere evidenziazione
         }
     }
+*/
+    public static List<String> getTopicSelection() {
+        return topicSelection;
+    }
+
+    public static void setTopicSelection(List<String> topicSelectionUpd) {
+        topicSelection = topicSelectionUpd;
+    }
 
     private void fetchTopics() {
         Call<List<Topic>> getTopicCall = apiService.getAllTopics();
@@ -97,7 +105,8 @@ public class TopicUserActivity extends Activity { //magari rinominare in TopicSe
                     topics = new String[response.body().size()];
                     for (int i = 0; i < topics.length; i++)
                         topics[i] = response.body().get(i).getName();
-                    topicsGridView.setAdapter(new TopicGridAdapter(TopicUserActivity.this, R.layout.item_topic_grid, topics));
+                    TopicGridAdapter topicsAdapter = new TopicGridAdapter(TopicUserActivity.this, R.layout.item_topic_grid, topics);
+                    topicsGridView.setAdapter(topicsAdapter);
                     topicsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

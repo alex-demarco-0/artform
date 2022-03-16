@@ -7,10 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
+import java.util.List;
+
 import it.artform.R;
+import it.artform.TopicUserActivity;
 
 public class TopicGridAdapter extends BaseAdapter {
     private Context context;
@@ -21,11 +25,6 @@ public class TopicGridAdapter extends BaseAdapter {
         TextView topicTextView;
         boolean topicChecked;
         //ImageView topicImageView; ??
-    }
-
-    public TopicGridAdapter(Context context, String[] topics) {
-        this.context = context;
-        this.topics = topics;
     }
 
     public TopicGridAdapter(Context context, int resource, String[] topics) {
@@ -70,10 +69,22 @@ public class TopicGridAdapter extends BaseAdapter {
                     if(vh.topicChecked) {
                         vh.topicTextView.setBackgroundColor(context.getColor(R.color.white));
                         vh.topicChecked = false;
+                        List<String> topicSelection = TopicUserActivity.getTopicSelection();
+                        topicSelection.remove(topics[pos]);
+                        TopicUserActivity.setTopicSelection(topicSelection);
+                        //TEST
+                        Toast.makeText(context, topicSelection.toString(), Toast.LENGTH_SHORT).show();
+                        //
                     }
                     else {
                         vh.topicTextView.setBackgroundColor(context.getColor(R.color.purple_200));
                         vh.topicChecked = true;
+                        List<String> topicSelection = TopicUserActivity.getTopicSelection();
+                        topicSelection.add(topics[pos]);
+                        TopicUserActivity.setTopicSelection(topicSelection);
+                        //TEST
+                        Toast.makeText(context, topicSelection.toString(), Toast.LENGTH_SHORT).show();
+                        //
                     }
                 }
             });

@@ -1,24 +1,37 @@
-#settingsDiv{
-      width: 40%;
-      margin: 80px auto;
-      border-radius: 10px;
-      padding: 30px;
-      border-left: 5px;
-}
-button {
-    font-weight: 700;
-    border:none;
-    color: white;
-    text-decoration: none;
-    padding: .8em 1em calc(.8em + 3px);
-    border-radius: 4px;
-    background: #D291BC;
-}
 #body{
   font-family:sans-serif, helvetica;
   color: #000018;
   background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
   background-attachment: fixed;
+}
+
+#formDiv{
+  width: 40%;
+  margin: 80px auto;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.inputChangeEmail{
+  width: auto;
+  height: 25px;
+  border-width:thin;
+  border-radius: 4px;
+  margin: 10px
+}
+
+#buttonDiv{
+  margin-top: 10px;
+}
+
+button{
+  font-weight: 700;
+  border:none;
+  color: white;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 4px;
+  background: #D291BC;
 }
 
 nav {

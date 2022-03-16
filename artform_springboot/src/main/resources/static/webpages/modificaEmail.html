@@ -1,18 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="modificaPropic.css">
-    <script>
-
-       var loadFile = function(event) {
-         var output = document.getElementById('img');
-         output.src = URL.createObjectURL(event.target.files[0]);
-         output.onload = function() {
-           URL.revokeObjectURL(output.src);
-         }
-       };
- </script>
-
+    <link rel="stylesheet" href="modificaEmail.css">
   </head>
   <body body id="body" bgcolor="#E9CFEC">
 
@@ -31,14 +20,13 @@
       <br>
       <br>
       <br>
-        <font size='5' color='black'>Modifica immagine del profilo</font>
+        <font size='5' color='#000018'>Modifica e-mail</font>
 
     <div id="formDiv">
-      <div id="imgDiv">
-        <img id="img" src="#" alt="PROPIC" width="auto" height="auto">
-      </div>
     <form>
-      <input id="inputFile" type="file" onchange="loadFile(event)" accept="image/gif, image/jpeg, image/png"> <br>
+      <input class="inputChangeEmail" type="email" placeholder="Nuova e-mail"> <br>
+      <input class="inputChangeEmail" type="email" placeholder="Conferma e-mail"> <br>
+      <input class="inputChangeEmail" type="password" placeholder="Password"> <br>
       <div id="buttonDiv">
       <button type="submit">Conferma</button>
       <button type="reset">Reset</button>
