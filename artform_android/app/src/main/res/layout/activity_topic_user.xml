@@ -1,37 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:isScrollContainer="true"
-    android:fillViewport="true" >
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include layout="@layout/toolbar" />
-
-        <GridView
-            android:id="@+id/topicsGridView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:horizontalSpacing="5dp"
-            android:numColumns="3"
-            android:padding="16dp"
-            android:verticalSpacing="5dp" />
-
-        <Button
-            android:id="@+id/registerButton"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Enter the ARTWORLD!!" />
-
-    </LinearLayout>
-
-</ScrollView>
--->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -47,7 +14,6 @@
         android:layout_above="@+id/registerButton"
         android:layout_below="@+id/toolbar"
         android:fillViewport="true">
-        <!-- android:isScrollContainer="true"-->
 
         <GridView
             android:id="@+id/topicsGridView"
