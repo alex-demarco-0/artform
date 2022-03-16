@@ -21,12 +21,14 @@
         android:id="@+id/nameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="19sp"
         android:layout_below="@+id/userProfilePicImageView" />
 
     <TextView
         android:id="@+id/surnameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="19sp"
         android:layout_below="@+id/nameTextView" />
 
     <EditText
@@ -40,6 +42,7 @@
         android:id="@+id/emailTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="19sp"
         android:layout_below="@+id/usernameEditText" />
 
     <EditText
