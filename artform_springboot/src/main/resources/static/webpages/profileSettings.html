@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+Data inizio: 01/11/2021
+Data ultima modifica: 15/02/2022
+Descrizione: project work, pagina web di impostazioni del profilo
+-->
+<html>
+    <head>
+        <title>Impostazioni</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="profileSettings.css">
+        <script type="text/javascript" language="javascript">
+
+        function modBioTag(){
+            window.location="modificaBioTags.html"
+        }
+
+        function changeUsername(){
+          window.location="modificaUsername.html"
+        }
+
+        function changePhoPro(){
+          window.location="modificaPropic.html"
+        }
+
+        </script>
+    </head>
+    <body id="body" bgcolor="#E9CFEC">
+
+      <nav>
+        <a href="#"><img id="logo" alt="logo" src="logoAFtrasparente.png" width="240"></a>
+      <ul>
+      <a href="profileSettings.html"><li>Impostazioni profilo</li></a>
+      <a href="savedPost.html"><li>Post salvati</li></a>
+      <a href="securitySettings.html"><li>Impostazioni sicurezza</li></a>
+      <a href="settings.html"><li>Impostazioni generali</li></a>
+      </ul>
+      </nav>
+
+        <div align=center>
+          <br>
+          <br>
+          <br>
+          <br>
+            <font size='5' color='#000018'>Impostazioni profilo</font>
+            <img src="https://cdn1.iconfinder.com/data/icons/carbon-design-system-vol-7/32/settings-1024.png" width="20" height="20" vspace="-10" hspace="-10">
+        <div id="profSettingsDiv"><br>
+             <p align=center><button onclick="changeUsername()" value="change username">Modifica username</button>
+             <p align=center><button onclick="modBioTag()" value="modify bio/tags">Modifica biografia & tags</button>
+             <p align=center><button onclick="changePhoPro()" value="change photo profile">Modifica immagine del profilo</button>
+        </div>
+    </body>
+   <script src="profileSettings.js"></script>
+</html>
