@@ -6,6 +6,7 @@
 
  #body{
    font-family:sans-serif, helvetica;
+   color: #000018;
    background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
    background-attachment: fixed;
  }
