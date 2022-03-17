@@ -148,6 +148,11 @@ public class ArtformRESTController {
 			List<String> usersToNotify = this.artformRepository.findAllUsersWhoActivatedNotificationsOnUser(newPost.getUtenteUsername());
 			for(String user: usersToNotify) {
 				Notifica n = new Notifica();
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				n.setData(new Date());
 				n.setCategoria(1);
 				String description = newPost.getUtenteUsername() + " published a new " +
