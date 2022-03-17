@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<DOCTYPE! html>
 <html>
   <head>
     <title>UserProfile ArtForm</title>
@@ -10,7 +9,7 @@
     <script src="userProfile.js" type="text/javascript"></script>
 
   </head>
-  <body id="body" onload="onPageLoaded();" style="background-color:#E9CFEC;">
+  <body id="body" onload="getUser();" style="background-color:#E9CFEC;">
     <!-- <button id="badgesButton" name="badges" >Badges</button> -->
     <div class="dropdown">
 
@@ -40,13 +39,12 @@
       </div>
     </div>
 
-
     <input id="settingsButton" type="image" onclick="setting()" src="https://cdn1.iconfinder.com/data/icons/carbon-design-system-vol-7/32/settings-1024.png" width="35" height="35" value="entra" onclick="setting()" name="button" />
 
     <input type="image" id="settingsButton" src="settings.png" onClick="return goToSettings();" name="settings">
 
     <div class="propic">
-    <img id="propic" src="https://static.thenounproject.com/png/576092-200.png">
+      <img id="propic" src="https://static.thenounproject.com/png/576092-200.png">
     </div>
     <div class="infos">
       <h2 id="userUsername">*USERNAME*</h2>
@@ -54,9 +52,8 @@
       <p id="userTags">*tags*</p>
     </div>
     <div id="posts">
-    
+      <!-- griglia immagini post aggiunta dinamicamente dallo script -->
     </div>
-
     <div class="navbar">
         <a href="homePage.html" class=""> <div id="home">
         <input  type="image" id ="homepage" src="https://cdn.onlinewebfonts.com/svg/img_169167.png" width="35" height="35"  value="entra" onclick="homepage()" name="button" align="bottom" />

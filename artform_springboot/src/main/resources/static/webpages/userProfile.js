@@ -1,10 +1,6 @@
 var base_url = "http://localhost:8080/";
 var userObj = null;
 
-function onPageLoaded() {
-    getUser();
-}
-
 function getUser() {
     var userXmlHttp = new XMLHttpRequest();
     userXmlHttp.onreadystatechange = function() {
@@ -16,7 +12,7 @@ function getUser() {
             getUserPosts();
         }
     };
-    userXmlHttp.open("GET", base_url + "artform/utente/arianna");
+    userXmlHttp.open("GET", base_url + "artform/utente/arianna"); // TEST GET utente 'arianna', cambiare con utente loggato.
     userXmlHttp.send(null);
 }
 
