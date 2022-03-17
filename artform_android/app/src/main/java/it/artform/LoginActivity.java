@@ -48,10 +48,10 @@ public class LoginActivity extends Activity {
         username = prefs.getString(LOGIN_USER_KEY, "NO_USER");
         password = prefs.getString(LOGIN_PWD_KEY, "NO_PWD");
 
-        // TEST
+        /* TEST
         TextView TESTprefs = findViewById(R.id.TESTprefs);
         TESTprefs.setText(username + ", " + password);
-        //
+        */
 
         // se memorizzati effettua l'accesso direttamente passando all'activity successiva
         if(!username.equals("NO_USER") && !password.equals("NO_PWD")) {
@@ -152,10 +152,10 @@ public class LoginActivity extends Activity {
     // metodo per passare alla MainActivity una volta che le credenziali sono corrette
     private void credentialsOk() {
         Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-        // TEST
+        /* TEST
         mainIntent.putExtra("username", "username: " + username);
         mainIntent.putExtra("password", "password: " + password);
-        //
+        */
         AFGlobal.setLoggedUser(username);
         Toast.makeText(LoginActivity.this, "Benvenuto " + username, Toast.LENGTH_LONG).show();
         startActivity(mainIntent);

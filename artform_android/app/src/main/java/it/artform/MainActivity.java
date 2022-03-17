@@ -219,7 +219,8 @@ public class MainActivity extends FragmentActivity {
             public void onResponse(Call<Integer> call, Response<Integer> response) {
                 if(response.isSuccessful()) {
                     //notificationsItem.set     impostare contatore badge nuove notifiche
-                    Toast.makeText(MainActivity.this, "unread notifications: " + response.body(), Toast.LENGTH_SHORT).show();
+                    // TEST
+                    //Toast.makeText(MainActivity.this, "unread notifications: " + response.body(), Toast.LENGTH_SHORT).show();
                 }
                 else
                     Toast.makeText(MainActivity.this, "ERROR " + response.code(), Toast.LENGTH_SHORT).show();
