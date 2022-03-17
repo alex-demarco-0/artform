@@ -15,7 +15,7 @@ function registrazione() {
     return;
   }
 
-  userJsonData = '{"nome":"' + nome + 
+  var userJsonData = '{"nome":"' + nome + 
                 '","cognome":"' + cognome +
                 '","username":"' + username + 
                 '","email":"' + email + 

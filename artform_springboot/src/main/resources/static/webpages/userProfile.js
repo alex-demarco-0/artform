@@ -12,7 +12,9 @@ function getUser() {
             getUserPosts();
         }
     };
-    userXmlHttp.open("GET", base_url + "artform/utente/arianna"); // TEST GET utente 'arianna', cambiare con utente loggato.
+    var userLoginSesson = window.localStorage;
+    var userUri = base_url + "artform/utente/" + userLoginSesson.getItem("username"); // utente loggato
+    userXmlHttp.open("GET", userUri);
     userXmlHttp.send(null);
 }
 

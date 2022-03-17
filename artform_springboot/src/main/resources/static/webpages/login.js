@@ -23,7 +23,7 @@ function login() {
                     return;
                 }
                 if(document.getElementById("memLogin").checked == true) { // salvataggio credenziali per mantenere l'accesso
-                    userLoginSesson = window.localStorage;
+                    var userLoginSesson = window.localStorage;
                     userLoginSesson.setItem("username", username);
                     userLoginSesson.setItem("password", password);
                 }
