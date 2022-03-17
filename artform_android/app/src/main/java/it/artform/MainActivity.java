@@ -3,6 +3,8 @@ package it.artform;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -15,9 +17,15 @@ import androidx.fragment.app.FragmentActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import it.artform.databases.PostDBAdapter;
+import it.artform.feed.PostArrayAdapter;
+import it.artform.feed.PostGridAdapter;
+import it.artform.pojos.Post;
+import it.artform.pojos.Topic;
 import it.artform.web.ArtformApiEndpointInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,6 +35,7 @@ public class MainActivity extends FragmentActivity {
     //PostDBAdapter pdba = null;
     //Button externalProfileButton = null;
     ListView datiRegistrazioneListView = null;
+    ListView feedListView = null;
     //Button notification = null;
     //Button addPost = null;
     //Button search = null;
@@ -36,13 +45,14 @@ public class MainActivity extends FragmentActivity {
     AFGlobal app = null;
     ArtformApiEndpointInterface apiService = null;
     Date lastReadNotifications = null;
+    List<Post> feedPostList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // TEST - dati registrazione
+        /* TEST - dati registrazione
         datiRegistrazioneListView = findViewById(R.id.datiRegistrazioneListView);
         Bundle datiRegistrazione = getIntent().getExtras();
         if(datiRegistrazione != null) {
@@ -56,7 +66,7 @@ public class MainActivity extends FragmentActivity {
             ArrayAdapter datiRegistrazioneAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listaDatiRegistrazione);
             datiRegistrazioneListView.setAdapter(datiRegistrazioneAdapter);
         }
-        //
+        */
 
         // TEST ADM- pulsante home
         /*Button homeButton = findViewById(R.id.homeButton);
@@ -102,7 +112,8 @@ public class MainActivity extends FragmentActivity {
 
         // TEST - custom ListView post feed
         //ArrayAdapter
-        ListView feedListView = findViewById(R.id.feedListView);
+        feedListView = findViewById(R.id.feedListView);
+
         /*
         Post[] testPosts = new Post[20];
         for(int i=0; i<testPosts.length; i++)
@@ -155,8 +166,14 @@ public class MainActivity extends FragmentActivity {
         });*/
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(navListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new HomeFragment()).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new HomeFragment()).commit();
         //notificationsItem = findViewById(R.id.notifications_item);
+
+        app = (AFGlobal) getApplication();
+        apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
+
+        feedPostList = new ArrayList<>();
+        fetchFeedPosts();
 
         lastReadNotifications = new Date();
     }
@@ -199,7 +216,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        checkNotifications();
+        //checkNotifications();
     }
 
     @Override
@@ -208,11 +225,54 @@ public class MainActivity extends FragmentActivity {
         //pdba.close();
     }
 
-    // controllo notifiche non lette
+    private void fetchPostsByTopic(String topic) {
+        Call<List<Post>> getPostsByTopicCall = apiService.getPostsByTopic(topic);
+        getPostsByTopicCall.enqueue(new Callback<List<Post>>() {
+            @Override
+            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+                if(response.isSuccessful()) {
+                    if (response.body().size() > 0)
+                        feedPostList.addAll(response.body());
+                }
+                else
+                    Toast.makeText(MainActivity.this, "Error while fetching Posts for Topic " + topic + ": ERROR " + response.code(), Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onFailure(Call<List<Post>> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(MainActivity.this, "Error while fetching Posts for Topic " + topic + ": " + t.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void fetchFeedPosts() {
+        Call<List<Topic>> getUserSelectedTopicsCall = apiService.getUserSelectedTopics(AFGlobal.getLoggedUser());
+        getUserSelectedTopicsCall.enqueue(new Callback<List<Topic>>() {
+            @Override
+            public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
+                if(response.isSuccessful()) {
+                    List<Topic> userSelectedTopics = response.body();
+                    for(Topic topic: userSelectedTopics)
+                        fetchPostsByTopic(topic.getName());
+                    Post[] feedPostListArray = new Post[feedPostList.size()];
+                    for (int i = 0; i < feedPostListArray.length; i++)
+                        feedPostListArray[i] = feedPostList.get(i);
+                    feedListView.setAdapter(new PostArrayAdapter(MainActivity.this, R.layout.row_post_list, feedPostListArray));
+                }
+                else
+                    Toast.makeText(MainActivity.this, "Error while fetching user Topics: ERROR " + response.code(), Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onFailure(Call<List<Topic>> call, Throwable t) {
+                t.printStackTrace();
+                Toast.makeText(MainActivity.this, "Error while fetching user Topics: " + t.toString(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    // controllo notifiche non lette - da implementare con icona badge contatore
     private void checkNotifications() {
         // TEST
-        app = (AFGlobal) getApplication();
-        apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
         Call<Integer> checkUnreadNotificationsCall = apiService.checkUnreadNotifications(AFGlobal.getLoggedUser(), lastReadNotifications);
         checkUnreadNotificationsCall.enqueue(new Callback<Integer>() {
             @Override
