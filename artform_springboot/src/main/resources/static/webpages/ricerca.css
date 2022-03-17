@@ -10,7 +10,7 @@
    background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
    background-attachment: fixed;
  }
-
+/*
 button{
 font-weight: 700;
 border:none;
@@ -20,21 +20,42 @@ padding: .8em 1em calc(.8em + 3px);
 border-radius: 4px;
 background: #D291BC;
 }
-
-.searchBtn{
+*/
+.categoryButtons {
   position:absolute;
   align:top;
   left: 40%
 }
 
-#imgBtn{
+#imageCategory{
   left: 35%
 }
 
-#videoBtn{
+#videoCategory{
   right: 50%
 }
 
-#artistsBtn{
+#userCategory{
   right: 40%;
+}
+
+input[type=radio] {
+  display:none; 
+  margin:10px;
+}
+
+input[type=radio] + label {
+  display:inline-block;
+  font-weight: 700;
+  border:none;
+  color: white;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 4px;
+  background: #D291BC;
+}
+
+input[type=radio]:checked + label { 
+  background-image: none;
+  background-color: #853a6c;
 }

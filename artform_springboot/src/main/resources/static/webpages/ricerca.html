@@ -17,13 +17,22 @@ Descrizione: pagina di ricerca
     <form
     <img src="logoAFtrasparente.png" width="150" height="150" vspace="0" hspace="0">
     </p>
-     <div class="searchBtn">
-    	<button id="imgBtn"><a title="ArtForm Image">Immagini</a></button>
+     <div class="categoryButtons">
+    <!--
+    	<button id="imgBtn"><a title="ArtForm Image">Opere</a></button>
     	<button id="videoBtn"><a title="ArtForm Video">Video</a></button>
     	<button id="artistsBtn"><a title="ArtForm Artist">Artisti</a></button>
+     -->
+      <input type="radio" id="imageCategory" name="searchCategory" value="img" checked>
+        <label for="imageCategory">Opere</label>
+      <input type="radio" id="videoCategory" name="searchCategory" value="vid">
+        <label for="videoCategory">Video</label>
+      <input type="radio" id="userCategory" name="searchCategory" value="usr">
+        <label for="userCategory">Artisti</label>
     </div>
 
-    <div id="posts">
+    <div id="searchResults">
+      <!--
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
@@ -42,6 +51,7 @@ Descrizione: pagina di ricerca
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      -->
     </div>
 
     <div class="navbar">
@@ -50,9 +60,9 @@ Descrizione: pagina di ricerca
       </div></a>
         <div id="bottom">
           <div id="bottomBar">
-                <input id="inputSearch" type="text" name="search" placeholder="Cerca..." value="" style="width: 850px; height:25px; border-width:thin; border-radius: 4px;">
+                <input id="inputSearch" type="text" name="search" placeholder="Cerca..." value="" onsubmit="search();" style="width: 850px; height:25px; border-width:thin; border-radius: 4px;">
         <a href="ricerca.html" class="active">
-              <input id="searchButton" type="image" onclick="search()" src="searchButton.png" width="25" height="25" value="entra" name="button" />
+              <input id="searchButton" type="image" onclick="search();" src="searchButton.png" width="25" height="25" value="entra" name="button" />
           </div></a>
         <a href=""><div class="bottomButtons" id="buttonAdd">
             <input  type="image"  src="https://th.bing.com/th/id/R.f1449d6cd597026baaf91b3aa3b1195a?rik=7HOTtIWj3MsBXQ&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_28512.png&ehk=BZZzx%2f%2fuGxR06kF23%2ftYuXpVV%2f1ZI6U%2bsf77iWkvZ14%3d&risl=&pid=ImgRaw&r=0" width="35" height="35" value="entra" onclick="addPost()" name="button" />
