@@ -1,13 +1,44 @@
-function login() {
-    var password=document.getElementById("pwd").value;
-    var username=document.getElementById("inputUsername").value;
+var base_url = "http://localhost:8080/";
 
-    if (password=="admin" && username=="admin") {
-        window.location="homePage.html";
+function login() {
+    var username = document.getElementById("usr").value;
+    var password = document.getElementById("pwd").value;
+
+    if(username == "") {
+        window.alert("Inserisci username");
+        return;
     }
-    else
-        window.alert("Credenziali non valide/utente inesistente");
+    if(password == "") {
+        window.alert("Inserisci password");
+        return;
+    }
+    
+    var userXmlHttp = new XMLHttpRequest();
+    userXmlHttp.onreadystatechange = function() {
+        if(userXmlHttp.readyState == 4) {
+            if(userXmlHttp.status == 200) {
+                userObj = JSON.parse(userXmlHttp.responseText);
+                if(userObj.password != password) {
+                    window.alert("Password errata");
+                    return;
+                }
+                if(document.getElementById("memLogin").checked == true) { // salvataggio credenziali per mantenere l'accesso
+                    userLoginSesson = window.localStorage;
+                    userLoginSesson.setItem("username", username);
+                    userLoginSesson.setItem("password", password);
+                }
+                window.location = "homePage.html";
+            }
+            else {
+                window.alert("Utente inesistente");
+                return;
+            }
+        }
+    };
+    userXmlHttp.open("GET", base_url + "artform/utente/" + username);
+    userXmlHttp.send(null);
 }
+
 document.getElementById("inputUsername").addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {

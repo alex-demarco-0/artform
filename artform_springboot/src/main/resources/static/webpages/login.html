@@ -20,7 +20,7 @@ Descrizione: project work, pagina web di login
           <h2 style="text-align:center;">Accedi</h2>
           <br>
           <div align=center>
-          <p><font color="#000018" size="4">Username <input class="inputForm" id="inputUsername" type="text" placeholder="Ex. youremail@mail.com"  onkeydown = "if (event.keyCode == 13)
+          <p><font color="#000018" size="4">Username <input class="inputForm" id="usr" type="text" placeholder="Ex. youremail@mail.com"  onkeydown = "if (event.keyCode == 13)
                         document.getElementById('buttonLogin').click()"></font></p>
               <p><font color="#000018" size="4">Password <input class="inputForm" type="password" id="pwd" placeholder="Ex. A123@paswod" onkeydown = "if (event.keyCode == 13)
                             document.getElementById('buttonLogin').click()"></font></p>
@@ -28,7 +28,7 @@ Descrizione: project work, pagina web di login
           <button type="reset">Reset</button></div>
         </form>
           <br>
-         <p align=center> <font size='3' color='grey' text-align=center>Memorizza credenziali<input type="checkbox" name="credenziali" value="Memorizza credenziali"></font>
+         <p align=center> <font size='3' color='grey' text-align=center>Memorizza credenziali<input type="checkbox" id="memLogin" name="credenziali" value="Memorizza credenziali"></font>
          <p align=center>Sei nuovo? <a id="register" href="registrazione.html">Crea un nuovo accont </a></p>
          <p align=center><a id="register" href="registrazione.html">Password dimenticata? </a></p>
       </div>
