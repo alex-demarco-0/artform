@@ -117,16 +117,16 @@ public class ContentPubActivity extends Activity {
         getTopicsCall.enqueue(new Callback<List<Topic>>() {
             @Override
             public void onResponse(Call<List<Topic>> call, Response<List<Topic>> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     String[] topics = new String[response.body().size()];
-                    for(int i=0; i<topics.length; i++)
+                    for (int i = 0; i < topics.length; i++)
                         topics[i] = response.body().get(i).getName();
                     ArrayAdapter topicsAdapter = new ArrayAdapter<String>(ContentPubActivity.this, android.R.layout.simple_spinner_dropdown_item, topics);
                     topicSpinner.setAdapter(topicsAdapter);
-                }
-                else
+                } else
                     Toast.makeText(ContentPubActivity.this, "Error while fetching topics: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
+
             @Override
             public void onFailure(Call<List<Topic>> call, Throwable t) {
                 Toast.makeText(ContentPubActivity.this, "Error while fetching topics: " + t.toString(), Toast.LENGTH_LONG).show();
@@ -145,7 +145,7 @@ public class ContentPubActivity extends Activity {
         publishPostCall.enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     /*
                     PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
                     try {
@@ -159,10 +159,10 @@ public class ContentPubActivity extends Activity {
                     */
                     Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
                     finish();
-                }
-                else
+                } else
                     Toast.makeText(ContentPubActivity.this, "Si è verificato un problema: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
+
             @Override
             public void onFailure(Call<Post> call, Throwable t) {
                 Toast.makeText(ContentPubActivity.this, "Si è verificato un problema :( " + t.toString(), Toast.LENGTH_LONG).show();
@@ -195,7 +195,7 @@ public class ContentPubActivity extends Activity {
                     Uri selectedImageUri = data.getData();
                     //final String selectedImagePath = getPath(this, selectedImageUri);
                     String selectedImagePath = selectedImageUri.getPath();
-                    selectedImagePath = selectedImagePath.substring(selectedImagePath.indexOf(':')+1, selectedImagePath.length());
+                    selectedImagePath = selectedImagePath.substring(selectedImagePath.indexOf(':') + 1, selectedImagePath.length());
                     if (selectedImagePath != null) {
                         imageFile = new File(selectedImagePath);
                         selectedImageUri = Uri.fromFile(imageFile);
@@ -208,155 +208,4 @@ public class ContentPubActivity extends Activity {
             Log.e("ContentPubActivity", "File select ERROR", e);
         }
     }
-/*
-    public String getPath(Context context, Uri uri) {
-        if ("content".equalsIgnoreCase(uri.getScheme())) {
-            String[] projection = {"_data"};
-            Cursor cursor;
-
-            try {
-                cursor = context.getContentResolver().query(uri, projection, null, null, null);
-                assert cursor != null;
-                int column_index = cursor.getColumnIndexOrThrow("_data");
-                if (cursor.moveToFirst()) {
-                    return cursor.getString(column_index);
-                }
-                cursor.close();
-            } catch (Exception e) {
-                // Eat it
-            }
-        } else if ("file".equalsIgnoreCase(uri.getScheme())) {
-            return uri.getPath();
-        }
-        return null;
-    }
-/*
-    public String getPathFromUri(Uri contentUri) {
-        String res = null;
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-        if (cursor.moveToFirst()) {
-            int column_index = cursor.getColumnIndex(MediaStore.Images.Media.DATA);
-            res = cursor.getString(column_index);
-        }
-        cursor.close();
-        return res;
-    }
-*/
-    /*
-    // metodo con URI, per POST REQUEST
-    private void uploadPost(Post newPost/*, Uri selectedImageUri) {
-        //File postFile = new File(selectedImageUri.getPath());
-        RequestBody postResource = RequestBody.create(MediaType.parse("multipart/form-data"), /*postFile imageFile);
-        MultipartBody.Part resourcePart = MultipartBody.Part.createFormData("resource", /*postFile.getName() imageFile.getName(), postResource);
-        String postJsonObject = new Gson().toJson(newPost);
-        RequestBody objectPart = RequestBody.create(MediaType.parse("multipart/form-data"), postJsonObject);
-        Call<Post> publishPostCall = apiService.addPost(objectPart, resourcePart);
-        publishPostCall.enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
-                PostDBAdapter pdba = new PostDBAdapter(ContentPubActivity.this);
-                try {
-                    pdba.open();
-                } catch (SQLException throwables) {
-                    Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la pubblicazione (errore SQLite)", Toast.LENGTH_LONG).show();
-                    throwables.printStackTrace();
-                }
-                pdba.createPost(newPost);
-                pdba.close();
-                Toast.makeText(ContentPubActivity.this, "Post pubblicato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-                Toast.makeText(ContentPubActivity.this, "Si è verificato un problema  :(  " + t.toString(), Toast.LENGTH_LONG).show();
-                t.printStackTrace();
-            }
-        });
-    }
-    */
 }
-
-/* test 1 MANBIr
-    private void uploadPost(Post post) {
-        loadingProgressBar.setVisibility(View.VISIBLE);
-
-        app = (AFGlobal) getApplication();
-        apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
-
-
-
-      CALL        NON FUNGE  02/03/2022
-        Call<Post> postCall = apiService.addPost(username, img);
-        postCall.enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
-                Toast.makeText(ContentPubActivity.this, "Post aggiunto", Toast.LENGTH_SHORT).show();
-                loadingProgressBar.setVisibility(View.GONE);
-                Post responseAPi = response.body();
-
-                //Toast.makeText(ContentPubActivity.this, "Titolo" + responseAPi.getTitle(), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-                Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la richiesta " + t, Toast.LENGTH_LONG).show();
-                t.printStackTrace();
-            }
-        });
-    }
-                    */
-/*
-        @Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == 1 && resultCode == RESULT_OK && null != data) {
-                Uri selectedImage = data.getData();
-                String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                Cursor cursor = getContentResolver().query(selectedImage,
-                        filePathColumn, null, null, null);
-                cursor.moveToFirst();
-                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                String picturePath = cursor.getString(columnIndex);
-                cursor.close();
-                ImageView imageView = (ImageView) findViewById(R.id.addImageView);
-                imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-            }
-        }
-                              */
-    /*
-        @Override
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-            super.onActivityResult(requestCode, resultCode, data);
-            if (requestCode == RESULT_OK && null!=data){
-                Uri selectedImage = data.getData();
-                String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                Cursor cursor = getContentResolver().query(selectedImage,filePathColumn,null,null,null);
-                cursor.moveToFirst();
-                int columIndex = cursor.getColumnIndex(filePathColumn[0]);
-                cursor.close();
-
-            }
-        }
-    */
- /*             INTENT CREATO NEL ONCREATE
-        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, RESULT_OK);
-          */
-            /*
-        File file = new File("/sdcard/Download/cRGLP.jpg");
-
-        MultipartBody.Part filePart = MultipartBody.Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
-        Call<Post> call = apiService.addPost(filePart,  );
-        call.enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
-                Toast.makeText(ContentPubActivity.this, "Post aggiunto", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-                Toast.makeText(ContentPubActivity.this, "Si è verificato un problema durante la richiesta " + t, Toast.LENGTH_LONG).show();
-                t.printStackTrace();
-            }
-        });
-        */
