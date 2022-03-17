@@ -74,7 +74,7 @@ public class JdbcArtformRepository implements ArtformRepository {
 	// HERE
 	
 	@Override
-	public List<Post> findPostrsByTopics(String topic) {
+	public List<Post> findPostsByTopic(String topic) {
 		return jdbcTemplate.query("SELECT * from post WHERE topic=?", BeanPropertyRowMapper.newInstance(Post.class), topic);
 	}
 	// THERE

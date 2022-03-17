@@ -122,8 +122,8 @@ public class ArtformRESTController {
 	
 	// HERE
 	@RequestMapping(value="/artform/post/{topic}", method=RequestMethod.GET)
-	public ResponseEntity<List<Post>> getPostsbyTopics(@PathVariable String topic){
-		List<Post> posts = this.artformRepository.findPostrsByTopics(topic);
+	public ResponseEntity<List<Post>> getPostsbyTopic(@PathVariable String topic){
+		List<Post> posts = this.artformRepository.findPostsByTopic(topic);
 		if (posts != null) 
 			return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
