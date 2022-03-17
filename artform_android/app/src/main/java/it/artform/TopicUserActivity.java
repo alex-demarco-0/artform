@@ -60,6 +60,10 @@ public class TopicUserActivity extends Activity {  //magari rinominare in TopicS
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(topicAdapter.getTopicSelection().size() == 0) {
+                    Toast.makeText(TopicUserActivity.this, "Select at least one Topic", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 registerUser();
             }
         });
