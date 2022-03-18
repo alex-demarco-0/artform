@@ -231,8 +231,10 @@ public class MainActivity extends FragmentActivity {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 if(response.isSuccessful()) {
-                    if (response.body().size() > 0)
+                    if (response.body().size() > 0) {
                         feedPostList.addAll(response.body());
+                        feedListView.setAdapter(new PostArrayAdapter(MainActivity.this, R.layout.row_post_list, feedPostList.toArray(new Post[feedPostList.size()])));
+                    }
                 }
                 else
                     Toast.makeText(MainActivity.this, "Error while fetching Posts for Topic " + topic + ": ERROR " + response.code(), Toast.LENGTH_LONG).show();
@@ -253,11 +255,13 @@ public class MainActivity extends FragmentActivity {
                 if(response.isSuccessful()) {
                     List<Topic> userSelectedTopics = response.body();
                     for(Topic topic: userSelectedTopics)
-                        fetchPostsByTopic(topic.getName());
+                        fetchPostsByTopic(topic.getName());   // dovrebbe caricare i post escludendo i propri
+                    /*
                     Post[] feedPostListArray = new Post[feedPostList.size()];
                     for (int i = 0; i < feedPostListArray.length; i++)
                         feedPostListArray[i] = feedPostList.get(i);
-                    feedListView.setAdapter(new PostArrayAdapter(MainActivity.this, R.layout.row_post_list, feedPostListArray));
+                    */
+                    //feedListView.setAdapter(new PostArrayAdapter(MainActivity.this, R.layout.row_post_list, feedPostList.toArray(new Post[feedPostList.size()])));
                 }
                 else
                     Toast.makeText(MainActivity.this, "Error while fetching user Topics: ERROR " + response.code(), Toast.LENGTH_LONG).show();

@@ -6,6 +6,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/feedTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:fontFamily="cursive"
+
+        android:paddingTop="3dp"
+        android:paddingBottom="9dp"
+        android:text="Your Feed"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <!-- TEST
     <ListView
         android:id="@+id/datiRegistrazioneListView"
@@ -32,6 +51,7 @@
         android:id="@+id/feedListView"
         android:layout_width="match_parent"
         android:layout_height="605dp"
+        android:layout_below="@+id/feedTextView"
         android:layout_marginBottom="-3dp" />
 <!--
     <FrameLayout
