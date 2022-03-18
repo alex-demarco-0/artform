@@ -146,7 +146,7 @@ public interface ArtformApiEndpointInterface {
     Call<List<Topic>> getUserSelectedTopics(@Path("username") String username);
 
     @POST("/artform/utente/{username}/topics")
-    Call<String> userSelectsTopic(@Path("username") String username, @Body String topicName);
+    Call<ResponseBody> userSelectsTopic(@Path("username") String username, @Body RequestBody topicName);
 
     @DELETE("/artform/utente/{username}/topics/{topicName}")
     Call<ResponseBody> userDeselectsTopic(@Path("username") String username, @Path("topicName") String topicName);
