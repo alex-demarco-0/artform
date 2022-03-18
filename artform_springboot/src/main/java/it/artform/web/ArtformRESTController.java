@@ -163,7 +163,7 @@ public class ArtformRESTController {
 			for(String user: usersToNotify) {
 				Notifica n = new Notifica();
 				Calendar calendar = Calendar.getInstance();
-				calendar.add(Calendar.SECOND, i++);
+				calendar.add(Calendar.SECOND, i++); //necessario per evitare conflitto di chiave primaria
 				n.setData(calendar.getTime());
 				n.setCategoria(1);
 				String description = newPost.getUtenteUsername() + " published a new " +
