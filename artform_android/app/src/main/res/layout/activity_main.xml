@@ -49,9 +49,10 @@
         android:id="@+id/feedListView"
         android:layout_width="match_parent"
         android:layout_height="605dp"
-        android:paddingTop="9dp"
         android:layout_below="@+id/feedTextView"
-        android:layout_marginBottom="-3dp" />
+        android:layout_above="@+id/bottomNavigationView"
+        android:layout_marginBottom="-3dp"
+        android:paddingTop="9dp" />
 <!--
     <FrameLayout
         android:id="@+id/fragmentContainer"
