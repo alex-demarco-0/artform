@@ -80,6 +80,11 @@ public class JdbcArtformRepository implements ArtformRepository {
 	public List<Post> findPostsByUtente(String username) {
 		return jdbcTemplate.query("SELECT * from post WHERE utenteUsername=?", BeanPropertyRowMapper.newInstance(Post.class), username);
 	}
+	
+	@Override
+	public int findUserPostAmount(String username) {
+		return jdbcTemplate.queryForObject("SELECT COUNT(*) FROM post WHERE utenteUsername=?", Integer.class, username);
+	}
 
 	@Override
 	public int savePost(Post p) {

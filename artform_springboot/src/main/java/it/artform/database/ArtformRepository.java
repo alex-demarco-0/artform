@@ -22,6 +22,7 @@ public interface ArtformRepository {
 	List<Post> findPostsByFilters(String topic, String keywords, String type);
 	List<Post> findPostsByUtente(String username);
 	List<Post> findPostsByTopic(String topic, String username);
+	int findUserPostAmount(String username);
 	int savePost(Post p);
 	int updatePost(Post p);
 	int deletePost(int id);

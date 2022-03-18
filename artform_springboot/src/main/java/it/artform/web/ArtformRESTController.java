@@ -136,7 +136,12 @@ public class ArtformRESTController {
 			return new ResponseEntity<List<Post>>(posts, HttpStatus.OK);
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+/*	
+	@RequestMapping(value="/artform/utente/{username}/posts/n", method=RequestMethod.POST)
+	public int getUserPostAmount(@PathVariable String username) {
+		return this.artformRepository.findUserPostAmount(username);
+	}
+*/	
 	@RequestMapping(value="/artform/post", method=RequestMethod.POST)
 	public ResponseEntity<Post> addPost(@RequestParam("resource") MultipartFile postResource, @RequestParam("postObj") Post newPost) {
 		if(this.artformRepository.savePost(newPost) == 1) {
@@ -145,17 +150,14 @@ public class ArtformRESTController {
 				resourcesStorageService.storeImagePost(postResource, createdPost);
 			else
 				resourcesStorageService.storeVideoPost(postResource, createdPost);
-			//se è il primo post dell'utente dai badge e notifica ...
+			//se è il primo post dell'utente dai badge e notifica
+			if(this.artformRepository.findUserPostAmount(newPost.getUtenteUsername()) == 1) {
+				this.userObtainsBadge(newPost.getUtenteUsername(), "First content published");
+			}
 			List<String> usersToNotify = this.artformRepository.findAllUsersWhoActivatedNotificationsOnUser(newPost.getUtenteUsername());
 			int i = 1;
 			for(String user: usersToNotify) {
 				Notifica n = new Notifica();
-				/*
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}*/
 				Calendar calendar = Calendar.getInstance();
 				calendar.add(Calendar.SECOND, i++);
 				n.setData(calendar.getTime());
