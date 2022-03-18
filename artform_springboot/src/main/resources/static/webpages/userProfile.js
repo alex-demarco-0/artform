@@ -28,7 +28,7 @@ function getUserPosts() {
                 for(var idx=0; idx<postListObj.length; idx++) {
                     var post = postListObj[idx];
                     document.getElementById("posts").innerHTML +=
-                    '<img src="' + base_url + 'media/imagePosts/' + post.id + '.jpg">'
+                    '<img src="' + base_url + 'media/imagePosts/' + post.id + '.jpg" height="200px" width="350px">'
                 }
             }
     };
