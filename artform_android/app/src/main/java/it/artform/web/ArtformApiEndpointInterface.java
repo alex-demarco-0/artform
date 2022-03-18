@@ -43,8 +43,8 @@ public interface ArtformApiEndpointInterface {
     @GET("/artform/post/{id}")
     Call<Post> getPost(@Path("id") int id);
 
-    @GET("/artform/post/topic/{topic}")
-    Call<List<Post>> getPostsByTopic(@Path("topic") String topic);
+    @GET("/artform/post/{username}/{topic}")
+    Call<List<Post>> getPostsByTopic(@Path("username") String username, @Path("topic") String topic);
 
     @GET("/artform/post/topic={topic}/keywords={keywords}/type={type}")
     Call<List<Post>> getPostsByFilters(@Path("topic") String topic, @Path("keywords") String keywords, @Path("type") String type);

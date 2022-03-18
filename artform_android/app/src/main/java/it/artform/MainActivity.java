@@ -226,7 +226,7 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void fetchPostsByTopic(String topic) {
-        Call<List<Post>> getPostsByTopicCall = apiService.getPostsByTopic(topic);
+        Call<List<Post>> getPostsByTopicCall = apiService.getPostsByTopic( AFGlobal.getLoggedUser(), topic);
         getPostsByTopicCall.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
