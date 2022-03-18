@@ -16,8 +16,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
         android:fontFamily="cursive"
-
-        android:paddingTop="3dp"
         android:paddingBottom="9dp"
         android:text="Your Feed"
         android:textAlignment="center"
