@@ -5,12 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +33,7 @@ import retrofit2.Response;
 public class NotificationActivity extends Activity {
     //File notifFile = null;
     ListView notificationsListView = null;
+    BottomNavigationView bottomNavigationView = null;
 
     AFGlobal app = null;
     ArtformApiEndpointInterface apiService = null;
@@ -54,11 +61,42 @@ public class NotificationActivity extends Activity {
         //cacheNotifications();
  */
         notificationsListView = findViewById(R.id.notificationsListView);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(navListener);
+        bottomNavigationView.getMenu().getItem(3).setChecked(true);
 
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
         fetchNotifications();
     }
+
+    // listener NavigationBar
+    private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch(item.getItemId()) {
+                case R.id.home_item:
+                    Intent homeIntent = new Intent(NotificationActivity.this, MainActivity.class);
+                    startActivity(homeIntent);
+                    break;
+                case R.id.search_item:
+                    Intent searchIntent = new Intent(NotificationActivity.this, UserSearchActivity.class);
+                    startActivity(searchIntent);
+                    break;
+                case R.id.add_item:
+                    Intent publishIntent = new Intent(NotificationActivity.this, ContentPubActivity.class);
+                    startActivity(publishIntent);
+                    break;
+                case R.id.notifications_item:
+                    break;
+                case R.id.profile_item:
+                    Intent userProfileIntent = new Intent(NotificationActivity.this, UserProfileActivity.class);
+                    startActivity(userProfileIntent);
+                    break;
+            }
+            return false;
+        }
+    };
 
     private void fetchNotifications() {
         Call<List<Notification>> getAllUserNotificationsCall = apiService.getAllUserNotifications(AFGlobal.getLoggedUser());

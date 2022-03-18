@@ -3,6 +3,7 @@ package it.artform;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +14,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.Date;
 import java.util.List;
 
 import it.artform.feed.UserGridAdapter;
@@ -31,6 +39,7 @@ public class UserSearchActivity extends Activity {
     Spinner topicSpinner = null;
     GridView artistsGridView = null;
     TextView noResultTextView = null;
+    BottomNavigationView bottomNavigationView = null;
 
     ArtformApiEndpointInterface apiService = null;
 
@@ -51,6 +60,9 @@ public class UserSearchActivity extends Activity {
         topicSpinner = findViewById(R.id.topicSpinner); //fetch topics
         artistsGridView = findViewById(R.id.artistsGridView); //load posts
         noResultTextView = findViewById(R.id.noResultTextView); //show only when no posts
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(navListener);
+        bottomNavigationView.getMenu().getItem(1).setChecked(true);
 
         //web services setup
         AFGlobal app = (AFGlobal) getApplication();
@@ -101,6 +113,34 @@ public class UserSearchActivity extends Activity {
             }
         });
     }
+
+    // listener NavigationBar
+    private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch(item.getItemId()) {
+                case R.id.home_item:
+                    Intent homeIntent = new Intent(UserSearchActivity.this, MainActivity.class);
+                    startActivity(homeIntent);
+                    break;
+                case R.id.search_item:
+                    break;
+                case R.id.add_item:
+                    Intent publishIntent = new Intent(UserSearchActivity.this, ContentPubActivity.class);
+                    startActivity(publishIntent);
+                    break;
+                case R.id.notifications_item:
+                    Intent notificationsIntent = new Intent(UserSearchActivity.this, NotificationActivity.class);
+                    startActivity(notificationsIntent);
+                    break;
+                case R.id.profile_item:
+                    Intent userProfileIntent = new Intent(UserSearchActivity.this, UserProfileActivity.class);
+                    startActivity(userProfileIntent);
+                    break;
+            }
+            return false;
+        }
+    };
 
     private void fetchTopics() {
         Call<List<Topic>> getTopicsCall = apiService.getAllTopics();

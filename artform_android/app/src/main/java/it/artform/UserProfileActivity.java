@@ -1,11 +1,13 @@
 package it.artform;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -14,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -36,7 +40,10 @@ public class UserProfileActivity extends Activity {
     GridView userPostsGridView = null;
     RecyclerView badgesReciclerView = null;
     TextView myPointsTextView = null;
+    BottomNavigationView bottomNavigationView = null;
+
     ArtformApiEndpointInterface apiService = null;
+
     User loggedUser = null;
     Badge[] userBadges = null;
     Post[] userPosts = null;
@@ -55,6 +62,9 @@ public class UserProfileActivity extends Activity {
         LinearLayoutManager badgesLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         badgesReciclerView.setLayoutManager(badgesLayoutManager);
         myPointsTextView = findViewById(R.id.myPointsTextView);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setOnItemSelectedListener(navListener);
+        bottomNavigationView.getMenu().getItem(4).setChecked(true);
 
         AFGlobal app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
@@ -93,6 +103,34 @@ public class UserProfileActivity extends Activity {
             }
         });
     }
+
+    // listener NavigationBar
+    private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch(item.getItemId()) {
+                case R.id.home_item:
+                    Intent homeIntent = new Intent(UserProfileActivity.this, MainActivity.class);
+                    startActivity(homeIntent);
+                    break;
+                case R.id.search_item:
+                    Intent searchIntent = new Intent(UserProfileActivity.this, UserSearchActivity.class);
+                    startActivity(searchIntent);
+                    break;
+                case R.id.add_item:
+                    Intent publishIntent = new Intent(UserProfileActivity.this, ContentPubActivity.class);
+                    startActivity(publishIntent);
+                    break;
+                case R.id.notifications_item:
+                    Intent notificationsIntent = new Intent(UserProfileActivity.this, NotificationActivity.class);
+                    startActivity(notificationsIntent);
+                    break;
+                case R.id.profile_item:
+                    break;
+            }
+            return false;
+        }
+    };
 /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
