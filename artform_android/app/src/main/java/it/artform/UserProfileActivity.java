@@ -40,6 +40,7 @@ public class UserProfileActivity extends Activity {
     GridView userPostsGridView = null;
     RecyclerView badgesReciclerView = null;
     TextView myPointsTextView = null;
+    TextView noPostsTextView = null;
     BottomNavigationView bottomNavigationView = null;
 
     ArtformApiEndpointInterface apiService = null;
@@ -62,6 +63,8 @@ public class UserProfileActivity extends Activity {
         LinearLayoutManager badgesLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         badgesReciclerView.setLayoutManager(badgesLayoutManager);
         myPointsTextView = findViewById(R.id.myPointsTextView);
+        noPostsTextView = findViewById(R.id.noPostsTextView);
+        noPostsTextView.setVisibility(View.INVISIBLE);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(navListener);
         bottomNavigationView.getMenu().getItem(4).setChecked(true);
@@ -100,6 +103,14 @@ public class UserProfileActivity extends Activity {
             public void onClick(View view) {
                 Intent openSettingsActivity= new Intent(UserProfileActivity.this, SettingsActivity.class);
                 startActivity(openSettingsActivity);
+            }
+        });
+
+        noPostsTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent publishIntent = new Intent(UserProfileActivity.this, ContentPubActivity.class);
+                startActivity(publishIntent);
             }
         });
     }
@@ -216,6 +227,10 @@ public class UserProfileActivity extends Activity {
                                 openPostDetails(position);
                             }
                         });
+                    }
+                    else {
+                        userPostsGridView.setVisibility(View.INVISIBLE);
+                        noPostsTextView.setVisibility(View.VISIBLE);
                     }
                 }
                 else

@@ -87,6 +87,18 @@
             android:layout_marginTop="20dp"
             android:text="My Points: " />
 
+        <TextView
+            android:id="@+id/noPostsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/userBioTagsTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="100dp"
+            android:text="Publish your first content"
+            android:textAllCaps="false"
+            android:textColor="#9208CC"
+            android:textStyle="bold" />
+
     </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
