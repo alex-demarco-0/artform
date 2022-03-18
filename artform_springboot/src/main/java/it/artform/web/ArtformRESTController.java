@@ -150,10 +150,14 @@ public class ArtformRESTController {
 				resourcesStorageService.storeImagePost(postResource, createdPost);
 			else
 				resourcesStorageService.storeVideoPost(postResource, createdPost);
-			//se è il primo post dell'utente dai badge e notifica
+			//se è il primo post dell'utente dai badge, notifica e punteggio maggiorato
+			Utente u = this.artformRepository.findUtente(newPost.getUtenteUsername());
 			if(this.artformRepository.findUserPostAmount(newPost.getUtenteUsername()) == 1) {
 				this.userObtainsBadge(newPost.getUtenteUsername(), "First content published");
+				u.incrementaPunteggio(100);
 			}
+			u.incrementaPunteggio(40);
+			this.artformRepository.updateUtente(u);
 			List<String> usersToNotify = this.artformRepository.findAllUsersWhoActivatedNotificationsOnUser(newPost.getUtenteUsername());
 			int i = 1;
 			for(String user: usersToNotify) {
