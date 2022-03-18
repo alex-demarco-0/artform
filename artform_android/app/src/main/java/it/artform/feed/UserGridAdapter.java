@@ -60,7 +60,7 @@ public class UserGridAdapter extends BaseAdapter {
         String username = users[position];
         vh.usernameTextView.setText(username);
         String profilePicResUri = AFGlobal.USER_PROPIC_PATH + username + ".jpg";
-        Picasso.get().load(profilePicResUri).into(vh.profilePicImageView);
+        Picasso.get().load(profilePicResUri).resize(150, 140).centerCrop().into(vh.profilePicImageView);
         return convertView;
     }
 

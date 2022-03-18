@@ -17,14 +17,25 @@
         android:layout_below="@+id/toolbar"
         android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/userProfilePicImageView"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/userProfilePicCardView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
             android:layout_marginTop="30dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            app:cardCornerRadius="60dp"
+            app:cardPreventCornerOverlap="false">
+
+            <ImageView
+                android:id="@+id/userProfilePicImageView"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                tools:srcCompat="@tools:sample/avatars" />
+
+        </androidx.cardview.widget.CardView>
 
         <Button
             android:id="@+id/userProfileSettingsButton"
@@ -37,7 +48,7 @@
             android:id="@+id/userProfileUsernameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/userProfilePicImageView"
+            android:layout_below="@+id/userProfilePicCardView"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
             android:text="USERNAME" />
