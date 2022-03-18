@@ -1,5 +1,6 @@
 package it.artform.web;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -146,14 +147,18 @@ public class ArtformRESTController {
 				resourcesStorageService.storeVideoPost(postResource, createdPost);
 			//se è il primo post dell'utente dai badge e notifica ...
 			List<String> usersToNotify = this.artformRepository.findAllUsersWhoActivatedNotificationsOnUser(newPost.getUtenteUsername());
+			int i = 1;
 			for(String user: usersToNotify) {
 				Notifica n = new Notifica();
+				/*
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
-				}
-				n.setData(new Date());
+				}*/
+				Calendar calendar = Calendar.getInstance();
+				calendar.add(Calendar.SECOND, i++);
+				n.setData(calendar.getTime());
 				n.setCategoria(1);
 				String description = newPost.getUtenteUsername() + " published a new " +
 									(newPost.getTipologia().equals("img") ? "artwork" : "video");
