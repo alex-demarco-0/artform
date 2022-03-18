@@ -49,6 +49,7 @@ button{
       #posts{
          width: auto;
          height:auto;
+         padding: 10px;
        }
 
        #body{
