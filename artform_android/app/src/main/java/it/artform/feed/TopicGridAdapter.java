@@ -69,17 +69,17 @@ public class TopicGridAdapter extends BaseAdapter {
                         vh.topicTextView.setBackgroundColor(context.getColor(R.color.white));
                         vh.topicChecked = false;
                         topicSelection.remove(topics[pos]);
-                        //TEST
+                        /*TEST
                         Toast.makeText(context, topicSelection.toString(), Toast.LENGTH_SHORT).show();
-                        //
+                        */
                     }
                     else {
                         vh.topicTextView.setBackgroundColor(context.getColor(R.color.purple_200));
                         vh.topicChecked = true;
                         topicSelection.add(topics[pos]);
-                        //TEST
+                        /*TEST
                         Toast.makeText(context, topicSelection.toString(), Toast.LENGTH_SHORT).show();
-                        //
+                        */
                     }
                 }
             });
