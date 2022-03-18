@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `badge` (
   PRIMARY KEY (`nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.badge: ~0 rows (circa)
+-- Dump dei dati della tabella ArtForm.badge: ~4 rows (circa)
 /*!40000 ALTER TABLE `badge` DISABLE KEYS */;
 INSERT INTO `badge` (`nome`, `descrizione`, `punteggio`) VALUES
 	('Easy', '???', 8),
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `badgeUtente` (
   CONSTRAINT `FK_badgeUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.badgeUtente: ~0 rows (circa)
+-- Dump dei dati della tabella ArtForm.badgeUtente: ~7 rows (circa)
 /*!40000 ALTER TABLE `badgeUtente` DISABLE KEYS */;
 INSERT INTO `badgeUtente` (`utenteUsername`, `badgeNome`) VALUES
 	('alex', 'First content published'),
@@ -53,7 +53,8 @@ INSERT INTO `badgeUtente` (`utenteUsername`, `badgeNome`) VALUES
 	('arianna', 'Welcome on ArtForm!'),
 	('rr', 'Welcome on ArtForm!'),
 	('tr', 'Welcome on ArtForm!'),
-	('trr', 'Welcome on ArtForm!');
+	('trr', 'Welcome on ArtForm!'),
+	('ty', 'Welcome on ArtForm!');
 /*!40000 ALTER TABLE `badgeUtente` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.commissione
@@ -99,19 +100,22 @@ CREATE TABLE IF NOT EXISTS `notifica` (
   CONSTRAINT `FK_notifica_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.notifica: ~3 rows (circa)
+-- Dump dei dati della tabella ArtForm.notifica: ~10 rows (circa)
 /*!40000 ALTER TABLE `notifica` DISABLE KEYS */;
 INSERT INTO `notifica` (`data`, `categoria`, `descrizione`, `collegamento`, `utenteUsername`) VALUES
-	('2022-03-08 14:38:20', 3, 'User admin sent you a commission request', '', 'alex'),
+	('2022-03-08 14:38:20', 3, 'User admin sent you a commission request', '', 'arianna'),
 	('2022-03-08 16:39:31', 1, 'arianna published a new artwork', '24', 'admin'),
 	('2022-03-08 16:39:56', 2, 'Someone liked your post!', '24', 'arianna'),
-	('2022-03-17 22:23:52', 1, 'arianna published a new artwork', '25', 'admin'),
+	('2022-03-17 22:23:52', 1, 'alex published a new artwork', '25', 'arianna'),
 	('2022-03-17 22:29:59', 1, 'arianna published a new artwork', '26', 'admin'),
 	('2022-03-17 22:30:00', 1, 'arianna published a new artwork', '26', 'alex'),
 	('2022-03-17 22:30:48', 2, 'Someone liked your post!', '26', 'arianna'),
 	('2022-03-18 09:45:30', 5, 'Congrats! You obtained a new Badge: Welcome on ArtForm!', 'badge', 'tr'),
 	('2022-03-18 09:48:20', 5, 'Congrats! You obtained a new Badge: Welcome on ArtForm!', 'badge', 'trr'),
-	('2022-03-18 09:50:19', 5, 'Congrats! You obtained a new Badge: Welcome on ArtForm!', 'badge', 'rr');
+	('2022-03-18 09:50:19', 5, 'Congrats! You obtained a new Badge: Welcome on ArtForm!', 'badge', 'arianna'),
+	('2022-03-18 11:25:47', 5, 'Congrats! You obtained a new Badge: Welcome on ArtForm!', 'badge', 'ty'),
+	('2022-03-18 14:42:04', 3, 'alex accepted your commission request', '11', 'arianna'),
+	('2022-03-18 14:43:31', 5, 'Congrats! You obtained a new Badge: First content published', 'badge', 'arianna');
 /*!40000 ALTER TABLE `notifica` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.notificheUtente
@@ -125,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `notificheUtente` (
   CONSTRAINT `FK_notificheUtente_utenteExt` FOREIGN KEY (`utenteExtUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.notificheUtente: ~2 rows (circa)
+-- Dump dei dati della tabella ArtForm.notificheUtente: ~3 rows (circa)
 /*!40000 ALTER TABLE `notificheUtente` DISABLE KEYS */;
 INSERT INTO `notificheUtente` (`utenteUsername`, `utenteExtUsername`) VALUES
 	('admin', 'arianna'),
@@ -150,27 +154,31 @@ CREATE TABLE IF NOT EXISTS `post` (
   CONSTRAINT `FK_post_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.post: ~0 rows (circa)
+-- Dump dei dati della tabella ArtForm.post: ~18 rows (circa)
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
 INSERT INTO `post` (`Id`, `utenteUsername`, `titolo`, `topic`, `tags`, `dataPubblicazione`, `like`, `tipologia`) VALUES
-	(1, 'arianna', 'Velociraptor', '3D', '#dinosaur #animals #cute #3d', '2021-12-09 17:25:11', 3, 'img'),
-	(2, 'arianna', 'Paesaggio commissione', 'Tradizionale', '#paesaggio #landscape #nature', '2021-12-14 15:28:09', 0, 'img'),
+	(1, 'alex', 'Velociraptor', '3D', '#dinosaur #animals #cute #3d', '2021-12-09 17:25:11', 3, 'img'),
+	(2, 'alex', 'Paesaggio commissione', 'Tradizionale', '#paesaggio #landscape #nature', '2021-12-14 15:28:09', 0, 'img'),
 	(4, 'alex', 'Pulce', 'Animali', '#prurito', '2022-02-23 09:45:27', 7, 'img'),
 	(5, 'alex', 'Arch', 'Sci-Fi', '#top', '2022-02-24 14:07:09', 104, 'img'),
 	(6, 'alex', 'Cutie', 'Animali', '#:3', '2022-02-24 14:07:58', 5, 'img'),
 	(7, 'alex', 'Chads', 'Animazione', '#strongmans', '2022-02-24 14:09:00', 2, 'img'),
 	(14, 'alex', 's', 'Animazione', '#', '2022-03-24 14:09:00', 0, 'img'),
-	(15, 'alex', 'syyyy', 'Animazione', '#yyyyyy', '2022-04-24 15:09:00', 5, 'img'),
-	(16, 'alex', 'syyyy', 'Animazione', '#yyyyyy', '2022-05-24 15:09:00', 4, 'img'),
-	(17, 'alex', 'syyyy', 'Animazione', '#yyyyyy', '2022-06-24 15:09:00', 3, 'img'),
 	(18, 'alex', 'a', '3D', 'a', '2022-03-07 17:11:55', 15, 'img'),
-	(19, 'alex', 'a', '3D', 'a', '2022-03-07 17:12:25', 0, 'img'),
-	(20, 'alex', 'yuyuyuyuyuy', 'Astratto', 'jyjyjyjyjyjy', '2022-03-07 17:43:20', 0, 'img'),
 	(21, 'alex', 'USA', 'Horror', 'corp', '2022-03-08 10:45:01', 6, 'img'),
-	(22, 'alex', 'USA', '3D', 'fuckya', '2022-03-08 10:45:48', 0, 'img'),
-	(24, 'arianna', 'uSDA', '3D', '666', '2022-03-08 16:39:26', 1, 'img'),
-	(25, 'arianna', 'tttt', '3D', 'ttttt', '2022-03-17 22:23:50', 0, 'img'),
-	(26, 'arianna', 'oooo', '3D', 'iuiu', '2022-03-17 22:29:56', 1, 'img');
+	(27, 'arianna', 'Pixart cloudy', 'Pixel Art', '#clouds', '2022-03-18 16:27:46', 0, 'img'),
+	(28, 'arianna', 'sug4rfairy', 'Fumetti', '#commissione #icon #', '2022-03-18 16:29:04', 0, 'img'),
+	(29, 'arianna', 'horse', 'Animali', '#prova', '2022-03-18 16:29:31', 0, 'img'),
+	(30, 'arianna', 'disegnino animaletto', 'Speedpaint', '# carino', '2022-03-18 16:30:26', 0, 'img'),
+	(31, 'arianna', 'campo fiorito', 'Tradizionale', '#fragranze #colorful', '2022-03-18 16:31:43', 0, 'img'),
+	(32, 'arianna', 'magikarp', 'Animazione', '#pkmn #pastel', '2022-03-18 16:32:38', 0, 'img'),
+	(33, 'arianna', 'hamsterino', 'Animali', '##', '2022-03-18 16:33:36', 0, 'img'),
+	(34, 'arianna', 'opera senza titolo', 'Arte Digitale', '#girl', '2022-03-18 16:34:15', 0, 'img'),
+	(35, 'arianna', 'ragazza glitchosa', 'Arte Digitale', '#girl #glitch #glitchy #dark #light', '2022-03-18 16:35:04', 0, 'img'),
+	(36, 'arianna', 'ragazza glitchosa 2', 'Arte Digitale', '#girl #glitch #glitchy #dark #light', '2022-03-18 16:35:42', 0, 'img'),
+	(37, 'arianna', 'trex', 'Astratto', '#pencil', '2022-03-18 16:36:30', 0, 'img'),
+	(38, 'arianna', 'tired gal sketch', 'Videogiochi', '#stanchezza', '2022-03-18 16:41:12', 0, 'img'),
+	(39, 'arianna', 'landscape', 'Wallpaper', '#landscape #colorful', '2022-03-18 16:42:34', 0, 'img');
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.postSalvati
@@ -193,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `topic` (
   PRIMARY KEY (`nome`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.topic: ~0 rows (circa)
+-- Dump dei dati della tabella ArtForm.topic: ~17 rows (circa)
 /*!40000 ALTER TABLE `topic` DISABLE KEYS */;
 INSERT INTO `topic` (`nome`) VALUES
 	('3D'),
@@ -225,20 +233,32 @@ CREATE TABLE IF NOT EXISTS `topicUtente` (
   CONSTRAINT `FK_topicUtente_utente` FOREIGN KEY (`utenteUsername`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.topicUtente: ~0 rows (circa)
+-- Dump dei dati della tabella ArtForm.topicUtente: ~11 rows (circa)
 /*!40000 ALTER TABLE `topicUtente` DISABLE KEYS */;
 INSERT INTO `topicUtente` (`utenteUsername`, `topicNome`) VALUES
 	('pollastro', '3D'),
+	('ty', '3D'),
 	('alex', 'Animali'),
 	('arianna', 'Animali'),
+	('ty', 'Animali'),
+	('ty', 'Animazione'),
 	('rr', 'Astratto'),
 	('trr', 'Astratto'),
+	('ty', 'Astratto'),
 	('pollastro', 'Fantasy'),
+	('ty', 'Fantasy'),
+	('ty', 'Fotografia'),
 	('rr', 'Fotomontaggio'),
 	('trr', 'Fotomontaggio'),
+	('ty', 'Fotomontaggio'),
 	('alex', 'Fumetti'),
+	('ty', 'Fumetti'),
 	('arianna', 'Horror'),
-	('alex', 'Sci-Fi');
+	('alex', 'Sci-Fi'),
+	('ty', 'Sci-Fi'),
+	('ty', 'Tradizionale'),
+	('ty', 'Videogiochi'),
+	('ty', 'Wallpaper');
 /*!40000 ALTER TABLE `topicUtente` ENABLE KEYS */;
 
 -- Dump della struttura di tabella ArtForm.utente
@@ -255,16 +275,13 @@ CREATE TABLE IF NOT EXISTS `utente` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Dump dei dati della tabella ArtForm.utente: ~0 rows (circa)
+-- Dump dei dati della tabella ArtForm.utente: ~7 rows (circa)
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
 INSERT INTO `utente` (`nome`, `cognome`, `username`, `email`, `numeroTelefono`, `password`, `bio`, `punteggio`) VALUES
 	('ADMIN', 'ADMIN', 'admin', 'admin@admin.com', '000', 'admin', NULL, 999),
 	('Alessandro', 'De Marco', 'alex', 'a.demarco@itsrizzoli.it', '3384148744', 'password', 'I\'m an alien', 24),
 	('Manbir', 'Aceveda', 'arianna', 'ift@k.it', '338', 'password', '#cuteknife#', 8),
-	('Gabbo', 'Uop', 'pollastro', 'a6@i.it', '3', 'oi', 'lll', 0),
-	('rr', 'rr', 'rr', 'rr@rr.it', '', 'rr', '', 0),
-	('tr', 'tr', 'tr', 'tr@tr.it', '', 'tr', '', 0),
-	('tr', 'tr', 'trr', 'tr@rtr.it', '', 'tr', '', 0);
+	('Gabbo', 'Uop', 'pollastro', 'a6@i.it', '3', 'oi', 'lll', 0);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
