@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ public class MainActivity extends FragmentActivity {
     //Button notification = null;
     //Button addPost = null;
     //Button search = null;
+    ProgressBar loadingProgressBar = null;
     BottomNavigationView bottomNavigationView = null;
     MenuItem notificationsItem = null;
 
@@ -166,6 +168,8 @@ public class MainActivity extends FragmentActivity {
         });*/
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnItemSelectedListener(navListener);
+        loadingProgressBar = findViewById(R.id.loadingProgressBar);
+        loadingProgressBar.setVisibility(View.VISIBLE);
         //getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new HomeFragment()).commit();
         //notificationsItem = findViewById(R.id.notifications_item);
 
@@ -233,6 +237,7 @@ public class MainActivity extends FragmentActivity {
                 if(response.isSuccessful()) {
                     if (response.body().size() > 0) {
                         feedPostList.addAll(response.body());
+                        loadingProgressBar.setVisibility(View.INVISIBLE);
                         feedListView.setAdapter(new PostArrayAdapter(MainActivity.this, R.layout.row_post_list, feedPostList.toArray(new Post[feedPostList.size()])));
                     }
                 }
