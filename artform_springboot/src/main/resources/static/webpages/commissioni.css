@@ -1,0 +1,38 @@
+#body{
+font-family:sans-serif, helvetica;
+color: #000018;
+background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
+background-attachment: fixed;
+}
+
+#div{
+    background-color: #fff;
+    width: 40%;
+    margin: 80px auto;
+    border-radius: 10px;
+    padding: 30px;
+    border-left: 5px solid #D291BC;
+    box-shadow: 0px 0px 0px 0px #3f51b5;
+}
+
+#buttonsDiv{
+  margin-top:10px;
+}
+
+#inputMessage{
+  margin: 10px;
+  width: 400px;
+  border-width:thin;
+  border-radius: 4px;
+  height: 200px;
+  resize: none;}
+
+  .button{
+    font-weight: 700;
+    border:none;
+    color: white;
+    text-decoration: none;
+    padding: .8em 1em calc(.8em + 3px);
+    border-radius: 4px;
+    background: #D291BC;
+  }
