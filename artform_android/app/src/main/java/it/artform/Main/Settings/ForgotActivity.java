@@ -1,7 +1,9 @@
-package it.artform;
+package it.artform.Main.Settings;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import it.artform.R;
 
 public class ForgotActivity extends Activity {
 

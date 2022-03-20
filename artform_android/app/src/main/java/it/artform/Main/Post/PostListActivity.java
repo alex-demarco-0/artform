@@ -1,9 +1,10 @@
-package it.artform;
+package it.artform.Main.Post;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import it.artform.R;
 import it.artform.feed.PostArrayAdapter;
 import it.artform.pojos.Post;
 

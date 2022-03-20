@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.Main.Profile;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -29,6 +29,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 //import it.artform.feed.BadgesListAdapter;
+import it.artform.R;
 import it.artform.feed.PostGridAdapter;
 import it.artform.pojos.Badge;
 import it.artform.pojos.Post;
@@ -39,7 +40,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
-    /*ImageView userProfilePicImageView = null;
+
+    public ProfileFragment(){
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.home_fragment, container, false);
+    }
+
+
+}
+
+ /*ImageView userProfilePicImageView = null;
     TextView userProfileUsernameTextView = null;
     TextView userBioTagsTextView = null;
     Button userProfileSettingsButton = null;
@@ -59,13 +73,7 @@ public class ProfileFragment extends Fragment {
         act=(Activity) context;
     }*/
 
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.home_fragment, container, false);
-    }
-
-    /*@Override
+/*@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -208,4 +216,3 @@ public class ProfileFragment extends Fragment {
         postListIntent.putExtra("postIndex", pos);
         startActivity(postListIntent);
     }*/
-}

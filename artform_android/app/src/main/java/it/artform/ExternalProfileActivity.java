@@ -18,6 +18,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import it.artform.Main.Commission.CommissionActivity;
+import it.artform.Main.Post.PostListActivity;
 import it.artform.feed.BadgeListAdapter;
 import it.artform.feed.PostGridAdapter;
 import it.artform.pojos.Badge;

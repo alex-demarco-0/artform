@@ -24,39 +24,39 @@
             android:name=".ExternalProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".ForgotActivity"
+            android:name=".Main.Settings.ForgotActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".Main.Registration.RegisterActivity"
             android:exported="true">
 
         </activity>
         <activity
-            android:name=".TopicUserActivity"
+            android:name=".Main.Registration.TopicUserActivity"
             android:exported="true" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Main.Settings.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsAccountActivity"
+            android:name=".Main.Settings.SettingsAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".SavedPostActivity"
+            android:name=".Main.Post.SavedPostActivity"
             android:exported="false" />
         <activity
-            android:name=".UserProfileActivity"
+            android:name=".Main.Profile.UserProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".NotificationActivity"
+            android:name=".Main.Notifications.NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".CommissionActivity"
+            android:name=".Main.Commission.CommissionActivity"
             android:exported="false" />
         <activity
-            android:name=".CommissionRequestActivity"
+            android:name=".Main.Commission.CommissionRequestActivity"
             android:exported="false" />
         <activity
-            android:name=".ContentPubActivity"
+            android:name=".Main.Pubblication.ContentPubActivity"
             android:exported="false" />
         <activity
             android:name=".ImagePostSearchActivity"
@@ -67,10 +67,10 @@
             android:name=".VideoPostSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".UserSearchActivity"
+            android:name=".Main.Search.UserSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Main.Login.LoginActivity"
             android:exported="true">
 
             <intent-filter>
@@ -81,20 +81,20 @@
 
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Main.Homepage.MainActivity"
             android:exported="false">
 
         </activity>
         <activity
-            android:name=".TopicSelectActivity"
+            android:name=".Main.Registration.TopicSelectActivity"
             android:exported="false">
 
         </activity>
         <activity
-            android:name=".HomeFragment"
+            android:name=".Main.Homepage.HomeFragment"
             android:exported="false"
             tools:ignore="Instantiatable" />
-        <activity android:name=".PostListActivity" android:exported="false" />
+        <activity android:name=".Main.Post.PostListActivity" android:exported="false" />
     </application>
 
 </manifest>

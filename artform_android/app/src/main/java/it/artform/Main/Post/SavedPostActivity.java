@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.Main.Post;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import it.artform.AFGlobal;
+import it.artform.R;
 import it.artform.feed.PostGridAdapter;
 import it.artform.pojos.Post;
 import it.artform.pojos.User;

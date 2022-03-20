@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.Main.Settings;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import com.squareup.picasso.Picasso;
 
 import java.io.File;
 
+import it.artform.AFGlobal;
+import it.artform.R;
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
 import okhttp3.MediaType;

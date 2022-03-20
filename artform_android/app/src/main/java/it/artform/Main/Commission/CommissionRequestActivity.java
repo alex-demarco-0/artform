@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.Main.Commission;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import java.util.Date;
 
+import it.artform.AFGlobal;
+import it.artform.R;
 import it.artform.pojos.Commission;
 import it.artform.pojos.Notification;
 import it.artform.web.ArtformApiEndpointInterface;

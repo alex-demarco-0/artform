@@ -1,78 +1,67 @@
-package it.artform;
+package it.artform.Main.Search;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.SearchView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+import it.artform.R;
 
-import java.util.Date;
-import java.util.List;
-
-import it.artform.feed.UserGridAdapter;
-import it.artform.pojos.Topic;
-import it.artform.pojos.User;
-import it.artform.web.ArtformApiEndpointInterface;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class UserSearchActivity extends Activity {
-    SearchView contentSearchView = null;
+public class SearchFragment extends Fragment {
+    /*SearchView contentSearchView = null;
     Button searchArtworksButton = null;
     Button searchVideosButton = null;
     Button searchArtistsButton = null;
     Spinner topicSpinner = null;
     GridView artistsGridView = null;
     TextView noResultTextView = null;
-    BottomNavigationView bottomNavigationView = null;
 
     ArtformApiEndpointInterface apiService = null;
 
     String selectedTopic = null;
     String[] searchedUsers = null;
 
+    Activity act=null; */
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.search_fragment, container,false);
+    }
+
+    /*@Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        act=(Activity) context;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_search);
 
         //widget setup
-        contentSearchView = findViewById(R.id.contentSearchView); //search while typing
+        contentSearchView = getView().findViewById(R.id.contentSearchView); //search while typing
         contentSearchView.setQueryHint("Search…");
-        searchArtworksButton = findViewById(R.id.searchArtworksButton); //no listener
-        searchVideosButton = findViewById(R.id.searchVideosButton); //activity
-        searchArtistsButton = findViewById(R.id.searchArtistsButton); //activity
-        topicSpinner = findViewById(R.id.topicSpinner); //fetch topics
-        artistsGridView = findViewById(R.id.artistsGridView); //load posts
-        noResultTextView = findViewById(R.id.noResultTextView); //show only when no posts
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomNavigationView.setOnItemSelectedListener(navListener);
-        bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        searchArtworksButton = getView().findViewById(R.id.searchArtworksButton); //no listener
+        searchVideosButton = getView().findViewById(R.id.searchVideosButton); //activity
+        searchArtistsButton = getView().findViewById(R.id.searchArtistsButton); //activity
+        topicSpinner = getView().findViewById(R.id.topicSpinner); //fetch topics
+        artistsGridView = getView().findViewById(R.id.artistsGridView); //load posts
+        noResultTextView = getView().findViewById(R.id.noResultTextView); //show only when no posts
 
         //web services setup
-        AFGlobal app = (AFGlobal) getApplication();
+        AFGlobal app = (AFGlobal) act.getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
         //GET dei Topic
         fetchTopics();
 
         //imposta SearchView da parametri
-        Bundle searchParams = getIntent().getExtras();
+        Bundle searchParams = act.getIntent().getExtras();
         if(searchParams != null)
             contentSearchView.setQuery(searchParams.getCharSequence("keywords"), false);
 
@@ -93,7 +82,7 @@ public class UserSearchActivity extends Activity {
         searchArtworksButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent artworkSearchIntent = new Intent(UserSearchActivity.this, ImagePostSearchActivity.class);
+                Intent artworkSearchIntent = new Intent(act, ImagePostSearchActivity.class);
                 if(selectedTopic != null)
                     artworkSearchIntent.putExtra("topic", selectedTopic);
                 artworkSearchIntent.putExtra("keywords", contentSearchView.getQuery());
@@ -105,7 +94,7 @@ public class UserSearchActivity extends Activity {
         searchVideosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent videoSearchIntent = new Intent(UserSearchActivity.this, VideoPostSearchActivity.class);
+                Intent videoSearchIntent = new Intent(act, VideoPostSearchActivity.class);
                 if(selectedTopic != null)
                     videoSearchIntent.putExtra("topic", selectedTopic);
                 videoSearchIntent.putExtra("keywords", contentSearchView.getQuery());
@@ -113,34 +102,6 @@ public class UserSearchActivity extends Activity {
             }
         });
     }
-
-    // listener NavigationBar
-    private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch(item.getItemId()) {
-                case R.id.home_item:
-                    Intent homeIntent = new Intent(UserSearchActivity.this, MainActivity.class);
-                    startActivity(homeIntent);
-                    break;
-                case R.id.search_item:
-                    break;
-                case R.id.add_item:
-                    Intent publishIntent = new Intent(UserSearchActivity.this, ContentPubActivity.class);
-                    startActivity(publishIntent);
-                    break;
-                case R.id.notifications_item:
-                    Intent notificationsIntent = new Intent(UserSearchActivity.this, NotificationActivity.class);
-                    startActivity(notificationsIntent);
-                    break;
-                case R.id.profile_item:
-                    Intent userProfileIntent = new Intent(UserSearchActivity.this, UserProfileActivity.class);
-                    startActivity(userProfileIntent);
-                    break;
-            }
-            return false;
-        }
-    };
 
     private void fetchTopics() {
         Call<List<Topic>> getTopicsCall = apiService.getAllTopics();
@@ -152,10 +113,10 @@ public class UserSearchActivity extends Activity {
                     topics[0] = "Select topic:";
                     for(int i=1; i<topics.length; i++)
                         topics[i] = response.body().get(i-1).getName();
-                    ArrayAdapter topicsAdapter = new ArrayAdapter<String>(UserSearchActivity.this, android.R.layout.simple_spinner_dropdown_item, topics);
+                    ArrayAdapter topicsAdapter = new ArrayAdapter<String>(act, android.R.layout.simple_spinner_dropdown_item, topics);
                     topicSpinner.setAdapter(topicsAdapter);
                     //imposta Spinner da parametri
-                    Bundle searchParams = getIntent().getExtras();
+                    Bundle searchParams = act.getIntent().getExtras();
                     if(searchParams != null) {
                         String topicParam = searchParams.getString("topic");
                         if(topicParam != null) {
@@ -179,11 +140,11 @@ public class UserSearchActivity extends Activity {
                     });
                 }
                 else
-                    Toast.makeText(UserSearchActivity.this, "Error while fetching topics: ERROR " + response.code(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(act, "Error while fetching topics", Toast.LENGTH_LONG).show();
             }
             @Override
             public void onFailure(Call<List<Topic>> call, Throwable t) {
-                Toast.makeText(UserSearchActivity.this, "Error while fetching topics: " + t.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(act, "Error while fetching topics: " + t.toString(), Toast.LENGTH_LONG).show();
             }
         });
     }
@@ -200,17 +161,17 @@ public class UserSearchActivity extends Activity {
                     //Caricamento utenti nella GridView
                     if(searchedUsers.length > 0) {
                         noResultTextView.setVisibility(View.INVISIBLE);
-                        artistsGridView.setAdapter(new UserGridAdapter(UserSearchActivity.this, R.layout.item_user_grid, searchedUsers));
+                        artistsGridView.setAdapter(new UserGridAdapter(act, R.layout.row_user_grid, searchedUsers));
                         //dettagli profilo utente
                         artistsGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                                 //se l'utente selezionato corrisponde al proprio profilo
                                 if(searchedUsers[position].equals(AFGlobal.getLoggedUser())) {
-                                    Intent userProfileIntent = new Intent(UserSearchActivity.this, UserProfileActivity.class);
+                                    Intent userProfileIntent = new Intent(act, UserProfileActivity.class);
                                     startActivity(userProfileIntent);
                                     return;
                                 }
-                                Intent externalProfileIntent = new Intent(UserSearchActivity.this, ExternalProfileActivity.class);
+                                Intent externalProfileIntent = new Intent(act, ExternalProfileActivity.class);
                                 externalProfileIntent.putExtra("username", searchedUsers[position]);
                                 startActivity(externalProfileIntent);
                             }
@@ -223,10 +184,10 @@ public class UserSearchActivity extends Activity {
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
                 noResultTextView.setVisibility(View.VISIBLE);
-                Toast.makeText(UserSearchActivity.this, "Error while searching users: " + t.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(act, "Error while searching users: " + t.toString(), Toast.LENGTH_LONG).show();
                 t.printStackTrace();
             }
         });
-    }
+    }*/
 
 }

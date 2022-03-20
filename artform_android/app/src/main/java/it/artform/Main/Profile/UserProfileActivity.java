@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.Main.Profile;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,6 +22,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import it.artform.AFGlobal;
+import it.artform.Main.Notifications.NotificationActivity;
+import it.artform.Main.Search.UserSearchActivity;
+import it.artform.Main.Settings.SettingsActivity;
+import it.artform.Main.Pubblication.ContentPubActivity;
+import it.artform.Main.Homepage.MainActivity;
+import it.artform.Main.Post.PostListActivity;
+import it.artform.R;
 import it.artform.feed.BadgeListAdapter;
 import it.artform.feed.PostGridAdapter;
 import it.artform.pojos.Badge;

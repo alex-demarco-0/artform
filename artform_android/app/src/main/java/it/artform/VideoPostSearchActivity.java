@@ -21,6 +21,12 @@ import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.List;
 
+import it.artform.Main.Homepage.MainActivity;
+import it.artform.Main.Notifications.NotificationActivity;
+import it.artform.Main.Post.PostListActivity;
+import it.artform.Main.Profile.UserProfileActivity;
+import it.artform.Main.Pubblication.ContentPubActivity;
+import it.artform.Main.Search.UserSearchActivity;
 import it.artform.feed.PostGridAdapter;
 import it.artform.pojos.Post;
 import it.artform.pojos.Topic;

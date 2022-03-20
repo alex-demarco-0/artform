@@ -1,15 +1,11 @@
-package it.artform;
+package it.artform.Main.Notifications;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,10 +14,16 @@ import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import it.artform.AFGlobal;
+import it.artform.Main.Commission.CommissionRequestActivity;
+import it.artform.Main.Pubblication.ContentPubActivity;
+import it.artform.Main.Homepage.MainActivity;
+import it.artform.Main.Post.PostListActivity;
+import it.artform.R;
+import it.artform.Main.Search.UserSearchActivity;
+import it.artform.Main.Profile.UserProfileActivity;
 import it.artform.feed.NotificationArrayAdapter;
 import it.artform.pojos.Notification;
 import it.artform.pojos.Post;

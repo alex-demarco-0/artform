@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.Main.Login;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,6 +16,11 @@ import android.widget.Toast;
 
 import java.io.IOException;
 
+import it.artform.AFGlobal;
+import it.artform.Main.Settings.ForgotActivity;
+import it.artform.Main.Homepage.MainActivity;
+import it.artform.R;
+import it.artform.Main.Registration.RegisterActivity;
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
 import retrofit2.Call;
@@ -143,7 +148,7 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(LoginActivity.this, "ACTIVITY PASSWORD ...", Toast.LENGTH_LONG).show();
-                Intent openRegisterActivity= new Intent(LoginActivity.this,ForgotActivity.class);
+                Intent openRegisterActivity= new Intent(LoginActivity.this, ForgotActivity.class);
                 startActivity(openRegisterActivity);
             }
         });

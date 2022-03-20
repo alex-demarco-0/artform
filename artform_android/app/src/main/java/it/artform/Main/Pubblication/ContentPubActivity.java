@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.Main.Pubblication;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import it.artform.AFGlobal;
+import it.artform.R;
 import it.artform.pojos.Post;
 import it.artform.pojos.Topic;
 import it.artform.web.ArtformApiEndpointInterface;

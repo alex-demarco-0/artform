@@ -1,4 +1,4 @@
- package it.artform;
+ package it.artform.Main.Registration;
 
 import android.app.Activity;
 import android.content.Intent;

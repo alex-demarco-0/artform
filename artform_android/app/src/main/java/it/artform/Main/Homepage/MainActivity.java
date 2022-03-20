@@ -1,12 +1,9 @@
-package it.artform;
+package it.artform.Main.Homepage;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -22,9 +19,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import it.artform.databases.PostDBAdapter;
+import it.artform.AFGlobal;
+import it.artform.Main.Pubblication.ContentPubActivity;
+import it.artform.Main.Notifications.NotificationActivity;
+import it.artform.Main.Profile.UserProfileActivity;
+import it.artform.Main.Search.UserSearchActivity;
+import it.artform.R;
 import it.artform.feed.PostArrayAdapter;
-import it.artform.feed.PostGridAdapter;
 import it.artform.pojos.Post;
 import it.artform.pojos.Topic;
 import it.artform.web.ArtformApiEndpointInterface;

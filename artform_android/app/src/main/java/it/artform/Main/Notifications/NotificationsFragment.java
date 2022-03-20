@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.Main.Notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import it.artform.R;
 
 public class NotificationsFragment extends Fragment {
 

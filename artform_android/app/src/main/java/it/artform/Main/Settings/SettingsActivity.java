@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.Main.Settings;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -12,6 +12,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import it.artform.R;
+import it.artform.Main.Post.SavedPostActivity;
 
 public class SettingsActivity extends Activity {
     ListView settingsListView;

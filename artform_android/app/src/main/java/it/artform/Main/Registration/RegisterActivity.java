@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.Main.Registration;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -9,16 +9,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import it.artform.databases.UserDBAdapter;
+import it.artform.AFGlobal;
+import it.artform.R;
 import it.artform.pojos.User;
 import it.artform.web.ArtformApiEndpointInterface;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class RegisterActivity extends Activity {
     AFGlobal app = null;

@@ -1,4 +1,4 @@
-package it.artform;
+package it.artform.Main.Commission;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
@@ -18,6 +18,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import it.artform.AFGlobal;
+import it.artform.R;
 import it.artform.pojos.Commission;
 import it.artform.pojos.Topic;
 import it.artform.web.ArtformApiEndpointInterface;

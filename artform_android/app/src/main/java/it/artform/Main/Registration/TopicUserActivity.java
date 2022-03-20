@@ -1,18 +1,19 @@
-package it.artform;
+package it.artform.Main.Registration;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
+import it.artform.AFGlobal;
+import it.artform.Main.Homepage.MainActivity;
+import it.artform.R;
 import it.artform.databases.UserDBAdapter;
 import it.artform.feed.TopicGridAdapter;
 import it.artform.pojos.Topic;
@@ -67,7 +68,9 @@ public class TopicUserActivity extends Activity {  //magari rinominare in TopicS
                     Toast.makeText(TopicUserActivity.this, "Select at least one Topic", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                // POST di utente
                 registerUser();
+
             }
         });
     }
@@ -124,7 +127,7 @@ public class TopicUserActivity extends Activity {  //magari rinominare in TopicS
                     if(response.isSuccessful()) {
                         //insert sul db locale
                         //postOnDatabase();
-                        registrationComplete();
+                        //registrationComplete();
                     }
                     else
                         Toast.makeText(TopicUserActivity.this, "Error while selecting Topic " + topic + " for User " + newUser.getUsername() + ": ERROR " + response.code(), Toast.LENGTH_LONG).show();
