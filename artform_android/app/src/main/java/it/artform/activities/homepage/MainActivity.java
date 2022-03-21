@@ -11,6 +11,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -20,6 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 import it.artform.AFGlobal;
+import it.artform.activities.profile.ProfileFragment;
 import it.artform.activities.publication.ContentPubActivity;
 import it.artform.activities.notifications.NotificationActivity;
 import it.artform.activities.profile.UserProfileActivity;
@@ -49,6 +52,11 @@ public class MainActivity extends FragmentActivity {
     ArtformApiEndpointInterface apiService = null;
     Date lastReadNotifications = null;
     List<Post> feedPostList = null;
+
+    // Fragment
+    FragmentTransaction fragmentTransaction;
+    FragmentManager fragmentManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,6 +189,10 @@ public class MainActivity extends FragmentActivity {
         fetchFeedPosts();
 
         lastReadNotifications = new Date();
+
+
+        // inizilize fragment
+        fragmentManager = getSupportFragmentManager();
     }
 
     private NavigationBarView.OnItemSelectedListener navListener = new NavigationBarView.OnItemSelectedListener() {
@@ -210,6 +222,13 @@ public class MainActivity extends FragmentActivity {
                 case R.id.profile_item:
                     Intent userProfileIntent = new Intent(MainActivity.this, UserProfileActivity.class);
                     startActivity(userProfileIntent);
+
+                    // Transizione fragment
+                    /*fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frameLayout, new ProfileFragment());
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+*/
                     /*selectedFragment=new ProfileFragment();*/
                     break;
             }
