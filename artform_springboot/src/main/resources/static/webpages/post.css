@@ -1,0 +1,20 @@
+#body{
+  font-family:sans-serif, helvetica;
+  color: #000018;
+  background: linear-gradient(#E9CFEC 0%, #7575CF 100%);
+  background-attachment: fixed;
+}
+
+#postDiv{
+    width: 40%;
+    margin: 80px auto;
+}
+
+#profileBtn{
+  margin-top: 10px;
+}
+
+#usernameSpan{
+  padding:10px;
+  padding-bottom: 20px;
+}
