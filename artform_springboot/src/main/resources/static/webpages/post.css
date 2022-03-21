@@ -21,6 +21,12 @@
   padding-right: 16px;
 }
 
+#likeBtn{
+background: url('heart.png') no-repeat;
+width: 35px;
+height: auto;
+}
+
 #saveBtn{
   margin-left: 28%;
 }

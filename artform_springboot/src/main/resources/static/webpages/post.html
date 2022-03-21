@@ -11,6 +11,14 @@
         window.location="externalProfile.html"
       }
 
+    function changeLike(img){
+        document.getElementById("likeBtn").src=img;
+    }
+
+    function changeSave(img){
+        document.getElementById("saveBtn").src=img;
+    }
+
     </script>
 
   </head>
@@ -24,8 +32,8 @@
     <div><br>
       <div id="btnsDiv">
         <input  class="btn" id="profileBtn" type="image" src="https://static.thenounproject.com/png/576092-200.png" width="35" height="35" value="externalProfile" onclick="externalProfile()" name="button" /> <font color="#000018" size="4">*username*</font>
-        <input  class="btn" id="likeBtn" type="image" src="heart.png" width="35" height="35" value="like" onclick="" name="button" /> <br>
-        <input  class="btn" id="saveBtn" type="image" src="diskette.png" width="35" height="35" value="save" onclick="()" name="button" />
+        <input  class="btn" id="likeBtn" type="image" src="heart.png" width="35" height="35" value="like" onclick="changeLike('heartBlack.png')" name="button" /> <br>
+        <input  class="btn" id="saveBtn" type="image" src="diskette.png" width="35" height="35" value="save" onclick="changeSave('disketteBlack.png')" name="button" />
         <br>
         <p> *tags* </p>
       </div>
