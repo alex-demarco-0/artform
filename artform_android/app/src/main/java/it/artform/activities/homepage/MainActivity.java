@@ -26,6 +26,7 @@ import it.artform.activities.profile.ProfileFragment;
 import it.artform.activities.publication.ContentPubActivity;
 import it.artform.activities.notifications.NotificationActivity;
 import it.artform.activities.profile.UserProfileActivity;
+import it.artform.activities.search.ImagePostSearchActivity;
 import it.artform.activities.search.UserSearchActivity;
 import it.artform.R;
 import it.artform.feed.PostArrayAdapter;
@@ -204,7 +205,7 @@ public class MainActivity extends FragmentActivity {
                     /*selectedFragment=new HomeFragment();*/
                     break;
                 case R.id.search_item:
-                    Intent searchIntent = new Intent(MainActivity.this, UserSearchActivity.class);
+                    Intent searchIntent = new Intent(MainActivity.this, ImagePostSearchActivity.class);
                     startActivity(searchIntent);
                     /*selectedFragment=new SearchFragment();*/
                     break;

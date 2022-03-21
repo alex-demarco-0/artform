@@ -22,6 +22,7 @@ import it.artform.activities.publication.ContentPubActivity;
 import it.artform.activities.homepage.MainActivity;
 import it.artform.activities.post.PostListActivity;
 import it.artform.R;
+import it.artform.activities.search.ImagePostSearchActivity;
 import it.artform.activities.search.UserSearchActivity;
 import it.artform.activities.profile.UserProfileActivity;
 import it.artform.feed.NotificationArrayAdapter;
@@ -82,7 +83,7 @@ public class NotificationActivity extends Activity {
                     startActivity(homeIntent);
                     break;
                 case R.id.search_item:
-                    Intent searchIntent = new Intent(NotificationActivity.this, UserSearchActivity.class);
+                    Intent searchIntent = new Intent(NotificationActivity.this, ImagePostSearchActivity.class);
                     startActivity(searchIntent);
                     break;
                 case R.id.add_item:

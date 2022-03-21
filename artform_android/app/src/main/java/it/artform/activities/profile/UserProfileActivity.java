@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -25,7 +24,7 @@ import java.util.List;
 
 import it.artform.AFGlobal;
 import it.artform.activities.notifications.NotificationActivity;
-import it.artform.activities.search.UserSearchActivity;
+import it.artform.activities.search.ImagePostSearchActivity;
 import it.artform.activities.settings.SettingsActivity;
 import it.artform.activities.publication.ContentPubActivity;
 import it.artform.activities.homepage.MainActivity;
@@ -134,7 +133,7 @@ public class UserProfileActivity extends Activity {
                     startActivity(homeIntent);
                     break;
                 case R.id.search_item:
-                    Intent searchIntent = new Intent(UserProfileActivity.this, UserSearchActivity.class);
+                    Intent searchIntent = new Intent(UserProfileActivity.this, ImagePostSearchActivity.class);
                     startActivity(searchIntent);
                     break;
                 case R.id.add_item:
