@@ -1,6 +1,8 @@
 package it.artform.feed;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,7 +81,15 @@ public class PostArrayAdapter extends ArrayAdapter<Post> {
             vh.optionImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    deletePost(p);
+                    new AlertDialog.Builder(ctx)
+                            .setTitle("Delete post")
+                            .setMessage("Do you really want to delete this post?")
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    deletePost(p);
+                                }})
+                            .setNegativeButton(android.R.string.no, null).show();
                 }
             });
         }

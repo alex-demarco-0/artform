@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/likeTextView"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="17dp"
         android:background="#00FFFFFF"
         android:minHeight="48dp"
         android:minWidth="48dp"
