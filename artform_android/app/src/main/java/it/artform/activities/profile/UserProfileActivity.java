@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,7 +45,7 @@ public class UserProfileActivity extends Activity {
     ImageView userProfilePicImageView = null;
     TextView userProfileUsernameTextView = null;
     TextView userBioTagsTextView = null;
-    Button userProfileSettingsButton = null;
+    ImageButton userProfileSettingsButton = null;
     GridView userPostsGridView = null;
     RecyclerView badgesReciclerView = null;
     TextView myPointsTextView = null;
