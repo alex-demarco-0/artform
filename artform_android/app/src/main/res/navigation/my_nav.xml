@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="it.artform.firstFragment"
+        android:name="it.artform.activities.homepage.HomeFragment"
         android:label="fragment_first"
-        tools:layout="@layout/fragment_first" />
+        tools:layout="@layout/home_fragment" />
     <fragment
         android:id="@+id/secondFragment"
-        android:name="it.artform.secondFragment"
+        android:name="it.artform.activities.search.SearchFragment"
         android:label="fragment_second"
-        tools:layout="@layout/fragment_second" />
+        tools:layout="@layout/search_fragment" />
     <fragment
         android:id="@+id/thirdFragment"
-        android:name="it.artform.thirdFragment"
+        android:name="it.artform.activities.post.AddFragment"
         android:label="fragment_third"
-        tools:layout="@layout/fragment_third" />
+        tools:layout="@layout/add_fragment" />
     <fragment
         android:id="@+id/fourthFragment"
-        android:name="it.artform.fourthFragment"
+        android:name="it.artform.activities.notifications.NotificationsFragment"
         android:label="fragment_fourth"
-        tools:layout="@layout/fragment_fourth" />
+        tools:layout="@layout/notifications_fragment" />
     <fragment
         android:id="@+id/fifthFragment"
-        android:name="it.artform.fifthFragment"
+        android:name="it.artform.activities.profile.ProfileFragment"
         android:label="fragment_fifth"
-        tools:layout="@layout/fragment_fifth" />
+        tools:layout="@layout/profile_fragment" />
 </navigation>
