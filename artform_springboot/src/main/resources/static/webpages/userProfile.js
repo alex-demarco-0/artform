@@ -4,7 +4,7 @@ var userObj = null;
 function getUser() {
     var userXmlHttp = new XMLHttpRequest();
     userXmlHttp.onreadystatechange = function() {
-        if(userXmlHttp.readyState == 4) 
+        if(userXmlHttp.readyState == 4)
             if(userXmlHttp.status == 200) {
                 userObj = JSON.parse(userXmlHttp.responseText);
                 document.getElementById("propic").setAttribute("src", base_url + "media/userProfilePics/" + userObj.username + ".jpg");
@@ -37,5 +37,5 @@ function getUserPosts() {
 }
 
 function goToSettings() {
-    window.location="settings.html";
+    window.location="profileSettings.html";
 }

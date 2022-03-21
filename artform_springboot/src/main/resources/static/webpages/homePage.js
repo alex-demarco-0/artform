@@ -4,7 +4,7 @@ var username = window.localStorage.getItem("username");
 function fetchFeedPosts() {
     var userTopicsXmlHttp = new XMLHttpRequest();
     userTopicsXmlHttp.onreadystatechange = function() {
-        if(userTopicsXmlHttp.readyState == 4) 
+        if(userTopicsXmlHttp.readyState == 4)
             if(userTopicsXmlHttp.status == 200) {
                 var topicListObj = JSON.parse(userTopicsXmlHttp.responseText);
                 for(var idx=0; idx<topicListObj.length; idx++) {
@@ -20,7 +20,7 @@ function fetchFeedPosts() {
 function fetchPostsByTopic(topic) {
     var topicPostsXmlHttp = new XMLHttpRequest();
     topicPostsXmlHttp.onreadystatechange = function() {
-        if(topicPostsXmlHttp.readyState == 4) 
+        if(topicPostsXmlHttp.readyState == 4)
             if(topicPostsXmlHttp.status == 200) {
                 var postListObj = JSON.parse(topicPostsXmlHttp.responseText);
                 for(var idx=0; idx<postListObj.length; idx++) {
