@@ -19,6 +19,10 @@ background-attachment: fixed;
   margin-top:10px;
 }
 
+#topicSelect{
+  text-align: center;
+}
+
 #inputMessage{
   margin: 10px;
   width: 400px;

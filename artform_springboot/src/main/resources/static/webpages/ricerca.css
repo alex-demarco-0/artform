@@ -33,6 +33,10 @@ background: #D291BC;
     top: 12%;
   }
 
+#topicSelect{
+  text-align: center;
+}
+
 #imageCategory{
   left: 35%
 }
