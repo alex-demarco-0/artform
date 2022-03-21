@@ -6,9 +6,11 @@
     <link rel="stylesheet" href="navBar.css">
 
     <script>
+
       function externalProfile(){
         window.location="externalProfile.html"
       }
+
     </script>
 
   </head>
@@ -16,12 +18,14 @@
 
     <div id="postDiv">
       <div id="postSpace">
-        <img alt="post">
-      <div><br>
+        <!-- <img alt="post"> -->
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXMzMzKUkQnAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC">
+      </div>
+    <div><br>
       <div id="btnsDiv">
-        <input  id="profileBtn" type="image" src="https://static.thenounproject.com/png/576092-200.png" width="35" height="35" value="externalProfile" onclick="externalProfile()" name="button" /> <span id="usernameSpan">*username*</span>
-        <input  type="image" src="heart.png" width="35" height="35" value="like" onclick="()" name="button" />
-        <input  type="image" src="diskette.png" width="35" height="35" value="save" onclick="()" name="button" />
+        <input  class="btn" id="profileBtn" type="image" src="https://static.thenounproject.com/png/576092-200.png" width="35" height="35" value="externalProfile" onclick="externalProfile()" name="button" /> <font color="#000018" size="4">*username*</font>
+        <input  class="btn" id="likeBtn" type="image" src="heart.png" width="35" height="35" value="like" onclick="" name="button" /> <br>
+        <input  class="btn" id="saveBtn" type="image" src="diskette.png" width="35" height="35" value="save" onclick="()" name="button" />
         <br>
         <p> *tags* </p>
       </div>
