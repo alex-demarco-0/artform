@@ -19,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SavedPostActivity extends Activity {
+public class SavedPostsActivity extends Activity {
 
 
     // decleration web service
@@ -52,7 +52,7 @@ public class SavedPostActivity extends Activity {
                         userSavedPost = new Post[response.body().size()];
                         for (int i = 0; i < userSavedPost.length; i++)
                             userSavedPost[i] = response.body().get(i);
-                        userSavedPostGridView.setAdapter(new PostGridAdapter(SavedPostActivity.this, userSavedPost));
+                        userSavedPostGridView.setAdapter(new PostGridAdapter(SavedPostsActivity.this, userSavedPost));
                         userSavedPostGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> position, View view, int i, long l) {
@@ -67,7 +67,7 @@ public class SavedPostActivity extends Activity {
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
                 t.printStackTrace();
-                Toast.makeText(SavedPostActivity.this, "Error while fetching user Posts: " + t.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(SavedPostsActivity.this, "Error while fetching user Posts: " + t.toString(), Toast.LENGTH_LONG).show();
             }
         });
 

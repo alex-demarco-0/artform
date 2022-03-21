@@ -32,7 +32,7 @@ import retrofit2.Response;
 Activity usata per cambiare USERNAME ed altre informazioni
  */
 
-public class SettingsAccountActivity extends Activity {
+public class AccountSettingsActivity extends Activity {
     private static final int REQUEST_GET_SINGLE_FILE = 0;
 
     // decleration web service
@@ -80,7 +80,7 @@ public class SettingsAccountActivity extends Activity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(SettingsAccountActivity.this, "Richiesta GET dell'Utente non effettuata", Toast.LENGTH_LONG).show();
+                Toast.makeText(AccountSettingsActivity.this, "Richiesta GET dell'Utente non effettuata", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -131,14 +131,14 @@ public class SettingsAccountActivity extends Activity {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful())
-                    Toast.makeText(SettingsAccountActivity.this, "User: " + user.getName() + " DELETED", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountSettingsActivity.this, "User: " + user.getName() + " DELETED", Toast.LENGTH_SHORT).show();
                 else
-                    Toast.makeText(SettingsAccountActivity.this, "Errore while deleting user: ERROR" + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AccountSettingsActivity.this, "Errore while deleting user: ERROR" + response.code(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                Toast.makeText(SettingsAccountActivity.this, "Error while deleting User: ERROR" + t, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AccountSettingsActivity.this, "Error while deleting User: ERROR" + t, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -157,15 +157,15 @@ public class SettingsAccountActivity extends Activity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(SettingsAccountActivity.this, "Utente modificato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AccountSettingsActivity.this, "Utente modificato \uD83D\uDE02 \uD83E\uDD22", Toast.LENGTH_LONG).show();
                     finish();
                 } else
-                    Toast.makeText(SettingsAccountActivity.this, "Si è verificato un problema: ERROR " + response.code(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(AccountSettingsActivity.this, "Si è verificato un problema: ERROR " + response.code(), Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(SettingsAccountActivity.this, "Si è verificato un problema \uD83E\uDE21" + t.toString(), Toast.LENGTH_LONG).show();
+                Toast.makeText(AccountSettingsActivity.this, "Si è verificato un problema \uD83E\uDE21" + t.toString(), Toast.LENGTH_LONG).show();
                 t.printStackTrace();
             }
         });
@@ -176,7 +176,7 @@ public class SettingsAccountActivity extends Activity {
     private void loadUserData() {
         // immagine del profilo
         String profilePicUri = AFGlobal.USER_PROPIC_PATH + AFGlobal.getLoggedUser() + ".jpg";
-        Picasso.get().load(profilePicUri).into(SettingsAccountActivity.this.userProfilePicImageView);
+        Picasso.get().load(profilePicUri).into(AccountSettingsActivity.this.userProfilePicImageView);
         // nome
         nameTextView.setText(user.getName());
         // cognome

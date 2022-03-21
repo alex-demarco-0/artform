@@ -38,10 +38,10 @@
             android:name=".activities.settings.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.settings.SettingsAccountActivity"
+            android:name=".activities.settings.AccountSettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.post.SavedPostActivity"
+            android:name=".activities.post.SavedPostsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.profile.UserProfileActivity"

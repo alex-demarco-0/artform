@@ -11,10 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 import it.artform.R;
-import it.artform.activities.post.SavedPostActivity;
+import it.artform.activities.post.SavedPostsActivity;
 
 public class SettingsActivity extends Activity {
     ListView settingsListView;
@@ -22,20 +20,20 @@ public class SettingsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_settings);
+
         //ListView dei settings
         settingsListView = findViewById(R.id.settingsListView);
         // inizializzazione
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("Saved post");
-        arrayList.add("Account");
-        arrayList.add("FAQ & Help");
-        arrayList.add("Privacy");
-        arrayList.add("Termini e Condizioni");
-        arrayList.add("Logout");
+        String[] settings = new String[6];
+        settings[0] = "Saved posts";
+        settings[1] = "Account";
+        settings[2] = "FAQ & Help";
+        settings[3] = "Privacy";
+        settings[4] = "Termini e Condizioni";
+        settings[5] = "Logout";
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, arrayList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, settings);
         settingsListView.setAdapter(arrayAdapter);
 
         settingsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -45,11 +43,11 @@ public class SettingsActivity extends Activity {
                 // MIGLIORATO CON FRAGMENT.
                 switch (i){
                     case 0: // post salvati
-                        Intent savedPostIntent = new Intent(SettingsActivity.this, SavedPostActivity.class);
+                        Intent savedPostIntent = new Intent(SettingsActivity.this, SavedPostsActivity.class);
                         startActivity(savedPostIntent);
                         break;
                     case 1: // Account -- cambio username, numero di telefono, passeword - gestione notifiche e varie impostazioni -- password dimenitcata
-                        Intent accountIntent = new Intent(SettingsActivity.this, SettingsAccountActivity.class);
+                        Intent accountIntent = new Intent(SettingsActivity.this, AccountSettingsActivity.class);
                         startActivity(accountIntent);
                         break;
                     case 2: // FAQ -- bug report
