@@ -50,7 +50,7 @@ public class AccountSettingsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings_account);
+        setContentView(R.layout.activity_account_settings);
 
         // widget setup
         userProfilePicImageView = findViewById(R.id.userProfilePicImageView);
