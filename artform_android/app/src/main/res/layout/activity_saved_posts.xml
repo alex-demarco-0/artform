@@ -5,11 +5,16 @@
     android:layout_height="match_parent"
     tools:context=".activities.post.SavedPostsActivity"
     android:orientation="vertical">
+
     <include layout="@layout/toolbar" />
+
     <TextView
         android:padding="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:textSize="26sp" android:text="Saved Post" />
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:text="Your saved Posts" />
+
     <GridView
         android:padding="16dp"
         android:id="@+id/userSavedPostGridView"

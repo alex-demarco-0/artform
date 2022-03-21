@@ -23,7 +23,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import it.artform.AFGlobal;
-import it.artform.activities.notifications.NotificationActivity;
+import it.artform.activities.notifications.NotificationsActivity;
 import it.artform.activities.search.ImagePostSearchActivity;
 import it.artform.activities.settings.SettingsActivity;
 import it.artform.activities.publication.ContentPubActivity;
@@ -141,7 +141,7 @@ public class UserProfileActivity extends Activity {
                     startActivity(publishIntent);
                     break;
                 case R.id.notifications_item:
-                    Intent notificationsIntent = new Intent(UserProfileActivity.this, NotificationActivity.class);
+                    Intent notificationsIntent = new Intent(UserProfileActivity.this, NotificationsActivity.class);
                     startActivity(notificationsIntent);
                     break;
                 case R.id.profile_item:

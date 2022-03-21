@@ -23,7 +23,6 @@ import it.artform.activities.homepage.MainActivity;
 import it.artform.activities.post.PostListActivity;
 import it.artform.R;
 import it.artform.activities.search.ImagePostSearchActivity;
-import it.artform.activities.search.UserSearchActivity;
 import it.artform.activities.profile.UserProfileActivity;
 import it.artform.feed.NotificationArrayAdapter;
 import it.artform.pojos.Notification;
@@ -33,7 +32,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NotificationActivity extends Activity {
+public class NotificationsActivity extends Activity {
     //File notifFile = null;
     ListView notificationsListView = null;
     BottomNavigationView bottomNavigationView = null;
@@ -44,7 +43,7 @@ public class NotificationActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+        setContentView(R.layout.activity_notifications);
 
         //EditText saveNotifEditText = findViewById(R.id.saveNotifEditText);
         //Button saveNotifButton = findViewById(R.id.saveNotifButton);
@@ -79,21 +78,21 @@ public class NotificationActivity extends Activity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch(item.getItemId()) {
                 case R.id.home_item:
-                    Intent homeIntent = new Intent(NotificationActivity.this, MainActivity.class);
+                    Intent homeIntent = new Intent(NotificationsActivity.this, MainActivity.class);
                     startActivity(homeIntent);
                     break;
                 case R.id.search_item:
-                    Intent searchIntent = new Intent(NotificationActivity.this, ImagePostSearchActivity.class);
+                    Intent searchIntent = new Intent(NotificationsActivity.this, ImagePostSearchActivity.class);
                     startActivity(searchIntent);
                     break;
                 case R.id.add_item:
-                    Intent publishIntent = new Intent(NotificationActivity.this, ContentPubActivity.class);
+                    Intent publishIntent = new Intent(NotificationsActivity.this, ContentPubActivity.class);
                     startActivity(publishIntent);
                     break;
                 case R.id.notifications_item:
                     break;
                 case R.id.profile_item:
-                    Intent userProfileIntent = new Intent(NotificationActivity.this, UserProfileActivity.class);
+                    Intent userProfileIntent = new Intent(NotificationsActivity.this, UserProfileActivity.class);
                     startActivity(userProfileIntent);
                     break;
             }
@@ -111,7 +110,7 @@ public class NotificationActivity extends Activity {
                         Notification[] userNotifications = new Notification[response.body().size()];
                         for (int i = userNotifications.length - 1; i >= 0; i--)
                             userNotifications[i] = response.body().get(i);
-                        notificationsListView.setAdapter(new NotificationArrayAdapter(NotificationActivity.this, R.layout.row_notification_list, userNotifications));
+                        notificationsListView.setAdapter(new NotificationArrayAdapter(NotificationsActivity.this, R.layout.row_notification_list, userNotifications));
                         notificationsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -120,12 +119,12 @@ public class NotificationActivity extends Activity {
                         });
                     }
                 else
-                    Toast.makeText(NotificationActivity.this, "Error while retrieving notifications: ERROR " + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NotificationsActivity.this, "Error while retrieving notifications: ERROR " + response.code(), Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onFailure(Call<List<Notification>> call, Throwable t) {
                 t.printStackTrace();
-                Toast.makeText(NotificationActivity.this, "Error while retrieving notifications: " + t.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotificationsActivity.this, "Error while retrieving notifications: " + t.toString(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -139,24 +138,24 @@ public class NotificationActivity extends Activity {
                     @Override
                     public void onResponse(Call<Post> call, Response<Post> response) {
                         if(response.isSuccessful()) {
-                            Intent postDetailsIntent = new Intent(NotificationActivity.this, PostListActivity.class);
+                            Intent postDetailsIntent = new Intent(NotificationsActivity.this, PostListActivity.class);
                             Post[] post = {response.body()};
                             postDetailsIntent.putExtra("postList", post);
                             startActivity(postDetailsIntent);
                         }
                         else
-                            Toast.makeText(NotificationActivity.this, "Error while opening notification details: ERROR " + response.code(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(NotificationsActivity.this, "Error while opening notification details: ERROR " + response.code(), Toast.LENGTH_SHORT).show();
                     }
                     @Override
                     public void onFailure(Call<Post> call, Throwable t) {
                         t.printStackTrace();
-                        Toast.makeText(NotificationActivity.this, "Error while opening notification details: " + t.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NotificationsActivity.this, "Error while opening notification details: " + t.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
                 break;
             case 3:
                 // WIP
-                Intent commissionRequestIntent = new Intent(NotificationActivity.this, CommissionRequestActivity.class);
+                Intent commissionRequestIntent = new Intent(NotificationsActivity.this, CommissionRequestActivity.class);
                 commissionRequestIntent.putExtra("commissionId", Integer.parseInt(notification.getLink()));
                 if(notification.getDescription().contains("accepted"))
                     commissionRequestIntent.putExtra("status", "accepted");
@@ -166,11 +165,11 @@ public class NotificationActivity extends Activity {
                 break;
             case 4:
             case 5:
-                Intent userProfileIntent = new Intent(NotificationActivity.this, UserProfileActivity.class);
+                Intent userProfileIntent = new Intent(NotificationsActivity.this, UserProfileActivity.class);
                 startActivity(userProfileIntent);
                 break;
             default:
-                Toast.makeText(NotificationActivity.this, "Invalid notification", Toast.LENGTH_SHORT).show();
+                Toast.makeText(NotificationsActivity.this, "Invalid notification", Toast.LENGTH_SHORT).show();
         }
     }
 

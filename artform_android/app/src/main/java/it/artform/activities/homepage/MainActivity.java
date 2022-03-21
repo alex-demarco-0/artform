@@ -22,12 +22,10 @@ import java.util.Date;
 import java.util.List;
 
 import it.artform.AFGlobal;
-import it.artform.activities.profile.ProfileFragment;
 import it.artform.activities.publication.ContentPubActivity;
-import it.artform.activities.notifications.NotificationActivity;
+import it.artform.activities.notifications.NotificationsActivity;
 import it.artform.activities.profile.UserProfileActivity;
 import it.artform.activities.search.ImagePostSearchActivity;
-import it.artform.activities.search.UserSearchActivity;
 import it.artform.R;
 import it.artform.feed.PostArrayAdapter;
 import it.artform.pojos.Post;
@@ -215,7 +213,7 @@ public class MainActivity extends FragmentActivity {
                     /*selectedFragment=new AddFragment();*/
                     break;
                 case R.id.notifications_item:
-                    Intent notificationsIntent = new Intent(MainActivity.this, NotificationActivity.class);
+                    Intent notificationsIntent = new Intent(MainActivity.this, NotificationsActivity.class);
                     lastReadNotifications = new Date();
                     startActivity(notificationsIntent);
                     /*selectedFragment=new NotificationsFragment();*/

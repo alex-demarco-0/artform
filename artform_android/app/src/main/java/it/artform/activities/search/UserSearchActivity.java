@@ -23,7 +23,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import java.util.List;
 
 import it.artform.AFGlobal;
-import it.artform.activities.notifications.NotificationActivity;
+import it.artform.activities.notifications.NotificationsActivity;
 import it.artform.activities.publication.ContentPubActivity;
 import it.artform.activities.profile.ExternalProfileActivity;
 import it.artform.activities.homepage.MainActivity;
@@ -145,7 +145,7 @@ public class UserSearchActivity extends Activity {
                     startActivity(publishIntent);
                     break;
                 case R.id.notifications_item:
-                    Intent notificationsIntent = new Intent(UserSearchActivity.this, NotificationActivity.class);
+                    Intent notificationsIntent = new Intent(UserSearchActivity.this, NotificationsActivity.class);
                     startActivity(notificationsIntent);
                     break;
                 case R.id.profile_item:

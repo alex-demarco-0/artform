@@ -47,7 +47,7 @@
             android:name=".activities.profile.UserProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.notifications.NotificationActivity"
+            android:name=".activities.notifications.NotificationsActivity"
             android:exported="false" />
         <activity
             android:name=".activities.commission.CommissionActivity"
