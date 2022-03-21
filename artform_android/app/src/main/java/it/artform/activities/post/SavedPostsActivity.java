@@ -20,31 +20,31 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SavedPostsActivity extends Activity {
-
-
-    // decleration web service
+    //web services declaration
     ArtformApiEndpointInterface apiService = null;
     AFGlobal app = null;
 
-    // decleration widget
+    // widget declaration
     GridView userSavedPostGridView = null;
-    // decleration variable
-    User loggedUser = null;
+
+    // variables declaration
     Post[] userSavedPost = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_post);
+
         // widget setup
         userSavedPostGridView = findViewById(R.id.userSavedPostGridView);
+
         // web services setup
         app = (AFGlobal) getApplication();
         apiService = app.retrofit.create(ArtformApiEndpointInterface.class);
 
         // Call dei post salvati
-        Call<List<Post>> getSavedPostCall = apiService.getUserSavedPosts(AFGlobal.getLoggedUser());
-        getSavedPostCall.enqueue(new Callback<List<Post>>() {
+        Call<List<Post>> getSavedPostsCall = apiService.getUserSavedPosts(AFGlobal.getLoggedUser());
+        getSavedPostsCall.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 if (response.isSuccessful()) {
@@ -59,11 +59,9 @@ public class SavedPostsActivity extends Activity {
                                 openPostDetails(position);
                             }
                         });
-
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
                 t.printStackTrace();
@@ -72,7 +70,8 @@ public class SavedPostsActivity extends Activity {
         });
 
     }
-// Apri INTENT con list di post
+
+    // Apri INTENT con list di post
     private void openPostDetails(AdapterView<?> position) {
         Toast.makeText(this, "sad" + position, Toast.LENGTH_SHORT).show();
     }
