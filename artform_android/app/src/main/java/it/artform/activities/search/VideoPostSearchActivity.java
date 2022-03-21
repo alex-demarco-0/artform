@@ -2,6 +2,7 @@ package it.artform.activities.search;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -60,8 +61,17 @@ public class VideoPostSearchActivity extends Activity {
         contentSearchView = findViewById(R.id.contentSearchView); //search while typing
         contentSearchView.setQueryHint("Search…");
         searchArtworksButton = findViewById(R.id.searchArtworksButton); //no listener
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            searchArtworksButton.setBackgroundColor(VideoPostSearchActivity.this.getColor(R.color.white));
+        }
         searchVideosButton = findViewById(R.id.searchVideosButton); //activity
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            searchVideosButton.setBackgroundColor(VideoPostSearchActivity.this.getColor(R.color.purple_500));
+        }
         searchArtistsButton = findViewById(R.id.searchArtistsButton); //activity
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            searchArtistsButton.setBackgroundColor(VideoPostSearchActivity.this.getColor(R.color.white));
+        }
         topicSpinner = findViewById(R.id.topicSpinner); //fetch topics
         videosGridView = findViewById(R.id.videosGridView); //load posts
         noResultTextView = findViewById(R.id.noResultTextView); //show only when no posts

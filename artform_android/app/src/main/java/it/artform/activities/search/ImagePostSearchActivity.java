@@ -2,6 +2,7 @@ package it.artform.activities.search;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,6 +26,7 @@ import it.artform.AFGlobal;
 import it.artform.activities.homepage.MainActivity;
 import it.artform.activities.notifications.NotificationActivity;
 import it.artform.activities.post.PostListActivity;
+import it.artform.activities.profile.ExternalProfileActivity;
 import it.artform.activities.profile.UserProfileActivity;
 import it.artform.activities.publication.ContentPubActivity;
 import it.artform.R;
@@ -60,8 +62,17 @@ public class ImagePostSearchActivity extends Activity {
         contentSearchView = findViewById(R.id.contentSearchView); //search while typing
         contentSearchView.setQueryHint("Search…");
         searchArtworksButton = findViewById(R.id.searchArtworksButton); //no listener
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            searchArtworksButton.setBackgroundColor(ImagePostSearchActivity.this.getColor(R.color.purple_500));
+        }
         searchVideosButton = findViewById(R.id.searchVideosButton); //activity
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            searchVideosButton.setBackgroundColor(ImagePostSearchActivity.this.getColor(R.color.white));
+        }
         searchArtistsButton = findViewById(R.id.searchArtistsButton); //activity
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            searchArtistsButton.setBackgroundColor(ImagePostSearchActivity.this.getColor(R.color.white));
+        }
         topicSpinner = findViewById(R.id.topicSpinner); //fetch topics
         artworksGridView = findViewById(R.id.artworksGridView); //load posts
         noResultTextView = findViewById(R.id.noResultTextView); //show only when no posts
