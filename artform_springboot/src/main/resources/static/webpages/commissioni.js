@@ -22,7 +22,6 @@ function pubblicaCommissione() {
         window.alert("Inserisci una data di scadenza");
     }
   
-    var artist = window.localStorage.getItem("username");
     var commisioneJsonData = '{"artistaUsername":"' + artist + 
                   '","titolo":"' + titolo +
                   '","offerta":"' + offerta +
