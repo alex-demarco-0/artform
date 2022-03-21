@@ -22,7 +22,8 @@ function pubblicaCommissione() {
         window.alert("Inserisci una data di scadenza");
     }
   
-    var commisioneJsonData = '{"artistaUsername":"' + artist + 
+    var artist = window.localStorage.getItem("username");
+    var commissioniJsonData = '{"artistaUsername":"' + artist + 
                   '","titolo":"' + titolo +
                   '","offerta":"' + offerta +
                   '","topic":"' + topic + 
@@ -30,7 +31,7 @@ function pubblicaCommissione() {
                   '"}';
   
     var addCommissioneXmlHttp = new XMLHttpRequest();
-    addPostXmlHttp.onreadystatechange = function() {
+    addCommissioneXmlHttp.onreadystatechange = function() {
           if(addCommissioneXmlHttp.readyState == 4) {
               if(addCommissioneXmlHttp.status == 201) {
                   window.alert("Pubblicazione avvenuta con successo!");
@@ -40,6 +41,6 @@ function pubblicaCommissione() {
           }
       };
       addCommissioneXmlHttp.open("POST", base_url + "artform/commisioni");
-      addCommisioneXmlHttp.setRequestHeader("Content-Type", "application/json");
-      addCommissioneXmlHttp.send(commissionitJsonData);
+      addCommissioneXmlHttp.setRequestHeader("Content-Type", "application/json");
+      addCommissioneXmlHttp.send(commissioniJsonData);
   }
