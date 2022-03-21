@@ -141,6 +141,14 @@ public class ExternalProfileActivity extends Activity {
                         if (response.isSuccessful()) {
                             user = response.body();
                             loadUserData();
+                            contactMeButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent commissionIntent = new Intent(ExternalProfileActivity.this, CommissionActivity.class);
+                                    commissionIntent.putExtra("artist", user.getUsername());
+                                    startActivity(commissionIntent);
+                                }
+                            });
                         }
                         else
                             Toast.makeText(ExternalProfileActivity.this, "Error while fetching user data: ERROR " + response.code(), Toast.LENGTH_LONG).show();
@@ -154,29 +162,6 @@ public class ExternalProfileActivity extends Activity {
             }
             else
                 Toast.makeText(this, "Error while fetching user data (none selected)", Toast.LENGTH_LONG).show();
-        }
-
-        contactMeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent commissionIntent = new Intent(ExternalProfileActivity.this, CommissionActivity.class);
-                commissionIntent.putExtra("artist", user.getUsername());
-                startActivity(commissionIntent);
-            }
-        });
-
-        //notifyButtonSetup();  setup iniziale pulsante attiva/disattiva notifiche
-        if(activeNotif) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                nofificationsImageButton.setBackgroundColor(ExternalProfileActivity.this.getColor(R.color.purple_200));
-            }
-            nofificationsImageButton.setOnClickListener(new disableNotifButtonClickListener());
-        }
-        else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                nofificationsImageButton.setBackgroundColor(ExternalProfileActivity.this.getColor(R.color.white));
-            }
-            nofificationsImageButton.setOnClickListener(new enableNotifButtonClickListener());
         }
     }
 
@@ -202,6 +187,7 @@ public class ExternalProfileActivity extends Activity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 ExternalProfileActivity.this.activeNotif = (response.isSuccessful() ? true : false);
+                notificationButtonSetup();
             }
             @Override
             public void onFailure(Call<User> call, Throwable t) {
@@ -264,6 +250,21 @@ public class ExternalProfileActivity extends Activity {
                 Toast.makeText(ExternalProfileActivity.this, "Error while fetching user Posts: " + t.toString(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    //setup iniziale pulsante attiva/disattiva notifiche
+    private void notificationButtonSetup() {
+        if (activeNotif) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                nofificationsImageButton.setBackgroundColor(ExternalProfileActivity.this.getColor(R.color.purple_200));
+            }
+            nofificationsImageButton.setOnClickListener(new disableNotifButtonClickListener());
+        } else {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                nofificationsImageButton.setBackgroundColor(ExternalProfileActivity.this.getColor(R.color.white));
+            }
+            nofificationsImageButton.setOnClickListener(new enableNotifButtonClickListener());
+        }
     }
 
     private void openPostDetails(int pos) {
