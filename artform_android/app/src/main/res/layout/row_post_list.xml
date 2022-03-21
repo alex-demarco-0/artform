@@ -62,5 +62,17 @@
         android:textSize="24sp"
         android:textStyle="bold" />
 
+    <ImageButton
+        android:id="@+id/optionImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/likeTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="35dp"
+        android:background="#00FFFFFF"
+        android:minHeight="48dp"
+        android:minWidth="48dp"
+        android:paddingEnd="10dp"
+        android:src="@drawable/outline_bookmark_border_24" />
 
 </RelativeLayout>
