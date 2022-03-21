@@ -23,48 +23,45 @@
 
         <Button
             android:id="@+id/searchArtworksButton"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/contentSearchView"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:layout_toLeftOf="@+id/searchVideosButton"
             android:text="@string/image_posts"
             android:textColor="@color/black"
-            app:backgroundTint="#FFFFFF" />
+            app:backgroundColor="#FFFFFF" />
 
         <Button
             android:id="@+id/searchVideosButton"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/contentSearchView"
-            android:layout_marginStart="10dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/searchArtworksButton"
             android:text="@string/video_posts"
             android:textColor="@color/white"
-            app:backgroundTint="#9249FA" />
+            app:backgroundColor="@color/purple_500" />
 
         <Button
             android:id="@+id/searchArtistsButton"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/contentSearchView"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_toEndOf="@+id/searchVideosButton"
             android:text="@string/users"
             android:textColor="@color/black"
-            app:backgroundTint="#FFFFFF" />
+            app:backgroundColor="#FFFFFF" />
 
         <Spinner
             android:id="@+id/topicSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/searchVideosButton"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="7dp" />
 
         <GridView
             android:id="@+id/videosGridView"
