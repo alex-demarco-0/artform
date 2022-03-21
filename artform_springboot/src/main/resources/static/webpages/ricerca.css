@@ -27,6 +27,12 @@ background: #D291BC;
   left: 40%
 }
 
+#divTopic{
+    position:absolute;
+    left: 40%;
+    top: 12%;
+  }
+
 #imageCategory{
   left: 35%
 }
@@ -40,7 +46,7 @@ background: #D291BC;
 }
 
 input[type=radio] {
-  display:none; 
+  display:none;
   margin:10px;
 }
 
@@ -55,7 +61,7 @@ input[type=radio] + label {
   background: #D291BC;
 }
 
-input[type=radio]:checked + label { 
+input[type=radio]:checked + label {
   background-image: none;
   background-color: #853a6c;
 }
