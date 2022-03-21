@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.artform.R;
+import it.artform.activities.profile.ExternalProfileActivity;
 
 public class TopicGridAdapter extends BaseAdapter {
     private Context context;
@@ -66,7 +67,9 @@ public class TopicGridAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
                     if(vh.topicChecked) {
-                        vh.topicTextView.setBackgroundColor(context.getColor(R.color.white));
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            vh.topicTextView.setBackgroundColor(context.getColor(R.color.white));
+                        }
                         vh.topicChecked = false;
                         topicSelection.remove(topics[pos]);
                         /*TEST
@@ -74,7 +77,9 @@ public class TopicGridAdapter extends BaseAdapter {
                         */
                     }
                     else {
-                        vh.topicTextView.setBackgroundColor(context.getColor(R.color.purple_200));
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            vh.topicTextView.setBackgroundColor(context.getColor(R.color.purple_200));
+                        }
                         vh.topicChecked = true;
                         topicSelection.add(topics[pos]);
                         /*TEST
