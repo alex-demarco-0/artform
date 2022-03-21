@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ import it.artform.AFGlobal;
 import it.artform.R;
 import it.artform.pojos.Post;
 import it.artform.web.ArtformApiEndpointInterface;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,6 +34,7 @@ public class PostArrayAdapter extends ArrayAdapter<Post> {
         TextView topicTextView;
         TextView tagsTextView;
         TextView likeTextView;
+        ImageButton optionImageButton; //elimina se il post è proprio, altrimenti salva
     }
 
     public PostArrayAdapter(Context context, int resource, Post[] objects) {
@@ -54,6 +57,7 @@ public class PostArrayAdapter extends ArrayAdapter<Post> {
             vh.topicTextView = convertView.findViewById(R.id.topicTextView);
             vh.tagsTextView = convertView.findViewById(R.id.tagsTextView);
             vh.likeTextView = convertView.findViewById(R.id.likeTextView);
+            vh.optionImageButton = convertView.findViewById(R.id.optionImageButton);
             convertView.setTag(vh);
         }
         ViewHolder vh = (ViewHolder) convertView.getTag();
@@ -70,6 +74,23 @@ public class PostArrayAdapter extends ArrayAdapter<Post> {
                 giveLikeToPost(p);
             }
         });
+        if(p.getUser().equals(AFGlobal.getLoggedUser())) {
+            vh.optionImageButton.setImageResource(R.drawable.outline_delete_forever_24);
+            vh.optionImageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    deletePost(p);
+                }
+            });
+        }
+        else {
+            vh.optionImageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    savePost(p);
+                }
+            });
+        }
         return convertView;
     }
 
@@ -79,13 +100,42 @@ public class PostArrayAdapter extends ArrayAdapter<Post> {
         updatePostCall.enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful())
                     Toast.makeText(ctx, "You liked " + p.getUser() + "'s post", Toast.LENGTH_SHORT).show();
-                }
             }
             @Override
             public void onFailure(Call<Post> call, Throwable t) {
-                Toast.makeText(ctx, "Error while giving like to the post" + p.getUser(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, "Error while giving like to the post" + p.getUser(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void savePost(Post p) {
+        Call<Post> savePostCall = apiService.addPostToSaved(AFGlobal.getLoggedUser(), p.getId());
+        savePostCall.enqueue(new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+                if (response.isSuccessful())
+                    Toast.makeText(ctx, "Post saved", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+                Toast.makeText(ctx, "Post not saved. Maybe it is already", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+    private void deletePost(Post p) {
+        Call<ResponseBody> deletePostCall = apiService.deletePost(p.getId());
+        deletePostCall.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful())
+                    Toast.makeText(ctx, "Post deleted", Toast.LENGTH_SHORT).show();
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Toast.makeText(ctx, "Error while deleting the post", Toast.LENGTH_LONG).show();
             }
         });
     }
