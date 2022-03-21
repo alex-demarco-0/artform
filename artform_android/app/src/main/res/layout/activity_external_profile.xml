@@ -37,12 +37,12 @@
 
         </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/nofifyMeButton"
+        <ImageButton
+            android:id="@+id/nofificationsImageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="@string/notifiche" />
+            android:src="@drawable/ic_notifications" />
 
         <TextView
             android:id="@+id/externalProfileUsernameTextView"
@@ -62,21 +62,29 @@
             android:layout_marginTop="10dp"
             android:text="BIO/TAGS" />
 
+        <TextView
+            android:id="@+id/badgesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            android:text="Badges:" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/badgesReciclerView"
             android:layout_width="120dp"
             android:layout_height="30dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="46dp" />
+            android:layout_below="@+id/badgesTextView"
+            android:layout_marginTop="6dp" />
 
         <Button
             android:id="@+id/contactMeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/externalProfilePicCardView"
-            android:layout_marginStart="27dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
-            android:layout_toEndOf="@+id/externalProfileUsernameTextView"
+            android:layout_marginEnd="9dp"
             android:text="Contact me" />
 
         <GridView

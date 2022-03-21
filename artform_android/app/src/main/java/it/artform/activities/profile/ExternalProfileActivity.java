@@ -2,11 +2,13 @@ package it.artform.activities.profile;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +41,7 @@ public class ExternalProfileActivity extends Activity {
     ImageView externalProfilePicImageView = null;
     TextView externalProfileUsernameTextView = null;
     TextView externalUserBioTagsTextView = null;
-    Button nofifyMeButton = null;
+    ImageButton nofificationsImageButton = null;
     Button contactMeButton = null;
     GridView userPostsGridView = null;
     RecyclerView badgesReciclerView = null;
@@ -59,9 +61,13 @@ public class ExternalProfileActivity extends Activity {
                     if(response.isSuccessful()) {
                         activeNotif = false;
                         Toast.makeText(ExternalProfileActivity.this, "Notifications for user " + user.getUsername() + " deactivated", Toast.LENGTH_SHORT).show();
-                        nofifyMeButton.setText("Enable notifications");
+                        //nofificationsImageButton.setText("Enable notifications");
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            nofificationsImageButton.setBackgroundColor(ExternalProfileActivity.this.getColor(R.color.white));
+                        }
+                        Toast.makeText(ExternalProfileActivity.this, "Notifications for " + user.getUsername() + " DISABLED", Toast.LENGTH_SHORT).show();
                         //set onclicklistener class
-                        nofifyMeButton.setOnClickListener(new enableNotifButtonClickListener());
+                        nofificationsImageButton.setOnClickListener(new enableNotifButtonClickListener());
                     }
                     else
                         Toast.makeText(ExternalProfileActivity.this, "Error while deactivating notifications for this user: ERROR " + response.code(), Toast.LENGTH_LONG).show();
@@ -86,9 +92,12 @@ public class ExternalProfileActivity extends Activity {
                     if(response.isSuccessful()) {
                         activeNotif = true;
                         Toast.makeText(ExternalProfileActivity.this, "Notifications for user " + user.getUsername() + " activated", Toast.LENGTH_SHORT).show();
-                        nofifyMeButton.setText("Disable notifications");
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            nofificationsImageButton.setBackgroundColor(ExternalProfileActivity.this.getColor(R.color.purple_200));
+                        }
+                        Toast.makeText(ExternalProfileActivity.this, "Notifications for " + user.getUsername() + " ENABLED", Toast.LENGTH_SHORT).show();
                         //set onclicklistener class
-                        nofifyMeButton.setOnClickListener(new disableNotifButtonClickListener());
+                        nofificationsImageButton.setOnClickListener(new disableNotifButtonClickListener());
                     }
                     else
                         Toast.makeText(ExternalProfileActivity.this, "Error while activating notifications for this user: ERROR " + response.code(), Toast.LENGTH_LONG).show();
@@ -110,7 +119,7 @@ public class ExternalProfileActivity extends Activity {
         externalProfilePicImageView = findViewById(R.id.externalProfilePicImageView);
         externalProfileUsernameTextView = findViewById(R.id.externalProfileUsernameTextView);
         externalUserBioTagsTextView = findViewById(R.id.externalUserBioTagsTextView);
-        nofifyMeButton = findViewById(R.id.nofifyMeButton);
+        nofificationsImageButton = findViewById(R.id.nofificationsImageButton);
         contactMeButton = findViewById(R.id.contactMeButton);
         userPostsGridView = findViewById(R.id.userPostsGridView);
         badgesReciclerView = findViewById(R.id.badgesReciclerView);
@@ -158,12 +167,16 @@ public class ExternalProfileActivity extends Activity {
 
         //notifyButtonSetup();  setup iniziale pulsante attiva/disattiva notifiche
         if(activeNotif) {
-            nofifyMeButton.setText("Disable notifications");
-            nofifyMeButton.setOnClickListener(new disableNotifButtonClickListener());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                nofificationsImageButton.setBackgroundColor(ExternalProfileActivity.this.getColor(R.color.purple_200));
+            }
+            nofificationsImageButton.setOnClickListener(new disableNotifButtonClickListener());
         }
         else {
-            nofifyMeButton.setText("Enable notifications");
-            nofifyMeButton.setOnClickListener(new enableNotifButtonClickListener());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                nofificationsImageButton.setBackgroundColor(ExternalProfileActivity.this.getColor(R.color.white));
+            }
+            nofificationsImageButton.setOnClickListener(new enableNotifButtonClickListener());
         }
     }
 
