@@ -63,12 +63,12 @@ public class TopicGridAdapter extends BaseAdapter {
             vh.topicTextView = convertView.findViewById(R.id.topicTextView);
             vh.topicChecked = false;
             vh.topicTextView.setOnClickListener(new View.OnClickListener() {
-                @RequiresApi(api = Build.VERSION_CODES.M)
                 @Override
                 public void onClick(View view) {
                     if(vh.topicChecked) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             vh.topicTextView.setBackgroundColor(context.getColor(R.color.white));
+                            vh.topicTextView.setTextColor(context.getColor(R.color.black));
                         }
                         vh.topicChecked = false;
                         topicSelection.remove(topics[pos]);
@@ -79,6 +79,7 @@ public class TopicGridAdapter extends BaseAdapter {
                     else {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                             vh.topicTextView.setBackgroundColor(context.getColor(R.color.purple_200));
+                            vh.topicTextView.setTextColor(context.getColor(R.color.white));
                         }
                         vh.topicChecked = true;
                         topicSelection.add(topics[pos]);
