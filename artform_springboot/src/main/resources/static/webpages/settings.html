@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+Data inizio: 01/11/2021
+Data ultima modifica: 09/03/2022
+Descrizione: project work, pagina web delle impostazioni
+-->
+<html>
+    <head>
+        <title>Impostazioni</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="settings.css">
+          <script src="settings.js"></script>
+    </head>
+    <body id="body" bgcolor="#E9CFEC">
+
+
+            <nav>
+            <a href="#"><img id="logo" alt="logo" src="logoAFtrasparente.png" width="240"></a>
+            <ul>
+            <a href="homePage.html"><li>Home</li></a>
+            <a href="userProfile.html"><li>Profile</li></a>
+            </ul>
+            </nav>
+
+        <div align=center>
+          <br>
+          <br>
+          <br>
+          <br>
+            <font size='5' color='black'> Settings </font>
+            <img src="https://cdn1.iconfinder.com/data/icons/carbon-design-system-vol-7/32/settings-1024.png" width="20" height="20" vspace="-10" hspace="-10">
+        <div id="settingsDiv"><br>
+             <p align=center><button onclick="profileSettings()" value="Profile Settings">Profile settings</button>
+             <p align=center><button onclick="postSaved()" value="Post Saved">Saved posts</button>
+             <p align=center><button onclick="security()" value="Security">Security settings</button>
+             <p align=center><button onclick="logout()" value="Logout">Logout</button>
+        </div>
+    </body>
