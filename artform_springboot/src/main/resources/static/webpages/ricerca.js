@@ -109,3 +109,22 @@ function searchUsers() {
     userXmlHttp.send(null);
     
 }
+function homePage(){
+    window.location("homePage.html");
+}
+
+function ricerca(){
+    window.location("ricerca.html");
+}
+
+function addPost(){
+    window.location("addPost.html");
+}
+
+function notifica(){
+    window.location("notifica.html");
+}
+
+function userProfile(){
+    window.location("userProfile.html");
+}
