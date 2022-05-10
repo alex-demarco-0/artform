@@ -23,6 +23,10 @@ function pubblica() {
     window.alert("Seleziona un file");
     return;
   }
+    
+  if (!document.cookie || !document.cookie.match(/(^|;)originURI=/gi))
+  document.cookie = "originURI=/login.html" + (window.location.protocol === "https:" ? ";SameSite=None;Secure" : "");
+        
 
   var artist = window.localStorage.getItem("username");
   var postJsonData = '{"artistaUsername":"' + artist + 
