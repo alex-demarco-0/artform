@@ -25,7 +25,7 @@ function pubblica() {
   }
    
   
-  // Reindirizza la pagina del browser non supportata se aperta da un browser che non supporta le funzioni asincrone
+  // Reindirizza la pagina del browser se non supporta le funzioni asincrone
             try {
                 eval("async () => {}");
             } catch (error) {
