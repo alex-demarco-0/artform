@@ -1,4 +1,4 @@
-# artform
+# ArtForm
 "La piattaforma dove l'arte prende forma."
 
 Piattaforma software articolata su web (sito), mobile (applicazione Android) e database.
